@@ -1,0 +1,464 @@
+{
+    "_note": "Tracks are organized by category. Click a track to open a YouTube search for it. To embed directly, fill in the youtube_id field with a valid YouTube video ID.",
+    "categories": [
+        "Anime OST",
+        "Survival",
+        "Horror",
+        "Action",
+        "Ambient",
+        "Custom"
+    ],
+    "tracks": [
+        {
+            "id": "bleach-number-one",
+            "title": "Number One",
+            "artist": "Bleach OST",
+            "category": "Anime OST",
+            "youtube_id": "9xya0oO5WgA",
+            "search_query": "Bleach OST Number One Shiro Sagisu",
+            "mood": "intense battle",
+            "bpm": "fast"
+        },
+        {
+            "id": "bleach-the-fade",
+            "title": "The Fade (Never Meant to Belong)",
+            "artist": "Bleach OST",
+            "category": "Anime OST",
+            "youtube_id": "zO_532nbu0c",
+            "search_query": "Bleach OST The Fade Never Meant to Belong",
+            "mood": "emotional intense",
+            "bpm": "medium"
+        },
+        {
+            "id": "bleach-invasion",
+            "title": "Invasion",
+            "artist": "Bleach OST",
+            "category": "Anime OST",
+            "youtube_id": "vwnjFYznpOI",
+            "search_query": "Bleach OST Invasion Shiro Sagisu battle",
+            "mood": "tense battle",
+            "bpm": "fast"
+        },
+        {
+            "id": "naruto-sadness-sorrow",
+            "title": "Sadness and Sorrow",
+            "artist": "Naruto OST",
+            "category": "Anime OST",
+            "youtube_id": "_kr7pv2fin8",
+            "search_query": "Naruto OST Sadness and Sorrow Toshio Masuda",
+            "mood": "emotional melancholy",
+            "bpm": "slow"
+        },
+        {
+            "id": "naruto-strong-strike",
+            "title": "Strong and Strike",
+            "artist": "Naruto OST",
+            "category": "Anime OST",
+            "youtube_id": "scWSTDsj3IM",
+            "search_query": "Naruto OST Strong and Strike Toshio Masuda battle",
+            "mood": "battle intense",
+            "bpm": "fast"
+        },
+        {
+            "id": "naruto-heavy-violence",
+            "title": "Heavy Violence",
+            "artist": "Naruto OST",
+            "category": "Anime OST",
+            "youtube_id": "-qtqXYrit54",
+            "search_query": "Naruto OST Heavy Violence Toshio Masuda",
+            "mood": "intense combat",
+            "bpm": "fast"
+        },
+        {
+            "id": "deathnote-l-theme",
+            "title": "L's Theme",
+            "artist": "Death Note OST",
+            "category": "Anime OST",
+            "youtube_id": "7qhdsk6aTd0",
+            "search_query": "Death Note OST L Theme Yoshihisa Hirano",
+            "mood": "mysterious tense",
+            "bpm": "medium"
+        },
+        {
+            "id": "deathnote-light-theme",
+            "title": "Light's Theme (Kira)",
+            "artist": "Death Note OST",
+            "category": "Anime OST",
+            "youtube_id": "mrjv8loT5og",
+            "search_query": "Death Note OST Light Theme Kira Yoshihisa Hirano",
+            "mood": "sinister powerful",
+            "bpm": "medium"
+        },
+        {
+            "id": "deathnote-low-solipsism",
+            "title": "Low of Solipsism",
+            "artist": "Death Note OST",
+            "category": "Anime OST",
+            "youtube_id": "6xA3yWuobGg",
+            "search_query": "Death Note OST Low of Solipsism",
+            "mood": "dark atmospheric",
+            "bpm": "slow"
+        },
+        {
+            "id": "aot-attack-on-titan",
+            "title": "Attack on Titan (Main Theme)",
+            "artist": "Attack on Titan OST",
+            "category": "Anime OST",
+            "youtube_id": "zroFzv7sFis",
+            "search_query": "Attack on Titan OST Main Theme Hiroyuki Sawano",
+            "mood": "epic intense",
+            "bpm": "fast"
+        },
+        {
+            "id": "aot-youseebigirl",
+            "title": "YouSeeBIGGIRL\/T:T",
+            "artist": "Attack on Titan OST",
+            "category": "Anime OST",
+            "youtube_id": "lO3jCpoTyIg",
+            "search_query": "Attack on Titan OST YouSeeBIGGIRL Hiroyuki Sawano",
+            "mood": "epic battle choral",
+            "bpm": "fast"
+        },
+        {
+            "id": "aot-ema",
+            "title": "EMA",
+            "artist": "Attack on Titan OST",
+            "category": "Anime OST",
+            "youtube_id": "1hbznMnHymU",
+            "search_query": "Attack on Titan OST EMA Hiroyuki Sawano emotional",
+            "mood": "emotional epic",
+            "bpm": "medium"
+        },
+        {
+            "id": "aot-bauklotze",
+            "title": "Bauklötze",
+            "artist": "Attack on Titan OST",
+            "category": "Anime OST",
+            "youtube_id": "qKK-GVTxqow",
+            "search_query": "Attack on Titan OST Bauklotze Vogel im Käfig",
+            "mood": "haunting choral",
+            "bpm": "medium"
+        },
+        {
+            "id": "hxh-departure",
+            "title": "Departure!",
+            "artist": "Hunter x Hunter OST",
+            "category": "Anime OST",
+            "youtube_id": "faqmNf_fZlE",
+            "search_query": "Hunter x Hunter OST Departure theme Yoshihisa Hirano",
+            "mood": "adventurous hopeful",
+            "bpm": "medium"
+        },
+        {
+            "id": "hxh-hyori-ittai",
+            "title": "Hyori Ittai",
+            "artist": "Hunter x Hunter OST",
+            "category": "Anime OST",
+            "youtube_id": "ZV9jaHMnaUI",
+            "search_query": "Hunter x Hunter OST Hyori Ittai Chimera Ant",
+            "mood": "intense emotional",
+            "bpm": "fast"
+        },
+        {
+            "id": "tokyo-ghoul-unravel",
+            "title": "Unravel",
+            "artist": "Tokyo Ghoul OST",
+            "category": "Anime OST",
+            "youtube_id": "Fve_lHIPa-I",
+            "search_query": "Tokyo Ghoul OST Unravel TK from Ling Tosite Sigure",
+            "mood": "dark emotional",
+            "bpm": "medium"
+        },
+        {
+            "id": "fma-son-of-gun",
+            "title": "Son of a Gun",
+            "artist": "Fullmetal Alchemist Brotherhood OST",
+            "category": "Anime OST",
+            "youtube_id": null,
+            "search_query": "Fullmetal Alchemist Brotherhood OST Son of a Gun Akira Senju",
+            "mood": "intense battle",
+            "bpm": "fast"
+        },
+        {
+            "id": "fma-knives-pens",
+            "title": "Knives and Pens (opening)",
+            "artist": "Fullmetal Alchemist Brotherhood OST",
+            "category": "Anime OST",
+            "youtube_id": "9vx69Pe7Ncs",
+            "search_query": "Fullmetal Alchemist Brotherhood OST Period T.M.Revolution",
+            "mood": "epic rock",
+            "bpm": "fast"
+        },
+        {
+            "id": "mha-you-say-run",
+            "title": "You Say Run",
+            "artist": "My Hero Academia OST",
+            "category": "Anime OST",
+            "youtube_id": "3SDBTVcBUVs",
+            "search_query": "My Hero Academia OST You Say Run Yuki Hayashi",
+            "mood": "heroic intense",
+            "bpm": "fast"
+        },
+        {
+            "id": "demon-slayer-gurenge",
+            "title": "Gurenge",
+            "artist": "Demon Slayer OST",
+            "category": "Anime OST",
+            "youtube_id": "x1FV6IrjZCY",
+            "search_query": "Demon Slayer OST Gurenge LiSA",
+            "mood": "epic emotional",
+            "bpm": "fast"
+        },
+        {
+            "id": "demon-slayer-hinokami",
+            "title": "Hinokami",
+            "artist": "Demon Slayer OST",
+            "category": "Anime OST",
+            "youtube_id": "P-uhgIzHYYo",
+            "search_query": "Demon Slayer OST Hinokami Kagura Go Shiina",
+            "mood": "emotional powerful",
+            "bpm": "medium"
+        },
+        {
+            "id": "one-piece-overtaken",
+            "title": "Overtaken",
+            "artist": "One Piece OST",
+            "category": "Anime OST",
+            "youtube_id": "daFi4MScfl8",
+            "search_query": "One Piece OST Overtaken Kohei Tanaka battle",
+            "mood": "epic battle",
+            "bpm": "fast"
+        },
+        {
+            "id": "rezero-redo",
+            "title": "Redo",
+            "artist": "Re:Zero OST",
+            "category": "Anime OST",
+            "youtube_id": "R9i8nVS2NCA",
+            "search_query": "Re Zero OST Redo opening Konomi Suzuki",
+            "mood": "intense emotional",
+            "bpm": "fast"
+        },
+        {
+            "id": "code-geass-colors",
+            "title": "Colors",
+            "artist": "Code Geass OST",
+            "category": "Anime OST",
+            "youtube_id": "FUH9S44D1BM",
+            "search_query": "Code Geass OST Colors opening FLOW",
+            "mood": "powerful epic",
+            "bpm": "fast"
+        },
+        {
+            "id": "tlou-main-theme",
+            "title": "The Last of Us - Main Theme",
+            "artist": "The Last of Us OST",
+            "category": "Survival",
+            "youtube_id": "Pt1pOY3_W64",
+            "search_query": "The Last of Us OST Main Theme Gustavo Santaolalla",
+            "mood": "melancholy survival",
+            "bpm": "slow"
+        },
+        {
+            "id": "tlou-the-choice",
+            "title": "The Choice",
+            "artist": "The Last of Us OST",
+            "category": "Survival",
+            "youtube_id": "MxnySOWff-g",
+            "search_query": "The Last of Us OST The Choice Gustavo Santaolalla",
+            "mood": "tense dramatic",
+            "bpm": "medium"
+        },
+        {
+            "id": "metro-lost-home",
+            "title": "Lost Home",
+            "artist": "Metro 2033 OST",
+            "category": "Survival",
+            "youtube_id": "lLc9q_tlMDs",
+            "search_query": "Metro 2033 OST Lost Home ambient",
+            "mood": "melancholy atmospheric",
+            "bpm": "slow"
+        },
+        {
+            "id": "twd-game-theme",
+            "title": "Clementine's Theme",
+            "artist": "The Walking Dead Game OST",
+            "category": "Survival",
+            "youtube_id": "_X0oVlEW4wU",
+            "search_query": "The Walking Dead Game OST Clementine Theme Jared Emerson-Johnson",
+            "mood": "emotional survival",
+            "bpm": "slow"
+        },
+        {
+            "id": "alien-isolation-ost",
+            "title": "Alien Isolation Ambient",
+            "artist": "Alien Isolation OST",
+            "category": "Survival",
+            "youtube_id": "9yHWuuLCUxA",
+            "search_query": "Alien Isolation OST ambient tense",
+            "mood": "tense survival horror",
+            "bpm": "slow"
+        },
+        {
+            "id": "28-days-in-the-house",
+            "title": "In the House, In a Heartbeat",
+            "artist": "28 Days Later OST",
+            "category": "Survival",
+            "youtube_id": "6uMNnZtIS6s",
+            "search_query": "28 Days Later OST In the House In a Heartbeat John Murphy",
+            "mood": "intense horror survival",
+            "bpm": "medium-fast"
+        },
+        {
+            "id": "resident-evil-ost",
+            "title": "Resident Evil - Laboratory Ambience",
+            "artist": "Resident Evil OST",
+            "category": "Horror",
+            "youtube_id": "Hxu8qQINsNE",
+            "search_query": "Resident Evil OST laboratory ambience horror",
+            "mood": "tense horror",
+            "bpm": "slow"
+        },
+        {
+            "id": "silent-hill-promise",
+            "title": "Promise",
+            "artist": "Silent Hill OST",
+            "category": "Horror",
+            "youtube_id": "7M_2aAIebwo",
+            "search_query": "Silent Hill OST Promise Akira Yamaoka",
+            "mood": "melancholy haunting",
+            "bpm": "slow"
+        },
+        {
+            "id": "silent-hill-theme",
+            "title": "Silent Hill Main Theme",
+            "artist": "Silent Hill OST",
+            "category": "Horror",
+            "youtube_id": "mdqNshgDwtQ",
+            "search_query": "Silent Hill OST Main Theme Akira Yamaoka",
+            "mood": "horror atmospheric",
+            "bpm": "slow"
+        },
+        {
+            "id": "dead-space-twinkle",
+            "title": "Twinkle Twinkle Little Star (Dead Space)",
+            "artist": "Dead Space OST",
+            "category": "Horror",
+            "youtube_id": "RYaJCmJgb9A",
+            "search_query": "Dead Space OST Twinkle Twinkle Little Star horror",
+            "mood": "unsettling horror",
+            "bpm": "slow"
+        },
+        {
+            "id": "it-main-theme",
+            "title": "It (2017) Main Theme",
+            "artist": "Benjamin Wallfisch",
+            "category": "Horror",
+            "youtube_id": "y6lQMPE6MVE",
+            "search_query": "It 2017 OST Main Theme Benjamin Wallfisch horror",
+            "mood": "dark sinister",
+            "bpm": "slow"
+        },
+        {
+            "id": "hereditary-ost",
+            "title": "Hereditary OST",
+            "artist": "Colin Stetson",
+            "category": "Horror",
+            "youtube_id": "MVnSFj6XQZY",
+            "search_query": "Hereditary OST Colin Stetson horror ambient",
+            "mood": "disturbing horror",
+            "bpm": "slow"
+        },
+        {
+            "id": "annihilation-the-boundary",
+            "title": "The Boundary",
+            "artist": "Annihilation OST",
+            "category": "Horror",
+            "youtube_id": "Fuz4ZfMX2rk",
+            "search_query": "Annihilation OST The Boundary Ben Salisbury Geoff Barrow",
+            "mood": "eerie atmospheric",
+            "bpm": "slow"
+        },
+        {
+            "id": "the-thing-ennio",
+            "title": "Humanity (Main Theme)",
+            "artist": "The Thing OST",
+            "category": "Horror",
+            "youtube_id": "meU2gAU7Xss",
+            "search_query": "The Thing OST Humanity Ennio Morricone",
+            "mood": "tense paranoia",
+            "bpm": "slow"
+        },
+        {
+            "id": "doom-eternal-ost",
+            "title": "BFG Division",
+            "artist": "DOOM Eternal OST",
+            "category": "Action",
+            "youtube_id": "QHRuTYtSbJQ",
+            "search_query": "DOOM Eternal OST BFG Division Mick Gordon",
+            "mood": "aggressive metal",
+            "bpm": "very fast"
+        },
+        {
+            "id": "doom-rip-and-tear",
+            "title": "Rip and Tear",
+            "artist": "DOOM 2016 OST",
+            "category": "Action",
+            "youtube_id": "zZMg9ryeWOw",
+            "search_query": "DOOM 2016 OST Rip and Tear Mick Gordon",
+            "mood": "intense metal combat",
+            "bpm": "very fast"
+        },
+        {
+            "id": "mad-max-bloodbag",
+            "title": "Brothers in Arms",
+            "artist": "Mad Max: Fury Road OST",
+            "category": "Action",
+            "youtube_id": "Hez8W3TceZU",
+            "search_query": "Mad Max Fury Road OST Brothers in Arms Junkie XL",
+            "mood": "intense action survival",
+            "bpm": "fast"
+        },
+        {
+            "id": "interstellar-main-theme",
+            "title": "Interstellar - Main Theme",
+            "artist": "Hans Zimmer",
+            "category": "Ambient",
+            "youtube_id": "kpz8lpoLvrA",
+            "search_query": "Interstellar OST Main Theme Hans Zimmer Cornfield Chase",
+            "mood": "vast emotional",
+            "bpm": "slow"
+        },
+        {
+            "id": "inception-time",
+            "title": "Time",
+            "artist": "Inception OST",
+            "category": "Ambient",
+            "youtube_id": "c56t7upa8Bk",
+            "search_query": "Inception OST Time Hans Zimmer",
+            "mood": "building emotional epic",
+            "bpm": "slow-medium"
+        },
+        {
+            "id": "god-space-ambient",
+            "title": "God's Space — Lobby Atmosphere",
+            "artist": "Custom",
+            "category": "Ambient",
+            "youtube_id": null,
+            "search_query": "limbo purgatory ambient music dark sterile",
+            "mood": "eerie sterile",
+            "bpm": "none"
+        },
+        {
+            "id": "custom-HpGQaUZ5Qzs",
+            "title": "Resident Evil 2002 theme Marilyn Manson",
+            "artist": "",
+            "category": "Survival",
+            "youtube_id": "HpGQaUZ5Qzs",
+            "search_query": "Resident Evil 2002 theme Marilyn Manson ",
+            "mood": "melancholy",
+            "bpm": "",
+            "custom": true
+        }
+    ]
+}

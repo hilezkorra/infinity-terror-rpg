@@ -1,0 +1,253 @@
+{
+    "_note": "Freesound IDs are null by default. Click any sound chip in-game → 'Find on Freesound' → copy the number from the URL (freesound.org\/sounds\/NUMBER\/) → paste it in the ID field and save. Embed URL pattern: https:\/\/freesound.org\/embed\/sound\/iframe\/{id}\/simple\/small\/",
+    "sounds": {
+        "zombie-groan": {
+            "label": "Zombie Groan",
+            "description": "Single zombie vocalization",
+            "freesound_id": 843378,
+            "audio_url": null,
+            "search_query": "zombie groan moan single",
+            "emoji": "🧟"
+        },
+        "zombie-horde": {
+            "label": "Zombie Horde",
+            "description": "Multiple undead approaching",
+            "freesound_id": 432847,
+            "audio_url": null,
+            "search_query": "zombie horde crowd undead moaning",
+            "emoji": "🧟"
+        },
+        "gunfire-pistol": {
+            "label": "Pistol Shot",
+            "description": "Single handgun shot",
+            "freesound_id": 385811,
+            "audio_url": null,
+            "search_query": "pistol gunshot single shot",
+            "emoji": "🔫"
+        },
+        "gunfire-rifle": {
+            "label": "Rifle Burst",
+            "description": "Automatic rifle burst",
+            "freesound_id": 393671,
+            "audio_url": null,
+            "search_query": "assault rifle automatic burst fire",
+            "emoji": "🔫"
+        },
+        "gunfire-shotgun": {
+            "label": "Shotgun Blast",
+            "description": "Shotgun discharge",
+            "freesound_id": 416280,
+            "audio_url": null,
+            "search_query": "shotgun blast pump action",
+            "emoji": "🔫"
+        },
+        "footsteps-creep": {
+            "label": "Creeping Footsteps",
+            "description": "Slow stealthy footsteps approaching",
+            "freesound_id": 729398,
+            "audio_url": null,
+            "search_query": "creeping footsteps slow sneaking approach",
+            "emoji": "👣"
+        },
+        "footsteps-run": {
+            "label": "Running Footsteps",
+            "description": "Fast running on hard surface",
+            "freesound_id": 233067,
+            "audio_url": null,
+            "search_query": "running footsteps fast corridor sprint",
+            "emoji": "👣"
+        },
+        "monster-roar": {
+            "label": "Monster Roar",
+            "description": "Large creature roar",
+            "freesound_id": 537883,
+            "audio_url": null,
+            "search_query": "monster roar creature large beast",
+            "emoji": "👹"
+        },
+        "monster-screech": {
+            "label": "Monster Screech",
+            "description": "High-pitched creature screech",
+            "freesound_id": 125388,
+            "audio_url": null,
+            "search_query": "monster screech high pitch shriek creature",
+            "emoji": "👹"
+        },
+        "door-creak": {
+            "label": "Door Creak",
+            "description": "Heavy door slowly opening",
+            "freesound_id": 119792,
+            "audio_url": null,
+            "search_query": "door creak horror slow open wooden",
+            "emoji": "🚪"
+        },
+        "horror-ambience": {
+            "label": "Horror Ambience",
+            "description": "Tense ominous background atmosphere",
+            "freesound_id": 826654,
+            "audio_url": null,
+            "search_query": "horror ambience dark atmosphere tense drone",
+            "emoji": "😨"
+        },
+        "heartbeat": {
+            "label": "Heartbeat",
+            "description": "Rapid terrified heartbeat",
+            "freesound_id": 91242,
+            "audio_url": null,
+            "search_query": "heartbeat fast fear rapid pulse",
+            "emoji": "💓",
+            "loop": true
+        },
+        "explosion": {
+            "label": "Explosion",
+            "description": "Large explosion blast",
+            "freesound_id": 156031,
+            "audio_url": null,
+            "search_query": "explosion large blast boom",
+            "emoji": "💥"
+        },
+        "scream-human": {
+            "label": "Human Scream",
+            "description": "Person screaming in terror",
+            "freesound_id": 42847,
+            "audio_url": null,
+            "search_query": "human scream terror horror fear",
+            "emoji": "😱"
+        },
+        "wind-howl": {
+            "label": "Howling Wind",
+            "description": "Wind howling through structures",
+            "freesound_id": 410369,
+            "audio_url": null,
+            "search_query": "wind howling eerie outdoor horror",
+            "emoji": "💨"
+        },
+        "rain-storm": {
+            "label": "Storm \/ Rain",
+            "description": "Heavy rain and thunder",
+            "freesound_id": 815258,
+            "audio_url": null,
+            "search_query": "heavy rain storm thunder rumble",
+            "emoji": "⛈️"
+        },
+        "water-drip": {
+            "label": "Water Dripping",
+            "description": "Water dripping in dark space",
+            "freesound_id": 818888,
+            "audio_url": null,
+            "search_query": "water dripping cave dark echo",
+            "emoji": "💧"
+        },
+        "chainsaw": {
+            "label": "Chainsaw",
+            "description": "Chainsaw running",
+            "freesound_id": 431741,
+            "audio_url": null,
+            "search_query": "chainsaw running horror revving",
+            "emoji": "⛓️"
+        },
+        "alarm-siren": {
+            "label": "Alarm Siren",
+            "description": "Emergency alarm system",
+            "freesound_id": 319413,
+            "audio_url": null,
+            "search_query": "alarm siren emergency loud blaring",
+            "emoji": "🚨"
+        },
+        "glass-shatter": {
+            "label": "Glass Shattering",
+            "description": "Glass breaking loudly",
+            "freesound_id": 321139,
+            "audio_url": null,
+            "search_query": "glass shatter breaking window",
+            "emoji": "🪟"
+        },
+        "metal-clang": {
+            "label": "Metal Crash",
+            "description": "Metal impact or scraping",
+            "freesound_id": 67617,
+            "audio_url": null,
+            "search_query": "metal clang scrape crash impact",
+            "emoji": "⚙️"
+        },
+        "ghost-wail": {
+            "label": "Ghost \/ Wail",
+            "description": "Spectral haunting sound",
+            "freesound_id": 556419,
+            "audio_url": null,
+            "search_query": "ghost wail haunting spectral eerie",
+            "emoji": "👻"
+        },
+        "dinosaur-roar": {
+            "label": "Dinosaur Roar",
+            "description": "Large predatory dinosaur",
+            "freesound_id": 96223,
+            "audio_url": null,
+            "search_query": "dinosaur roar predator large tyrannosaurus",
+            "emoji": "🦖"
+        },
+        "alien-screech": {
+            "label": "Alien Screech",
+            "description": "Xenomorph or alien creature",
+            "freesound_id": 847651,
+            "audio_url": null,
+            "search_query": "alien screech creature hiss xenomorph",
+            "emoji": "👾"
+        },
+        "machine-whirr": {
+            "label": "Machine \/ Robot",
+            "description": "Mechanical entity sounds",
+            "freesound_id": 742021,
+            "audio_url": null,
+            "search_query": "robot machine whirr mechanical servo",
+            "emoji": "🤖"
+        },
+        "bones-crack": {
+            "label": "Bones Cracking",
+            "description": "Bone breaking or cracking",
+            "freesound_id": 641302,
+            "audio_url": null,
+            "search_query": "bones cracking snap break",
+            "emoji": "💀"
+        },
+        "fire-crackling": {
+            "label": "Fire Crackling",
+            "description": "Fire burning",
+            "freesound_id": 779877,
+            "audio_url": null,
+            "search_query": "fire crackling burning campfire",
+            "emoji": "🔥"
+        },
+        "crowd-panic": {
+            "label": "Crowd Panic",
+            "description": "People screaming and running",
+            "freesound_id": 220817,
+            "audio_url": null,
+            "search_query": "crowd panic screaming running chaos stampede",
+            "emoji": "😰"
+        },
+        "god-space-hum": {
+            "label": "God's Space Hum",
+            "description": "The eerie ambient hum of the Lobby",
+            "freesound_id": 674182,
+            "audio_url": null,
+            "search_query": "ambient drone eerie hum void space limbo",
+            "emoji": "🌀"
+        },
+        "blade-slash": {
+            "label": "Blade Slash",
+            "description": "Sword or blade swinging",
+            "freesound_id": 699930,
+            "audio_url": null,
+            "search_query": "sword slash blade swing whoosh",
+            "emoji": "⚔️"
+        },
+        "train-rumble": {
+            "label": "train-rumble",
+            "description": "",
+            "freesound_id": 131173,
+            "audio_url": null,
+            "loop": true
+        }
+    }
+}

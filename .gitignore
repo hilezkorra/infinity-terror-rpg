@@ -1,0 +1,13 @@
+# Character data — contains player info, do not push
+data/game.json
+data/chat.json
+data/event-log.txt
+saves/
+
+# Context files with game state info
+CLAUDE.md
+
+# OS junk
+Thumbs.db
+.DS_Store
+*.log

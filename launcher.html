@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AI RPG</title>
+<link rel="icon" type="image/x-icon" href="app-icon.ico">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;overflow:hidden}
+  body{background:#000;color:#00cc44;font-family:'Courier New','VT323','Lucida Console',monospace;
+    display:flex;align-items:center;justify-content:center;height:100vh;
+    user-select:none}
+  .bg-img{position:fixed;inset:0;
+    background:url('assets/Gemini_Generated_Image_j55fz2j55fz2j55f.png') center/cover no-repeat;
+    pointer-events:none;z-index:0;opacity:0;transition:opacity 1.2s ease}
+  .bg-img.show{opacity:1}
+  .void{position:fixed;inset:0;z-index:10;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    transition:opacity 1s ease}
+  .void.hide{opacity:0;pointer-events:none}
+  .typewriter{font-size:24px;line-height:1.8;letter-spacing:.06em;color:#00cc44;text-align:center;
+    min-height:90px;text-shadow:0 0 8px rgba(0,204,68,.3);font-weight:400}
+  .typewriter .cursor{display:inline-block;width:2px;height:1.2em;background:#00cc44;margin-left:2px;
+    vertical-align:text-bottom;animation:blink .8s step-end infinite;box-shadow:0 0 6px #00cc44}
+  .typewriter .hint{display:block;font-size:11px;color:#0a3a18;letter-spacing:.2em;margin-top:20px;opacity:0;transition:opacity .8s ease}
+  .typewriter .hint.show{opacity:1}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+  .speech-overlay{position:fixed;inset:0;z-index:12;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    opacity:0;transition:opacity 1s ease;pointer-events:none}
+  .speech-overlay.show{opacity:1}
+  .speech-lines{text-align:center}
+  .speech-lines .sl{display:block;font-size:20px;color:#00cc44;letter-spacing:.06em;line-height:2;font-weight:400;
+    opacity:0;transform:translateY(8px);transition:opacity .6s ease, transform .6s ease;text-shadow:0 0 6px rgba(0,204,68,.15)}
+  .speech-lines .sl.show{opacity:1;transform:translateY(0)}
+  .speech-lines .sl.big{font-size:40px;font-weight:700;line-height:2.5;letter-spacing:.12em;color:#00e64e;text-shadow:0 0 30px rgba(0,204,68,.4),0 0 60px rgba(0,204,68,.15)}
+  .choice{margin-top:40px;display:flex;gap:28px;opacity:0;transition:opacity .6s ease}
+  .choice.show{opacity:1}
+  .choice.hide{opacity:0;pointer-events:none}
+  .ti-btn{width:10em;position:relative;height:3.5em;border:3px ridge #020805;outline:none;
+    background-color:transparent;color:#1a8840;transition:1s;border-radius:0.3em;
+    font-size:16px;font-weight:700;cursor:pointer;font-family:'Courier New',monospace;
+    letter-spacing:.15em;text-transform:uppercase}
+  .ti-btn::after{content:"";position:absolute;top:-10px;left:3%;width:95%;height:40%;
+    background-color:#000;transition:0.5s;transform-origin:center}
+  .ti-btn::before{content:"";transform-origin:center;position:absolute;top:80%;left:3%;
+    width:95%;height:40%;background-color:#000;transition:0.5s}
+  .ti-btn:hover::before,.ti-btn:hover::after{transform:scale(0)}
+  .ti-btn:hover{box-shadow:inset 0px 0px 25px #00cc44;border-color:#00cc44;color:#00e64e}
+  .ti-btn:active{transform:scale(.96)}
+  .launcher{position:fixed;z-index:2;top:50%;left:50%;transform:translate(-50%,-50%);
+    text-align:center;display:flex;flex-direction:column;align-items:center;
+    opacity:0;transition:opacity .8s ease;pointer-events:none;width:90%;max-width:560px}
+  .launcher.show{opacity:1;pointer-events:auto}
+  .launcher-card{border:1px solid rgba(90,60,60,.4);background:rgba(10,6,8,.75);padding:clamp(20px,3vw,40px) clamp(24px,4vw,48px);width:100%;backdrop-filter:blur(2px);position:relative}
+  .launcher-card .section{text-align:left;margin-bottom:clamp(14px,2vw,24px)}
+  .launcher-card .section:last-of-type{margin-bottom:clamp(20px,3vw,36px)}
+  .launcher-card .label{display:block;font-size:clamp(10px,1.1vw,14px);color:#7a5f5f;letter-spacing:.15em;margin-bottom:clamp(6px,.8vw,10px);text-transform:uppercase}
+  .launcher-card .label small{text-transform:none;color:#4a3a3a;letter-spacing:0}
+  .tool-row{display:flex;gap:clamp(8px,1vw,14px)}
+  .tool-btn{flex:1;background:#0a0608;border:1px solid #2a1820;color:#6a4a4a;padding:clamp(8px,1.2vw,14px) clamp(10px,1.5vw,20px);font-size:clamp(11px,1.2vw,15px);font-family:'Courier New',monospace;cursor:pointer;letter-spacing:.08em;transition:all .2s;text-transform:uppercase;text-align:center}
+  .tool-btn:hover{color:#9a7a7a;border-color:#3a2830}
+  .tool-btn.active{color:#cc8888;border-color:#cc4444;background:#12080a;box-shadow:inset 0 0 12px rgba(204,68,68,.08)}
+  .tool-btn small{display:block;font-size:clamp(8px,.8vw,11px);color:#3a2a2a;margin-top:clamp(2px,.3vw,4px);letter-spacing:0;text-transform:none}
+  .tool-btn.active small{color:#6a4a4a}
+  .model-row{display:flex;gap:clamp(6px,.7vw,10px);align-items:center}
+  .model-row input{flex:1;background:#080608;border:1px solid #1a1018;color:#9a7a7a;padding:clamp(6px,.8vw,10px) clamp(8px,1vw,14px);font-size:clamp(11px,1.2vw,15px);font-family:'Courier New',monospace;outline:none;transition:border .2s}
+  .model-row input:focus{border-color:#3a1820}
+  .model-row input::placeholder{color:#2a1818}
+  .model-row .tool-save{background:#0a0608;border:1px solid #2a1820;color:#7a4a4a;padding:clamp(6px,.8vw,10px) clamp(10px,1.5vw,20px);font-size:clamp(10px,1vw,13px);font-family:'Courier New',monospace;cursor:pointer;transition:all .2s;white-space:nowrap}
+  .model-row .tool-save:hover{color:#cc8888;border-color:#cc4444}
+  .tool-status{font-size:clamp(9px,.9vw,12px);color:#2a1818;min-height:clamp(12px,1.4vw,18px);margin-top:clamp(3px,.4vw,6px);text-align:center}
+  .launcher-card .helper{font-size:clamp(8px,.8vw,11px);color:#2a1818;margin-top:clamp(3px,.3vw,5px);line-height:1.4}
+  .ui-btn{--btn-default-bg:#080608;--btn-padding:clamp(14px,2vw,24px) clamp(28px,4vw,52px);--btn-hover-bg:#12080a;
+    --btn-transition:.3s;--btn-letter-spacing:.15rem;--btn-animation-duration:1.2s;
+    --btn-shadow-color:rgba(204,34,34,.15);--btn-shadow:0 2px 12px 0 var(--btn-shadow-color);
+    --hover-btn-color:#cc2222;--default-btn-color:#d4c8c0;--font-size:clamp(16px,2vw,26px);
+    --font-weight:700;--font-family:'Courier New',monospace;
+    box-sizing:border-box;padding:var(--btn-padding);
+    display:inline-flex;align-items:center;justify-content:center;
+    color:var(--default-btn-color);font:var(--font-weight) var(--font-size) var(--font-family);
+    background:var(--btn-default-bg);border:3px ridge #554040;cursor:pointer;
+    transition:var(--btn-transition);overflow:hidden;box-shadow:var(--btn-shadow)}
+  .ui-btn span{letter-spacing:var(--btn-letter-spacing);transition:var(--btn-transition);
+    box-sizing:border-box;position:relative;background:inherit}
+  .ui-btn span::before{box-sizing:border-box;position:absolute;
+    content:"";background:inherit}
+  .ui-btn:hover,.ui-btn:focus{background:var(--btn-hover-bg);border-color:#cc2222}
+  .ui-btn:hover span,.ui-btn:focus span{color:var(--hover-btn-color)}
+  .ui-btn:hover span::before,.ui-btn:focus span::before{animation:chitchat linear both var(--btn-animation-duration)}
+  @keyframes chitchat{0%{content:"#"}5%{content:"."}10%{content:"^{"}15%{content:"-!"}20%{content:"#$_"}
+    25%{content:"№:0"}30%{content:"#{+."}35%{content:"@}-?"}40%{content:"?{4@%"}45%{content:"=.,^!"}
+    50%{content:"?2@%"}55%{content:"\;1}]"}60%{content:"?{%:%";right:0}65%{content:"|{f[4";right:0}
+    70%{content:"{4%0%";right:0}75%{content:"'1_0<";right:0}80%{content:"{0%";right:0}85%{content:"]>'";right:0}
+    90%{content:"4";right:0}95%{content:"2";right:0}100%{content:"";right:0}}
+  .ui-btn:disabled{opacity:.35;cursor:wait;transform:none;box-shadow:none}
+  .main{display:none;flex-direction:column;align-items:center;gap:14px;margin-top:24px}
+  .main.show{display:flex}
+  .load-bar-track{width:clamp(200px,30vw,400px);height:clamp(3px,.3vw,5px);background:#1a1018;border-radius:2px;overflow:hidden}
+  .load-bar-fill{height:100%;width:0%;background:#cc2222;border-radius:2px;transition:width .5s ease;box-shadow:0 0 8px rgba(204,34,34,.4)}
+  .load-status{font-size:clamp(11px,1vw,15px);color:#7a5f5f;letter-spacing:.12em;font-family:'Courier New',monospace;min-height:clamp(14px,1.5vw,20px)}
+  .blackout{position:fixed;inset:0;z-index:20;background:#000;display:flex;align-items:center;justify-content:center;
+    opacity:0;pointer-events:none;transition:opacity 2s ease}
+  .blackout.show{opacity:1;pointer-events:auto}
+  .blackout-text{font-family:'Courier New',monospace;font-size:24px;color:#1a0a0a;letter-spacing:.15em;text-align:center;
+    opacity:0;transition:opacity 1.5s ease, text-shadow 1.5s ease;max-width:500px;line-height:1.6;
+    text-shadow:0 0 0px rgba(204,34,34,0)}
+  .blackout-text.show{opacity:1;color:#330e0e;text-shadow:0 0 30px rgba(204,34,34,.15)}
+  .audio-prompt{position:fixed;inset:0;z-index:15;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    transition:opacity 1s ease;user-select:none}
+  .audio-prompt.hide{opacity:0;pointer-events:none}
+  .audio-prompt p{color:#7a5f5f;font-size:14px;text-align:center;line-height:1.7;letter-spacing:.08em;max-width:380px;margin-bottom:30px;font-family:'Courier New',monospace}
+  .audio-prompt .buttons{display:flex;gap:20px}
+  .ap-btn{width:9em;position:relative;height:3.2em;border:3px ridge #020508;outline:none;
+    background-color:transparent;color:#a04040;transition:1s;border-radius:0.3em;
+    font-size:14px;font-weight:700;cursor:pointer;font-family:'Courier New',monospace;
+    letter-spacing:.15em;text-transform:uppercase}
+  .ap-btn::after{content:"";position:absolute;top:-10px;left:3%;width:95%;height:40%;
+    background-color:#000;transition:0.5s;transform-origin:center}
+  .ap-btn::before{content:"";transform-origin:center;position:absolute;top:80%;left:3%;
+    width:95%;height:40%;background-color:#000;transition:0.5s}
+  .ap-btn:hover::before,.ap-btn:hover::after{transform:scale(0)}
+  .ap-btn.allow{color:#a04040;border-color:#2a1018}
+  .ap-btn.allow:hover{box-shadow:inset 0px 0px 25px #cc2222;border-color:#cc2222;color:#d44}
+  .ap-btn.deny{color:#3a2a2a;border-color:#1a1018}
+  .ap-btn.deny:hover{box-shadow:inset 0px 0px 25px #3a2a3a;border-color:#3a2a3a;color:#5a4a4a}
+  .music-toggle{position:fixed;top:clamp(12px,2vh,28px);right:clamp(12px,2vw,28px);z-index:4;width:clamp(32px,3vw,48px);height:clamp(32px,3vw,48px);border:2px solid #3a2020;border-radius:0;
+    background:#130d10;color:#9a6a6a;font-size:clamp(14px,1.5vw,22px);cursor:pointer;display:none;align-items:center;justify-content:center;
+    transition:all .2s;user-select:none}
+  .music-toggle.show{display:flex}
+  .music-toggle:hover{color:#cc8888;border-color:#c8920a}
+  .music-toggle.muted{opacity:.35}
+  .music-toggle.muted::after{content:'';position:absolute;width:2px;height:18px;background:#7a5f5f;transform:rotate(45deg)}
+  .page{display:flex;flex-direction:column;align-items:center;gap:clamp(8px,1vw,14px);width:100%}
+  .page .title{text-align:left;width:100%;margin-bottom:clamp(4px,.5vw,8px)}
+  .page .title .main-title{font-size:clamp(14px,1.6vw,22px);color:#7a5f5f;letter-spacing:.2em;text-transform:uppercase}
+  .page .title .sub-title{font-size:clamp(9px,.9vw,12px);color:#3a2a2a;letter-spacing:.1em;margin-top:2px}
+  .menu-btn{width:100%;--btn-padding:clamp(10px,1.4vw,18px) clamp(20px,3vw,40px);--font-size:clamp(13px,1.5vw,20px)!important;border-color:#3a2830!important}
+  .model-select{-webkit-appearance:none;appearance:none;background:#080608;border:1px solid #1a1018;color:#9a7a7a;padding:clamp(6px,.8vw,10px) clamp(8px,1vw,14px);font-size:clamp(11px,1.2vw,15px);font-family:'Courier New',monospace;outline:none;cursor:pointer;transition:border .2s;flex:1;min-width:0}
+  .model-select:focus{border-color:#3a1820}
+  .model-select option{background:#0a0608;color:#9a7a7a}
+  .lib-settings-btn{width:100%;background:#0a0608;border:1px solid #2a1820;color:#6a4a4a;padding:clamp(10px,1.2vw,16px);font-size:clamp(11px,1.2vw,15px);font-family:'Courier New',monospace;cursor:pointer;letter-spacing:.12em;transition:all .2s;text-align:center;display:flex;align-items:center;justify-content:center;gap:clamp(6px,.6vw,10px)}
+  .lib-settings-btn:hover{color:#cc8888;border-color:#cc4444}
+  .lib-modal{position:fixed;inset:0;z-index:30;background:rgba(0,0,0,.92);display:none;flex-direction:column;align-items:center;padding:30px 20px;overflow-y:auto}
+  .lib-modal.open{display:flex}
+  .lib-modal h2{color:#7a5f5f;font-size:13px;letter-spacing:.2em;margin-bottom:16px;font-weight:400}
+  .lib-tabs{display:flex;gap:0;margin-bottom:20px;border-bottom:1px solid #1a1018}
+  .lib-tab{padding:8px 20px;font-size:11px;color:#4a3a3a;background:none;border:none;cursor:pointer;font-family:'Courier New',monospace;letter-spacing:.1em;transition:all .2s}
+  .lib-tab:hover{color:#7a5f5f}
+  .lib-tab.active{color:#cc2222;border-bottom:1px solid #cc2222}
+  .lib-list{width:100%;max-width:600px;display:flex;flex-direction:column;gap:8px}
+  .lib-item{background:#0a0608;border:1px solid #1a1018;padding:10px 14px;display:flex;flex-direction:column;gap:6px}
+  .lib-item .hdr{display:flex;justify-content:space-between;align-items:center}
+  .lib-item .hdr .lbl{color:#a09080;font-size:12px;font-weight:600;letter-spacing:.05em}
+  .lib-item .hdr .key{color:#4a3a3a;font-size:10px}
+  .lib-item .desc{color:#4a3a3a;font-size:10px;margin-bottom:4px}
+  .lib-item .row{display:flex;gap:8px;align-items:center}
+  .lib-item .row input{flex:1;background:#080608;border:1px solid #1a1018;color:#7a5f5f;padding:4px 8px;font-size:11px;font-family:'Courier New',monospace;outline:none;transition:border .2s}
+  .lib-item .row input:focus{border-color:#3a1820}
+  .lib-item .row input::placeholder{color:#2a1818}
+  .lib-item .save-btn{background:#0a0608;border:1px solid #2a1018;color:#5a3a3a;padding:3px 12px;font-size:10px;cursor:pointer;font-family:'Courier New',monospace;transition:all .2s}
+  .lib-item .save-btn:hover{border-color:#cc2222;color:#cc2222}
+  .lib-close{position:fixed;top:16px;right:16px;z-index:31;background:none;border:1px solid #2a1018;color:#4a3a3a;font-size:16px;width:32px;height:32px;cursor:pointer;display:none;align-items:center;justify-content:center;font-family:'Courier New',monospace;transition:all .2s}
+  .lib-close.show{display:flex}
+  .lib-close:hover{color:#cc2222;border-color:#cc2222}
+  .music-toggle.muted::after{content:'';position:absolute;width:2px;height:18px;background:#7a5f5f;transform:rotate(45deg)}
+</style>
+</head>
+<body>
+<div class="bg-img" id="bg-img"></div>
+<audio id="bgm" src="assets/Aylex%20-%20Sinister%20(freetouse.com).mp3" loop preload="auto"></audio>
+<audio id="speech" src="assets/speech.mp3" preload="auto"></audio>
+
+<div class="void" id="void">
+  <div class="typewriter" id="typewriter"></div>
+  <div class="choice" id="choice">
+    <button class="ti-btn" id="yes-btn">YES</button>
+    <button class="ti-btn" id="no-btn">NO</button>
+  </div>
+</div>
+
+<div class="launcher" id="launcher">
+  <div class="launcher-card">
+    <div class="page main-menu" id="page-main">
+      <button class="ui-btn menu-btn" onclick="startGame()"><span>START GAME</span></button>
+      <button class="ui-btn menu-btn" onclick="loadGame()"><span>LOAD GAME</span></button>
+      <button class="ui-btn menu-btn" onclick="showSettings()"><span>SETTINGS</span></button>
+      <button class="ui-btn menu-btn" onclick="exitGame()"><span>EXIT GAME</span></button>
+    </div>
+    <div class="page settings-page" id="page-settings" style="display:none">
+      <div class="section" style="width:100%;margin-bottom:0">
+        <span class="label">AI Engine</span>
+        <div class="tool-row" id="tool-row">
+          <button class="tool-btn" data-tool="claude" onclick="pickTool('claude')">Claude Code<small>claude</small></button>
+          <button class="tool-btn" data-tool="opencode" onclick="pickTool('opencode')">Opencode<small>opencode</small></button>
+        </div>
+      </div>
+      <div class="section" style="width:100%;margin-bottom:0">
+        <span class="label">Model</span>
+        <div class="model-row">
+          <select class="model-select" id="model-select" onchange="onModelSelect()"></select>
+          <input id="tool-model" type="text" placeholder="or type any model" style="flex:1.2">
+          <button class="tool-save" onclick="saveToolPref()">Save</button>
+        </div>
+        <div class="helper">Passes <code style="color:#4a3a3a">--model</code> to the AI tool. Use exact model IDs (e.g. <code style="color:#4a3a3a">claude-sonnet-4-20250514</code>, <code style="color:#4a3a3a">gpt-4o</code>). Leave as Default for the tool's default model.</div>
+      </div>
+      <div class="tool-status" id="tool-status"></div>
+      <div class="section" style="width:100%;margin-bottom:0">
+        <button class="lib-settings-btn" onclick="openSoundLibrary()">▣ SOUND LIBRARY</button>
+      </div>
+      <div class="section" style="width:100%;margin-bottom:0">
+        <span class="label">Display Mode</span>
+        <div class="tool-row" id="display-row">
+          <button class="tool-btn" data-disp="windowed" onclick="pickDisplay('windowed')">Windowed<small>window</small></button>
+          <button class="tool-btn" data-disp="fullscreen" onclick="pickDisplay('fullscreen')">Fullscreen<small>full</small></button>
+        </div>
+      </div>
+      <button class="ui-btn menu-btn" onclick="showMainMenu()" style="--font-size:clamp(11px,1.2vw,16px)!important"><span>← BACK TO MAIN MENU</span></button>
+    </div>
+  </div>
+  <div class="main" id="main">
+    <div class="load-bar-track"><div class="load-bar-fill" id="load-bar"></div></div>
+    <div class="load-status" id="load-status"></div>
+  </div>
+</div>
+
+<div class="blackout" id="blackout">
+  <div class="blackout-text" id="blackout-text">You were going to die.<br>You did not.<br>Participation has already begun.</div>
+</div>
+
+<div class="speech-overlay" id="speech-overlay">
+  <div class="speech-lines" id="speech-lines">
+    <span class="sl" id="sl-0">Want to know the meaning of life?</span>
+    <span class="sl" id="sl-1">……Want to live a real life?</span>
+    <span class="sl" id="sl-2">…Beyond fear lies evolution.</span>
+    <span class="sl" id="sl-3">Beyond death lies possibility.</span>
+    <span class="sl" id="sl-4">The weak fear the darkness.</span>
+    <span class="sl" id="sl-5">The strong are forged within it.</span>
+    <span class="sl" id="sl-6">Fear is not your enemy.</span>
+    <span class="sl" id="sl-7">Fear is the path.</span>
+    <span class="sl big" id="sl-8">Walk it.</span>
+  </div>
+</div>
+
+<div class="lib-modal" id="lib-modal">
+  <button class="lib-close" id="lib-close">✕</button>
+  <h2>SOUND LIBRARY</h2>
+  <div class="lib-tabs">
+    <button class="lib-tab active" data-tab="sounds">SOUND EFFECTS</button>
+    <button class="lib-tab" data-tab="music">MUSIC</button>
+  </div>
+  <div class="lib-list" id="lib-list"></div>
+</div>
+
+<div class="audio-prompt" id="audio-prompt">
+  <p>This game features atmospheric sound effects and background music. Allow audio?</p>
+  <div class="buttons">
+    <button class="ap-btn allow" id="allow-btn">ALLOW</button>
+    <button class="ap-btn deny" id="deny-btn">DENY</button>
+  </div>
+</div>
+
+<div id="music-toggle" class="music-toggle" title="Toggle music">♪</div>
+
+<script>
+const API = 'game-api.php';
+const GAME_URL = 'index.html';
+const STATUS_DELAY = 600;
+const TEXT = 'Want to know the meaning of life?\nWant to live\u2026 a real life?';
+const TYPE_SPEED = 55;
+const TYPE_VARIANCE = 30;
+
+const bgm = document.getElementById('bgm');
+bgm.volume = 0.3;
+
+// ── Typewriter click sound (Web Audio API) ──────────────
+let actx = null;
+let clickBuf = null;
+
+async function loadClick() {
+  try {
+    actx = new (window.AudioContext || window.webkitAudioContext)();
+    const r = await fetch('assets/click-keyboard.mp3');
+    const d = await r.arrayBuffer();
+    clickBuf = await actx.decodeAudioData(d);
+  } catch (e) {}
+}
+loadClick();
+
+function playTypeClick() {
+  try {
+    if (!actx || !clickBuf || actx.state === 'suspended') return;
+    const src = actx.createBufferSource();
+    src.buffer = clickBuf;
+    const g = actx.createGain();
+    g.gain.value = 0.5;
+    src.connect(g).connect(actx.destination);
+    src.start(0, 0.15);
+  } catch (e) {}
+}
+
+// ── Audio permission prompt ─────────────────────────────
+document.getElementById('allow-btn').addEventListener('click', () => {
+  if (actx && actx.state === 'suspended') actx.resume().catch(() => {});
+  startMusic();
+  document.getElementById('audio-prompt').classList.add('hide');
+  setTimeout(typeNext, 300);
+});
+
+document.getElementById('deny-btn').addEventListener('click', () => {
+  document.getElementById('audio-prompt').classList.add('hide');
+  setTimeout(typeNext, 300);
+});
+
+// ── Typewriter animation ─────────────────────────────────
+let typeIndex = 0;
+const typeEl = document.getElementById('typewriter');
+
+function typeNext() {
+  if (typeIndex >= TEXT.length) {
+    document.getElementById('choice').classList.add('show');
+    const cursor = document.querySelector('.cursor');
+    if (cursor) cursor.style.animation = 'blink .8s step-end infinite';
+    return;
+  }
+  const ch = TEXT[typeIndex];
+  const display = TEXT.substring(0, typeIndex + 1).replace(/\n/g, '<br>') + '<span class="cursor"></span>';
+  typeEl.innerHTML = display;
+  if (ch !== '\n') playTypeClick();
+  typeIndex++;
+  const delay = TYPE_SPEED + (Math.random() - 0.5) * TYPE_VARIANCE * 2;
+  setTimeout(typeNext, delay);
+}
+
+// ── Music helpers ─────────────────────────────────────────
+function startMusic() {
+  if (!bgm.paused) return;
+  bgm.volume = 0.3;
+  bgm.play().then(() => {
+    document.getElementById('music-toggle').classList.remove('muted');
+  }).catch(() => {});
+}
+
+function fadeOutBgm(dur) {
+  const steps = 15;
+  const vol = bgm.volume;
+  for (let i = 1; i <= steps; i++) {
+    setTimeout(() => { bgm.volume = vol * Math.max(0, 1 - i / steps); }, (dur / steps) * i);
+  }
+}
+
+function toggleBgm() {
+  if (bgm.paused) {
+    bgm.play().catch(() => {});
+    document.getElementById('music-toggle').classList.remove('muted');
+  } else {
+    bgm.pause();
+    document.getElementById('music-toggle').classList.add('muted');
+  }
+}
+
+document.getElementById('music-toggle').addEventListener('click', (e) => { e.stopPropagation(); toggleBgm(); });
+
+// ── YES / NO → speech lines or immediate launcher ──────
+const SPEECH_LINES = [
+  'Want to know the meaning of life?',
+  '……Want to live a real life?',
+  '…Beyond fear lies evolution.',
+  'Beyond death lies possibility.',
+  'The weak fear the darkness.',
+  'The strong are forged within it.',
+  'Fear is not your enemy.',
+  'Fear is the path.',
+  'Walk it.',
+];
+const LINE_TIMINGS = [0, 2200, 4400, 6600, 8800, 10800, 12800, 14800, 16500];
+const LINE_TOTAL_DURATION = 20000;
+
+function showSpeechLine(index) {
+  const el = document.getElementById('sl-' + index);
+  if (el) el.classList.add('show');
+}
+
+function revealLauncher() {
+  document.getElementById('void').classList.add('hide');
+  document.getElementById('speech-overlay').classList.remove('show');
+  document.getElementById('bg-img').classList.add('show');
+  document.getElementById('launcher').classList.add('show');
+  document.getElementById('music-toggle').classList.add('show');
+}
+
+document.getElementById('yes-btn').addEventListener('click', () => {
+  startMusic();
+  document.getElementById('speech').play().catch(() => {});
+  document.getElementById('choice').classList.add('hide');
+  document.getElementById('speech-overlay').classList.add('show');
+
+  for (let i = 0; i < SPEECH_LINES.length; i++) {
+    setTimeout(() => showSpeechLine(i), LINE_TIMINGS[i]);
+  }
+  setTimeout(revealLauncher, LINE_TOTAL_DURATION);
+});
+
+document.getElementById('no-btn').addEventListener('click', () => {
+  startMusic();
+  document.getElementById('choice').classList.add('hide');
+  setTimeout(revealLauncher, 500);
+});
+
+// ── START GAME → load → blackout → enter ────────────────
+async function startGame() {
+  if (lsGet('display_mode', 'fullscreen') !== 'windowed') {
+    try { document.documentElement.requestFullscreen(); } catch(e) {}
+  }
+  document.getElementById('launcher').style.opacity = '0';
+  const main = document.getElementById('main');
+  const bar = document.getElementById('load-bar');
+  const status = document.getElementById('load-status');
+  main.classList.add('show');
+
+  const steps = [
+    { label: 'Establishing connection', pct: 20 },
+    { label: 'Booting watcher engine', pct: 40 },
+    { label: 'Calibrating dimensional anchor', pct: 60 },
+    { label: 'Verifying God\'s Space link', pct: 80 },
+  ];
+
+  for (const s of steps) {
+    status.textContent = s.label + '…';
+    bar.style.width = s.pct + '%';
+    await delay(STATUS_DELAY + Math.random() * 400);
+  }
+
+  try {
+    const r = await fetch(`${API}?action=start-watcher`, { method: 'POST' });
+    const data = await r.json();
+    if (data.ok || data.already_running) {
+      status.textContent = 'Synchronizing timeline';
+      bar.style.width = '90%';
+      await waitForWatcher();
+      status.textContent = 'Confirming entry vector';
+      bar.style.width = '100%';
+      await delay(600);
+    } else {
+      status.textContent = '⚠ Engine fault — proceeding anyway';
+      bar.style.width = '100%';
+      await delay(1000);
+    }
+  } catch (e) {
+    status.textContent = '⚠ Connection lost — forcing entry';
+    bar.style.width = '100%';
+    await delay(1000);
+  }
+  doBlackout();
+}
+
+function doBlackout() {
+  fadeOutBgm(3000);
+  const blackout = document.getElementById('blackout');
+  const text = document.getElementById('blackout-text');
+  blackout.classList.add('show');
+  setTimeout(() => text.classList.add('show'), 600);
+  setTimeout(enterGame, 3000);
+}
+
+function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+async function waitForWatcher(tries = 0) {
+  if (tries > 12) return;
+  try {
+    const r = await fetch(`${API}?action=watcher-status&_t=${Date.now()}`);
+    const d = await r.json();
+    if (d.running) return;
+  } catch (e) {}
+  await delay(750);
+  return waitForWatcher(tries + 1);
+}
+
+function enterGame() { window.location.href = GAME_URL; }
+
+// ── Sound / Music Library Manager ────────────────────────
+const libModal = document.getElementById('lib-modal');
+const libClose = document.getElementById('lib-close');
+const libList = document.getElementById('lib-list');
+const libTabs = document.querySelectorAll('.lib-tab');
+let libData = null, libTab = 'sounds';
+
+libClose.onclick = () => { libModal.classList.remove('open'); libClose.classList.remove('show'); };
+libModal.onclick = e => { if (e.target === libModal) { libModal.classList.remove('open'); libClose.classList.remove('show'); } };
+libTabs.forEach(t => t.onclick = () => {
+  libTabs.forEach(x => x.classList.remove('active'));
+  t.classList.add('active');
+  libTab = t.dataset.tab;
+  renderLib();
+});
+
+async function loadLib() {
+  try {
+    const r = await fetch(API + '?action=get-' + libTab);
+    libData = await r.json();
+  } catch (e) { libData = null; }
+  renderLib();
+}
+
+function renderLib() {
+  if (!libData) { libList.innerHTML = '<div style="color:#4a3a3a;font-size:11px">Failed to load.</div>'; return; }
+  const items = libTab === 'sounds' ? (libData.sounds || []) : (libData.tracks || []);
+  const keys = libTab === 'sounds' ? Object.keys(items) : items.map((t, i) => i);
+  if (!keys.length) { libList.innerHTML = '<div style="color:#4a3a3a;font-size:11px">No entries.</div>'; return; }
+  if (libTab === 'sounds') {
+    libList.innerHTML = Object.entries(libData.sounds).map(([k, v]) => `
+      <div class="lib-item" data-key="${k}">
+        <div class="hdr"><span class="lbl">${esc(v.label || k)}</span><span class="key">${k}</span></div>
+        <div class="desc">${esc(v.description || '')}</div>
+        <div class="row">
+          <input class="lib-id" placeholder="freesound_id" value="${v.freesound_id || ''}">
+          <input class="lib-url" placeholder="audio_url" value="${v.audio_url || ''}">
+          <label style="display:flex;align-items:center;gap:3px;color:#4a3a3a;font-size:10px;cursor:pointer;white-space:nowrap">
+            <input type="checkbox" class="lib-loop" ${v.loop !== false ? 'checked' : ''} style="accent-color:#cc4444;width:12px;height:12px"> ↻
+          </label>
+          <button class="save-btn" data-key="${k}">SAVE</button>
+        </div>
+      </div>
+    `).join('');
+    libList.querySelectorAll('.save-btn').forEach(b => b.onclick = saveSound);
+  } else {
+    const vol = parseInt(lsGet('music_volume', '70'), 10);
+    libList.innerHTML = `
+      <div style="margin-bottom:8px;padding:6px 8px;background:#0a0608;border:1px solid #1a1018">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span style="color:#7a5f5f;font-size:10px;letter-spacing:.1em;white-space:nowrap">VOLUME</span>
+          <input type="range" id="music-volume" min="0" max="100" value="${vol}"
+            oninput="setMusicVolume(this.value)" style="flex:1;accent-color:#cc4444;height:3px">
+          <span id="music-vol-pct" style="color:#4a3a3a;font-size:10px;min-width:28px;text-align:right">${vol}%</span>
+        </div>
+      </div>
+      ${libData.tracks.map((t, i) => `
+        <div class="lib-item" data-idx="${i}">
+          <div class="hdr"><span class="lbl">${esc(t.title || 'Track ' + i)}</span><span class="key">${esc(t.mood || '')}</span></div>
+          <div class="row">
+            <input class="lib-yt" placeholder="youtube_id" value="${t.youtube_id || ''}">
+            <button class="save-btn" data-idx="${i}">SAVE</button>
+          </div>
+        </div>
+      `).join('')}
+    `;
+    libList.querySelectorAll('.save-btn').forEach(b => b.onclick = saveMusic);
+    const bgm = document.getElementById('bgm');
+    window.setMusicVolume = function(val) {
+      const pct = Math.max(0, Math.min(100, parseInt(val, 10) || 0));
+      bgm.volume = pct / 100;
+      lsSet('music_volume', pct);
+      const el = document.getElementById('music-vol-pct');
+      if (el) el.textContent = pct + '%';
+    };
+    // Apply saved volume on load
+    bgm.volume = vol / 100;
+  }
+}
+
+async function saveSound() {
+  const item = this.closest('.lib-item');
+  const key = item.dataset.key;
+  const id = item.querySelector('.lib-id').value.trim();
+  const url = item.querySelector('.lib-url').value.trim();
+  const loop = item.querySelector('.lib-loop').checked;
+  try {
+    const r = await fetch(API + '?action=save-sound-id', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({key, id: id || null, audio_url: url || null, loop})
+    });
+    const d = await r.json();
+    if (d.ok) { item.style.borderColor = '#0a3020'; setTimeout(() => item.style.borderColor = '', 800); }
+  } catch (e) {}
+}
+
+async function saveMusic() {
+  const item = this.closest('.lib-item');
+  const idx = parseInt(item.dataset.idx);
+  const ytId = item.querySelector('.lib-yt').value.trim();
+  try {
+    const r = await fetch(API + '?action=save-music-id', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({index: idx, youtube_id: ytId || null})
+    });
+    const d = await r.json();
+    if (d.ok) { item.style.borderColor = '#0a3020'; setTimeout(() => item.style.borderColor = '', 800); }
+  } catch (e) {}
+}
+
+function esc(s) {
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+function lsGet(k, def) { try { const v = localStorage.getItem(k); return v !== null ? v : def; } catch(e) { return def; } }
+function lsSet(k, v) { try { localStorage.setItem(k, v); } catch(e) {} }
+
+// ── Model options per tool ──────────────────────────────────
+const MODELS = {
+  claude: [
+    { value: '', label: 'Default' },
+    { value: 'claude-sonnet-4-20250514', label: 'claude-sonnet-4-20250514' },
+    { value: 'claude-3-5-sonnet-20241022', label: 'claude-3-5-sonnet-20241022' },
+    { value: 'claude-opus-4-20250514', label: 'claude-opus-4-20250514' },
+    { value: '__custom__', label: 'Custom…' },
+  ],
+  opencode: [
+    { value: '', label: 'Default' },
+    { value: 'gpt-4o', label: 'gpt-4o' },
+    { value: 'gpt-4o-mini', label: 'gpt-4o-mini' },
+    { value: 'gpt-4.1', label: 'gpt-4.1' },
+    { value: 'o3-mini', label: 'o3-mini' },
+    { value: 'claude-sonnet-4-20250514', label: 'claude-sonnet-4-20250514' },
+    { value: 'claude-3-5-sonnet-20241022', label: 'claude-3-5-sonnet-20241022' },
+    { value: '__custom__', label: 'Custom…' },
+  ],
+};
+
+function rebuildModelOptions(tool) {
+  const sel = document.getElementById('model-select');
+  sel.innerHTML = (MODELS[tool] || MODELS.claude).map(m =>
+    '<option value="' + m.value + '">' + m.label + '</option>'
+  ).join('');
+}
+
+// ── Tool Picker ──────────────────────────────────────────
+let currentTool = 'claude';
+
+async function loadToolPref() {
+  try {
+    const r = await fetch(API + '?action=get-watcher-config&_t=' + Date.now());
+    const d = await r.json();
+    currentTool = d.ai_tool || 'claude';
+    const model = d.ai_model || '';
+    rebuildModelOptions(currentTool);
+    const input = document.getElementById('tool-model');
+    const sel = document.getElementById('model-select');
+    input.value = model;
+    const opts = Array.from(sel.options).map(o => o.value);
+    if (opts.includes(model)) { sel.value = model; }
+    else if (model) { sel.value = '__custom__'; }
+    else { sel.value = ''; }
+  } catch (e) {}
+  document.querySelectorAll('.tool-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.tool === currentTool);
+  });
+}
+
+function pickTool(tool) {
+  currentTool = tool;
+  document.querySelectorAll('.tool-btn').forEach(b => b.classList.toggle('active', b.dataset.tool === tool));
+  const oldValue = document.getElementById('tool-model').value;
+  rebuildModelOptions(tool);
+  const sel = document.getElementById('model-select');
+  const opts = Array.from(sel.options).map(o => o.value);
+  if (opts.includes(oldValue)) {
+    sel.value = oldValue;
+  } else if (oldValue) {
+    sel.value = '__custom__';
+  }
+}
+
+function pickDisplay(mode) {
+  document.querySelectorAll('#display-row .tool-btn').forEach(b => b.classList.toggle('active', b.dataset.disp === mode));
+  lsSet('display_mode', mode);
+}
+
+(function() {
+  const saved = lsGet('display_mode', 'fullscreen');
+  document.querySelectorAll('#display-row .tool-btn').forEach(b => b.classList.toggle('active', b.dataset.disp === saved));
+})();
+
+async function saveToolPref() {
+  const model = document.getElementById('tool-model').value.trim();
+  const status = document.getElementById('tool-status');
+  status.textContent = 'Saving…';
+  try {
+    const r = await fetch(API + '?action=save-watcher-config', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ ai_tool: currentTool, ai_model: model })
+    });
+    const d = await r.json();
+    if (d.ok) {
+      status.textContent = '✓ ' + d.ai_tool + (d.ai_model ? ' (' + d.ai_model + ')' : '');
+      setTimeout(() => { status.textContent = ''; }, 2000);
+    } else {
+      status.textContent = '✗ ' + (d.error || 'Failed');
+    }
+  } catch (e) {
+    status.textContent = '✗ Network error';
+  }
+}
+
+// ── Page Switching ─────────────────────────────────────────
+let pageAnimating = false;
+
+function showSettings() {
+  if (pageAnimating) return;
+  pageAnimating = true;
+  const main = document.getElementById('page-main');
+  const settings = document.getElementById('page-settings');
+  main.style.transition = 'opacity .35s ease';
+  main.style.opacity = '0';
+  setTimeout(() => {
+    main.style.display = 'none';
+    main.style.opacity = '1';
+    settings.style.display = 'flex';
+    settings.style.opacity = '0';
+    void settings.offsetHeight;
+    settings.style.transition = 'opacity .35s ease';
+    settings.style.opacity = '1';
+    pageAnimating = false;
+  }, 350);
+}
+
+function showMainMenu() {
+  if (pageAnimating) return;
+  pageAnimating = true;
+  const main = document.getElementById('page-main');
+  const settings = document.getElementById('page-settings');
+  settings.style.transition = 'opacity .35s ease';
+  settings.style.opacity = '0';
+  setTimeout(() => {
+    settings.style.display = 'none';
+    settings.style.opacity = '1';
+    main.style.display = 'flex';
+    main.style.opacity = '0';
+    void main.offsetHeight;
+    main.style.transition = 'opacity .35s ease';
+    main.style.opacity = '1';
+    pageAnimating = false;
+  }, 350);
+}
+
+// ── LOAD GAME ──────────────────────────────────────────────
+function loadGame() {
+  const status = document.getElementById('tool-status');
+  status.textContent = 'Loading saves…';
+  fetch(API + '?action=list-saves&_t=' + Date.now())
+    .then(r => r.json())
+    .then(d => {
+      const saves = d.saves || [];
+      if (saves.length === 0) {
+        status.textContent = 'No save files found. Start a new game.';
+        status.style.color = '#cc4444';
+        setTimeout(() => { status.textContent = ''; status.style.color = ''; }, 3000);
+        return;
+      }
+      // Show saves inline in the main menu
+      const main = document.getElementById('page-main');
+      const existing = document.getElementById('save-list-overlay');
+      if (existing) existing.remove();
+      const overlay = document.createElement('div');
+      overlay.id = 'save-list-overlay';
+      overlay.style.cssText = 'position:absolute;inset:0;background:rgba(10,6,8,.95);z-index:10;display:flex;flex-direction:column;padding:clamp(20px,3vw,40px) clamp(24px,4vw,48px);overflow-y:auto';
+      overlay.innerHTML =
+        '<div style="color:#7a5f5f;font-size:clamp(10px,1.1vw,14px);letter-spacing:.15em;margin-bottom:clamp(10px,1.2vw,16px);text-transform:uppercase">Select a save to load</div>' +
+        saves.map(s => `
+          <div onclick="loadSaveFile('${esc(s.file)}')" style="padding:clamp(8px,1vw,14px);background:#0a0608;border:1px solid #1a1018;cursor:pointer;transition:border-color .2s;margin-bottom:clamp(4px,.5vw,8px)"
+            onmouseover="this.style.borderColor='#cc4444'" onmouseout="this.style.borderColor='#1a1018'">
+            <div style="color:#9a7a7a;font-size:clamp(11px,1.2vw,15px);font-weight:700">${esc(s.char_name)}</div>
+            <div style="color:#4a3a3a;font-size:clamp(9px,.9vw,11px);margin-top:2px">Movie #${s.movie_num} · ${s.points.toLocaleString()} pts · ${new Date(s.mtime*1000).toLocaleDateString()}</div>
+          </div>
+        `).join('') +
+        '<div onclick="closeSaveOverlay()" style="margin-top:clamp(8px,1vw,12px);padding:clamp(8px,1vw,12px);border:1px solid #2a1820;color:#5a3a3a;text-align:center;cursor:pointer;font-size:clamp(10px,1vw,13px);transition:all .2s" onmouseover="this.style.borderColor=\'#cc4444\';this.style.color=\'#cc8888\'" onmouseout="this.style.borderColor=\'#2a1820\';this.style.color=\'#5a3a3a\'">← Back</div>';
+      main.appendChild(overlay);
+      status.textContent = '';
+    })
+    .catch(() => {
+      window.location.href = GAME_URL + '?load';
+    });
+}
+
+function loadSaveFile(file) {
+  const status = document.getElementById('tool-status');
+  status.textContent = 'Loading…';
+  fetch(API + '?action=load-save', {
+    method: 'POST', headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({ file })
+  })
+  .then(r => r.json())
+  .then(d => {
+    if (d.ok) {
+      window.location.href = GAME_URL;
+    } else {
+      status.textContent = '✗ ' + (d.error || 'Failed');
+      status.style.color = '#cc4444';
+    }
+  })
+  .catch(() => { window.location.href = GAME_URL; });
+}
+
+function closeSaveOverlay() {
+  const el = document.getElementById('save-list-overlay');
+  if (el) el.remove();
+}
+
+// ── EXIT GAME ──────────────────────────────────────────────
+function exitGame() {
+  fetch(API + '?action=stop-watcher', { method: 'POST' }).catch(() => {});
+  try { window.close(); } catch(e) {}
+  setTimeout(() => {
+    document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;background:#000;color:#4a3a3a;font-family:\'Courier New\',monospace;font-size:14px;letter-spacing:.15em;flex-direction:column;gap:20px">' +
+      '<span>Press <b style="color:#7a5f5f">Alt+F4</b> or <b style="color:#7a5f5f">Cmd+Q</b> to exit</span>' +
+      '<button onclick="window.location.reload()" style="background:transparent;border:1px solid #2a1820;color:#5a3a3a;padding:8px 24px;cursor:pointer;font-family:\'Courier New\',monospace;font-size:12px">RETURN</button></div>';
+  }, 500);
+}
+
+// ── Model select sync ──────────────────────────────────────
+function onModelSelect() {
+  const sel = document.getElementById('model-select');
+  const input = document.getElementById('tool-model');
+  if (sel.value === '__custom__') {
+    input.value = '';
+    input.placeholder = 'Type any model name\u2026';
+    input.focus();
+  } else {
+    input.value = sel.value;
+    input.placeholder = 'or type any model';
+  }
+}
+
+function onModelInput() {
+  const sel = document.getElementById('model-select');
+  const input = document.getElementById('tool-model');
+  const opts = Array.from(sel.options).map(o => o.value);
+  if (opts.includes(input.value) && input.value) {
+    sel.value = input.value;
+  } else if (input.value && sel.value !== '__custom__') {
+    sel.value = '__custom__';
+  } else if (!input.value) {
+    sel.value = '';
+  }
+}
+
+// ── Sound Library from settings ────────────────────────────
+function openSoundLibrary() {
+  document.getElementById('lib-modal').classList.add('open');
+  document.getElementById('lib-close').classList.add('show');
+  loadLib();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  loadToolPref();
+  // Sync model input changes to select
+  document.getElementById('tool-model').addEventListener('input', onModelInput);
+});
+</script>
+</body>
+</html>

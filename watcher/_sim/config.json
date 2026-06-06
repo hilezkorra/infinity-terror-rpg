@@ -1,0 +1,143 @@
+{
+  "settings": {
+    "project_dir": "C:/laragon/www/terror-infinity-rpg/watcher/_sim",
+    "poll_interval_ms": 1500,
+    "auto_gm": false,
+    "claude_command": "claude",
+    "claude_extra_args": [
+      "--dangerously-skip-permissions"
+    ],
+    "mortally_wounded_threshold_pct": 15,
+    "log_file": "watcher\\watcher.log",
+    "gm_log_file": "watcher\\gm.log"
+  },
+  "xp_curve_base": 50,
+  "_xp_note": "Total XP to REACH level L = xp_curve_base * (L-1) * L. e.g. L2=100, L3=300, L5=1000, L10=4500.",
+  "max_level": 40,
+  "level_up_hp_bonus": 5,
+  "skill_stat_map": {
+    "sneak": "agility",
+    "stealth": "agility",
+    "hide": "agility",
+    "dodge": "agility",
+    "acrobatics": "agility",
+    "lockpick": "agility",
+    "pickpocket": "agility",
+    "aim": "agility",
+    "shoot": "agility",
+    "marksmanship": "agility",
+    "climb": "strength",
+    "swim": "strength",
+    "intimidate": "strength",
+    "grapple": "strength",
+    "melee": "strength",
+    "brawl": "strength",
+    "force": "strength",
+    "endure": "endurance",
+    "resist": "endurance",
+    "survival": "endurance",
+    "hold": "endurance",
+    "perception": "intelligence",
+    "investigate": "intelligence",
+    "search": "intelligence",
+    "medicine": "intelligence",
+    "firstaid": "intelligence",
+    "hack": "intelligence",
+    "engineering": "intelligence",
+    "science": "intelligence",
+    "deduction": "intelligence",
+    "persuade": "intelligence",
+    "deceive": "intelligence",
+    "lie": "intelligence",
+    "psyche": "psyche_force",
+    "willpower": "psyche_force"
+  },
+  "default_skill_stat": "intelligence",
+  "skill_proficiency_bonus": {
+    "untrained": 0,
+    "beginner": 2,
+    "novice": 3,
+    "skilled": 4,
+    "trained": 4,
+    "expert": 5,
+    "master": 6,
+    "legendary": 7
+  },
+  "_power_note": "Result = (die + modifier) * rank_power. This is what lets difficulty scale to 100/1000. A character/enemy's power comes from their rank. At a wide enough power gap, the strong side's worst roll beats the weak side's best roll.",
+  "rank_power": {
+    "unranked": 1,
+    "f": 2,
+    "e": 4,
+    "d": 8,
+    "c": 16,
+    "b": 32,
+    "a": 64,
+    "s": 128,
+    "ss": 256,
+    "sss": 512
+  },
+  "dice": {
+    "die_size": 20,
+    "modifier_mode": "dnd",
+    "_modifier_mode_note": "'dnd' = floor((stat-10)/2) keeps the d20 meaningful. 'flat' = add whole stat (randomness fades).",
+    "crit_success_multiplier": 1.5,
+    "crit_fail_multiplier": 0.5,
+    "borderline_luck_gain": 1,
+    "fail_by_one_luck_loss": 1,
+    "nat1_lethal_default": false,
+    "_nat1_note": "With [lethal] tag, a natural 1 = instant death. Otherwise nat 1 is a critical failure."
+  },
+  "combat": {
+    "_note": "Opposed rolls: attacker (die+mod)*power vs defender (die+mod)*power. Attacker wins -> damage scaled by margin ratio.",
+    "default_enemy_mod": 3,
+    "hit_quality": {
+      "glancing_below_ratio": 1.5,
+      "glancing_damage_mult": 0.5,
+      "solid_below_ratio": 3,
+      "solid_damage_mult": 1,
+      "critical_damage_mult": 2
+    },
+    "default_attack_damage": 20,
+    "clash_enemy_count_threshold": 4,
+    "_clash_note": "Fights with this many enemies (or more) on a side resolve as an abstract Clash; smaller fights use individual attack rolls."
+  },
+  "auto_status": {
+    "mortally_wounded": {
+      "trigger_hp_pct_below": 15,
+      "status": "Mortally Wounded",
+      "remove_when_above_pct": 30
+    },
+    "bloodied": {
+      "trigger_hp_pct_below": 50,
+      "status": "Bloodied",
+      "remove_when_above_pct": 50
+    }
+  },
+  "fear_levels": [
+    {
+      "max": 20,
+      "name": "Calm",
+      "multiplier": 1
+    },
+    {
+      "max": 40,
+      "name": "Tense",
+      "multiplier": 1.1
+    },
+    {
+      "max": 60,
+      "name": "Frightened",
+      "multiplier": 1.25
+    },
+    {
+      "max": 80,
+      "name": "Terrified",
+      "multiplier": 1.5
+    },
+    {
+      "max": 100,
+      "name": "Primal",
+      "multiplier": 1.75
+    }
+  ]
+}
