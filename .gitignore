@@ -4,6 +4,9 @@ data/chat.json
 data/event-log.txt
 saves/
 
+# Sim data with character info
+watcher/_sim/data/
+
 # Context files with game state info
 CLAUDE.md
 
