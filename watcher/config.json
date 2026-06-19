@@ -1,19 +1,19 @@
 {
     "settings": {
-        "project_dir": "C:\\laragon\\www\\terror-infinity-rpg",
+        "project_dir": "",
         "poll_interval_ms": 1500,
         "auto_gm": true,
-        "ai_tool": "opencode",
+        "ai_tool": "claude",
         "ai_model": "",
         "claude_command": "claude",
         "claude_extra_args": [
             "--dangerously-skip-permissions"
         ],
         "opencode_command": "opencode.cmd",
-        "opencode_extra_args": [],
+        "opencode_extra_args": ["--dangerously-skip-permissions"],
         "mortally_wounded_threshold_pct": 15,
-        "log_file": "watcher\\watcher.log",
-        "gm_log_file": "watcher\\gm.log"
+        "log_file": "watcher/watcher.log",
+        "gm_log_file": "watcher/gm.log"
     },
     "xp_curve_base": 50,
     "_xp_note": "Total XP to REACH level L = xp_curve_base * (L-1) * L. e.g. L2=100, L3=300, L5=1000, L10=4500.",
@@ -24,6 +24,10 @@
         "stealth": "agility",
         "hide": "agility",
         "dodge": "agility",
+        "sprint": "agility",
+        "run": "agility",
+        "chase": "agility",
+        "escape": "agility",
         "acrobatics": "agility",
         "lockpick": "agility",
         "pickpocket": "agility",
@@ -50,9 +54,14 @@
         "engineering": "intelligence",
         "science": "intelligence",
         "deduction": "intelligence",
-        "persuade": "intelligence",
-        "deceive": "intelligence",
-        "lie": "intelligence",
+        "persuade": "charisma",
+        "charm": "charisma",
+        "seduce": "charisma",
+        "deceive": "charisma",
+        "lie": "charisma",
+        "negotiate": "charisma",
+        "barter": "charisma",
+        "intimidate_social": "charisma",
         "psyche": "psyche_force",
         "willpower": "psyche_force"
     },
@@ -116,6 +125,27 @@
             "status": "Bloodied",
             "remove_when_above_pct": 50
         }
+    },
+    "social": {
+        "_note": "Affection is directional per character: c.relationships[OtherName] = { affection, status }. Range clamped; status label derived from bands (first band whose max >= value).",
+        "affection_min": -100,
+        "affection_max": 100,
+        "affection_bands": [
+            { "max": -60, "label": "Hostile" },
+            { "max": -20, "label": "Cold" },
+            { "max": 19, "label": "Neutral" },
+            { "max": 49, "label": "Friendly" },
+            { "max": 79, "label": "Close" },
+            { "max": 100, "label": "Devoted" }
+        ],
+        "attack_despite_affection_threshold": 40,
+        "_attack_note": "If an attacker's affection toward a character target is at/above this, the watcher reminds the GM the attack needs strong motivation (still allowed)."
+    },
+    "encumbrance": {
+        "_note": "Only ON-HAND weight counts (items + weapons). Storage-ring contents are interspatial and weightless.",
+        "carry_capacity_per_str_kg": 5,
+        "max_lift_per_str_kg": 10,
+        "encumbered_status": "Encumbered"
     },
     "fear_levels": [
         {

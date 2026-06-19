@@ -1,0 +1,2427 @@
+==========================================================================================
+SKILLS (1000 total)
+==========================================================================================
+
+--- COMMON (400 skills) ---
+  [sk-0001] Cooking (basic)  (psyche_force, max=19)
+       Able to cooking (basic).
+  [sk-0002] Sweeping  (intelligence, max=19)
+       Able to sweeping.
+  [sk-0003] Mopping  (psyche_force, max=19)
+       Able to mopping.
+  [sk-0004] Dusting  (intelligence, max=19)
+       Able to dusting.
+  [sk-0005] Laundry  (endurance, max=19)
+       Able to laundry.
+  [sk-0006] Ironing  (strength, max=19)
+       Able to ironing.
+  [sk-0007] Dish washing  (charisma, max=19)
+       Able to dish washing.
+  [sk-0008] Bed making  (intelligence, max=19)
+       Able to bed making.
+  [sk-0009] Food shopping  (intelligence, max=19)
+       Able to food shopping.
+  [sk-0010] Budgeting  (psyche_force, max=19)
+       Able to budgeting.
+  [sk-0011] Sewing (buttons)  (psyche_force, max=19)
+       Able to sewing (buttons).
+  [sk-0012] Plant watering  (strength, max=19)
+       Able to plant watering.
+  [sk-0013] Basic home cleaning  (intelligence, max=19)
+       Able to basic home cleaning.
+  [sk-0014] Trash disposal  (strength, max=19)
+       Able to trash disposal.
+  [sk-0015] Pet feeding  (charisma, max=19)
+       Able to pet feeding.
+  [sk-0016] Wound cleaning  (agility, max=19)
+       Able to wound cleaning.
+  [sk-0017] Bandage application  (charisma, max=19)
+       Able to bandage application.
+  [sk-0018] Ice pack use  (agility, max=19)
+       Able to ice pack use.
+  [sk-0019] Thermometer use  (strength, max=19)
+       Able to thermometer use.
+  [sk-0020] Nail clipping  (agility, max=19)
+       Able to nail clipping.
+  [sk-0021] Hair brushing  (psyche_force, max=19)
+       Able to hair brushing.
+  [sk-0022] Teeth brushing  (endurance, max=19)
+       Able to teeth brushing.
+  [sk-0023] Shaving  (charisma, max=19)
+       Able to shaving.
+  [sk-0024] Face washing  (psyche_force, max=19)
+       Able to face washing.
+  [sk-0025] Basic stretching  (strength, max=19)
+       Able to basic stretching.
+  [sk-0026] Posture awareness  (charisma, max=19)
+       Able to posture awareness.
+  [sk-0027] Sitting still  (luck, max=19)
+       Able to sitting still.
+  [sk-0028] Standing for long periods  (psyche_force, max=19)
+       Able to standing for long periods.
+  [sk-0029] Walking on flat ground  (charisma, max=19)
+       Able to walking on flat ground.
+  [sk-0030] Walking on stairs  (agility, max=19)
+       Able to walking on stairs.
+  [sk-0031] Lifting light objects  (strength, max=19)
+       Able to lifting light objects.
+  [sk-0032] Carrying groceries  (endurance, max=19)
+       Able to carrying groceries.
+  [sk-0033] Opening jars  (luck, max=19)
+       Able to opening jars.
+  [sk-0034] Tying knots  (endurance, max=19)
+       Able to tying knots.
+  [sk-0035] Using keys  (psyche_force, max=19)
+       Able to using keys.
+  [sk-0036] Locking doors  (luck, max=19)
+       Able to locking doors.
+  [sk-0037] Alarm clock use  (strength, max=19)
+       Able to alarm clock use.
+  [sk-0038] Phone calling  (intelligence, max=19)
+       Able to phone calling.
+  [sk-0039] Text messaging  (charisma, max=19)
+       Able to text messaging.
+  [sk-0040] Email basics  (endurance, max=19)
+       Able to email basics.
+  [sk-0041] Web browsing  (strength, max=19)
+       Able to web browsing.
+  [sk-0042] Printer use  (intelligence, max=19)
+       Able to printer use.
+  [sk-0043] Alarm setting  (strength, max=19)
+       Able to alarm setting.
+  [sk-0044] Calendar use  (charisma, max=19)
+       Able to calendar use.
+  [sk-0045] Clock reading  (luck, max=19)
+       Able to clock reading.
+  [sk-0046] Basic time management  (agility, max=19)
+       Able to basic time management.
+  [sk-0047] Queue waiting  (charisma, max=19)
+       Able to queue waiting.
+  [sk-0048] Polite greeting  (intelligence, max=19)
+       Able to polite greeting.
+  [sk-0049] Saying please/thank you  (intelligence, max=19)
+       Able to saying please/thank you.
+  [sk-0050] Apologizing  (psyche_force, max=19)
+       Able to apologizing.
+  [sk-0051] Small talk  (charisma, max=19)
+       Able to small talk.
+  [sk-0052] Active listening  (strength, max=19)
+       Able to active listening.
+  [sk-0053] Basic conversation  (endurance, max=19)
+       Able to basic conversation.
+  [sk-0054] Table manners  (psyche_force, max=19)
+       Able to table manners.
+  [sk-0055] Punctuality  (charisma, max=19)
+       Able to punctuality.
+  [sk-0056] Hygiene maintenance  (endurance, max=19)
+       Able to hygiene maintenance.
+  [sk-0057] Weather appropriate dressing  (endurance, max=19)
+       Able to weather appropriate dressing.
+  [sk-0058] Shoe tying  (luck, max=19)
+       Able to shoe tying.
+  [sk-0059] Umbrella use  (psyche_force, max=19)
+       Able to umbrella use.
+  [sk-0060] Public transport use  (intelligence, max=19)
+       Able to public transport use.
+  [sk-0061] Ticket purchasing  (luck, max=19)
+       Able to ticket purchasing.
+  [sk-0062] Basic directions  (psyche_force, max=19)
+       Able to basic directions.
+  [sk-0063] Crossing roads safely  (psyche_force, max=19)
+       Able to crossing roads safely.
+  [sk-0064] Bicycle riding  (luck, max=19)
+       Able to bicycle riding.
+  [sk-0065] Walking (endurance)  (luck, max=19)
+       Able to walking (endurance).
+  [sk-0066] Stretching (basic)  (endurance, max=19)
+       Able to stretching (basic).
+  [sk-0067] Resting effectively  (charisma, max=19)
+       Able to resting effectively.
+  [sk-0068] Posture correction  (intelligence, max=19)
+       Able to posture correction.
+  [sk-0069] Stair climbing  (psyche_force, max=19)
+       Able to stair climbing.
+  [sk-0070] Balance (basic)  (psyche_force, max=19)
+       Able to balance (basic).
+  [sk-0071] Stooping  (strength, max=19)
+       Able to stooping.
+  [sk-0072] Kneeling  (agility, max=19)
+       Able to kneeling.
+  [sk-0073] Crouching  (luck, max=19)
+       Able to crouching.
+  [sk-0074] Introducing oneself  (charisma, max=19)
+       Able to introducing oneself.
+  [sk-0075] Remembering names  (charisma, max=19)
+       Able to remembering names.
+  [sk-0076] Thanking others  (charisma, max=19)
+       Able to thanking others.
+  [sk-0077] Complimenting  (charisma, max=19)
+       Able to complimenting.
+  [sk-0078] Sympathy expression  (charisma, max=19)
+       Able to sympathy expression.
+  [sk-0079] Apologizing sincerely  (charisma, max=19)
+       Able to apologizing sincerely.
+  [sk-0080] Listening without interrupting  (charisma, max=19)
+       Able to listening without interrupting.
+  [sk-0081] Making eye contact  (charisma, max=19)
+       Able to making eye contact.
+  [sk-0082] Reading facial expressions  (charisma, max=19)
+       Able to reading facial expressions.
+  [sk-0083] Tone interpretation  (charisma, max=19)
+       Able to tone interpretation.
+  [sk-0084] Friendly wave  (charisma, max=19)
+       Able to friendly wave.
+  [sk-0085] Nodding affirmatively  (charisma, max=19)
+       Able to nodding affirmatively.
+  [sk-0086] Head shaking negatively  (charisma, max=19)
+       Able to head shaking negatively.
+  [sk-0087] Showing gratitude  (charisma, max=19)
+       Able to showing gratitude.
+  [sk-0088] Basic negotiation  (charisma, max=19)
+       Able to basic negotiation.
+  [sk-0089] Requesting help  (charisma, max=19)
+       Able to requesting help.
+  [sk-0090] Offering help  (charisma, max=19)
+       Able to offering help.
+  [sk-0091] Declining politely  (charisma, max=19)
+       Able to declining politely.
+  [sk-0092] Excusing oneself  (charisma, max=19)
+       Able to excusing oneself.
+  [sk-0093] Waiting turn to speak  (charisma, max=19)
+       Able to waiting turn to speak.
+  [sk-0094] Basic conflict avoidance  (charisma, max=19)
+       Able to basic conflict avoidance.
+  [sk-0095] Empathy (basic)  (charisma, max=19)
+       Able to empathy (basic).
+  [sk-0096] Patience (waiting)  (charisma, max=19)
+       Able to patience (waiting).
+  [sk-0097] Jumping (two feet)  (strength, max=19)
+       Able to jumping (two feet).
+  [sk-0098] Hopping (one foot)  (agility, max=19)
+       Able to hopping (one foot).
+  [sk-0099] Skipping  (endurance, max=19)
+       Able to skipping.
+  [sk-0100] Galloping  (endurance, max=19)
+       Able to galloping.
+  [sk-0101] Crawling  (endurance, max=19)
+       Able to crawling.
+  [sk-0102] Rolling (log roll)  (endurance, max=19)
+       Able to rolling (log roll).
+  [sk-0103] Cartwheel (basic)  (luck, max=19)
+       Able to cartwheel (basic).
+  [sk-0104] Somersault (basic)  (agility, max=19)
+       Able to somersault (basic).
+  [sk-0105] Catch (medium ball)  (agility, max=19)
+       Able to catch (medium ball).
+  [sk-0106] Throw (underhand)  (strength, max=19)
+       Able to throw (underhand).
+  [sk-0107] Throw (overhand)  (luck, max=19)
+       Able to throw (overhand).
+  [sk-0108] Kicking (stationary ball)  (agility, max=19)
+       Able to kicking (stationary ball).
+  [sk-0109] Bouncing a ball  (strength, max=19)
+       Able to bouncing a ball.
+  [sk-0110] Dribbling (basic)  (strength, max=19)
+       Able to dribbling (basic).
+  [sk-0111] Tossing  (agility, max=19)
+       Able to tossing.
+  [sk-0112] Catching (small object)  (strength, max=19)
+       Able to catching (small object).
+  [sk-0113] Balancing on one foot  (endurance, max=19)
+       Able to balancing on one foot.
+  [sk-0114] Walking backwards  (strength, max=19)
+       Able to walking backwards.
+  [sk-0115] Walking on toes  (luck, max=19)
+       Able to walking on toes.
+  [sk-0116] Walking on heels  (agility, max=19)
+       Able to walking on heels.
+  [sk-0117] Side shuffle  (luck, max=19)
+       Able to side shuffle.
+  [sk-0118] Cross step  (strength, max=19)
+       Able to cross step.
+  [sk-0119] Pivot turn  (endurance, max=19)
+       Able to pivot turn.
+  [sk-0120] Jumping jacks  (strength, max=19)
+       Able to jumping jacks.
+  [sk-0121] Push-up (knee)  (endurance, max=19)
+       Able to push-up (knee).
+  [sk-0122] Sit-up  (endurance, max=19)
+       Able to sit-up.
+  [sk-0123] Plank (basic)  (endurance, max=19)
+       Able to plank (basic).
+  [sk-0124] Squat  (agility, max=19)
+       Able to squat.
+  [sk-0125] Lunge  (strength, max=19)
+       Able to lunge.
+  [sk-0126] Bridge (basic)  (luck, max=19)
+       Able to bridge (basic).
+  [sk-0127] Arm circles  (agility, max=19)
+       Able to arm circles.
+  [sk-0128] Leg swings  (agility, max=19)
+       Able to leg swings.
+  [sk-0129] Hip rotation  (endurance, max=19)
+       Able to hip rotation.
+  [sk-0130] Shoulder roll  (endurance, max=19)
+       Able to shoulder roll.
+  [sk-0131] Neck stretch  (agility, max=19)
+       Able to neck stretch.
+  [sk-0132] Wrist circles  (agility, max=19)
+       Able to wrist circles.
+  [sk-0133] Ankle circles  (luck, max=19)
+       Able to ankle circles.
+  [sk-0134] Finger tapping  (strength, max=19)
+       Able to finger tapping.
+  [sk-0135] Hand clapping  (endurance, max=19)
+       Able to hand clapping.
+  [sk-0136] Ladder climbing  (endurance, max=19)
+       Able to ladder climbing.
+  [sk-0137] Rope climbing (basic)  (luck, max=19)
+       Able to rope climbing (basic).
+  [sk-0138] Rock scrambling  (strength, max=19)
+       Able to rock scrambling.
+  [sk-0139] Beach walking  (luck, max=19)
+       Able to beach walking.
+  [sk-0140] Water wading  (luck, max=19)
+       Able to water wading.
+  [sk-0141] Paddling (pool)  (strength, max=19)
+       Able to paddling (pool).
+  [sk-0142] Treading water  (agility, max=19)
+       Able to treading water.
+  [sk-0143] Doggy paddle  (strength, max=19)
+       Able to doggy paddle.
+  [sk-0144] Floating (back)  (agility, max=19)
+       Able to floating (back).
+  [sk-0145] Floating (front)  (luck, max=19)
+       Able to floating (front).
+  [sk-0146] Breath holding (30s)  (strength, max=19)
+       Able to breath holding (30s).
+  [sk-0147] Water treading  (endurance, max=19)
+       Able to water treading.
+  [sk-0148] Splashing  (endurance, max=19)
+       Able to splashing.
+  [sk-0149] Jumping into water  (agility, max=19)
+       Able to jumping into water.
+  [sk-0150] Opening eyes underwater  (strength, max=19)
+       Able to opening eyes underwater.
+  [sk-0151] Swimming (basic)  (agility, max=19)
+       Able to swimming (basic).
+  [sk-0152] Swimming (breaststroke)  (endurance, max=19)
+       Able to swimming (breaststroke).
+  [sk-0153] Swimming (freestyle)  (strength, max=19)
+       Able to swimming (freestyle).
+  [sk-0154] Floating on back  (endurance, max=19)
+       Able to floating on back.
+  [sk-0155] Drawing (stick figures)  (luck, max=19)
+       Able to drawing (stick figures).
+  [sk-0156] Coloring  (luck, max=19)
+       Able to coloring.
+  [sk-0157] Painting (basic)  (intelligence, max=19)
+       Able to painting (basic).
+  [sk-0158] Finger painting  (intelligence, max=19)
+       Able to finger painting.
+  [sk-0159] Clay modeling (basic)  (intelligence, max=19)
+       Able to clay modeling (basic).
+  [sk-0160] Origami (basic)  (charisma, max=19)
+       Able to origami (basic).
+  [sk-0161] Paper folding  (intelligence, max=19)
+       Able to paper folding.
+  [sk-0162] Scissor cutting  (intelligence, max=19)
+       Able to scissor cutting.
+  [sk-0163] Glue application  (charisma, max=19)
+       Able to glue application.
+  [sk-0164] Tape usage  (charisma, max=19)
+       Able to tape usage.
+  [sk-0165] Sticker placing  (charisma, max=19)
+       Able to sticker placing.
+  [sk-0166] Puzzle assembly  (charisma, max=19)
+       Able to puzzle assembly.
+  [sk-0167] Jigsaw puzzle (100pc)  (charisma, max=19)
+       Able to jigsaw puzzle (100pc).
+  [sk-0168] Maze solving  (intelligence, max=19)
+       Able to maze solving.
+  [sk-0169] Dot-to-dot  (intelligence, max=19)
+       Able to dot-to-dot.
+  [sk-0170] Crossword (easy)  (intelligence, max=19)
+       Able to crossword (easy).
+  [sk-0171] Word search  (charisma, max=19)
+       Able to word search.
+  [sk-0172] Sudoku (easy)  (intelligence, max=19)
+       Able to sudoku (easy).
+  [sk-0173] Card shuffling  (charisma, max=19)
+       Able to card shuffling.
+  [sk-0174] Card dealing  (charisma, max=19)
+       Able to card dealing.
+  [sk-0175] Dice rolling  (intelligence, max=19)
+       Able to dice rolling.
+  [sk-0176] Board game rules  (luck, max=19)
+       Able to board game rules.
+  [sk-0177] Card game rules  (intelligence, max=19)
+       Able to card game rules.
+  [sk-0178] Dominoes  (luck, max=19)
+       Able to dominoes.
+  [sk-0179] Checkers  (intelligence, max=19)
+       Able to checkers.
+  [sk-0180] Chess (basic rules)  (intelligence, max=19)
+       Able to chess (basic rules).
+  [sk-0181] Draughts  (charisma, max=19)
+       Able to draughts.
+  [sk-0182] Snakes and ladders  (intelligence, max=19)
+       Able to snakes and ladders.
+  [sk-0183] Bingo  (intelligence, max=19)
+       Able to bingo.
+  [sk-0184] Lottery ticket filling  (intelligence, max=19)
+       Able to lottery ticket filling.
+  [sk-0185] Coin flipping  (charisma, max=19)
+       Able to coin flipping.
+  [sk-0186] Rock paper scissors  (intelligence, max=19)
+       Able to rock paper scissors.
+  [sk-0187] Singing (casual)  (luck, max=19)
+       Able to singing (casual).
+  [sk-0188] Humming  (intelligence, max=19)
+       Able to humming.
+  [sk-0189] Whistling  (charisma, max=19)
+       Able to whistling.
+  [sk-0190] Rhythm clapping  (intelligence, max=19)
+       Able to rhythm clapping.
+  [sk-0191] Dancing (casual)  (charisma, max=19)
+       Able to dancing (casual).
+  [sk-0192] Ballroom (basic steps)  (intelligence, max=19)
+       Able to ballroom (basic steps).
+  [sk-0193] Line dancing  (charisma, max=19)
+       Able to line dancing.
+  [sk-0194] Party dancing  (luck, max=19)
+       Able to party dancing.
+  [sk-0195] Air guitar  (charisma, max=19)
+       Able to air guitar.
+  [sk-0196] Air drumming  (intelligence, max=19)
+       Able to air drumming.
+  [sk-0197] Finger snapping  (luck, max=19)
+       Able to finger snapping.
+  [sk-0198] Beatboxing (basic)  (intelligence, max=19)
+       Able to beatboxing (basic).
+  [sk-0199] Karaoke  (intelligence, max=19)
+       Able to karaoke.
+  [sk-0200] Gardening (basic)  (intelligence, max=19)
+       Able to gardening (basic).
+  [sk-0201] Weeding  (charisma, max=19)
+       Able to weeding.
+  [sk-0202] Watering plants  (luck, max=19)
+       Able to watering plants.
+  [sk-0203] Plant potting  (luck, max=19)
+       Able to plant potting.
+  [sk-0204] Seed planting  (luck, max=19)
+       Able to seed planting.
+  [sk-0205] Leaf raking  (intelligence, max=19)
+       Able to leaf raking.
+  [sk-0206] Flower arranging  (intelligence, max=19)
+       Able to flower arranging.
+  [sk-0207] Composting basics  (charisma, max=19)
+       Able to composting basics.
+  [sk-0208] Bird watching  (luck, max=19)
+       Able to bird watching.
+  [sk-0209] Star gazing  (intelligence, max=19)
+       Able to star gazing.
+  [sk-0210] Cloud watching  (charisma, max=19)
+       Able to cloud watching.
+  [sk-0211] Fishing (basic)  (intelligence, max=19)
+       Able to fishing (basic).
+  [sk-0212] Picnic preparation  (charisma, max=19)
+       Able to picnic preparation.
+  [sk-0213] Campfire building  (luck, max=19)
+       Able to campfire building.
+  [sk-0214] Tent setup (basic)  (intelligence, max=19)
+       Able to tent setup (basic).
+  [sk-0215] Hiking (easy trails)  (luck, max=19)
+       Able to hiking (easy trails).
+  [sk-0216] Nature walking  (luck, max=19)
+       Able to nature walking.
+  [sk-0217] Photography (phone)  (charisma, max=19)
+       Able to photography (phone).
+  [sk-0218] Selfie taking  (luck, max=19)
+       Able to selfie taking.
+  [sk-0219] Video recording (phone)  (charisma, max=19)
+       Able to video recording (phone).
+  [sk-0220] Social media posting  (intelligence, max=19)
+       Able to social media posting.
+  [sk-0221] Photo filtering  (charisma, max=19)
+       Able to photo filtering.
+  [sk-0222] Hashtag use  (charisma, max=19)
+       Able to hashtag use.
+  [sk-0223] Story posting  (intelligence, max=19)
+       Able to story posting.
+  [sk-0224] Meme sharing  (intelligence, max=19)
+       Able to meme sharing.
+  [sk-0225] Petting animals  (charisma, max=19)
+       Able to petting animals.
+  [sk-0226] Dog walking  (intelligence, max=19)
+       Able to dog walking.
+  [sk-0227] Cat care  (intelligence, max=19)
+       Able to cat care.
+  [sk-0228] Animal feeding  (luck, max=19)
+       Able to animal feeding.
+  [sk-0229] Fish tank care  (charisma, max=19)
+       Able to fish tank care.
+  [sk-0230] Insect observation  (luck, max=19)
+       Able to insect observation.
+  [sk-0231] Bug collecting  (intelligence, max=19)
+       Able to bug collecting.
+  [sk-0232] Map reading (basic)  (intelligence, max=19)
+       Able to map reading (basic).
+  [sk-0233] Sign reading  (strength, max=19)
+       Able to sign reading.
+  [sk-0234] Menu reading  (endurance, max=19)
+       Able to menu reading.
+  [sk-0235] Receipt checking  (intelligence, max=19)
+       Able to receipt checking.
+  [sk-0236] Coin counting  (intelligence, max=19)
+       Able to coin counting.
+  [sk-0237] Bill sorting  (agility, max=19)
+       Able to bill sorting.
+  [sk-0238] Change making  (agility, max=19)
+       Able to change making.
+  [sk-0239] Tip calculating  (intelligence, max=19)
+       Able to tip calculating.
+  [sk-0240] Phone book use  (agility, max=19)
+       Able to phone book use.
+  [sk-0241] Address writing  (strength, max=19)
+       Able to address writing.
+  [sk-0242] Envelope addressing  (endurance, max=19)
+       Able to envelope addressing.
+  [sk-0243] Stamp licking  (intelligence, max=19)
+       Able to stamp licking.
+  [sk-0244] Package wrapping  (endurance, max=19)
+       Able to package wrapping.
+  [sk-0245] Gift bow tying  (agility, max=19)
+       Able to gift bow tying.
+  [sk-0246] Card writing  (endurance, max=19)
+       Able to card writing.
+  [sk-0247] Invitation making  (agility, max=19)
+       Able to invitation making.
+  [sk-0248] Candle lighting  (strength, max=19)
+       Able to candle lighting.
+  [sk-0249] Match striking  (strength, max=19)
+       Able to match striking.
+  [sk-0250] Fire starting (camp)  (intelligence, max=19)
+       Able to fire starting (camp).
+  [sk-0251] Charcoal lighting  (agility, max=19)
+       Able to charcoal lighting.
+  [sk-0252] Grill operating  (agility, max=19)
+       Able to grill operating.
+  [sk-0253] Kettle use  (agility, max=19)
+       Able to kettle use.
+  [sk-0254] Toaster use  (strength, max=19)
+       Able to toaster use.
+  [sk-0255] Microwave use  (agility, max=19)
+       Able to microwave use.
+  [sk-0256] Oven use (basic)  (intelligence, max=19)
+       Able to oven use (basic).
+  [sk-0257] Stovetop use (basic)  (intelligence, max=19)
+       Able to stovetop use (basic).
+  [sk-0258] Refrigerator organizing  (endurance, max=19)
+       Able to refrigerator organizing.
+  [sk-0259] Freezer use  (endurance, max=19)
+       Able to freezer use.
+  [sk-0260] Can opening  (strength, max=19)
+       Able to can opening.
+  [sk-0261] Bottle opening  (agility, max=19)
+       Able to bottle opening.
+  [sk-0262] Cork removal  (strength, max=19)
+       Able to cork removal.
+  [sk-0263] Food storage  (strength, max=19)
+       Able to food storage.
+  [sk-0264] Leftover wrapping  (strength, max=19)
+       Able to leftover wrapping.
+  [sk-0265] Expiration checking  (intelligence, max=19)
+       Able to expiration checking.
+  [sk-0266] Produce washing  (intelligence, max=19)
+       Able to produce washing.
+  [sk-0267] Knife handling (basic)  (intelligence, max=19)
+       Able to knife handling (basic).
+  [sk-0268] Peeling vegetables  (endurance, max=19)
+       Able to peeling vegetables.
+  [sk-0269] Chopping (basic)  (intelligence, max=19)
+       Able to chopping (basic).
+  [sk-0270] Measuring ingredients  (intelligence, max=19)
+       Able to measuring ingredients.
+  [sk-0271] Mixing bowls  (endurance, max=19)
+       Able to mixing bowls.
+  [sk-0272] Baking (basic)  (strength, max=19)
+       Able to baking (basic).
+  [sk-0273] Boiling water  (intelligence, max=19)
+       Able to boiling water.
+  [sk-0274] Frying (basic)  (endurance, max=19)
+       Able to frying (basic).
+  [sk-0275] Steaming (basic)  (agility, max=19)
+       Able to steaming (basic).
+  [sk-0276] Brewing tea  (strength, max=19)
+       Able to brewing tea.
+  [sk-0277] Coffee making (basic)  (intelligence, max=19)
+       Able to coffee making (basic).
+  [sk-0278] Juice pouring  (intelligence, max=19)
+       Able to juice pouring.
+  [sk-0279] Toast making  (endurance, max=19)
+       Able to toast making.
+  [sk-0280] Sandwich assembly  (endurance, max=19)
+       Able to sandwich assembly.
+  [sk-0281] Salad making  (intelligence, max=19)
+       Able to salad making.
+  [sk-0282] Soup heating  (agility, max=19)
+       Able to soup heating.
+  [sk-0283] Plate carrying  (agility, max=19)
+       Able to plate carrying.
+  [sk-0284] Tray balancing  (intelligence, max=19)
+       Able to tray balancing.
+  [sk-0285] Table setting  (endurance, max=19)
+       Able to table setting.
+  [sk-0286] Napkin folding  (intelligence, max=19)
+       Able to napkin folding.
+  [sk-0287] Glass filling  (strength, max=19)
+       Able to glass filling.
+  [sk-0288] Toast raising  (endurance, max=19)
+       Able to toast raising.
+  [sk-0289] Polite chewing  (strength, max=19)
+       Able to polite chewing.
+  [sk-0290] Napkin use  (endurance, max=19)
+       Able to napkin use.
+  [sk-0291] Elbow off table  (intelligence, max=19)
+       Able to elbow off table.
+  [sk-0292] Serving others  (intelligence, max=19)
+       Able to serving others.
+  [sk-0293] Refilling drinks  (agility, max=19)
+       Able to refilling drinks.
+  [sk-0294] Passing dishes  (endurance, max=19)
+       Able to passing dishes.
+  [sk-0295] Clearing plates  (strength, max=19)
+       Able to clearing plates.
+  [sk-0296] Leftover packing  (endurance, max=19)
+       Able to leftover packing.
+  [sk-0297] Dish drying  (endurance, max=19)
+       Able to dish drying.
+  [sk-0298] Counter wiping  (endurance, max=19)
+       Able to counter wiping.
+  [sk-0299] Sponge using  (strength, max=19)
+       Able to sponge using.
+  [sk-0300] Scrub brush use  (endurance, max=19)
+       Able to scrub brush use.
+  [sk-0301] Drain unclogging (basic)  (strength, max=19)
+       Able to drain unclogging (basic).
+  [sk-0302] Plunger use  (agility, max=19)
+       Able to plunger use.
+  [sk-0303] Light bulb changing  (agility, max=19)
+       Able to light bulb changing.
+  [sk-0304] Battery replacement  (strength, max=19)
+       Able to battery replacement.
+  [sk-0305] Fuse checking  (endurance, max=19)
+       Able to fuse checking.
+  [sk-0306] Tape measure use  (intelligence, max=19)
+       Able to tape measure use.
+  [sk-0307] Level use  (intelligence, max=19)
+       Able to level use.
+  [sk-0308] Hammer use (basic)  (endurance, max=19)
+       Able to hammer use (basic).
+  [sk-0309] Screwdriver use (basic)  (endurance, max=19)
+       Able to screwdriver use (basic).
+  [sk-0310] Pliers use  (agility, max=19)
+       Able to pliers use.
+  [sk-0311] Wrench use (basic)  (intelligence, max=19)
+       Able to wrench use (basic).
+  [sk-0312] Allen key use  (endurance, max=19)
+       Able to allen key use.
+  [sk-0313] Scissors use  (agility, max=19)
+       Able to scissors use.
+  [sk-0314] Cutter use  (strength, max=19)
+       Able to cutter use.
+  [sk-0315] Sandpaper use  (agility, max=19)
+       Able to sandpaper use.
+  [sk-0316] Paint brush use  (endurance, max=19)
+       Able to paint brush use.
+  [sk-0317] Paint roller use  (strength, max=19)
+       Able to paint roller use.
+  [sk-0318] Masking tape use  (agility, max=19)
+       Able to masking tape use.
+  [sk-0319] Drop cloth laying  (endurance, max=19)
+       Able to drop cloth laying.
+  [sk-0320] Ladder setup (basic)  (endurance, max=19)
+       Able to ladder setup (basic).
+  [sk-0321] Step stool use  (endurance, max=19)
+       Able to step stool use.
+  [sk-0322] Furniture moving  (strength, max=19)
+       Able to furniture moving.
+  [sk-0323] Box carrying  (agility, max=19)
+       Able to box carrying.
+  [sk-0324] Bag carrying  (agility, max=19)
+       Able to bag carrying.
+  [sk-0325] Backpack packing  (agility, max=19)
+       Able to backpack packing.
+  [sk-0326] Suitcase packing  (endurance, max=19)
+       Able to suitcase packing.
+  [sk-0327] Zipper use  (intelligence, max=19)
+       Able to zipper use.
+  [sk-0328] Button fastening  (intelligence, max=19)
+       Able to button fastening.
+  [sk-0329] Snap fastening  (intelligence, max=19)
+       Able to snap fastening.
+  [sk-0330] Lace tying  (agility, max=19)
+       Able to lace tying.
+  [sk-0331] Belt buckling  (strength, max=19)
+       Able to belt buckling.
+  [sk-0332] Watch wearing  (strength, max=19)
+       Able to watch wearing.
+  [sk-0333] Jewelry clasping  (intelligence, max=19)
+       Able to jewelry clasping.
+  [sk-0334] Glasses cleaning  (agility, max=19)
+       Able to glasses cleaning.
+  [sk-0335] Sunglass use  (endurance, max=19)
+       Able to sunglass use.
+  [sk-0336] Hat wearing  (strength, max=19)
+       Able to hat wearing.
+  [sk-0337] Scarf wrapping  (strength, max=19)
+       Able to scarf wrapping.
+  [sk-0338] Glove putting on  (agility, max=19)
+       Able to glove putting on.
+  [sk-0339] Jacket zipping  (agility, max=19)
+       Able to jacket zipping.
+  [sk-0340] Boot lacing  (agility, max=19)
+       Able to boot lacing.
+  [sk-0341] Sandal buckling  (agility, max=19)
+       Able to sandal buckling.
+  [sk-0342] Snow boot wearing  (endurance, max=19)
+       Able to snow boot wearing.
+  [sk-0343] Raincoat use  (agility, max=19)
+       Able to raincoat use.
+  [sk-0344] Pocket use  (endurance, max=19)
+       Able to pocket use.
+  [sk-0345] Wallet carrying  (endurance, max=19)
+       Able to wallet carrying.
+  [sk-0346] Key organization  (agility, max=19)
+       Able to key organization.
+  [sk-0347] Phone holding  (strength, max=19)
+       Able to phone holding.
+  [sk-0348] Lanyard use  (strength, max=19)
+       Able to lanyard use.
+  [sk-0349] ID badge display  (agility, max=19)
+       Able to id badge display.
+  [sk-0350] Name tag wearing  (agility, max=19)
+       Able to name tag wearing.
+  [sk-0351] Badge scanning  (intelligence, max=19)
+       Able to badge scanning.
+  [sk-0352] Turnstile use  (strength, max=19)
+       Able to turnstile use.
+  [sk-0353] Elevator use  (agility, max=19)
+       Able to elevator use.
+  [sk-0354] Escalator riding  (endurance, max=19)
+       Able to escalator riding.
+  [sk-0355] Door holding  (intelligence, max=19)
+       Able to door holding.
+  [sk-0356] Door opening (push)  (strength, max=19)
+       Able to door opening (push).
+  [sk-0357] Door opening (pull)  (endurance, max=19)
+       Able to door opening (pull).
+  [sk-0358] Revolving door use  (agility, max=19)
+       Able to revolving door use.
+  [sk-0359] Window opening  (strength, max=19)
+       Able to window opening.
+  [sk-0360] Blind adjusting  (endurance, max=19)
+       Able to blind adjusting.
+  [sk-0361] Curtain drawing  (agility, max=19)
+       Able to curtain drawing.
+  [sk-0362] Lock checking  (intelligence, max=19)
+       Able to lock checking.
+  [sk-0363] Deadbolt use  (agility, max=19)
+       Able to deadbolt use.
+  [sk-0364] Chain lock use  (agility, max=19)
+       Able to chain lock use.
+  [sk-0365] Peephole use  (intelligence, max=19)
+       Able to peephole use.
+  [sk-0366] Intercom use  (endurance, max=19)
+       Able to intercom use.
+  [sk-0367] Buzzer pressing  (endurance, max=19)
+       Able to buzzer pressing.
+  [sk-0368] Gate lat ching  (intelligence, max=19)
+       Able to gate lat ching.
+  [sk-0369] Fence climbing (low)  (intelligence, max=19)
+       Able to fence climbing (low).
+  [sk-0370] Gate opening  (agility, max=19)
+       Able to gate opening.
+  [sk-0371] Path following  (agility, max=19)
+       Able to path following.
+  [sk-0372] Sidewalk walking  (endurance, max=19)
+       Able to sidewalk walking.
+  [sk-0373] Curb stepping  (intelligence, max=19)
+       Able to curb stepping.
+  [sk-0374] Puddle avoiding  (endurance, max=19)
+       Able to puddle avoiding.
+  [sk-0375] Stair railing use  (intelligence, max=19)
+       Able to stair railing use.
+  [sk-0376] Ramp walking  (intelligence, max=19)
+       Able to ramp walking.
+  [sk-0377] Bridge crossing  (endurance, max=19)
+       Able to bridge crossing.
+  [sk-0378] Tunnel walking  (agility, max=19)
+       Able to tunnel walking.
+  [sk-0379] Underpass use  (agility, max=19)
+       Able to underpass use.
+  [sk-0380] Crosswalk use  (strength, max=19)
+       Able to crosswalk use.
+  [sk-0381] Traffic light reading  (strength, max=19)
+       Able to traffic light reading.
+  [sk-0382] Pedestrian signaling  (intelligence, max=19)
+       Able to pedestrian signaling.
+  [sk-0383] Car door opening  (endurance, max=19)
+       Able to car door opening.
+  [sk-0384] Seat belt use  (endurance, max=19)
+       Able to seat belt use.
+  [sk-0385] Seat adjustment  (endurance, max=19)
+       Able to seat adjustment.
+  [sk-0386] Mirror adjustment  (strength, max=19)
+       Able to mirror adjustment.
+  [sk-0387] Window rolling  (strength, max=19)
+       Able to window rolling.
+  [sk-0388] Door locking (car)  (endurance, max=19)
+       Able to door locking (car).
+  [sk-0389] Car unlocking  (intelligence, max=19)
+       Able to car unlocking.
+  [sk-0390] Trunk opening  (endurance, max=19)
+       Able to trunk opening.
+  [sk-0391] Hood release  (endurance, max=19)
+       Able to hood release.
+  [sk-0392] Gas cap opening  (intelligence, max=19)
+       Able to gas cap opening.
+  [sk-0393] Gas pump use  (agility, max=19)
+       Able to gas pump use.
+  [sk-0394] Tire pressure check  (intelligence, max=19)
+       Able to tire pressure check.
+  [sk-0395] Windshield cleaning  (intelligence, max=19)
+       Able to windshield cleaning.
+  [sk-0396] Jump start cables  (strength, max=19)
+       Able to jump start cables.
+  [sk-0397] Jack use  (intelligence, max=19)
+       Able to jack use.
+  [sk-0398] Spare tire access  (endurance, max=19)
+       Able to spare tire access.
+  [sk-0399] Hazard light use  (agility, max=19)
+       Able to hazard light use.
+  [sk-0400] Horn use  (strength, max=19)
+       Able to horn use.
+
+--- UNCOMMON (300 skills) ---
+  [sk-0460] Advanced cooking  (luck, max=19)
+       Able to advanced cooking.
+  [sk-0461] Baking (advanced)  (intelligence, max=19)
+       Able to baking (advanced).
+  [sk-0462] Pastry making  (strength, max=19)
+       Able to pastry making.
+  [sk-0463] Bread baking  (charisma, max=19)
+       Able to bread baking.
+  [sk-0464] Cake decorating  (intelligence, max=19)
+       Able to cake decorating.
+  [sk-0465] Knife skills (advanced)  (charisma, max=19)
+       Able to knife skills (advanced).
+  [sk-0466] Butchering  (charisma, max=19)
+       Able to butchering.
+  [sk-0467] Fish cleaning  (agility, max=19)
+       Able to fish cleaning.
+  [sk-0468] Meat preparation  (charisma, max=19)
+       Able to meat preparation.
+  [sk-0469] Vegetable carving  (agility, max=19)
+       Able to vegetable carving.
+  [sk-0470] Food plating  (luck, max=19)
+       Able to food plating.
+  [sk-0471] Wine pairing  (charisma, max=19)
+       Able to wine pairing.
+  [sk-0472] Meal planning  (charisma, max=19)
+       Able to meal planning.
+  [sk-0473] Batch cooking  (agility, max=19)
+       Able to batch cooking.
+  [sk-0474] Food preservation  (luck, max=19)
+       Able to food preservation.
+  [sk-0475] Canning  (intelligence, max=19)
+       Able to canning.
+  [sk-0476] Pickling  (endurance, max=19)
+       Able to pickling.
+  [sk-0477] Fermenting  (strength, max=19)
+       Able to fermenting.
+  [sk-0478] Cheese making  (charisma, max=19)
+       Able to cheese making.
+  [sk-0479] Brewing beer  (charisma, max=19)
+       Able to brewing beer.
+  [sk-0480] Home brewing basics  (intelligence, max=19)
+       Able to home brewing basics.
+  [sk-0481] Wine making basics  (intelligence, max=19)
+       Able to wine making basics.
+  [sk-0482] Kombucha making  (intelligence, max=19)
+       Able to kombucha making.
+  [sk-0483] Sourdough starter  (charisma, max=19)
+       Able to sourdough starter.
+  [sk-0484] Advanced cleaning  (charisma, max=19)
+       Able to advanced cleaning.
+  [sk-0485] Deep cleaning  (endurance, max=19)
+       Able to deep cleaning.
+  [sk-0486] Carpet shampooing  (agility, max=19)
+       Able to carpet shampooing.
+  [sk-0487] Window cleaning  (luck, max=19)
+       Able to window cleaning.
+  [sk-0488] Upholstery cleaning  (agility, max=19)
+       Able to upholstery cleaning.
+  [sk-0489] Leather care  (luck, max=19)
+       Able to leather care.
+  [sk-0490] Wood polishing  (endurance, max=19)
+       Able to wood polishing.
+  [sk-0491] Silver polishing  (strength, max=19)
+       Able to silver polishing.
+  [sk-0492] Stain removal  (charisma, max=19)
+       Able to stain removal.
+  [sk-0493] Mold removal  (charisma, max=19)
+       Able to mold removal.
+  [sk-0494] Grout cleaning  (strength, max=19)
+       Able to grout cleaning.
+  [sk-0495] Pressure washing  (strength, max=19)
+       Able to pressure washing.
+  [sk-0496] Decluttering  (agility, max=19)
+       Able to decluttering.
+  [sk-0497] Organizing (KonMari)  (intelligence, max=19)
+       Able to organizing (konmari).
+  [sk-0498] Space optimization  (strength, max=19)
+       Able to space optimization.
+  [sk-0499] Wardrobe organizing  (strength, max=19)
+       Able to wardrobe organizing.
+  [sk-0500] Running (5k)  (intelligence, max=19)
+       Able to running (5k).
+  [sk-0501] Running (10k)  (intelligence, max=19)
+       Able to running (10k).
+  [sk-0502] Jogging  (intelligence, max=19)
+       Able to jogging.
+  [sk-0503] Sprinting  (agility, max=19)
+       Able to sprinting.
+  [sk-0504] Hurdling  (endurance, max=19)
+       Able to hurdling.
+  [sk-0505] Long jump  (luck, max=19)
+       Able to long jump.
+  [sk-0506] High jump  (endurance, max=19)
+       Able to high jump.
+  [sk-0507] Shot put  (endurance, max=19)
+       Able to shot put.
+  [sk-0508] Discus throw  (strength, max=19)
+       Able to discus throw.
+  [sk-0509] Javelin throw  (luck, max=19)
+       Able to javelin throw.
+  [sk-0510] Pull-up  (strength, max=19)
+       Able to pull-up.
+  [sk-0511] Chin-up  (agility, max=19)
+       Able to chin-up.
+  [sk-0512] Dip  (agility, max=19)
+       Able to dip.
+  [sk-0513] Muscle-up  (intelligence, max=19)
+       Able to muscle-up.
+  [sk-0514] Handstand  (intelligence, max=19)
+       Able to handstand.
+  [sk-0515] Handstand walk  (endurance, max=19)
+       Able to handstand walk.
+  [sk-0516] Cartwheel (advanced)  (intelligence, max=19)
+       Able to cartwheel (advanced).
+  [sk-0517] Back handspring  (charisma, max=19)
+       Able to back handspring.
+  [sk-0518] Front handspring  (luck, max=19)
+       Able to front handspring.
+  [sk-0519] Round-off  (agility, max=19)
+       Able to round-off.
+  [sk-0520] Aerial cartwheel  (luck, max=19)
+       Able to aerial cartwheel.
+  [sk-0521] Tuck jump  (luck, max=19)
+       Able to tuck jump.
+  [sk-0522] Pike jump  (endurance, max=19)
+       Able to pike jump.
+  [sk-0523] Lifting (gym)  (strength, max=19)
+       Able to lifting (gym).
+  [sk-0524] Bench press  (intelligence, max=19)
+       Able to bench press.
+  [sk-0525] Squat (barbell)  (agility, max=19)
+       Able to squat (barbell).
+  [sk-0526] Deadlift  (charisma, max=19)
+       Able to deadlift.
+  [sk-0527] Overhead press  (intelligence, max=19)
+       Able to overhead press.
+  [sk-0528] Clean and jerk  (intelligence, max=19)
+       Able to clean and jerk.
+  [sk-0529] Snatch  (intelligence, max=19)
+       Able to snatch.
+  [sk-0530] Power clean  (agility, max=19)
+       Able to power clean.
+  [sk-0531] Kettlebell swing  (agility, max=19)
+       Able to kettlebell swing.
+  [sk-0532] Turkish get-up  (intelligence, max=19)
+       Able to turkish get-up.
+  [sk-0533] Calisthenics  (endurance, max=19)
+       Able to calisthenics.
+  [sk-0534] Pistol squat  (agility, max=19)
+       Able to pistol squat.
+  [sk-0535] Human flag  (agility, max=19)
+       Able to human flag.
+  [sk-0536] Front lever  (charisma, max=19)
+       Able to front lever.
+  [sk-0537] Back lever  (charisma, max=19)
+       Able to back lever.
+  [sk-0538] Planche (basic)  (endurance, max=19)
+       Able to planche (basic).
+  [sk-0539] L-sit  (luck, max=19)
+       Able to l-sit.
+  [sk-0540] V-sit  (strength, max=19)
+       Able to v-sit.
+  [sk-0541] Skin the cat  (agility, max=19)
+       Able to skin the cat.
+  [sk-0542] Clapping push-up  (luck, max=19)
+       Able to clapping push-up.
+  [sk-0543] One arm push-up  (charisma, max=19)
+       Able to one arm push-up.
+  [sk-0544] Handstand push-up  (luck, max=19)
+       Able to handstand push-up.
+  [sk-0545] Muscle-up (rings)  (strength, max=19)
+       Able to muscle-up (rings).
+  [sk-0546] Ring dip  (endurance, max=19)
+       Able to ring dip.
+  [sk-0547] Rope climb (advanced)  (intelligence, max=19)
+       Able to rope climb (advanced).
+  [sk-0548] Pole climb  (intelligence, max=19)
+       Able to pole climb.
+  [sk-0549] Tree climb (advanced)  (agility, max=19)
+       Able to tree climb (advanced).
+  [sk-0550] Wall climb  (agility, max=19)
+       Able to wall climb.
+  [sk-0551] Free running  (charisma, max=19)
+       Able to free running.
+  [sk-0552] Precision jumping  (luck, max=19)
+       Able to precision jumping.
+  [sk-0553] Quadrupedal movement  (intelligence, max=19)
+       Able to quadrupedal movement.
+  [sk-0554] Animal flow  (charisma, max=19)
+       Able to animal flow.
+  [sk-0555] Yoga (intermediate)  (luck, max=19)
+       Able to yoga (intermediate).
+  [sk-0556] Sun salutation  (strength, max=19)
+       Able to sun salutation.
+  [sk-0557] Downward dog  (luck, max=19)
+       Able to downward dog.
+  [sk-0558] Warrior pose  (agility, max=19)
+       Able to warrior pose.
+  [sk-0559] Tree pose  (luck, max=19)
+       Able to tree pose.
+  [sk-0560] Triangle pose  (luck, max=19)
+       Able to triangle pose.
+  [sk-0561] Crow pose  (charisma, max=19)
+       Able to crow pose.
+  [sk-0562] Headstand  (strength, max=19)
+       Able to headstand.
+  [sk-0563] Shoulder stand  (endurance, max=19)
+       Able to shoulder stand.
+  [sk-0564] Plow pose  (intelligence, max=19)
+       Able to plow pose.
+  [sk-0565] Bridge pose  (strength, max=19)
+       Able to bridge pose.
+  [sk-0566] Wheel pose  (luck, max=19)
+       Able to wheel pose.
+  [sk-0567] Split (forward)  (luck, max=19)
+       Able to split (forward).
+  [sk-0568] Split (side)  (agility, max=19)
+       Able to split (side).
+  [sk-0569] Pilates  (charisma, max=19)
+       Able to pilates.
+  [sk-0570] Barre  (endurance, max=19)
+       Able to barre.
+  [sk-0571] Dance (intermediate)  (agility, max=19)
+       Able to dance (intermediate).
+  [sk-0572] Ballet (basic)  (intelligence, max=19)
+       Able to ballet (basic).
+  [sk-0573] Tap (basic)  (intelligence, max=19)
+       Able to tap (basic).
+  [sk-0574] Jazz dance  (strength, max=19)
+       Able to jazz dance.
+  [sk-0575] Hip hop dance  (endurance, max=19)
+       Able to hip hop dance.
+  [sk-0576] Contemporary dance  (intelligence, max=19)
+       Able to contemporary dance.
+  [sk-0577] Swing dance  (strength, max=19)
+       Able to swing dance.
+  [sk-0578] Salsa (basic)  (luck, max=19)
+       Able to salsa (basic).
+  [sk-0579] Tango (basic)  (agility, max=19)
+       Able to tango (basic).
+  [sk-0580] Waltz (basic)  (agility, max=19)
+       Able to waltz (basic).
+  [sk-0581] Foxtrot  (agility, max=19)
+       Able to foxtrot.
+  [sk-0582] Cha cha  (intelligence, max=19)
+       Able to cha cha.
+  [sk-0583] Rumba  (strength, max=19)
+       Able to rumba.
+  [sk-0584] Swimming (butterfly)  (agility, max=19)
+       Able to swimming (butterfly).
+  [sk-0585] Swimming (backstroke)  (charisma, max=19)
+       Able to swimming (backstroke).
+  [sk-0586] Swimming (sidestroke)  (luck, max=19)
+       Able to swimming (sidestroke).
+  [sk-0587] Diving (basic)  (charisma, max=19)
+       Able to diving (basic).
+  [sk-0588] Diving (board)  (charisma, max=19)
+       Able to diving (board).
+  [sk-0589] Snorkeling  (endurance, max=19)
+       Able to snorkeling.
+  [sk-0590] Free diving (10m)  (endurance, max=19)
+       Able to free diving (10m).
+  [sk-0591] Surfing (basic)  (agility, max=19)
+       Able to surfing (basic).
+  [sk-0592] Body surfing  (luck, max=19)
+       Able to body surfing.
+  [sk-0593] Paddle boarding  (charisma, max=19)
+       Able to paddle boarding.
+  [sk-0594] Kayaking (basic)  (luck, max=19)
+       Able to kayaking (basic).
+  [sk-0595] Canoeing (basic)  (charisma, max=19)
+       Able to canoeing (basic).
+  [sk-0596] Rowing (basic)  (intelligence, max=19)
+       Able to rowing (basic).
+  [sk-0597] Sailing (basic)  (charisma, max=19)
+       Able to sailing (basic).
+  [sk-0598] Boating (basic)  (strength, max=19)
+       Able to boating (basic).
+  [sk-0599] Anchoring  (agility, max=19)
+       Able to anchoring.
+  [sk-0600] Dock tying  (endurance, max=19)
+       Able to dock tying.
+  [sk-0601] Boat maintenance (basic)  (intelligence, max=19)
+       Able to boat maintenance (basic).
+  [sk-0602] Life jacket use  (charisma, max=19)
+       Able to life jacket use.
+  [sk-0603] Buoyancy control  (intelligence, max=19)
+       Able to buoyancy control.
+  [sk-0604] Mask clearing  (agility, max=19)
+       Able to mask clearing.
+  [sk-0605] Snorkel clearing  (agility, max=19)
+       Able to snorkel clearing.
+  [sk-0606] Fin swimming  (intelligence, max=19)
+       Able to fin swimming.
+  [sk-0607] Underwater swimming  (agility, max=19)
+       Able to underwater swimming.
+  [sk-0608] Pool rescue basics  (agility, max=19)
+       Able to pool rescue basics.
+  [sk-0609] Throw bag use  (intelligence, max=19)
+       Able to throw bag use.
+  [sk-0610] Reach rescue  (endurance, max=19)
+       Able to reach rescue.
+  [sk-0611] Bike maintenance  (luck, max=19)
+       Able to bike maintenance.
+  [sk-0612] Flat tire repair  (agility, max=19)
+       Able to flat tire repair.
+  [sk-0613] Chain lubrication  (intelligence, max=19)
+       Able to chain lubrication.
+  [sk-0614] Brake adjustment  (intelligence, max=19)
+       Able to brake adjustment.
+  [sk-0615] Gear adjustment  (luck, max=19)
+       Able to gear adjustment.
+  [sk-0616] Wheel truing  (intelligence, max=19)
+       Able to wheel truing.
+  [sk-0617] Bike assembly  (agility, max=19)
+       Able to bike assembly.
+  [sk-0618] Scooter repair  (intelligence, max=19)
+       Able to scooter repair.
+  [sk-0619] Sewing machine use  (strength, max=19)
+       Able to sewing machine use.
+  [sk-0620] Pattern reading  (luck, max=19)
+       Able to pattern reading.
+  [sk-0621] Fabric cutting  (strength, max=19)
+       Able to fabric cutting.
+  [sk-0622] Garment sewing  (agility, max=19)
+       Able to garment sewing.
+  [sk-0623] Zipper replacement  (strength, max=19)
+       Able to zipper replacement.
+  [sk-0624] Button sewing  (agility, max=19)
+       Able to button sewing.
+  [sk-0625] Hem adjustment  (agility, max=19)
+       Able to hem adjustment.
+  [sk-0626] Patch application  (strength, max=19)
+       Able to patch application.
+  [sk-0627] Knitting  (luck, max=19)
+       Able to knitting.
+  [sk-0628] Crocheting  (agility, max=19)
+       Able to crocheting.
+  [sk-0629] Embroidery (basic)  (strength, max=19)
+       Able to embroidery (basic).
+  [sk-0630] Cross stitch  (strength, max=19)
+       Able to cross stitch.
+  [sk-0631] Weaving (basic)  (endurance, max=19)
+       Able to weaving (basic).
+  [sk-0632] Macrame  (agility, max=19)
+       Able to macrame.
+  [sk-0633] Leather working (basic)  (endurance, max=19)
+       Able to leather working (basic).
+  [sk-0634] Leather stitching  (strength, max=19)
+       Able to leather stitching.
+  [sk-0635] Belt making  (agility, max=19)
+       Able to belt making.
+  [sk-0636] Basic electrical  (charisma, max=19)
+       Able to basic electrical.
+  [sk-0637] Plug replacement  (endurance, max=19)
+       Able to plug replacement.
+  [sk-0638] Switch replacement  (endurance, max=19)
+       Able to switch replacement.
+  [sk-0639] Socket replacement  (agility, max=19)
+       Able to socket replacement.
+  [sk-0640] Fuse box operation  (endurance, max=19)
+       Able to fuse box operation.
+  [sk-0641] Circuit breaker reset  (luck, max=19)
+       Able to circuit breaker reset.
+  [sk-0642] Wire stripping  (luck, max=19)
+       Able to wire stripping.
+  [sk-0643] Soldering (basic)  (luck, max=19)
+       Able to soldering (basic).
+  [sk-0644] Multimeter use  (agility, max=19)
+       Able to multimeter use.
+  [sk-0645] Voltage testing  (luck, max=19)
+       Able to voltage testing.
+  [sk-0646] Wire connection  (agility, max=19)
+       Able to wire connection.
+  [sk-0647] Cable management  (strength, max=19)
+       Able to cable management.
+  [sk-0648] Basic plumbing  (strength, max=19)
+       Able to basic plumbing.
+  [sk-0649] Faucet repair  (luck, max=19)
+       Able to faucet repair.
+  [sk-0650] Toilet repair  (agility, max=19)
+       Able to toilet repair.
+  [sk-0651] Drain snaking  (charisma, max=19)
+       Able to drain snaking.
+  [sk-0652] Pipe insulation  (endurance, max=19)
+       Able to pipe insulation.
+  [sk-0653] Washer replacement  (endurance, max=19)
+       Able to washer replacement.
+  [sk-0654] Valve operation  (endurance, max=19)
+       Able to valve operation.
+  [sk-0655] Water shut-off  (intelligence, max=19)
+       Able to water shut-off.
+  [sk-0656] Basic carpentry  (agility, max=19)
+       Able to basic carpentry.
+  [sk-0657] Saw use (hand)  (intelligence, max=19)
+       Able to saw use (hand).
+  [sk-0658] Saw use (power)  (strength, max=19)
+       Able to saw use (power).
+  [sk-0659] Drill use  (luck, max=19)
+       Able to drill use.
+  [sk-0660] Sander use  (strength, max=19)
+       Able to sander use.
+  [sk-0661] Router use  (endurance, max=19)
+       Able to router use.
+  [sk-0662] Jigsaw use  (agility, max=19)
+       Able to jigsaw use.
+  [sk-0663] Circular saw use  (endurance, max=19)
+       Able to circular saw use.
+  [sk-0664] Wood measuring  (strength, max=19)
+       Able to wood measuring.
+  [sk-0665] Wood cutting  (strength, max=19)
+       Able to wood cutting.
+  [sk-0666] Nail hammering  (intelligence, max=19)
+       Able to nail hammering.
+  [sk-0667] Screw driving  (strength, max=19)
+       Able to screw driving.
+  [sk-0668] Wood jointing  (strength, max=19)
+       Able to wood jointing.
+  [sk-0669] Doweling  (charisma, max=19)
+       Able to doweling.
+  [sk-0670] Wood gluing  (luck, max=19)
+       Able to wood gluing.
+  [sk-0671] Clamp use  (strength, max=19)
+       Able to clamp use.
+  [sk-0672] Sandpaper grading  (endurance, max=19)
+       Able to sandpaper grading.
+  [sk-0673] Wood staining  (charisma, max=19)
+       Able to wood staining.
+  [sk-0674] Varnish application  (agility, max=19)
+       Able to varnish application.
+  [sk-0675] Paint application  (agility, max=19)
+       Able to paint application.
+  [sk-0676] Crack filling  (charisma, max=19)
+       Able to crack filling.
+  [sk-0677] Putty application  (charisma, max=19)
+       Able to putty application.
+  [sk-0678] Caulking  (strength, max=19)
+       Able to caulking.
+  [sk-0679] Weather stripping  (endurance, max=19)
+       Able to weather stripping.
+  [sk-0680] First aid (certified)  (intelligence, max=19)
+       Able to first aid (certified).
+  [sk-0681] CPR  (endurance, max=19)
+       Able to cpr.
+  [sk-0682] Heimlich maneuver  (endurance, max=19)
+       Able to heimlich maneuver.
+  [sk-0683] Wound dressing  (endurance, max=19)
+       Able to wound dressing.
+  [sk-0684] Splint application  (strength, max=19)
+       Able to splint application.
+  [sk-0685] Burn treatment  (charisma, max=19)
+       Able to burn treatment.
+  [sk-0686] Fracture stabilization  (endurance, max=19)
+       Able to fracture stabilization.
+  [sk-0687] Sprain wrapping  (endurance, max=19)
+       Able to sprain wrapping.
+  [sk-0688] Shock management  (endurance, max=19)
+       Able to shock management.
+  [sk-0689] Bleeding control  (strength, max=19)
+       Able to bleeding control.
+  [sk-0690] Tourniquet use  (strength, max=19)
+       Able to tourniquet use.
+  [sk-0691] AED use  (intelligence, max=19)
+       Able to aed use.
+  [sk-0692] Recovery position  (luck, max=19)
+       Able to recovery position.
+  [sk-0693] Emergency call procedure  (agility, max=19)
+       Able to emergency call procedure.
+  [sk-0694] Triage basics  (endurance, max=19)
+       Able to triage basics.
+  [sk-0695] Poison control  (charisma, max=19)
+       Able to poison control.
+  [sk-0696] Allergy response  (agility, max=19)
+       Able to allergy response.
+  [sk-0697] EPI pen use  (intelligence, max=19)
+       Able to epi pen use.
+  [sk-0698] Asthma attack response  (agility, max=19)
+       Able to asthma attack response.
+  [sk-0699] Stroke recognition  (luck, max=19)
+       Able to stroke recognition.
+  [sk-0700] Heart attack recognition  (agility, max=19)
+       Able to heart attack recognition.
+  [sk-0701] Typing (40wpm)  (endurance, max=19)
+       Able to typing (40wpm).
+  [sk-0702] Touch typing  (intelligence, max=19)
+       Able to touch typing.
+  [sk-0703] Word processing  (strength, max=19)
+       Able to word processing.
+  [sk-0704] Spreadsheet basics  (charisma, max=19)
+       Able to spreadsheet basics.
+  [sk-0705] Presentation creation  (intelligence, max=19)
+       Able to presentation creation.
+  [sk-0706] Form filling  (luck, max=19)
+       Able to form filling.
+  [sk-0707] Data entry  (endurance, max=19)
+       Able to data entry.
+  [sk-0708] File organization  (charisma, max=19)
+       Able to file organization.
+  [sk-0709] Filing system  (intelligence, max=19)
+       Able to filing system.
+  [sk-0710] Document scanning  (strength, max=19)
+       Able to document scanning.
+  [sk-0711] Photocopier use  (luck, max=19)
+       Able to photocopier use.
+  [sk-0712] Fax machine use  (strength, max=19)
+       Able to fax machine use.
+  [sk-0713] Bookkeeping basics  (agility, max=19)
+       Able to bookkeeping basics.
+  [sk-0714] Receipt tracking  (endurance, max=19)
+       Able to receipt tracking.
+  [sk-0715] Invoice generation  (intelligence, max=19)
+       Able to invoice generation.
+  [sk-0716] Payment processing  (luck, max=19)
+       Able to payment processing.
+  [sk-0717] Cash handling  (strength, max=19)
+       Able to cash handling.
+  [sk-0718] POS system use  (luck, max=19)
+       Able to pos system use.
+  [sk-0719] Point of sale  (charisma, max=19)
+       Able to point of sale.
+  [sk-0720] Customer service  (agility, max=19)
+       Able to customer service.
+  [sk-0721] Sales (basic)  (intelligence, max=19)
+       Able to sales (basic).
+  [sk-0722] Retail skills  (intelligence, max=19)
+       Able to retail skills.
+  [sk-0723] Inventory counting  (agility, max=19)
+       Able to inventory counting.
+  [sk-0724] Stocking shelves  (intelligence, max=19)
+       Able to stocking shelves.
+  [sk-0725] Price tagging  (luck, max=19)
+       Able to price tagging.
+  [sk-0726] Barcode scanning  (strength, max=19)
+       Able to barcode scanning.
+  [sk-0727] Returns processing  (intelligence, max=19)
+       Able to returns processing.
+  [sk-0728] Exchange handling  (endurance, max=19)
+       Able to exchange handling.
+  [sk-0729] Retail math  (strength, max=19)
+       Able to retail math.
+  [sk-0730] Merchandising  (strength, max=19)
+       Able to merchandising.
+  [sk-0731] Visual display  (intelligence, max=19)
+       Able to visual display.
+  [sk-0732] Store opening  (agility, max=19)
+       Able to store opening.
+  [sk-0733] Store closing  (endurance, max=19)
+       Able to store closing.
+  [sk-0734] Security tag removal  (agility, max=19)
+       Able to security tag removal.
+  [sk-0735] Loss prevention basics  (strength, max=19)
+       Able to loss prevention basics.
+  [sk-0736] Public speaking (basic)  (agility, max=19)
+       Able to public speaking (basic).
+  [sk-0737] Presentation skills  (charisma, max=19)
+       Able to presentation skills.
+  [sk-0738] Group discussion  (charisma, max=19)
+       Able to group discussion.
+  [sk-0739] Debate (basic)  (luck, max=19)
+       Able to debate (basic).
+  [sk-0740] Interview skills  (endurance, max=19)
+       Able to interview skills.
+  [sk-0741] CV writing  (luck, max=19)
+       Able to cv writing.
+  [sk-0742] Cover letter writing  (intelligence, max=19)
+       Able to cover letter writing.
+  [sk-0743] Email etiquette  (intelligence, max=19)
+       Able to email etiquette.
+  [sk-0744] Business correspondence  (endurance, max=19)
+       Able to business correspondence.
+  [sk-0745] Report writing  (intelligence, max=19)
+       Able to report writing.
+  [sk-0746] Minute taking  (intelligence, max=19)
+       Able to minute taking.
+  [sk-0747] Agenda setting  (endurance, max=19)
+       Able to agenda setting.
+  [sk-0748] Meeting facilitation  (endurance, max=19)
+       Able to meeting facilitation.
+  [sk-0749] Team coordination  (intelligence, max=19)
+       Able to team coordination.
+  [sk-0750] Project coordination  (strength, max=19)
+       Able to project coordination.
+  [sk-0751] Task delegation  (charisma, max=19)
+       Able to task delegation.
+  [sk-0752] Deadline management  (endurance, max=19)
+       Able to deadline management.
+  [sk-0753] Prioritization  (strength, max=19)
+       Able to prioritization.
+  [sk-0754] Multi-tasking  (intelligence, max=19)
+       Able to multi-tasking.
+  [sk-0755] Time blocking  (luck, max=19)
+       Able to time blocking.
+  [sk-0756] Foreign language (basic)  (luck, max=19)
+       Able to foreign language (basic).
+  [sk-0757] Translation (basic)  (agility, max=19)
+       Able to translation (basic).
+  [sk-0758] Interpretation (basic)  (intelligence, max=19)
+       Able to interpretation (basic).
+  [sk-0759] Sign language (basic)  (endurance, max=19)
+       Able to sign language (basic).
+
+--- RARE (160 skills) ---
+  [sk-0896] Martial arts (basic)  (luck, max=19)
+       Able to martial arts (basic).
+  [sk-0897] Karate (intermediate)  (luck, max=19)
+       Able to karate (intermediate).
+  [sk-0898] Judo (intermediate)  (endurance, max=19)
+       Able to judo (intermediate).
+  [sk-0899] Aikido (basic)  (luck, max=19)
+       Able to aikido (basic).
+  [sk-0900] Taekwondo (intermediate)  (agility, max=19)
+       Able to taekwondo (intermediate).
+  [sk-0901] Kung fu (basic)  (agility, max=19)
+       Able to kung fu (basic).
+  [sk-0902] Muay Thai (basic)  (charisma, max=19)
+       Able to muay thai (basic).
+  [sk-0903] Boxing (intermediate)  (endurance, max=19)
+       Able to boxing (intermediate).
+  [sk-0904] Kickboxing  (agility, max=19)
+       Able to kickboxing.
+  [sk-0905] Wrestling (intermediate)  (strength, max=19)
+       Able to wrestling (intermediate).
+  [sk-0906] Brazilian Jiu Jitsu (basic)  (intelligence, max=19)
+       Able to brazilian jiu jitsu (basic).
+  [sk-0907] Krav Maga (basic)  (intelligence, max=19)
+       Able to krav maga (basic).
+  [sk-0908] Capoeira (basic)  (luck, max=19)
+       Able to capoeira (basic).
+  [sk-0909] Fencing (basic)  (endurance, max=19)
+       Able to fencing (basic).
+  [sk-0910] Kendo (basic)  (intelligence, max=19)
+       Able to kendo (basic).
+  [sk-0911] Archery (intermediate)  (agility, max=19)
+       Able to archery (intermediate).
+  [sk-0912] Knife fighting (basic)  (endurance, max=19)
+       Able to knife fighting (basic).
+  [sk-0913] Staff fighting  (intelligence, max=19)
+       Able to staff fighting.
+  [sk-0914] Bo staff  (luck, max=19)
+       Able to bo staff.
+  [sk-0915] Nunchaku  (luck, max=19)
+       Able to nunchaku.
+  [sk-0916] Tonfa  (intelligence, max=19)
+       Able to tonfa.
+  [sk-0917] Escrima sticks  (agility, max=19)
+       Able to escrima sticks.
+  [sk-0918] Defensive tactics  (intelligence, max=19)
+       Able to defensive tactics.
+  [sk-0919] Pressure points  (luck, max=19)
+       Able to pressure points.
+  [sk-0920] Disarming techniques  (agility, max=19)
+       Able to disarming techniques.
+  [sk-0921] Grappling (intermediate)  (charisma, max=19)
+       Able to grappling (intermediate).
+  [sk-0922] Ground fighting  (endurance, max=19)
+       Able to ground fighting.
+  [sk-0923] Submission holds  (agility, max=19)
+       Able to submission holds.
+  [sk-0924] Self defense (advanced)  (agility, max=19)
+       Able to self defense (advanced).
+  [sk-0925] Crowd control  (agility, max=19)
+       Able to crowd control.
+  [sk-0926] Multiple opponent defense  (intelligence, max=19)
+       Able to multiple opponent defense.
+  [sk-0927] Weapon retention  (endurance, max=19)
+       Able to weapon retention.
+  [sk-0928] Firearms (intermediate)  (intelligence, max=19)
+       Able to firearms (intermediate).
+  [sk-0929] Pistol marksmanship  (intelligence, max=19)
+       Able to pistol marksmanship.
+  [sk-0930] Rifle marksmanship  (intelligence, max=19)
+       Able to rifle marksmanship.
+  [sk-0931] Shotgun handling  (intelligence, max=19)
+       Able to shotgun handling.
+  [sk-0932] Tactical reload  (luck, max=19)
+       Able to tactical reload.
+  [sk-0933] Speed reload  (agility, max=19)
+       Able to speed reload.
+  [sk-0934] Malfunction clearance  (agility, max=19)
+       Able to malfunction clearance.
+  [sk-0935] Weapon maintenance  (intelligence, max=19)
+       Able to weapon maintenance.
+  [sk-0936] Cleaning (firearm)  (agility, max=19)
+       Able to cleaning (firearm).
+  [sk-0937] Field strip  (charisma, max=19)
+       Able to field strip.
+  [sk-0938] Zeroing  (luck, max=19)
+       Able to zeroing.
+  [sk-0939] Ballistics (basic)  (strength, max=19)
+       Able to ballistics (basic).
+  [sk-0940] Cover and concealment  (intelligence, max=19)
+       Able to cover and concealment.
+  [sk-0941] Movement under fire  (strength, max=19)
+       Able to movement under fire.
+  [sk-0942] Room clearing (basic)  (agility, max=19)
+       Able to room clearing (basic).
+  [sk-0943] Team tactics (basic)  (luck, max=19)
+       Able to team tactics (basic).
+  [sk-0944] Squad formations  (strength, max=19)
+       Able to squad formations.
+  [sk-0945] Fire and maneuver  (agility, max=19)
+       Able to fire and maneuver.
+  [sk-0946] Bound and cover  (endurance, max=19)
+       Able to bound and cover.
+  [sk-0947] Suppressive fire  (strength, max=19)
+       Able to suppressive fire.
+  [sk-0948] Ambush tactics  (luck, max=19)
+       Able to ambush tactics.
+  [sk-0949] Counter ambush  (luck, max=19)
+       Able to counter ambush.
+  [sk-0950] Patrol techniques  (luck, max=19)
+       Able to patrol techniques.
+  [sk-0951] Observation post  (agility, max=19)
+       Able to observation post.
+  [sk-0952] Sniper (basic)  (agility, max=19)
+       Able to sniper (basic).
+  [sk-0953] Spotting  (charisma, max=19)
+       Able to spotting.
+  [sk-0954] Range estimation  (endurance, max=19)
+       Able to range estimation.
+  [sk-0955] Wind reading  (charisma, max=19)
+       Able to wind reading.
+  [sk-0956] Night shooting  (strength, max=19)
+       Able to night shooting.
+  [sk-0957] Low light tactics  (luck, max=19)
+       Able to low light tactics.
+  [sk-0958] Flashlight technique  (charisma, max=19)
+       Able to flashlight technique.
+  [sk-0959] Laser aiming  (endurance, max=19)
+       Able to laser aiming.
+  [sk-0960] Suturing  (endurance, max=19)
+       Able to suturing.
+  [sk-0961] Stapling  (intelligence, max=19)
+       Able to stapling.
+  [sk-0962] Incision  (intelligence, max=19)
+       Able to incision.
+  [sk-0963] Drain placement  (strength, max=19)
+       Able to drain placement.
+  [sk-0964] Catheterization  (luck, max=19)
+       Able to catheterization.
+  [sk-0965] Intubation  (luck, max=19)
+       Able to intubation.
+  [sk-0966] Airway management  (charisma, max=19)
+       Able to airway management.
+  [sk-0967] Ventilator setup  (luck, max=19)
+       Able to ventilator setup.
+  [sk-0968] IV insertion  (luck, max=19)
+       Able to iv insertion.
+  [sk-0969] Blood draw  (charisma, max=19)
+       Able to blood draw.
+  [sk-0970] Medication administration  (luck, max=19)
+       Able to medication administration.
+  [sk-0971] Dosage calculation  (intelligence, max=19)
+       Able to dosage calculation.
+  [sk-0972] Drug identification  (charisma, max=19)
+       Able to drug identification.
+  [sk-0973] Triage (advanced)  (intelligence, max=19)
+       Able to triage (advanced).
+  [sk-0974] Trauma assessment  (intelligence, max=19)
+       Able to trauma assessment.
+  [sk-0975] Head injury assessment  (endurance, max=19)
+       Able to head injury assessment.
+  [sk-0976] Chest decompression  (luck, max=19)
+       Able to chest decompression.
+  [sk-0977] Cricothyrotomy  (intelligence, max=19)
+       Able to cricothyrotomy.
+  [sk-0978] Emergency childbirth  (agility, max=19)
+       Able to emergency childbirth.
+  [sk-0979] Burn debridement  (endurance, max=19)
+       Able to burn debridement.
+  [sk-0980] Amputation (emergency)  (endurance, max=19)
+       Able to amputation (emergency).
+  [sk-0981] Field surgery (basic)  (strength, max=19)
+       Able to field surgery (basic).
+  [sk-0982] Diagnosis (basic)  (strength, max=19)
+       Able to diagnosis (basic).
+  [sk-0983] Symptom analysis  (strength, max=19)
+       Able to symptom analysis.
+  [sk-0984] Medical history taking  (agility, max=19)
+       Able to medical history taking.
+  [sk-0985] Physical examination  (endurance, max=19)
+       Able to physical examination.
+  [sk-0986] Lab test interpretation  (strength, max=19)
+       Able to lab test interpretation.
+  [sk-0987] X-ray reading (basic)  (endurance, max=19)
+       Able to x-ray reading (basic).
+  [sk-0988] Ultrasound (basic)  (luck, max=19)
+       Able to ultrasound (basic).
+  [sk-0989] EKG reading  (strength, max=19)
+       Able to ekg reading.
+  [sk-0990] Anatomy (advanced)  (agility, max=19)
+       Able to anatomy (advanced).
+  [sk-0991] Physiology (advanced)  (strength, max=19)
+       Able to physiology (advanced).
+  [sk-0992] Pathology (basic)  (intelligence, max=19)
+       Able to pathology (basic).
+  [sk-0993] Pharmacology (basic)  (luck, max=19)
+       Able to pharmacology (basic).
+  [sk-0994] Veterinary care (basic)  (agility, max=19)
+       Able to veterinary care (basic).
+  [sk-0995] Animal diagnosis  (charisma, max=19)
+       Able to animal diagnosis.
+  [sk-0996] Animal surgery (basic)  (intelligence, max=19)
+       Able to animal surgery (basic).
+  [sk-0997] Livestock care  (charisma, max=19)
+       Able to livestock care.
+  [sk-0998] Herbal medicine (basic)  (agility, max=19)
+       Able to herbal medicine (basic).
+  [sk-0999] Tincture making  (intelligence, max=19)
+       Able to tincture making.
+  [sk-1000] Salve preparation  (agility, max=19)
+       Able to salve preparation.
+  [sk-1001] Essential oil use  (endurance, max=19)
+       Able to essential oil use.
+  [sk-1002] Mechanical engineering (basic)  (charisma, max=19)
+       Able to mechanical engineering (basic).
+  [sk-1003] Engine repair  (strength, max=19)
+       Able to engine repair.
+  [sk-1004] Transmission repair  (charisma, max=19)
+       Able to transmission repair.
+  [sk-1005] Hydraulic systems  (strength, max=19)
+       Able to hydraulic systems.
+  [sk-1006] Pneumatic systems  (endurance, max=19)
+       Able to pneumatic systems.
+  [sk-1007] Welding (arc)  (endurance, max=19)
+       Able to welding (arc).
+  [sk-1008] Welding (MIG)  (charisma, max=19)
+       Able to welding (mig).
+  [sk-1009] Welding (TIG)  (intelligence, max=19)
+       Able to welding (tig).
+  [sk-1010] Cutting torch  (endurance, max=19)
+       Able to cutting torch.
+  [sk-1011] Brazing  (endurance, max=19)
+       Able to brazing.
+  [sk-1012] Soldering (advanced)  (strength, max=19)
+       Able to soldering (advanced).
+  [sk-1013] Sheet metal work  (charisma, max=19)
+       Able to sheet metal work.
+  [sk-1014] Machining (lathe)  (strength, max=19)
+       Able to machining (lathe).
+  [sk-1015] Machining (mill)  (agility, max=19)
+       Able to machining (mill).
+  [sk-1016] CNC operation (basic)  (endurance, max=19)
+       Able to cnc operation (basic).
+  [sk-1017] 3D printing  (strength, max=19)
+       Able to 3d printing.
+  [sk-1018] Laser cutting  (agility, max=19)
+       Able to laser cutting.
+  [sk-1019] Water jet cutting  (charisma, max=19)
+       Able to water jet cutting.
+  [sk-1020] PLC programming (basic)  (endurance, max=19)
+       Able to plc programming (basic).
+  [sk-1021] Robotics (basic)  (agility, max=19)
+       Able to robotics (basic).
+  [sk-1022] Automotive repair (intermediate)  (agility, max=19)
+       Able to automotive repair (intermediate).
+  [sk-1023] Engine diagnostics  (endurance, max=19)
+       Able to engine diagnostics.
+  [sk-1024] Brake replacement  (luck, max=19)
+       Able to brake replacement.
+  [sk-1025] Suspension work  (luck, max=19)
+       Able to suspension work.
+  [sk-1026] Exhaust system  (luck, max=19)
+       Able to exhaust system.
+  [sk-1027] Transmission work  (endurance, max=19)
+       Able to transmission work.
+  [sk-1028] Clutch replacement  (endurance, max=19)
+       Able to clutch replacement.
+  [sk-1029] Timing belt  (charisma, max=19)
+       Able to timing belt.
+  [sk-1030] Head gasket  (intelligence, max=19)
+       Able to head gasket.
+  [sk-1031] Electrical system (auto)  (endurance, max=19)
+       Able to electrical system (auto).
+  [sk-1032] Battery systems  (intelligence, max=19)
+       Able to battery systems.
+  [sk-1033] Alternator repair  (endurance, max=19)
+       Able to alternator repair.
+  [sk-1034] Starter repair  (luck, max=19)
+       Able to starter repair.
+  [sk-1035] AC recharge  (agility, max=19)
+       Able to ac recharge.
+  [sk-1036] Tire mounting  (strength, max=19)
+       Able to tire mounting.
+  [sk-1037] Wheel balancing  (endurance, max=19)
+       Able to wheel balancing.
+  [sk-1038] Alignment (basic)  (charisma, max=19)
+       Able to alignment (basic).
+  [sk-1039] Diagnostic code reading  (strength, max=19)
+       Able to diagnostic code reading.
+  [sk-1040] OBD scan  (strength, max=19)
+       Able to obd scan.
+  [sk-1041] Emission testing  (intelligence, max=19)
+       Able to emission testing.
+  [sk-1042] Computer assembly  (intelligence, max=19)
+       Able to computer assembly.
+  [sk-1043] Component identification  (luck, max=19)
+       Able to component identification.
+  [sk-1044] Motherboard repair  (intelligence, max=19)
+       Able to motherboard repair.
+  [sk-1045] GPU repair  (strength, max=19)
+       Able to gpu repair.
+  [sk-1046] Power supply repair  (intelligence, max=19)
+       Able to power supply repair.
+  [sk-1047] RAM installation  (intelligence, max=19)
+       Able to ram installation.
+  [sk-1048] SSD installation  (intelligence, max=19)
+       Able to ssd installation.
+  [sk-1049] Thermal paste application  (intelligence, max=19)
+       Able to thermal paste application.
+  [sk-1050] Operating system install  (strength, max=19)
+       Able to operating system install.
+  [sk-1051] Windows (advanced)  (strength, max=19)
+       Able to windows (advanced).
+  [sk-1052] Linux (basic)  (strength, max=19)
+       Able to linux (basic).
+  [sk-1053] MacOS (advanced)  (agility, max=19)
+       Able to macos (advanced).
+  [sk-1054] Dual boot setup  (strength, max=19)
+       Able to dual boot setup.
+  [sk-1055] Virtual machine setup  (agility, max=19)
+       Able to virtual machine setup.
+
+--- VERY_RARE (100 skills) ---
+  [sk-1291] Special forces training  (psyche_force, max=19)
+       Able to special forces training.
+  [sk-1292] Counter terrorism  (agility, max=19)
+       Able to counter terrorism.
+  [sk-1293] Hostage rescue  (luck, max=19)
+       Able to hostage rescue.
+  [sk-1294] VIP protection  (psyche_force, max=19)
+       Able to vip protection.
+  [sk-1295] Close protection (advanced)  (psyche_force, max=19)
+       Able to close protection (advanced).
+  [sk-1296] Executive protection  (luck, max=19)
+       Able to executive protection.
+  [sk-1297] Advance work  (charisma, max=19)
+       Able to advance work.
+  [sk-1298] Route planning  (agility, max=19)
+       Able to route planning.
+  [sk-1299] Risk assessment (security)  (luck, max=19)
+       Able to risk assessment (security).
+  [sk-1300] Threat evaluation  (strength, max=19)
+       Able to threat evaluation.
+  [sk-1301] Intelligence gathering  (intelligence, max=19)
+       Able to intelligence gathering.
+  [sk-1302] Covert surveillance  (psyche_force, max=19)
+       Able to covert surveillance.
+  [sk-1303] Undercover operations  (charisma, max=19)
+       Able to undercover operations.
+  [sk-1304] Interrogation resistance  (strength, max=19)
+       Able to interrogation resistance.
+  [sk-1305] Escape and evasion  (charisma, max=19)
+       Able to escape and evasion.
+  [sk-1306] Evasion driving  (luck, max=19)
+       Able to evasion driving.
+  [sk-1307] Combat driving  (intelligence, max=19)
+       Able to combat driving.
+  [sk-1308] Off road driving (advanced)  (luck, max=19)
+       Able to off road driving (advanced).
+  [sk-1309] Pursuit driving  (agility, max=19)
+       Able to pursuit driving.
+  [sk-1310] Ram and block  (charisma, max=19)
+       Able to ram and block.
+  [sk-1311] Aircraft pilot (private)  (charisma, max=19)
+       Able to aircraft pilot (private).
+  [sk-1312] Helicopter pilot (basic)  (strength, max=19)
+       Able to helicopter pilot (basic).
+  [sk-1313] Ultralight pilot  (endurance, max=19)
+       Able to ultralight pilot.
+  [sk-1314] Glider pilot  (endurance, max=19)
+       Able to glider pilot.
+  [sk-1315] Commercial pilot (basic)  (psyche_force, max=19)
+       Able to commercial pilot (basic).
+  [sk-1316] Instrument flying  (luck, max=19)
+       Able to instrument flying.
+  [sk-1317] Night flying  (luck, max=19)
+       Able to night flying.
+  [sk-1318] Emergency landing  (intelligence, max=19)
+       Able to emergency landing.
+  [sk-1319] Combat shooting (advanced)  (strength, max=19)
+       Able to combat shooting (advanced).
+  [sk-1320] Tactical rifle  (luck, max=19)
+       Able to tactical rifle.
+  [sk-1321] Close quarters battle  (strength, max=19)
+       Able to close quarters battle.
+  [sk-1322] CQB room clearing  (intelligence, max=19)
+       Able to cqb room clearing.
+  [sk-1323] Dynamic entry  (strength, max=19)
+       Able to dynamic entry.
+  [sk-1324] Breaching  (endurance, max=19)
+       Able to breaching.
+  [sk-1325] Ballistic shield  (endurance, max=19)
+       Able to ballistic shield.
+  [sk-1326] Sniper (intermediate)  (luck, max=19)
+       Able to sniper (intermediate).
+  [sk-1327] Counter sniper  (agility, max=19)
+       Able to counter sniper.
+  [sk-1328] Observations post  (intelligence, max=19)
+       Able to observations post.
+  [sk-1329] Target acquisition  (agility, max=19)
+       Able to target acquisition.
+  [sk-1330] Precision marksmanship  (charisma, max=19)
+       Able to precision marksmanship.
+  [sk-1331] Demolitions (basic)  (endurance, max=19)
+       Able to demolitions (basic).
+  [sk-1332] Explosive placement  (agility, max=19)
+       Able to explosive placement.
+  [sk-1333] Blasting cap use  (luck, max=19)
+       Able to blasting cap use.
+  [sk-1334] Det cord use  (psyche_force, max=19)
+       Able to det cord use.
+  [sk-1335] Improvised explosives  (intelligence, max=19)
+       Able to improvised explosives.
+  [sk-1336] Ordnance identification  (endurance, max=19)
+       Able to ordnance identification.
+  [sk-1337] Mine clearing  (endurance, max=19)
+       Able to mine clearing.
+  [sk-1338] IED disposal (basic)  (psyche_force, max=19)
+       Able to ied disposal (basic).
+  [sk-1339] Hacking (intermediate)  (intelligence, max=19)
+       Able to hacking (intermediate).
+  [sk-1340] Network penetration  (intelligence, max=19)
+       Able to network penetration.
+  [sk-1341] Web application testing  (strength, max=19)
+       Able to web application testing.
+  [sk-1342] Wireless exploitation  (endurance, max=19)
+       Able to wireless exploitation.
+  [sk-1343] Binary exploitation  (charisma, max=19)
+       Able to binary exploitation.
+  [sk-1344] Reverse engineering (advanced)  (endurance, max=19)
+       Able to reverse engineering (advanced).
+  [sk-1345] Malware analysis  (charisma, max=19)
+       Able to malware analysis.
+  [sk-1346] Cryptography (advanced)  (intelligence, max=19)
+       Able to cryptography (advanced).
+  [sk-1347] Social engineering (advanced)  (strength, max=19)
+       Able to social engineering (advanced).
+  [sk-1348] Pretexting  (psyche_force, max=19)
+       Able to pretexting.
+  [sk-1349] Tailgating  (charisma, max=19)
+       Able to tailgating.
+  [sk-1350] Impersonation  (charisma, max=19)
+       Able to impersonation.
+  [sk-1351] Safe cracking (advanced)  (charisma, max=19)
+       Able to safe cracking (advanced).
+  [sk-1352] Lock manipulation  (endurance, max=19)
+       Able to lock manipulation.
+  [sk-1353] Safecracking (drill)  (luck, max=19)
+       Able to safecracking (drill).
+  [sk-1354] Vault entry  (strength, max=19)
+       Able to vault entry.
+  [sk-1355] Jewelry appraisal  (intelligence, max=19)
+       Able to jewelry appraisal.
+  [sk-1356] Art appraisal  (intelligence, max=19)
+       Able to art appraisal.
+  [sk-1357] Antique identification  (luck, max=19)
+       Able to antique identification.
+  [sk-1358] Forgery detection  (strength, max=19)
+       Able to forgery detection.
+  [sk-1359] Counterfeit detection  (intelligence, max=19)
+       Able to counterfeit detection.
+  [sk-1360] Document forgery  (endurance, max=19)
+       Able to document forgery.
+  [sk-1361] Passport forgery  (intelligence, max=19)
+       Able to passport forgery.
+  [sk-1362] Signature forgery  (strength, max=19)
+       Able to signature forgery.
+  [sk-1363] Neurosurgery (basic)  (strength, max=19)
+       Able to neurosurgery (basic).
+  [sk-1364] Cardiothoracic (basic)  (endurance, max=19)
+       Able to cardiothoracic (basic).
+  [sk-1365] Organ transplant (basic)  (luck, max=19)
+       Able to organ transplant (basic).
+  [sk-1366] Anesthesiology  (strength, max=19)
+       Able to anesthesiology.
+  [sk-1367] Radiology (advanced)  (endurance, max=19)
+       Able to radiology (advanced).
+  [sk-1368] Pathology (advanced)  (luck, max=19)
+       Able to pathology (advanced).
+  [sk-1369] Forensic pathology  (luck, max=19)
+       Able to forensic pathology.
+  [sk-1370] Criminal profiling  (charisma, max=19)
+       Able to criminal profiling.
+  [sk-1371] Nuclear engineering (basic)  (luck, max=19)
+       Able to nuclear engineering (basic).
+  [sk-1372] Radiological safety  (psyche_force, max=19)
+       Able to radiological safety.
+  [sk-1373] Hazmat handling  (endurance, max=19)
+       Able to hazmat handling.
+  [sk-1374] Decontamination  (luck, max=19)
+       Able to decontamination.
+  [sk-1375] Chemical engineering (basic)  (psyche_force, max=19)
+       Able to chemical engineering (basic).
+  [sk-1376] Pharmaceutical synthesis  (agility, max=19)
+       Able to pharmaceutical synthesis.
+  [sk-1377] Toxin extraction  (psyche_force, max=19)
+       Able to toxin extraction.
+  [sk-1378] Antivenom production  (charisma, max=19)
+       Able to antivenom production.
+  [sk-1379] Professional diving (advanced)  (charisma, max=19)
+       Able to professional diving (advanced).
+  [sk-1380] Saturation diving  (endurance, max=19)
+       Able to saturation diving.
+  [sk-1381] Commercial diving  (intelligence, max=19)
+       Able to commercial diving.
+  [sk-1382] Underwater welding  (psyche_force, max=19)
+       Able to underwater welding.
+  [sk-1383] Underwater demolition  (endurance, max=19)
+       Able to underwater demolition.
+  [sk-1384] Deep sea salvage  (agility, max=19)
+       Able to deep sea salvage.
+  [sk-1385] Submersible pilot  (strength, max=19)
+       Able to submersible pilot.
+  [sk-1386] ROV operation  (charisma, max=19)
+       Able to rov operation.
+  [sk-1387] High altitude mountaineering (8000m)  (endurance, max=19)
+       Able to high altitude mountaineering (8000m).
+  [sk-1388] Extreme altitude survival  (psyche_force, max=19)
+       Able to extreme altitude survival.
+  [sk-1389] Cold weather warfare  (agility, max=19)
+       Able to cold weather warfare.
+  [sk-1390] Arctic survival  (charisma, max=19)
+       Able to arctic survival.
+
+--- LEGENDARY (40 skills) ---
+  [sk-1463] Photographic memory  (endurance, max=22)
+       photographic memory.
+  [sk-1464] Eidetic recall  (endurance, max=22)
+       eidetic recall.
+  [sk-1465] Total recall  (strength, max=22)
+       total recall.
+  [sk-1466] Perfect pitch  (intelligence, max=22)
+       perfect pitch.
+  [sk-1467] Absolute pitch  (psyche_force, max=22)
+       absolute pitch.
+  [sk-1468] Synesthesia (cognitive)  (psyche_force, max=22)
+       synesthesia (cognitive).
+  [sk-1469] Hyperthymesia  (luck, max=22)
+       hyperthymesia.
+  [sk-1470] Calculating prodigy  (endurance, max=22)
+       calculating prodigy.
+  [sk-1471] Speed reader (1000 wpm)  (endurance, max=22)
+       speed reader (1000 wpm).
+  [sk-1472] Blindfold chess  (charisma, max=22)
+       blindfold chess.
+  [sk-1473] Mental abacus  (charisma, max=22)
+       mental abacus.
+  [sk-1474] Lightning calculator  (charisma, max=22)
+       lightning calculator.
+  [sk-1475] Savant calculation  (endurance, max=22)
+       savant calculation.
+  [sk-1476] Calendar calculation  (endurance, max=22)
+       calendar calculation.
+  [sk-1477] Polyglot (10+ languages)  (agility, max=22)
+       polyglot (10+ languages).
+  [sk-1478] Hyperpolyglot  (luck, max=22)
+       hyperpolyglot.
+  [sk-1479] Master surgeon  (psyche_force, max=22)
+       master surgeon.
+  [sk-1480] Neurosurgeon (advanced)  (intelligence, max=22)
+       neurosurgeon (advanced).
+  [sk-1481] Cardiothoracic surgeon  (psyche_force, max=22)
+       cardiothoracic surgeon.
+  [sk-1482] Transplant surgeon  (agility, max=22)
+       transplant surgeon.
+  [sk-1483] Expert pilot (all fixed wing)  (psyche_force, max=22)
+       expert pilot (all fixed wing).
+  [sk-1484] Helicopter (advanced)  (strength, max=22)
+       helicopter (advanced).
+  [sk-1485] Jet fighter (basic)  (psyche_force, max=22)
+       jet fighter (basic).
+  [sk-1486] Aerobatic pilot  (charisma, max=22)
+       aerobatic pilot.
+  [sk-1487] Combat shooting (legendary)  (agility, max=22)
+       combat shooting (legendary).
+  [sk-1488] Quick draw  (psyche_force, max=22)
+       quick draw.
+  [sk-1489] Trick shooting  (luck, max=22)
+       trick shooting.
+  [sk-1490] No look shooting  (luck, max=22)
+       no look shooting.
+  [sk-1491] Zen archery  (psyche_force, max=22)
+       zen archery.
+  [sk-1492] Instinctive archery  (charisma, max=22)
+       instinctive archery.
+  [sk-1493] Master martial artist  (intelligence, max=22)
+       master martial artist.
+  [sk-1494] Multiple style master  (endurance, max=22)
+       multiple style master.
+  [sk-1495] Weapon master (advanced)  (intelligence, max=22)
+       weapon master (advanced).
+  [sk-1496] Kali/Eskrima master  (strength, max=22)
+       kali/eskrima master.
+  [sk-1497] Iaido master  (charisma, max=22)
+       iaido master.
+  [sk-1498] Kendo master  (intelligence, max=22)
+       kendo master.
+  [sk-1499] Master of disguise  (luck, max=22)
+       master of disguise.
+  [sk-1500] Master of impersonation  (charisma, max=22)
+       master of impersonation.
+  [sk-1501] Master of escape  (psyche_force, max=22)
+       master of escape.
+  [sk-1502] Houdini-like escape  (psyche_force, max=22)
+       houdini-like escape.
+
+==========================================================================================
+WEAKNESSES (200 total)
+==========================================================================================
+
+--- COMMON (80 weaknesses) ---
+  [wk-0001] Clumsy
+       clumsy.
+  [wk-0002] Forgetful
+       forgetful.
+  [wk-0003] Impatient
+       impatient.
+  [wk-0004] Gullible
+       gullible.
+  [wk-0005] Naive
+       naive.
+  [wk-0006] Indecisive
+       indecisive.
+  [wk-0007] Pessimistic
+       pessimistic.
+  [wk-0008] Cynical
+       cynical.
+  [wk-0009] Blunt
+       blunt.
+  [wk-0010] Tactless
+       tactless.
+  [wk-0011] Nosy
+       nosy.
+  [wk-0012] Gossip
+       gossip.
+  [wk-0013] Loud
+       loud.
+  [wk-0014] Messy
+       messy.
+  [wk-0015] Disorganized
+       disorganized.
+  [wk-0016] Procrastinator
+       procrastinator.
+  [wk-0017] Lazy (mild)
+       lazy (mild).
+  [wk-0018] Stubborn
+       stubborn.
+  [wk-0019] Argumentative
+       argumentative.
+  [wk-0020] Whiny
+       whiny.
+  [wk-0021] Complainer
+       complainer.
+  [wk-0022] Bitter
+       bitter.
+  [wk-0023] Grudge holder
+       grudge holder.
+  [wk-0024] Jealous (mild)
+       jealous (mild).
+  [wk-0025] Vain
+       vain.
+  [wk-0026] Show-off
+       show-off.
+  [wk-0027] Humble to a fault
+       humble to a fault.
+  [wk-0028] Over-apologetic
+       over-apologetic.
+  [wk-0029] People pleaser
+       people pleaser.
+  [wk-0030] Overthinker
+       overthinker.
+  [wk-0031] Worrier
+       worrier.
+  [wk-0032] Anxious (mild)
+       anxious (mild).
+  [wk-0033] Self-critical
+       self-critical.
+  [wk-0034] Perfectionist
+       perfectionist.
+  [wk-0035] Imposter syndrome
+       imposter syndrome.
+  [wk-0036] Stage fright (mild)
+       stage fright (mild).
+  [wk-0037] Fear of heights (mild)
+       fear of heights (mild).
+  [wk-0038] Fear of spiders (mild)
+       fear of spiders (mild).
+  [wk-0039] Fear of snakes (mild)
+       fear of snakes (mild).
+  [wk-0040] Fear of flying (mild)
+       fear of flying (mild).
+  [wk-0041] Fear of public speaking (mild)
+       fear of public speaking (mild).
+  [wk-0042] Fear of darkness (mild)
+       fear of darkness (mild).
+  [wk-0043] Fear of enclosed spaces (mild)
+       fear of enclosed spaces (mild).
+  [wk-0044] Fear of open water (mild)
+       fear of open water (mild).
+  [wk-0045] Fear of needles (mild)
+       fear of needles (mild).
+  [wk-0046] Fear of blood (mild)
+       fear of blood (mild).
+  [wk-0047] Fear of germs (mild)
+       fear of germs (mild).
+  [wk-0048] Fear of animals (mild)
+       fear of animals (mild).
+  [wk-0049] Fear of crowds (mild)
+       fear of crowds (mild).
+  [wk-0050] Fear of strangers (mild)
+       fear of strangers (mild).
+  [wk-0051] Nail biting
+       nail biting.
+  [wk-0052] Hair twirling
+       hair twirling.
+  [wk-0053] Knuckle cracking
+       knuckle cracking.
+  [wk-0054] Lip biting
+       lip biting.
+  [wk-0055] Skin picking
+       skin picking.
+  [wk-0056] Scab picking
+       scab picking.
+  [wk-0057] Nose picking
+       nose picking.
+  [wk-0058] Thumb sucking
+       thumb sucking.
+  [wk-0059] Nail picking
+       nail picking.
+  [wk-0060] Cuticle biting
+       cuticle biting.
+  [wk-0061] Pencil chewing
+       pencil chewing.
+  [wk-0062] Straw bending
+       straw bending.
+  [wk-0063] Whistling (nervous)
+       whistling (nervous).
+  [wk-0064] Humming (nervous)
+       humming (nervous).
+  [wk-0065] Leg bouncing
+       leg bouncing.
+  [wk-0066] Tapping (nervous)
+       tapping (nervous).
+  [wk-0067] Pacing
+       pacing.
+  [wk-0068] Checking (repeated)
+       checking (repeated).
+  [wk-0069] Hoarding (mild)
+       hoarding (mild).
+  [wk-0070] Collecting (excessive)
+       collecting (excessive).
+  [wk-0071] Tardiness
+       tardiness.
+  [wk-0072] Overpromising
+       overpromising.
+  [wk-0073] Interrupting
+       interrupting.
+  [wk-0074] Talking too much
+       talking too much.
+  [wk-0075] Oversharing
+       oversharing.
+  [wk-0076] One-upping
+       one-upping.
+  [wk-0077] Name dropping
+       name dropping.
+  [wk-0078] Bragging
+       bragging.
+  [wk-0079] Self-deprecating (excessive)
+       self-deprecating (excessive).
+  [wk-0080] Avoiding confrontation
+       avoiding confrontation.
+
+--- UNCOMMON (60 weaknesses) ---
+  [wk-0107] Asthma (mild)
+       asthma (mild).
+  [wk-0108] Allergies (seasonal)
+       allergies (seasonal).
+  [wk-0109] Allergies (food)
+       allergies (food).
+  [wk-0110] Allergies (dust)
+       allergies (dust).
+  [wk-0111] Allergies (pets)
+       allergies (pets).
+  [wk-0112] Allergies (latex)
+       allergies (latex).
+  [wk-0113] Allergies (medication)
+       allergies (medication).
+  [wk-0114] Eczema
+       eczema.
+  [wk-0115] Psoriasis
+       psoriasis.
+  [wk-0116] Acne (chronic)
+       acne (chronic).
+  [wk-0117] Rosacea
+       rosacea.
+  [wk-0118] Dandruff (severe)
+       dandruff (severe).
+  [wk-0119] Back pain (chronic)
+       back pain (chronic).
+  [wk-0120] Neck pain (chronic)
+       neck pain (chronic).
+  [wk-0121] Knee pain
+       knee pain.
+  [wk-0122] Joint pain
+       joint pain.
+  [wk-0123] Carpal tunnel (mild)
+       carpal tunnel (mild).
+  [wk-0124] Tendonitis
+       tendonitis.
+  [wk-0125] Plantar fasciitis
+       plantar fasciitis.
+  [wk-0126] Flat feet
+       flat feet.
+  [wk-0127] Poor eyesight (corrected)
+       poor eyesight (corrected).
+  [wk-0128] Color blindness (partial)
+       color blindness (partial).
+  [wk-0129] Astigmatism
+       astigmatism.
+  [wk-0130] Night blindness (mild)
+       night blindness (mild).
+  [wk-0131] Tinnitus (mild)
+       tinnitus (mild).
+  [wk-0132] Hearing loss (mild)
+       hearing loss (mild).
+  [wk-0133] Vertigo (mild)
+       vertigo (mild).
+  [wk-0134] Motion sickness
+       motion sickness.
+  [wk-0135] Migraines (occasional)
+       migraines (occasional).
+  [wk-0136] Tension headaches
+       tension headaches.
+  [wk-0137] Cluster headaches
+       cluster headaches.
+  [wk-0138] Sinusitis (chronic)
+       sinusitis (chronic).
+  [wk-0139] Insomnia (mild)
+       insomnia (mild).
+  [wk-0140] Sleepwalking
+       sleepwalking.
+  [wk-0141] Nightmares (frequent)
+       nightmares (frequent).
+  [wk-0142] Teeth grinding
+       teeth grinding.
+  [wk-0143] Sleep apnea (mild)
+       sleep apnea (mild).
+  [wk-0144] Restless leg syndrome
+       restless leg syndrome.
+  [wk-0145] Narcolepsy (mild)
+       narcolepsy (mild).
+  [wk-0146] Fatigue (chronic)
+       fatigue (chronic).
+  [wk-0147] Depression (mild)
+       depression (mild).
+  [wk-0148] Anxiety disorder (mild)
+       anxiety disorder (mild).
+  [wk-0149] Social anxiety (mild)
+       social anxiety (mild).
+  [wk-0150] Panic attacks (occasional)
+       panic attacks (occasional).
+  [wk-0151] PTSD (mild)
+       ptsd (mild).
+  [wk-0152] OCD (mild)
+       ocd (mild).
+  [wk-0153] ADHD (mild)
+       adhd (mild).
+  [wk-0154] Dyslexia
+       dyslexia.
+  [wk-0155] Dyscalculia
+       dyscalculia.
+  [wk-0156] Dyspraxia
+       dyspraxia.
+  [wk-0157] Phobia (moderate)
+       phobia (moderate).
+  [wk-0158] Claustrophobia
+       claustrophobia.
+  [wk-0159] Acrophobia
+       acrophobia.
+  [wk-0160] Agoraphobia
+       agoraphobia.
+  [wk-0161] Arachnophobia
+       arachnophobia.
+  [wk-0162] Ophidiophobia
+       ophidiophobia.
+  [wk-0163] Cynophobia
+       cynophobia.
+  [wk-0164] Astraphobia
+       astraphobia.
+  [wk-0165] Trypophobia
+       trypophobia.
+  [wk-0166] Dental phobia
+       dental phobia.
+
+--- RARE (32 weaknesses) ---
+  [wk-0200] Blind in one eye
+       blind in one eye.
+  [wk-0201] Deaf in one ear
+       deaf in one ear.
+  [wk-0202] Partial hearing loss
+       partial hearing loss.
+  [wk-0203] Speech impediment (stutter)
+       speech impediment (stutter).
+  [wk-0204] Speech impediment (lisp)
+       speech impediment (lisp).
+  [wk-0205] Voice disorder
+       voice disorder.
+  [wk-0206] Vocal cord damage (mild)
+       vocal cord damage (mild).
+  [wk-0207] Cleft palate (repaired)
+       cleft palate (repaired).
+  [wk-0208] Missing finger(s)
+       missing finger(s).
+  [wk-0209] Missing toe(s)
+       missing toe(s).
+  [wk-0210] Club foot (corrected)
+       club foot (corrected).
+  [wk-0211] Limb length discrepancy
+       limb length discrepancy.
+  [wk-0212] Scoliosis (moderate)
+       scoliosis (moderate).
+  [wk-0213] Spinal stenosis
+       spinal stenosis.
+  [wk-0214] Herniated disc
+       herniated disc.
+  [wk-0215] Degenerative disc disease
+       degenerative disc disease.
+  [wk-0216] Arthritis (chronic)
+       arthritis (chronic).
+  [wk-0217] Rheumatoid arthritis
+       rheumatoid arthritis.
+  [wk-0218] Osteoarthritis
+       osteoarthritis.
+  [wk-0219] Fibromyalgia
+       fibromyalgia.
+  [wk-0220] Diabetes (type 1)
+       diabetes (type 1).
+  [wk-0221] Diabetes (type 2)
+       diabetes (type 2).
+  [wk-0222] Epilepsy
+       epilepsy.
+  [wk-0223] Seizure disorder
+       seizure disorder.
+  [wk-0224] Autoimmune disorder
+       autoimmune disorder.
+  [wk-0225] Crohn's disease
+       crohn's disease.
+  [wk-0226] Ulcerative colitis
+       ulcerative colitis.
+  [wk-0227] IBS (severe)
+       ibs (severe).
+  [wk-0228] Thyroid disorder
+       thyroid disorder.
+  [wk-0229] Adrenal insufficiency
+       adrenal insufficiency.
+  [wk-0230] Hormonal imbalance
+       hormonal imbalance.
+  [wk-0231] Pituitary disorder
+       pituitary disorder.
+
+--- VERY_RARE (20 weaknesses) ---
+  [wk-0320] Blindness (total)
+       blindness (total).
+  [wk-0321] Deafness (total)
+       deafness (total).
+  [wk-0322] Mutism
+       mutism.
+  [wk-0323] Quadriplegia
+       quadriplegia.
+  [wk-0324] Paraplegia
+       paraplegia.
+  [wk-0325] Hemiplegia
+       hemiplegia.
+  [wk-0326] Monoplegia
+       monoplegia.
+  [wk-0327] Paralysis (partial)
+       paralysis (partial).
+  [wk-0328] Missing arm
+       missing arm.
+  [wk-0329] Missing leg
+       missing leg.
+  [wk-0330] Missing hand
+       missing hand.
+  [wk-0331] Missing foot
+       missing foot.
+  [wk-0332] Amputation (above knee)
+       amputation (above knee).
+  [wk-0333] Amputation (below knee)
+       amputation (below knee).
+  [wk-0334] Amputation (above elbow)
+       amputation (above elbow).
+  [wk-0335] Amputation (below elbow)
+       amputation (below elbow).
+  [wk-0336] Multiple amputations
+       multiple amputations.
+  [wk-0337] Spinal cord injury
+       spinal cord injury.
+  [wk-0338] Traumatic brain injury
+       traumatic brain injury.
+  [wk-0339] Brain damage (moderate)
+       brain damage (moderate).
+
+--- LEGENDARY (8 weaknesses) ---
+  [wk-0412] Locked-in syndrome
+       locked-in syndrome.
+  [wk-0413] Complete paralysis
+       complete paralysis.
+  [wk-0414] Total locked-in
+       total locked-in.
+  [wk-0415] Full body paralysis
+       full body paralysis.
+  [wk-0416] Vegetative state
+       vegetative state.
+  [wk-0417] Minimally conscious state
+       minimally conscious state.
+  [wk-0418] Comatose
+       comatose.
+  [wk-0419] Brain death
+       brain death.

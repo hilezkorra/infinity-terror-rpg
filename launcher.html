@@ -181,6 +181,7 @@
 <div class="launcher" id="launcher">
   <div class="launcher-card">
     <div class="page main-menu" id="page-main">
+      <button class="ui-btn menu-btn" onclick="continueGame()"><span>CONTINUE</span></button>
       <button class="ui-btn menu-btn" onclick="startGame()"><span>START GAME</span></button>
       <button class="ui-btn menu-btn" onclick="loadGame()"><span>LOAD GAME</span></button>
       <button class="ui-btn menu-btn" onclick="showSettings()"><span>SETTINGS</span></button>
@@ -406,8 +407,92 @@ document.getElementById('no-btn').addEventListener('click', () => {
   setTimeout(revealLauncher, 500);
 });
 
-// ── START GAME → load → blackout → enter ────────────────
-async function startGame() {
+// ── In-card choice overlay (matches the LOAD GAME overlay style) ──
+function launcherChoice(title, options, onBack) {
+  const main = document.getElementById('page-main');
+  const existing = document.getElementById('launcher-choice-overlay');
+  if (existing) existing.remove();
+  const overlay = document.createElement('div');
+  overlay.id = 'launcher-choice-overlay';
+  overlay.style.cssText = 'position:absolute;inset:0;background:rgba(10,6,8,.96);z-index:10;display:flex;flex-direction:column;justify-content:center;padding:clamp(20px,3vw,40px) clamp(24px,4vw,48px)';
+  const btns = options.map((o, i) => `
+    <div data-idx="${i}" class="lc-opt" style="padding:clamp(10px,1.2vw,16px);background:#0a0608;border:1px solid #1a1018;cursor:pointer;transition:border-color .2s;margin-bottom:clamp(6px,.7vw,10px)"
+      onmouseover="this.style.borderColor='#cc4444'" onmouseout="this.style.borderColor='#1a1018'">
+      <div style="color:#9a7a7a;font-size:clamp(11px,1.2vw,15px);font-weight:700">${o.label}</div>
+      ${o.sub ? `<div style="color:#4a3a3a;font-size:clamp(9px,.9vw,11px);margin-top:2px">${o.sub}</div>` : ''}
+    </div>`).join('');
+  overlay.innerHTML =
+    `<div style="color:#7a5f5f;font-size:clamp(11px,1.2vw,15px);letter-spacing:.1em;margin-bottom:clamp(12px,1.4vw,18px);text-transform:uppercase">${title}</div>` +
+    btns +
+    '<div class="lc-back" style="margin-top:clamp(6px,.8vw,10px);padding:clamp(8px,1vw,12px);border:1px solid #2a1820;color:#5a3a3a;text-align:center;cursor:pointer;font-size:clamp(10px,1vw,13px);transition:all .2s" onmouseover="this.style.borderColor=\'#cc4444\';this.style.color=\'#cc8888\'" onmouseout="this.style.borderColor=\'#2a1820\';this.style.color=\'#5a3a3a\'">← Back</div>';
+  main.appendChild(overlay);
+  overlay.querySelectorAll('.lc-opt').forEach(el => el.onclick = () => {
+    overlay.remove();
+    options[parseInt(el.dataset.idx, 10)].onClick();
+  });
+  overlay.querySelector('.lc-back').onclick = () => { overlay.remove(); if (onBack) onBack(); };
+}
+
+// ── CONTINUE → enter the existing game unchanged ─────────
+function continueGame() { enterGameSequence(); }
+
+// ── START GAME → confirm → new/keep character → reset → enter ──
+function startGame() {
+  launcherChoice(
+    'Start a NEW game? Your current run will be reset.',
+    [
+      { label: 'Yes — start a new game', sub: 'Wipes current progress and begins again at Movie 1', onClick: chooseCharacterMode },
+      { label: 'No — go back', sub: 'Keep playing your current run', onClick: () => {} },
+    ]
+  );
+}
+
+function chooseCharacterMode() {
+  launcherChoice(
+    'New game — which character?',
+    [
+      { label: 'Keep my current character', sub: 'Same identity and stats, progress reset to the start', onClick: () => chooseTeamMode('keep') },
+      { label: 'Create a new character',    sub: 'Build a fresh character at the start of the run',    onClick: () => chooseTeamMode('new')  },
+    ]
+  );
+}
+
+function chooseTeamMode(charMode) {
+  launcherChoice(
+    'New game — team members?',
+    [
+      { label: 'Keep current team',  sub: 'Same teammates carry over into the new run',                    onClick: () => chooseGuideMode(charMode, 'keep')     },
+      { label: 'Randomise new team', sub: 'Roll a fresh set of survivors — new names, nationalities, roles', onClick: () => chooseGuideMode(charMode, 'generate') },
+    ],
+    chooseCharacterMode
+  );
+}
+
+function chooseGuideMode(charMode, teamMode) {
+  launcherChoice(
+    'New game — your guide?',
+    [
+      { label: 'Keep current guide',    sub: 'Your guide continues from the previous run',          onClick: () => beginNewGame(charMode, teamMode, 'keep')     },
+      { label: 'New random guide',      sub: 'Roll a fresh guide — different background and skills', onClick: () => beginNewGame(charMode, teamMode, 'generate') },
+      { label: 'Let the GM create one', sub: 'Guide identity will be established in the opening scene', onClick: () => beginNewGame(charMode, teamMode, 'blank')    },
+    ],
+    () => chooseTeamMode(charMode)
+  );
+}
+
+async function beginNewGame(mode, teamMode = 'keep', guideMode = 'keep') {
+  try {
+    await fetch(`${API}?action=new-game`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ mode, team_mode: teamMode, guide_mode: guideMode }),
+    });
+  } catch (e) { /* proceed even if reset call hiccups */ }
+  enterGameSequence();
+}
+
+// ── Load sequence → blackout → enter (shared by Continue + New Game) ──
+async function enterGameSequence() {
   if (lsGet('display_mode', 'fullscreen') !== 'windowed') {
     try { document.documentElement.requestFullscreen(); } catch(e) {}
   }

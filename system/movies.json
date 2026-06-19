@@ -6,7 +6,11 @@
       "number": 1,
       "title": "Resident Evil",
       "year": 2002,
-      "genre": ["Horror", "Action", "Sci-Fi"],
+      "genre": [
+        "Horror",
+        "Action",
+        "Sci-Fi"
+      ],
       "difficulty": 4,
       "setting": "The Hive — a massive underground Umbrella Corporation research facility beneath Raccoon City. Labyrinthine corridors, labs, and containment sectors.",
       "description": "A deadly viral outbreak — the T-Virus — has contaminated the Hive facility. The facility's AI, the Red Queen, sealed the complex and killed all personnel to contain the infection. The team enters to retrieve a vital sample and escape. The dead do not stay dead. The infected are everywhere. And something worse lurks in the lower levels.",
@@ -28,14 +32,19 @@
       "bonus_possible": 500,
       "time_limit_hours": 3,
       "infection_risk": true,
-      "notes_for_gm": "Classic opening movie. Introduce players to the basic mechanics. The Licker is the major threat — it hunts by sound, so careful movement matters. The Red Queen should feel like a constant, menacing presence. The self-destruct countdown adds urgency."
+      "notes_for_gm": "Classic opening movie. Introduce players to the basic mechanics. The Licker is the major threat — it hunts by sound, so careful movement matters. The Red Queen should feel like a constant, menacing presence. The self-destruct countdown adds urgency.",
+      "tier": "E"
     },
     {
       "id": "the-mummy",
       "number": 2,
       "title": "The Mummy",
       "year": 1999,
-      "genre": ["Horror", "Adventure", "Action"],
+      "genre": [
+        "Horror",
+        "Adventure",
+        "Action"
+      ],
       "difficulty": 4,
       "setting": "Ancient Egypt — the ruins of Hamunaptra, City of the Dead, buried beneath the desert. Vast underground temples, booby traps, and sand storms.",
       "description": "An expedition to the legendary city of Hamunaptra accidentally releases Imhotep — a cursed high priest mummified alive 3000 years ago — who is regenerating by draining the life force of those who disturbed his tomb. The team must find the Book of the Dead to re-imprison him before he completes his resurrection and summons the 10 plagues upon Egypt.",
@@ -56,14 +65,19 @@
       "point_reward": 2000,
       "bonus_possible": 700,
       "time_limit_hours": null,
-      "notes_for_gm": "This movie rewards intelligence and preparation. The scarab beetles are the most dangerous encounter — they're nearly impossible to fight directly. The team needs fire, torches, or elevation. Imhotep is essentially invulnerable until the team gets the Book of Amun-Ra."
+      "notes_for_gm": "This movie rewards intelligence and preparation. The scarab beetles are the most dangerous encounter — they're nearly impossible to fight directly. The team needs fire, torches, or elevation. Imhotep is essentially invulnerable until the team gets the Book of Amun-Ra.",
+      "tier": "E"
     },
     {
       "id": "jurassic-park",
       "number": 3,
       "title": "Jurassic Park",
       "year": 1993,
-      "genre": ["Sci-Fi", "Adventure", "Thriller"],
+      "genre": [
+        "Sci-Fi",
+        "Adventure",
+        "Thriller"
+      ],
       "difficulty": 5,
       "setting": "Isla Nublar — a tropical island off the coast of Costa Rica. Lush jungle, open savannahs, the main Visitor Center, and scattered paddocks. The power grid has failed.",
       "description": "A biological reserve housing cloned dinosaurs has lost containment after the park's systems were sabotaged. Now the apex predators roam free. The team must restore partial power to call for rescue and survive until extraction — all while a pack of Velociraptors systematically hunts them, and something far larger roams the island.",
@@ -84,14 +98,19 @@
       "point_reward": 2500,
       "bonus_possible": 1000,
       "time_limit_hours": 24,
-      "notes_for_gm": "Key survival lesson: the T-Rex can't see stationary prey but the raptors can. They work in teams. Players who split up will die. Emphasize the intelligence of the raptors. The T-Rex encounter should be terrifying but potentially survivable by staying still."
+      "notes_for_gm": "Key survival lesson: the T-Rex can't see stationary prey but the raptors can. They work in teams. Players who split up will die. Emphasize the intelligence of the raptors. The T-Rex encounter should be terrifying but potentially survivable by staying still.",
+      "tier": "D"
     },
     {
       "id": "aliens",
       "number": 4,
       "title": "Aliens",
       "year": 1986,
-      "genre": ["Sci-Fi", "Horror", "Action"],
+      "genre": [
+        "Sci-Fi",
+        "Horror",
+        "Action"
+      ],
       "difficulty": 7,
       "setting": "LV-426 — a barren moon with a terraforming colony now overrun. The Hadley's Hope colony, surrounded by acid-rain and toxic atmosphere. The Xenomorph hive lies beneath the colony's atmospheric processor.",
       "description": "The colonial terraforming station on LV-426 has gone silent after discovering something in the caves below. The team deploys to investigate and discover the entire colony has been cocooned by a Xenomorph infestation. A Queen is gestating in the heart of the facility. The team must rescue any survivors and destroy the nest — or die trying.",
@@ -113,14 +132,19 @@
       "bonus_possible": 1200,
       "time_limit_hours": 6,
       "infection_risk": true,
-      "notes_for_gm": "Brutal movie. Emphasize that xenomorphs are almost invulnerable to conventional weapons — bullets ricochet off their exoskeleton and acid blood kills the shooter. Flamethrowers are effective but short range. The Queen is essentially a boss encounter requiring extreme firepower or environmental solutions."
+      "notes_for_gm": "Brutal movie. Emphasize that xenomorphs are almost invulnerable to conventional weapons — bullets ricochet off their exoskeleton and acid blood kills the shooter. Flamethrowers are effective but short range. The Queen is essentially a boss encounter requiring extreme firepower or environmental solutions.",
+      "tier": "C"
     },
     {
       "id": "starship-troopers",
       "number": 5,
       "title": "Starship Troopers",
       "year": 1997,
-      "genre": ["Sci-Fi", "Action", "Military"],
+      "genre": [
+        "Sci-Fi",
+        "Action",
+        "Military"
+      ],
       "difficulty": 6,
       "setting": "Klendathu — the Arachnid home world. Barren, boulder-strewn rocky terrain. No cover, swarms from underground, constant Bug attack.",
       "description": "The United Citizens Federation's invasion of the Arachnid home world has catastrophically failed. The team deploys on Klendathu — a nightmare of chitinous horrors. They must retrieve a Federation intelligence package and evacuate in the chaos. The bugs are everywhere. The ground itself moves.",
@@ -141,14 +165,18 @@
       "point_reward": 3000,
       "bonus_possible": 1500,
       "time_limit_hours": 4,
-      "notes_for_gm": "This is a war movie. Emphasize the military scale. Bugs die easily but there are endless numbers. The threat is being overwhelmed, not single-bug danger. Players need to think tactically about ammo conservation and chokepoints. The Brain Bug can be psychically detected."
+      "notes_for_gm": "This is a war movie. Emphasize the military scale. Bugs die easily but there are endless numbers. The threat is being overwhelmed, not single-bug danger. Players need to think tactically about ammo conservation and chokepoints. The Brain Bug can be psychically detected.",
+      "tier": "D"
     },
     {
       "id": "the-ring",
       "number": 6,
       "title": "The Ring",
       "year": 2002,
-      "genre": ["Horror", "Psychological"],
+      "genre": [
+        "Horror",
+        "Psychological"
+      ],
       "difficulty": 5,
       "setting": "Rural Washington State, USA. A coastal town, a lighthouse cabin, and a well on an isolated farm. Atmospheric, foggy, and deeply wrong.",
       "description": "An urban legend turned reality: a cursed videotape that kills the viewer exactly seven days after watching. The team has made the mistake of watching it. They now have seven days to unravel the supernatural mystery behind the tape and break the curse — or face the horror that crawls out of the television.",
@@ -168,14 +196,18 @@
       "point_reward": 2500,
       "bonus_possible": 900,
       "time_limit_hours": 168,
-      "notes_for_gm": "Pure psychological horror. Samara cannot be killed with weapons. Players who try to fight her will find themselves helpless. The solution requires investigation, not combat. Emphasize the countdown and creeping dread. Let players follow investigation leads organically."
+      "notes_for_gm": "Pure psychological horror. Samara cannot be killed with weapons. Players who try to fight her will find themselves helpless. The solution requires investigation, not combat. Emphasize the countdown and creeping dread. Let players follow investigation leads organically.",
+      "tier": "D"
     },
     {
       "id": "freddy-vs-jason",
       "number": 7,
       "title": "Freddy vs. Jason",
       "year": 2003,
-      "genre": ["Horror", "Slasher"],
+      "genre": [
+        "Horror",
+        "Slasher"
+      ],
       "difficulty": 6,
       "setting": "Springwood, Ohio. Elm Street, Crystal Lake, and the dreamscape — a hellish nightmare dimension controlled by Freddy Krueger.",
       "description": "Two legendary killers have been summoned to the same territory. Freddy Krueger — who murders in dreams — and Jason Voorhees — who kills in the waking world. Both are unkoppable by conventional means. The team is trapped between them. Freddy can manipulate the dream world. Jason cannot be reasoned with. They must survive until the two monsters destroy each other.",
@@ -196,14 +228,18 @@
       "point_reward": 3000,
       "bonus_possible": 1000,
       "time_limit_hours": 48,
-      "notes_for_gm": "Double threat survival. Players need to keep someone awake at all times. Freddy is cunning and will manipulate. Jason is relentless but predictable. The fun is in engineering the monster fight."
+      "notes_for_gm": "Double threat survival. Players need to keep someone awake at all times. Freddy is cunning and will manipulate. Jason is relentless but predictable. The fun is in engineering the monster fight.",
+      "tier": "D"
     },
     {
       "id": "silent-hill",
       "number": 8,
       "title": "Silent Hill",
       "year": 2006,
-      "genre": ["Horror", "Psychological"],
+      "genre": [
+        "Horror",
+        "Psychological"
+      ],
       "difficulty": 7,
       "setting": "Silent Hill, West Virginia — a town consumed by a coal seam fire and a dark religious cult. The town shifts between the foggy Fog World and the nightmarish Otherworld.",
       "description": "The team is drawn into Silent Hill — a town that physically manifests psychological trauma. The real world and a dark alternate dimension called the Otherworld overlap here, and the transition is without warning. The town's residents are monsters created from the collective guilt and rage of the Order cult. To escape, the team must understand what the town wants.",
@@ -224,14 +260,19 @@
       "point_reward": 3500,
       "bonus_possible": 1100,
       "time_limit_hours": null,
-      "notes_for_gm": "Pure psychological horror. The town reads the team's fears and reflects them. Pyramid Head is completely unkillable — players who encounter him must flee. The nurses react to light, so darkness is safer but harder to navigate. The mystery should unfold organically."
+      "notes_for_gm": "Pure psychological horror. The town reads the team's fears and reflects them. Pyramid Head is completely unkillable — players who encounter him must flee. The nurses react to light, so darkness is safer but harder to navigate. The mystery should unfold organically.",
+      "tier": "C"
     },
     {
       "id": "saw",
       "number": 9,
       "title": "Saw",
       "year": 2004,
-      "genre": ["Horror", "Thriller", "Puzzle"],
+      "genre": [
+        "Horror",
+        "Thriller",
+        "Puzzle"
+      ],
       "difficulty": 5,
       "setting": "An abandoned industrial building — warehouses, bathrooms, corridors. The Jigsaw Killer's elaborate trap dungeon. Time pressure is absolute.",
       "description": "The team awakens in the dark, trapped in an elaborate puzzle-death-trap environment constructed by the Jigsaw Killer — a terminally ill man who believes people who don't value life need to prove they deserve it. Each trap is survivable if the team follows the clues, makes the right choices, and doesn't panic. The wrong choice means death.",
@@ -252,14 +293,18 @@
       "point_reward": 2000,
       "bonus_possible": 1100,
       "time_limit_hours": 8,
-      "notes_for_gm": "Puzzle-focused movie. Each trap should require clever thinking, not combat. Some traps have brutal moral choices — who gets hurt to save the others? Jigsaw's voice should be calm, almost reasonable, which makes it more unsettling."
+      "notes_for_gm": "Puzzle-focused movie. Each trap should require clever thinking, not combat. Some traps have brutal moral choices — who gets hurt to save the others? Jigsaw's voice should be calm, almost reasonable, which makes it more unsettling.",
+      "tier": "D"
     },
     {
       "id": "final-destination",
       "number": 10,
       "title": "Final Destination",
       "year": 2000,
-      "genre": ["Horror", "Thriller"],
+      "genre": [
+        "Horror",
+        "Thriller"
+      ],
       "difficulty": 7,
       "setting": "Various everyday locations — airports, roads, gyms, swimming pools. Death's design is woven into mundane environments.",
       "description": "One team member receives a premonition of a catastrophic disaster. By acting on it, the team escapes — but now Death itself is hunting them in the order they were supposed to die. Death cannot be seen, reasoned with, or fought. It manipulates the environment in elaborate Rube Goldberg sequences. The team must figure out how to permanently cheat Death — if that's even possible.",
@@ -279,14 +324,19 @@
       "point_reward": 3000,
       "bonus_possible": 900,
       "time_limit_hours": 72,
-      "notes_for_gm": "No combat solution exists here. Players who try to fight will fail. The challenge is environmental awareness and paranoid careful movement. Every action has consequences. Run through elaborate death traps in narration for atmosphere."
+      "notes_for_gm": "No combat solution exists here. Players who try to fight will fail. The challenge is environmental awareness and paranoid careful movement. Every action has consequences. Run through elaborate death traps in narration for atmosphere.",
+      "tier": "C"
     },
     {
       "id": "terminator-2",
       "number": 11,
       "title": "Terminator 2: Judgment Day",
       "year": 1991,
-      "genre": ["Sci-Fi", "Action", "Thriller"],
+      "genre": [
+        "Sci-Fi",
+        "Action",
+        "Thriller"
+      ],
       "difficulty": 6,
       "setting": "Los Angeles, 1995. Industrial facilities, highways, a mental hospital, and the Cyberdyne Systems offices. Judgment Day — the nuclear war triggered by Skynet — is three days away.",
       "description": "The team arrives alongside two machines from the future — the T-800, a reprogrammed Terminator sent to protect, and the T-1000, a liquid-metal killing machine sent to hunt. The team must help prevent Judgment Day by destroying the chip that will lead to Skynet's creation — while surviving the T-1000, which cannot be permanently stopped by conventional weapons.",
@@ -306,14 +356,19 @@
       "point_reward": 3000,
       "bonus_possible": 1200,
       "time_limit_hours": 72,
-      "notes_for_gm": "The T-1000 is the main antagonist. The T-800 can be an ally — use it wisely. The team has the knowledge of how to destroy the T-1000 (molten metal) so the challenge is engineering that outcome."
+      "notes_for_gm": "The T-1000 is the main antagonist. The T-800 can be an ally — use it wisely. The team has the knowledge of how to destroy the T-1000 (molten metal) so the challenge is engineering that outcome.",
+      "tier": "D"
     },
     {
       "id": "pirates-of-the-caribbean",
       "number": 12,
       "title": "Pirates of the Caribbean: Curse of the Black Pearl",
       "year": 2003,
-      "genre": ["Action", "Adventure", "Fantasy"],
+      "genre": [
+        "Action",
+        "Adventure",
+        "Fantasy"
+      ],
       "difficulty": 5,
       "setting": "The Caribbean Sea, circa 17th century. Port Royal, Isla de Muerta — a cave full of cursed treasure, and the open sea aboard various ships.",
       "description": "A crew of cursed pirates — unable to feel, eat, or live — seeks to break the Aztec gold curse that has made them undead. They cannot be killed — bullets pass through them, swords don't stop them — until the curse is lifted. The team must navigate pirate politics, sea battles, and the supernatural to get what they need out of this world.",
@@ -332,14 +387,19 @@
       "min_team_rank": "Unranked",
       "point_reward": 2000,
       "bonus_possible": 1000,
-      "notes_for_gm": "More adventure than horror. Players need cunning and charm as much as combat. The cursed pirates are functionally immortal until the blood-gold ritual is complete. Encourage naval tactics and clever solutions."
+      "notes_for_gm": "More adventure than horror. Players need cunning and charm as much as combat. The cursed pirates are functionally immortal until the blood-gold ritual is complete. Encourage naval tactics and clever solutions.",
+      "tier": "D"
     },
     {
       "id": "harry-potter-goblet",
       "number": 13,
       "title": "Harry Potter and the Goblet of Fire",
       "year": 2005,
-      "genre": ["Fantasy", "Action", "Horror"],
+      "genre": [
+        "Fantasy",
+        "Action",
+        "Horror"
+      ],
       "difficulty": 7,
       "setting": "Hogwarts School of Witchcraft and Wizardry, the Triwizard Tournament grounds, and the Little Hangleton graveyard. A world of magic that Team Europe must navigate without inherent magical ability.",
       "description": "The Triwizard Tournament is a cover for something darker. Lord Voldemort is being resurrected in the graveyard using dark ritual. The team has been inserted into this world and must survive a magical environment without magic of their own, prevent the resurrection if possible, and escape before Death Eaters close all exits.",
@@ -359,14 +419,18 @@
       "min_team_rank": "E",
       "point_reward": 3500,
       "bonus_possible": 1300,
-      "notes_for_gm": "Non-magical team in a magical world. This is deliberately difficult without magical ability. God's Space provides items that create anti-magic barriers or nullification fields as potential preparations. Emphasize creative use of real-world technology against magical foes."
+      "notes_for_gm": "Non-magical team in a magical world. This is deliberately difficult without magical ability. God's Space provides items that create anti-magic barriers or nullification fields as potential preparations. Emphasize creative use of real-world technology against magical foes.",
+      "tier": "C"
     },
     {
       "id": "transformers",
       "number": 14,
       "title": "Transformers",
       "year": 2007,
-      "genre": ["Sci-Fi", "Action"],
+      "genre": [
+        "Sci-Fi",
+        "Action"
+      ],
       "difficulty": 6,
       "setting": "Various US cities and the Hoover Dam facility. The scale of battle is enormous — city blocks destroyed, Decepticons versus Autobots.",
       "description": "The Decepticons are hunting the Allspark — a cosmic artifact with the power to create or destroy any machinery. The team is caught in the crossfire of a war between two factions of transforming alien robots. The team must survive in an environment where ordinary cars can be predators and skyscrapers can fall.",
@@ -385,14 +449,19 @@
       "min_team_rank": "E",
       "point_reward": 2500,
       "bonus_possible": 800,
-      "notes_for_gm": "Survive in the chaos of a giant robot war. Players can't fight the robots — they need to move quickly, find cover, and complete objectives in the chaos. Autobots can be allies if properly contacted."
+      "notes_for_gm": "Survive in the chaos of a giant robot war. Players can't fight the robots — they need to move quickly, find cover, and complete objectives in the chaos. Autobots can be allies if properly contacted.",
+      "tier": "D"
     },
     {
       "id": "28-days-later",
       "number": 15,
       "title": "28 Days Later",
       "year": 2002,
-      "genre": ["Horror", "Survival", "Post-Apocalyptic"],
+      "genre": [
+        "Horror",
+        "Survival",
+        "Post-Apocalyptic"
+      ],
       "difficulty": 5,
       "setting": "Post-outbreak Britain. Abandoned London, desolate highways, a militarized country estate in Manchester. The Rage virus has swept the country in 28 days.",
       "description": "Britain has been devastated by the Rage virus — a pathogen transmitted by blood contact that creates hyper-aggressive killing machines within 20 seconds of infection. The infected sprint. They never sleep. They never stop. The team must cross Britain to reach a military checkpoint, only to find the military may be a threat as dangerous as the infected.",
@@ -414,14 +483,19 @@
       "bonus_possible": 800,
       "infection_risk": true,
       "time_limit_hours": 72,
-      "notes_for_gm": "Perfect for European teams — feels closest to home. The infected are fast and deadly but not supernatural. The real horror is the human element — the military checkpoint reveals what people become without civilization. Emphasize isolation and scarcity."
+      "notes_for_gm": "Perfect for European teams — feels closest to home. The infected are fast and deadly but not supernatural. The real horror is the human element — the military checkpoint reveals what people become without civilization. Emphasize isolation and scarcity.",
+      "tier": "D"
     },
     {
       "id": "the-thing",
       "number": 16,
       "title": "The Thing",
       "year": 1982,
-      "genre": ["Horror", "Sci-Fi", "Psychological"],
+      "genre": [
+        "Horror",
+        "Sci-Fi",
+        "Psychological"
+      ],
       "difficulty": 8,
       "setting": "Outpost 31, Antarctica. A remote research base in the harshest environment on Earth. Isolation, -60°C outside, and nowhere to run.",
       "description": "An alien life form has been thawed from the Antarctic ice and is loose in an American research station. The Thing can perfectly imitate any living creature. It absorbs organisms and recreates them down to the cellular level. Any team member could be an alien duplicate. Trust is impossible. And the outside temperature is fatal.",
@@ -442,14 +516,19 @@
       "point_reward": 3500,
       "bonus_possible": 1400,
       "time_limit_hours": 48,
-      "notes_for_gm": "The paranoia mechanic is the centerpiece. The GM should secretly determine which NPCs are Things and let the mystery unfold. The blood test scene is iconic and should be dramatic. Outside is death. Inside is suspected death. Perfect horror isolation."
+      "notes_for_gm": "The paranoia mechanic is the centerpiece. The GM should secretly determine which NPCs are Things and let the mystery unfold. The blood test scene is iconic and should be dramatic. Outside is death. Inside is suspected death. Perfect horror isolation.",
+      "tier": "C"
     },
     {
       "id": "event-horizon",
       "number": 17,
       "title": "Event Horizon",
       "year": 1997,
-      "genre": ["Sci-Fi", "Horror", "Psychological"],
+      "genre": [
+        "Sci-Fi",
+        "Horror",
+        "Psychological"
+      ],
       "difficulty": 8,
       "setting": "2047. The deep space research vessel Event Horizon, returned from where it went — somewhere beyond the known universe. Deep space, far from any rescue.",
       "description": "The experimental starship Event Horizon disappeared 7 years ago after testing a gravity drive that folded space. It has returned — damaged, with the original crew dead in horrific ways. The rescue team boards to find answers, and discovers the ship went through a dimension of pure evil. The ship itself is now alive, malevolent, and feeding on the fears and guilt of those aboard.",
@@ -470,14 +549,19 @@
       "point_reward": 4000,
       "bonus_possible": 1300,
       "time_limit_hours": 72,
-      "notes_for_gm": "Pure psychological horror in space. Use characters' backstories and fears. The ship shows each person their worst moment. There should be a point where players question what is real. The horror escalates — it starts subtle and becomes overwhelming."
+      "notes_for_gm": "Pure psychological horror in space. Use characters' backstories and fears. The ship shows each person their worst moment. There should be a point where players question what is real. The horror escalates — it starts subtle and becomes overwhelming.",
+      "tier": "C"
     },
     {
       "id": "i-am-legend",
       "number": 18,
       "title": "I Am Legend",
       "year": 2007,
-      "genre": ["Horror", "Sci-Fi", "Survival"],
+      "genre": [
+        "Horror",
+        "Sci-Fi",
+        "Survival"
+      ],
       "difficulty": 6,
       "setting": "New York City, 2012. Three years after a modified measles virus wiped out most of humanity. The city is overgrown, abandoned, and ruled by Darkseekers — infected humans who devolve at night.",
       "description": "A modified cancer cure went wrong and killed 90% of humanity. The remaining 10% were eaten by the Darkseeker survivors — photosensitive mutant predators of extraordinary strength. The team wakes in an abandoned Manhattan. They must locate supplies, find a working vehicle, and reach the survivor colony rumored to be in Vermont — all while avoiding Darkseeker packs that emerge at sundown.",
@@ -499,14 +583,18 @@
       "bonus_possible": 1100,
       "infection_risk": true,
       "time_limit_hours": 96,
-      "notes_for_gm": "Classic survival horror. Day = relatively safe exploration. Night = deadly. Time management is critical. The Darkseekers become more aggressive each night as they learn the team's patterns. UV lights, flares, and fire are the primary defenses."
+      "notes_for_gm": "Classic survival horror. Day = relatively safe exploration. Night = deadly. Time management is critical. The Darkseekers become more aggressive each night as they learn the team's patterns. UV lights, flares, and fire are the primary defenses.",
+      "tier": "D"
     },
     {
       "id": "a-quiet-place",
       "number": 19,
       "title": "A Quiet Place",
       "year": 2018,
-      "genre": ["Horror", "Survival"],
+      "genre": [
+        "Horror",
+        "Survival"
+      ],
       "difficulty": 7,
       "setting": "Rural New York State, 2020. A post-apocalyptic world 89 days after alien creatures devastated civilization. A farmhouse, a waterfall, sand-covered paths, and deadly silence.",
       "description": "Creatures from another world hunt entirely by sound. They are blind, but possess hearing of extraordinary sensitivity and speed of extraordinary lethality. They are nearly invulnerable to conventional weapons. The team must survive in absolute silence — every footstep, breath, and whisper could mean death. And the team cannot warn each other with words.",
@@ -527,14 +615,19 @@
       "point_reward": 3000,
       "bonus_possible": 1000,
       "time_limit_hours": 72,
-      "notes_for_gm": "The silence mechanic is the entire game. Every action, every item the player picks up, must be narrated with sound awareness. Combat is almost impossible — players need to use the environment (waterfalls mask sound). High tension, constant awareness required."
+      "notes_for_gm": "The silence mechanic is the entire game. Every action, every item the player picks up, must be narrated with sound awareness. Combat is almost impossible — players need to use the environment (waterfalls mask sound). High tension, constant awareness required.",
+      "tier": "C"
     },
     {
       "id": "world-war-z",
       "number": 20,
       "title": "World War Z",
       "year": 2013,
-      "genre": ["Action", "Horror", "Survival"],
+      "genre": [
+        "Action",
+        "Horror",
+        "Survival"
+      ],
       "difficulty": 6,
       "setting": "Philadelphia, South Korea military base, Jerusalem (walled city under siege), and a WHO research facility in Wales. Global scale pandemic.",
       "description": "A zombie pandemic has swept the world in days. These are not slow shamblers — they run, swarm, and climb as living ladders. Billions are infected. The team must travel from one global hot spot to the next, following a lead that might identify Patient Zero — and with it, a potential cure or defense.",
@@ -555,14 +648,19 @@
       "bonus_possible": 1200,
       "infection_risk": true,
       "time_limit_hours": 96,
-      "notes_for_gm": "European team advantage — the WHO facility is in Wales. The swarm mechanic means open areas are death. Buildings, vehicles, and elevated positions are key. Movement between locations is as dangerous as each destination."
+      "notes_for_gm": "European team advantage — the WHO facility is in Wales. The swarm mechanic means open areas are death. Buildings, vehicles, and elevated positions are key. Movement between locations is as dangerous as each destination.",
+      "tier": "D"
     },
     {
       "id": "get-out",
       "number": 21,
       "title": "Get Out",
       "year": 2017,
-      "genre": ["Horror", "Thriller", "Psychological"],
+      "genre": [
+        "Horror",
+        "Thriller",
+        "Psychological"
+      ],
       "difficulty": 6,
       "setting": "An upscale country estate in rural New England. Beautiful on the surface, deeply wrong underneath.",
       "description": "The team is invited to an exclusive gathering at a wealthy estate. The hosts and guests are charming, sophisticated — and conducting a horrific medical program that surgically transplants the brains of wealthy clients into the bodies of unwitting victims, trapping the original personality in a helpless 'sunken place.' The horror reveals itself gradually.",
@@ -583,14 +681,18 @@
       "point_reward": 2500,
       "bonus_possible": 1000,
       "time_limit_hours": 48,
-      "notes_for_gm": "Social horror. The team shouldn't realize the threat until partway through. Early signs should be subtle — guests staring too long, hypnotic triggers during dinner, staff with glazed eyes. The horror is the gradual reveal. Combat only becomes relevant in the third act."
+      "notes_for_gm": "Social horror. The team shouldn't realize the threat until partway through. Early signs should be subtle — guests staring too long, hypnotic triggers during dinner, staff with glazed eyes. The horror is the gradual reveal. Combat only becomes relevant in the third act.",
+      "tier": "D"
     },
     {
       "id": "it-2017",
       "number": 22,
       "title": "It (Chapter One)",
       "year": 2017,
-      "genre": ["Horror", "Supernatural"],
+      "genre": [
+        "Horror",
+        "Supernatural"
+      ],
       "difficulty": 7,
       "setting": "Derry, Maine, 1989. A seemingly normal small town, the storm drain system, and an abandoned house on Neibolt Street. Every 27 years, Pennywise wakes.",
       "description": "Pennywise the Dancing Clown — an ancient entity older than humanity — resurfaces in the town of Derry every 27 years to feed on children, sustained by their fear. The team has arrived during an active feeding cycle. Pennywise can manifest as any phobia. It can only be wounded when it is feared less than it fears being hurt. Courage is literally the weapon.",
@@ -611,14 +713,18 @@
       "point_reward": 3500,
       "bonus_possible": 1200,
       "time_limit_hours": null,
-      "notes_for_gm": "Fear is the mechanic. Pennywise becomes weaker when the team shows genuine courage and unity. Have each player's fear manifest at a critical moment. The deadlights are an instant-incapacitation trap — very dangerous. Pennywise should be terrifying in early encounters and progressively less overwhelming as the team unifies."
+      "notes_for_gm": "Fear is the mechanic. Pennywise becomes weaker when the team shows genuine courage and unity. Have each player's fear manifest at a critical moment. The deadlights are an instant-incapacitation trap — very dangerous. Pennywise should be terrifying in early encounters and progressively less overwhelming as the team unifies.",
+      "tier": "C"
     },
     {
       "id": "the-descent",
       "number": 23,
       "title": "The Descent",
       "year": 2005,
-      "genre": ["Horror", "Survival"],
+      "genre": [
+        "Horror",
+        "Survival"
+      ],
       "difficulty": 8,
       "setting": "The Appalachian Mountains, North Carolina. An unexplored cave system — vertical descents, narrow passages, underground rivers, and absolute darkness.",
       "description": "The team descends into an unmapped cave system only to discover they are not alone. The cave is inhabited by Crawlers — pale, eyeless humanoid predators perfectly adapted to the dark. They hear everything, move through rock passages like water, and hunt as a pack. The team is deep underground, their ropes have been cut, and the only way out may not exist.",
@@ -639,14 +745,19 @@
       "point_reward": 3500,
       "bonus_possible": 1200,
       "time_limit_hours": 36,
-      "notes_for_gm": "Extreme claustrophobia and darkness. Light management is critical — too much light attracts crawlers, too little and players can't see where they're going. The cave should feel genuinely dangerous as an environment before the creatures even appear."
+      "notes_for_gm": "Extreme claustrophobia and darkness. Light management is critical — too much light attracts crawlers, too little and players can't see where they're going. The cave should feel genuinely dangerous as an environment before the creatures even appear.",
+      "tier": "C"
     },
     {
       "id": "annihilation",
       "number": 24,
       "title": "Annihilation",
       "year": 2018,
-      "genre": ["Sci-Fi", "Horror", "Psychological"],
+      "genre": [
+        "Sci-Fi",
+        "Horror",
+        "Psychological"
+      ],
       "difficulty": 9,
       "setting": "Area X — The Shimmer, a growing alien zone on the Florida coast. Inside The Shimmer, DNA from all organisms intermingles. Plants grow in human shapes. Animals carry human vocal cords.",
       "description": "An alien signal is transforming the natural world inside an expanding zone called The Shimmer. Every expedition into it has failed — most return corrupted or not at all. Inside, the rules of biology no longer apply. The team enters to find the source and stop the expansion. They find that The Shimmer changes them as well, slowly.",
@@ -667,14 +778,18 @@
       "point_reward": 4500,
       "bonus_possible": 1500,
       "time_limit_hours": null,
-      "notes_for_gm": "Most psychologically complex movie. Reality bends. Characters begin transforming. The horror is gradual and deeply unsettling. The Bear encounter is a must — it should be terrifying. The Lighthouse is the hardest encounter. Players who reach it should feel like they've already lost part of themselves."
+      "notes_for_gm": "Most psychologically complex movie. Reality bends. Characters begin transforming. The horror is gradual and deeply unsettling. The Bear encounter is a must — it should be terrifying. The Lighthouse is the hardest encounter. Players who reach it should feel like they've already lost part of themselves.",
+      "tier": "B"
     },
     {
       "id": "bird-box",
       "number": 25,
       "title": "Bird Box",
       "year": 2018,
-      "genre": ["Horror", "Survival"],
+      "genre": [
+        "Horror",
+        "Survival"
+      ],
       "difficulty": 7,
       "setting": "San Francisco and the surrounding river wilderness. An entity has appeared that, when seen by a sane person, drives them to immediate violent self-destruction. The city has collapsed in hours.",
       "description": "Invisible entities have emerged worldwide. Looking at them without prior madness causes instant suicidal compulsion in sane individuals. Within hours, civilization has largely collapsed. The team must navigate a hostile world blindfolded, find the safe colony rumored to exist, and avoid both the entities and the mad people who now serve them.",
@@ -694,14 +809,19 @@
       "point_reward": 2500,
       "bonus_possible": 900,
       "time_limit_hours": 48,
-      "notes_for_gm": "Unique navigation challenge. Consider how every action changes when sight isn't available. Describe sounds, touch, smell. The afflicted are dangerous in a different way than the entities — they're human, cunning, and deeply wrong."
+      "notes_for_gm": "Unique navigation challenge. Consider how every action changes when sight isn't available. Describe sounds, touch, smell. The afflicted are dangerous in a different way than the entities — they're human, cunning, and deeply wrong.",
+      "tier": "C"
     },
     {
       "id": "train-to-busan",
       "number": 26,
       "title": "Train to Busan",
       "year": 2016,
-      "genre": ["Horror", "Action", "Survival"],
+      "genre": [
+        "Horror",
+        "Action",
+        "Survival"
+      ],
       "difficulty": 5,
       "setting": "South Korea — primarily aboard the KTX express train from Seoul to Busan. Confined carriages, limited supplies, and nowhere to go.",
       "description": "A zombie outbreak begins on a train. The infected are fast, extremely aggressive, and one bite turns a person in minutes. The team is locked aboard a high-speed train with limited escape options. They must make it through the carriages, reach the safe cars at the front, and survive until the train reaches Busan — if Busan is even still safe.",
@@ -722,14 +842,19 @@
       "bonus_possible": 750,
       "infection_risk": true,
       "time_limit_hours": 4,
-      "notes_for_gm": "Classic zombie survival with a unique setting. The train's motion means the environment is always changing. Blind-spot zombies — they can't see in complete darkness — make for interesting tactics. The other survivors are morally complex, not just threats."
+      "notes_for_gm": "Classic zombie survival with a unique setting. The train's motion means the environment is always changing. Blind-spot zombies — they can't see in complete darkness — make for interesting tactics. The other survivors are morally complex, not just threats.",
+      "tier": "D"
     },
     {
       "id": "hereditary",
       "number": 27,
       "title": "Hereditary",
       "year": 2018,
-      "genre": ["Horror", "Supernatural", "Psychological"],
+      "genre": [
+        "Horror",
+        "Supernatural",
+        "Psychological"
+      ],
       "difficulty": 9,
       "setting": "A secluded family home in rural Utah. The home is filled with intricate model rooms and family secrets. A cult's summoning ritual has been in motion for generations.",
       "description": "The Graham family home has been marked by the demon Paimon's cult for decades. What seems like a family's grief and unraveling sanity is actually a meticulously constructed supernatural ritual to give the demon a human host. The team arrives to find the process nearly complete. The demon Paimon is already manifesting in the environment.",
@@ -750,14 +875,19 @@
       "point_reward": 4500,
       "bonus_possible": 1500,
       "time_limit_hours": 24,
-      "notes_for_gm": "One of the most intense movies. The supernatural here is real and malevolent in a way that cannot be reasoned with. Use extreme dread, sounds in the ceiling, bodies appearing in wrong positions. The cult leader's calm certainty should be deeply unsettling."
+      "notes_for_gm": "One of the most intense movies. The supernatural here is real and malevolent in a way that cannot be reasoned with. Use extreme dread, sounds in the ceiling, bodies appearing in wrong positions. The cult leader's calm certainty should be deeply unsettling.",
+      "tier": "B"
     },
     {
       "id": "us",
       "number": 28,
       "title": "Us",
       "year": 2019,
-      "genre": ["Horror", "Thriller", "Psychological"],
+      "genre": [
+        "Horror",
+        "Thriller",
+        "Psychological"
+      ],
       "difficulty": 7,
       "setting": "Santa Cruz, California. A beach house, the boardwalk, and the underground tunnels beneath — where a parallel society of failed human duplicates has existed for decades.",
       "description": "The Tethered — failed human clones created by a government experiment and abandoned in underground tunnels — have risen. Each person has a Tethered double that is their near-perfect physical match but wildly different mentally. The Tethered are coming for their above-ground counterparts. The team encounters their own duplicates.",
@@ -777,14 +907,19 @@
       "point_reward": 3500,
       "bonus_possible": 1000,
       "time_limit_hours": 36,
-      "notes_for_gm": "Mirror horror. Fighting your own reflection is psychologically disturbing. The Tethered match the player's physical capabilities exactly but their combat style is different. Emphasize the uncanny valley effect."
+      "notes_for_gm": "Mirror horror. Fighting your own reflection is psychologically disturbing. The Tethered match the player's physical capabilities exactly but their combat style is different. Emphasize the uncanny valley effect.",
+      "tier": "C"
     },
     {
       "id": "the-purge",
       "number": 29,
       "title": "The Purge",
       "year": 2013,
-      "genre": ["Thriller", "Horror", "Social"],
+      "genre": [
+        "Thriller",
+        "Horror",
+        "Social"
+      ],
       "difficulty": 5,
       "setting": "Suburban America, 2022. A mansion in a wealthy neighborhood during the annual 12-hour Purge — when all crime is legal.",
       "description": "Every year for 12 hours, all crime is legal in America. The ultra-wealthy use this time to hunt. The team is trapped outside a secured mansion during the Purge. Groups of masked wealthy killers are methodically hunting through the neighborhood. The team must survive until 7AM without shelter, weapons, or allies — in a neighborhood designed to be cleared.",
@@ -804,14 +939,18 @@
       "point_reward": 2000,
       "bonus_possible": 750,
       "time_limit_hours": 12,
-      "notes_for_gm": "Human-vs-human survival. This is the only movie with no supernatural elements — which makes it uniquely disturbing. The Purge hunters are clever and persistent. Emphasize the 12-hour countdown. Every noise matters."
+      "notes_for_gm": "Human-vs-human survival. This is the only movie with no supernatural elements — which makes it uniquely disturbing. The Purge hunters are clever and persistent. Emphasize the 12-hour countdown. Every noise matters.",
+      "tier": "D"
     },
     {
       "id": "dont-breathe",
       "number": 30,
       "title": "Don't Breathe",
       "year": 2016,
-      "genre": ["Thriller", "Horror"],
+      "genre": [
+        "Thriller",
+        "Horror"
+      ],
       "difficulty": 6,
       "setting": "An isolated house in a derelict Detroit neighborhood. A blind veteran's home, which is an elaborate fortress.",
       "description": "The team has made the catastrophic mistake of breaking into the home of a blind veteran to steal what's rumored to be a large cash sum. The man is blind — but he has converted his home into a sensory maze that he navigates perfectly in the dark. He can hear a heartbeat from across the room. He is not the victim here. And the secret in his basement is something far worse than a robbery.",
@@ -832,14 +971,19 @@
       "point_reward": 2000,
       "bonus_possible": 1000,
       "time_limit_hours": 3,
-      "notes_for_gm": "Absolute silence mechanic again, but different from A Quiet Place. This is close-quarters human threat. The Blind Man is smart, adaptive, and on his home turf. Should feel like a chess match in the dark."
+      "notes_for_gm": "Absolute silence mechanic again, but different from A Quiet Place. This is close-quarters human threat. The Blind Man is smart, adaptive, and on his home turf. Should feel like a chess match in the dark.",
+      "tier": "D"
     },
     {
       "id": "overlord",
       "number": 31,
       "title": "Overlord",
       "year": 2018,
-      "genre": ["Horror", "Action", "War"],
+      "genre": [
+        "Horror",
+        "Action",
+        "War"
+      ],
       "difficulty": 7,
       "setting": "Occupied France, 1944. D-Day. A small French village where the Nazi SS has conducted horrific medical experiments using a black substance found under a local church.",
       "description": "A small Allied paratroop unit drops behind enemy lines the night before D-Day to destroy a radio tower. They discover the SS has weaponized a serum derived from an ancient substance under the church — it reanimates the dead and creates nearly unstoppable super-soldiers. The mission shifts from radio tower to containing a biological horror before it spreads.",
@@ -861,14 +1005,19 @@
       "bonus_possible": 1300,
       "infection_risk": true,
       "time_limit_hours": 12,
-      "notes_for_gm": "War horror hybrid. The WWII setting is very familiar for European teams. The reanimated soldiers are disturbing because they still wear Nazi uniforms and walk in formation. Wafner should be terrifying as a human villain before any zombies appear."
+      "notes_for_gm": "War horror hybrid. The WWII setting is very familiar for European teams. The reanimated soldiers are disturbing because they still wear Nazi uniforms and walk in formation. Wafner should be terrifying as a human villain before any zombies appear.",
+      "tier": "C"
     },
     {
       "id": "the-mist",
       "number": 32,
       "title": "The Mist",
       "year": 2007,
-      "genre": ["Horror", "Sci-Fi", "Social"],
+      "genre": [
+        "Horror",
+        "Sci-Fi",
+        "Social"
+      ],
       "difficulty": 7,
       "setting": "A small town in Maine. A supermarket, the surrounding mist, and glimpses of the outside world. The Arrowhead Project military facility is nearby.",
       "description": "A thick, supernatural mist descends on a small Maine town, bringing with it an assortment of interdimensional creatures. A group of survivors is trapped in a supermarket. Outside is death. Inside, a religious fanatic is using fear to build a cult that might be as dangerous as the mist. The team must find what caused the mist, stop it if possible, and survive.",
@@ -889,14 +1038,19 @@
       "point_reward": 3500,
       "bonus_possible": 1000,
       "time_limit_hours": 48,
-      "notes_for_gm": "Dual threat — creatures and humans. The creatures are Stephen King-level horrifying. But Mrs. Carmody and her cult show that fear turns people into monsters too. The mist should feel thick and utterly impenetrable."
+      "notes_for_gm": "Dual threat — creatures and humans. The creatures are Stephen King-level horrifying. But Mrs. Carmody and her cult show that fear turns people into monsters too. The mist should feel thick and utterly impenetrable.",
+      "tier": "C"
     },
     {
       "id": "1408",
       "number": 33,
       "title": "1408",
       "year": 2007,
-      "genre": ["Horror", "Psychological", "Supernatural"],
+      "genre": [
+        "Horror",
+        "Psychological",
+        "Supernatural"
+      ],
       "difficulty": 9,
       "setting": "The Dolphin Hotel, New York City. Room 1408 — a room that has killed 56 people in the past century without any singular entity responsible. The room itself is malevolent.",
       "description": "Room 1408 at the Dolphin Hotel has a perfect kill record. No single entity haunts it. The room is evil in a fundamental, abstract way — it bends reality, replays trauma, manipulates time, and kills by exhaustion, despair, and hallucination. The team is locked inside. The hotel manager says simply: 'It's an evil f***ing room.'",
@@ -917,14 +1071,18 @@
       "point_reward": 4000,
       "bonus_possible": 1500,
       "time_limit_hours": null,
-      "notes_for_gm": "The most mentally punishing scenario. Time in the room is not reliable. What seems like escape is another layer of the trap. Push players to their limits. Then push further. The room adapts."
+      "notes_for_gm": "The most mentally punishing scenario. Time in the room is not reliable. What seems like escape is another layer of the trap. Push players to their limits. Then push further. The room adapts.",
+      "tier": "B"
     },
     {
       "id": "the-ritual",
       "number": 34,
       "title": "The Ritual",
       "year": 2017,
-      "genre": ["Horror", "Folk Horror"],
+      "genre": [
+        "Horror",
+        "Folk Horror"
+      ],
       "difficulty": 8,
       "setting": "The vast, isolated forests of northern Sweden. A hiking trail that should take two days becomes a nightmare when the group takes a shortcut.",
       "description": "A hiking group takes a shortcut through the dense Swedish forest and finds themselves in the territory of Moder — an ancient Norse being, neither giant nor man, that has been worshiped in these forests for centuries. Its cult of ancient Swedes lives in the trees. Its gaze paralyzes with visions. And it is always watching from just beyond sight.",
@@ -945,7 +1103,8 @@
       "point_reward": 3500,
       "bonus_possible": 1200,
       "time_limit_hours": 72,
-      "notes_for_gm": "Folk horror at its best. The forest should feel ancient and hostile from the start. The entity should be glimpsed — never fully shown — until the final act. The cult is human but completely alien in their devotion. Isolation and guilt are the weapons here."
+      "notes_for_gm": "Folk horror at its best. The forest should feel ancient and hostile from the start. The entity should be glimpsed — never fully shown — until the final act. The cult is human but completely alien in their devotion. Isolation and guilt are the weapons here.",
+      "tier": "C"
     }
   ]
 }

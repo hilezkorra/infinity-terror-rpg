@@ -1,5 +1,5 @@
 {
-    "_note": "Freesound IDs are null by default. Click any sound chip in-game → 'Find on Freesound' → copy the number from the URL (freesound.org\/sounds\/NUMBER\/) → paste it in the ID field and save. Embed URL pattern: https:\/\/freesound.org\/embed\/sound\/iframe\/{id}\/simple\/small\/",
+    "_note": "Freesound IDs are null by default. Click any sound chip in-game → 'Find on Freesound' → copy the number from the URL (freesound.org/sounds/NUMBER/) → paste it in the ID field and save. Embed URL pattern: https://freesound.org/embed/sound/iframe/{id}/simple/small/. Local audio_url files (assets/sounds/*.ogg) are CC0 from kenney.nl — these play instantly without an iframe.",
     "sounds": {
         "zombie-groan": {
             "label": "Zombie Groan",
@@ -123,7 +123,7 @@
             "emoji": "💨"
         },
         "rain-storm": {
-            "label": "Storm \/ Rain",
+            "label": "Storm / Rain",
             "description": "Heavy rain and thunder",
             "freesound_id": 815258,
             "audio_url": null,
@@ -171,7 +171,7 @@
             "emoji": "⚙️"
         },
         "ghost-wail": {
-            "label": "Ghost \/ Wail",
+            "label": "Ghost / Wail",
             "description": "Spectral haunting sound",
             "freesound_id": 556419,
             "audio_url": null,
@@ -195,7 +195,7 @@
             "emoji": "👾"
         },
         "machine-whirr": {
-            "label": "Machine \/ Robot",
+            "label": "Machine / Robot",
             "description": "Mechanical entity sounds",
             "freesound_id": 742021,
             "audio_url": null,
@@ -243,11 +243,469 @@
             "emoji": "⚔️"
         },
         "train-rumble": {
-            "label": "train-rumble",
-            "description": "",
+            "label": "Train Rumble",
+            "description": "Train moving on tracks",
             "freesound_id": 131173,
             "audio_url": null,
+            "search_query": "train rumble moving tracks",
+            "emoji": "🚂",
             "loop": true
+        },
+
+        "ui-click": {
+            "label": "UI Click",
+            "description": "Button or menu press",
+            "freesound_id": null,
+            "audio_url": "assets/sounds/ui-click.ogg",
+            "search_query": "button click UI menu",
+            "emoji": "🖱️"
+        },
+        "ui-error": {
+            "label": "UI Error",
+            "description": "Access denied / error / blocked",
+            "freesound_id": null,
+            "audio_url": "assets/sounds/ui-error.ogg",
+            "search_query": "error deny blocked buzzer",
+            "emoji": "🚫"
+        },
+        "ui-confirm": {
+            "label": "UI Confirm",
+            "description": "Confirmation / purchase success",
+            "freesound_id": null,
+            "audio_url": "assets/sounds/ui-confirm.ogg",
+            "search_query": "confirm success UI positive",
+            "emoji": "✅"
+        },
+        "ui-select": {
+            "label": "UI Select",
+            "description": "Menu selection / item hover",
+            "freesound_id": null,
+            "audio_url": "assets/sounds/ui-select.ogg",
+            "search_query": "select highlight menu choice",
+            "emoji": "🔘"
+        },
+        "ui-glitch": {
+            "label": "Glitch",
+            "description": "Digital glitch / system error",
+            "freesound_id": null,
+            "audio_url": "assets/sounds/ui-glitch.ogg",
+            "search_query": "glitch digital error corrupt",
+            "emoji": "📡"
+        },
+        "countdown-beep": {
+            "label": "Countdown Beep",
+            "description": "Tension countdown tick",
+            "freesound_id": null,
+            "audio_url": "assets/sounds/countdown-beep.ogg",
+            "search_query": "countdown beep tick clock tension",
+            "emoji": "⏱️"
+        },
+        "points-gained": {
+            "label": "Points Gained",
+            "description": "Points awarded after surviving",
+            "freesound_id": null,
+            "audio_url": "assets/sounds/points-gained.ogg",
+            "search_query": "points reward jingle success short",
+            "emoji": "💰"
+        },
+        "level-up": {
+            "label": "Level Up",
+            "description": "Stat enhancement purchased",
+            "freesound_id": null,
+            "audio_url": "assets/sounds/level-up.ogg",
+            "search_query": "level up power gain upgrade jingle",
+            "emoji": "⬆️"
+        },
+        "mission-complete": {
+            "label": "Mission Complete",
+            "description": "Movie survived — objective complete",
+            "freesound_id": null,
+            "audio_url": "assets/sounds/mission-complete.ogg",
+            "search_query": "mission complete victory fanfare",
+            "emoji": "🏆"
+        },
+        "item-pickup": {
+            "label": "Item Pickup",
+            "description": "Item or gear picked up",
+            "freesound_id": null,
+            "audio_url": "assets/sounds/item-pickup.ogg",
+            "search_query": "item pickup collect short jingle",
+            "emoji": "📦"
+        },
+
+        "melee-punch": {
+            "label": "Melee Punch",
+            "description": "Bare-fist heavy impact",
+            "freesound_id": null,
+            "audio_url": "assets/sounds/melee-punch.ogg",
+            "search_query": "punch fist impact melee hit",
+            "emoji": "👊"
+        },
+        "bullet-impact-flesh": {
+            "label": "Bullet Hit Flesh",
+            "description": "Bullet strikes a body",
+            "freesound_id": null,
+            "audio_url": "assets/sounds/bullet-impact-flesh.ogg",
+            "search_query": "bullet impact flesh soft hit body",
+            "emoji": "🩸"
+        },
+        "bullet-impact-wall": {
+            "label": "Bullet Hit Surface",
+            "description": "Bullet hits concrete or metal",
+            "freesound_id": null,
+            "audio_url": "assets/sounds/bullet-impact-wall.ogg",
+            "search_query": "bullet impact wall ricochet concrete",
+            "emoji": "💢"
+        },
+        "blade-draw": {
+            "label": "Blade Drawn",
+            "description": "Knife or sword drawn from sheath",
+            "freesound_id": null,
+            "audio_url": "assets/sounds/blade-draw.ogg",
+            "search_query": "knife draw sword sheath metal scrape",
+            "emoji": "🗡️"
+        },
+        "blade-slice": {
+            "label": "Blade Slice",
+            "description": "Knife cutting or slicing",
+            "freesound_id": null,
+            "audio_url": "assets/sounds/blade-slice.ogg",
+            "search_query": "knife slice cut whoosh blade",
+            "emoji": "🔪"
+        },
+        "item-equip": {
+            "label": "Gear Equip",
+            "description": "Equipment / belt / gear sounds",
+            "freesound_id": null,
+            "audio_url": "assets/sounds/item-equip.ogg",
+            "search_query": "gear equip belt tactical strap",
+            "emoji": "🎒"
+        },
+        "impact-glass": {
+            "label": "Glass Impact",
+            "description": "Glass struck or cracking",
+            "freesound_id": null,
+            "audio_url": "assets/sounds/impact-glass.ogg",
+            "search_query": "glass impact crack breaking",
+            "emoji": "🪟"
+        },
+        "impact-metal": {
+            "label": "Metal Impact",
+            "description": "Heavy metal collision",
+            "freesound_id": null,
+            "audio_url": "assets/sounds/impact-metal.ogg",
+            "search_query": "metal heavy impact collision crash",
+            "emoji": "🔩"
+        },
+        "handle-coins": {
+            "label": "Coins / Currency",
+            "description": "Points / currency transaction",
+            "freesound_id": null,
+            "audio_url": "assets/sounds/handle-coins.ogg",
+            "search_query": "coins currency handle shop transaction",
+            "emoji": "🪙"
+        },
+
+        "footsteps-snow": {
+            "label": "Snow Footsteps",
+            "description": "Walking on snow — The Thing / arctic",
+            "freesound_id": null,
+            "audio_url": "assets/sounds/footsteps-snow.ogg",
+            "search_query": "footsteps snow crunch cold winter",
+            "emoji": "❄️"
+        },
+        "footsteps-grass": {
+            "label": "Grass Footsteps",
+            "description": "Outdoor terrain — Jurassic, Ritual",
+            "freesound_id": null,
+            "audio_url": "assets/sounds/footsteps-grass.ogg",
+            "search_query": "footsteps grass outdoor terrain",
+            "emoji": "🌿"
+        },
+        "footsteps-wood": {
+            "label": "Wood Footsteps",
+            "description": "Wood floor — Silent Hill, Freddy",
+            "freesound_id": null,
+            "audio_url": "assets/sounds/footsteps-wood.ogg",
+            "search_query": "footsteps wood floor creak indoor",
+            "emoji": "🪵"
+        },
+        "footsteps-concrete": {
+            "label": "Concrete Footsteps",
+            "description": "Hard floor — Hive, urban",
+            "freesound_id": null,
+            "audio_url": "assets/sounds/footsteps-concrete.ogg",
+            "search_query": "footsteps concrete hard floor corridor",
+            "emoji": "👣"
+        },
+        "footsteps-carpet": {
+            "label": "Muffled Footsteps",
+            "description": "Quiet / stealth movement — Don't Breathe",
+            "freesound_id": null,
+            "audio_url": "assets/sounds/footsteps-carpet.ogg",
+            "search_query": "footsteps quiet muffled stealth carpet",
+            "emoji": "🤫"
+        },
+        "creak": {
+            "label": "Structural Creak",
+            "description": "Wood or structure creaking under weight",
+            "freesound_id": null,
+            "audio_url": "assets/sounds/creak.ogg",
+            "search_query": "creak wood structure weight",
+            "emoji": "🏚️"
+        },
+        "door-open-rpg": {
+            "label": "Door Open",
+            "description": "Classic door opening",
+            "freesound_id": null,
+            "audio_url": "assets/sounds/door-open-rpg.ogg",
+            "search_query": "door open wooden classic",
+            "emoji": "🚪"
+        },
+
+        "electronic-door": {
+            "label": "Electronic Door",
+            "description": "Sci-fi sliding door — RE Hive, Aliens",
+            "freesound_id": null,
+            "audio_url": "assets/sounds/electronic-door.ogg",
+            "search_query": "electronic door sliding sci-fi hatch",
+            "emoji": "🔩"
+        },
+        "laser-shot": {
+            "label": "Laser Shot",
+            "description": "Laser weapon fire",
+            "freesound_id": null,
+            "audio_url": "assets/sounds/laser-shot.ogg",
+            "search_query": "laser shot weapon fire sci-fi",
+            "emoji": "⚡"
+        },
+        "laser-grid-hum": {
+            "label": "Laser Grid Hum",
+            "description": "Force field / RE laser hallway hum",
+            "freesound_id": null,
+            "audio_url": "assets/sounds/laser-grid-hum.ogg",
+            "search_query": "force field laser grid hum electric",
+            "emoji": "🔆",
+            "loop": true
+        },
+        "computer-noise": {
+            "label": "Computer Noise",
+            "description": "Computer terminal / Red Queen processing",
+            "freesound_id": null,
+            "audio_url": "assets/sounds/computer-noise.ogg",
+            "search_query": "computer noise terminal processing beep",
+            "emoji": "💻"
+        },
+        "space-ambience": {
+            "label": "Space Ambience",
+            "description": "Deep space atmosphere — Aliens, Event Horizon",
+            "freesound_id": null,
+            "audio_url": "assets/sounds/space-ambience.ogg",
+            "search_query": "space ambience deep void hum atmospheric",
+            "emoji": "🌌",
+            "loop": true
+        },
+        "engine-circular": {
+            "label": "Engine Whirr",
+            "description": "Circular mechanical engine",
+            "freesound_id": null,
+            "audio_url": "assets/sounds/engine-circular.ogg",
+            "search_query": "engine mechanical circular whirr rotating",
+            "emoji": "⚙️",
+            "loop": true
+        },
+        "thruster": {
+            "label": "Thruster",
+            "description": "Rocket thruster / fire burst",
+            "freesound_id": null,
+            "audio_url": "assets/sounds/thruster.ogg",
+            "search_query": "thruster rocket fire burst propulsion",
+            "emoji": "🚀"
+        },
+        "explosion-crunch": {
+            "label": "Explosion Crunch",
+            "description": "Heavy close-range explosion",
+            "freesound_id": null,
+            "audio_url": "assets/sounds/explosion-crunch.ogg",
+            "search_query": "explosion crunch heavy close impact",
+            "emoji": "💥"
+        },
+        "slime-horror": {
+            "label": "Body Horror",
+            "description": "Alien slime / zombie transformation sounds",
+            "freesound_id": null,
+            "audio_url": "assets/sounds/slime-horror.ogg",
+            "search_query": "slime body horror transformation wet",
+            "emoji": "🦠"
+        },
+
+        "jungle-ambience": {
+            "label": "Jungle Ambience",
+            "description": "Tropical insects, birds — Jurassic Park",
+            "freesound_id": null,
+            "audio_url": null,
+            "search_query": "tropical jungle ambience night insects birds",
+            "emoji": "🌴",
+            "loop": true
+        },
+        "desert-wind": {
+            "label": "Desert Wind",
+            "description": "Dry, hot sand wind — The Mummy",
+            "freesound_id": null,
+            "audio_url": null,
+            "search_query": "desert wind dry sand atmosphere hot",
+            "emoji": "🏜️",
+            "loop": true
+        },
+        "cave-ambience": {
+            "label": "Cave Ambience",
+            "description": "Deep cave echo, drip — The Descent",
+            "freesound_id": null,
+            "audio_url": null,
+            "search_query": "cave ambience underground echo dark hollow",
+            "emoji": "🗻",
+            "loop": true
+        },
+        "arctic-wind": {
+            "label": "Arctic Wind",
+            "description": "Howling blizzard — The Thing",
+            "freesound_id": null,
+            "audio_url": null,
+            "search_query": "arctic blizzard cold wind howling snowstorm",
+            "emoji": "🌬️",
+            "loop": true
+        },
+        "forest-night": {
+            "label": "Dark Forest",
+            "description": "Dense ancient forest at night — The Ritual",
+            "freesound_id": null,
+            "audio_url": null,
+            "search_query": "dark forest night ambience eerie ancient",
+            "emoji": "🌲",
+            "loop": true
+        },
+        "radio-static": {
+            "label": "Radio Static",
+            "description": "Walkie-talkie / comms crackle",
+            "freesound_id": null,
+            "audio_url": null,
+            "search_query": "radio static crackle walkie talkie comms",
+            "emoji": "📻"
+        },
+        "power-cut": {
+            "label": "Power Cut",
+            "description": "Electricity cutting out / blackout",
+            "freesound_id": null,
+            "audio_url": null,
+            "search_query": "electricity power cut blackout hum",
+            "emoji": "🔌"
+        },
+        "sinister-whisper": {
+            "label": "Sinister Whisper",
+            "description": "Ghostly whisper — Silent Hill, 1408, Hereditary",
+            "freesound_id": null,
+            "audio_url": null,
+            "search_query": "whisper sinister ghost eerie breathe supernatural",
+            "emoji": "👁️"
+        },
+        "jump-scare-sting": {
+            "label": "Jump Scare Sting",
+            "description": "Sudden musical stab — universal horror",
+            "freesound_id": null,
+            "audio_url": null,
+            "search_query": "horror sting jump scare musical stab shock",
+            "emoji": "😱"
+        },
+        "clock-ticking": {
+            "label": "Clock Ticking",
+            "description": "Relentless countdown — SAW, Final Destination",
+            "freesound_id": null,
+            "audio_url": null,
+            "search_query": "clock ticking countdown suspense pressure",
+            "emoji": "🕐",
+            "loop": true
+        },
+        "music-box-horror": {
+            "label": "Horror Music Box",
+            "description": "Creepy winding music box — Hereditary, It",
+            "freesound_id": null,
+            "audio_url": null,
+            "search_query": "music box creepy horror eerie winding",
+            "emoji": "🎵"
+        },
+        "scratching-walls": {
+            "label": "Scratching Walls",
+            "description": "Claws or nails on surface — Crawlers, nurses",
+            "freesound_id": null,
+            "audio_url": null,
+            "search_query": "scratching claws nails wall surface horror",
+            "emoji": "💀"
+        },
+        "supernatural-rush": {
+            "label": "Supernatural Rush",
+            "description": "Fast entity movement — Samara, Moder",
+            "freesound_id": null,
+            "audio_url": null,
+            "search_query": "whoosh supernatural entity rush fast horror",
+            "emoji": "👻"
+        },
+        "helicopter": {
+            "label": "Helicopter",
+            "description": "Rotor / evac — Aliens, Overlord, WWZ",
+            "freesound_id": null,
+            "audio_url": null,
+            "search_query": "helicopter rotor hovering approach evacuation",
+            "emoji": "🚁",
+            "loop": true
+        },
+        "breathing-heavy": {
+            "label": "Heavy Breathing",
+            "description": "Exhausted panting — low health / panic",
+            "freesound_id": null,
+            "audio_url": null,
+            "search_query": "heavy breathing exhausted panic fear panting",
+            "emoji": "😮‍💨",
+            "loop": true
+        },
+        "infection-transform": {
+            "label": "Infection Transform",
+            "description": "Body horror — T-Virus, 28 Days Later, Overlord",
+            "freesound_id": null,
+            "audio_url": null,
+            "search_query": "transformation body horror infection grotesque wet",
+            "emoji": "🧬"
+        },
+        "healing-inject": {
+            "label": "Healing",
+            "description": "Medical injection / first aid",
+            "freesound_id": null,
+            "audio_url": null,
+            "search_query": "medical injection syringe healing spray",
+            "emoji": "💉"
+        },
+        "velociraptor": {
+            "label": "Velociraptor",
+            "description": "Raptor call / bark — Jurassic Park",
+            "freesound_id": null,
+            "audio_url": null,
+            "search_query": "velociraptor dinosaur call bark screech raptor",
+            "emoji": "🦕"
+        },
+        "static-tv": {
+            "label": "TV Static",
+            "description": "Television static / VHS hiss — The Ring",
+            "freesound_id": null,
+            "audio_url": null,
+            "search_query": "television static white noise VHS tape hiss",
+            "emoji": "📺"
+        },
+        "weapon-reload": {
+            "label": "Weapon Reload",
+            "description": "Magazine click / chamber load",
+            "freesound_id": null,
+            "audio_url": null,
+            "search_query": "weapon reload magazine click chamber gun",
+            "emoji": "🔫"
         }
     }
 }

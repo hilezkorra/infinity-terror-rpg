@@ -1,0 +1,1689 @@
+    common | 911 Operator
+    common | ATM Technician
+    common | Acquisitions Editor
+    common | Aircraft Mechanic
+    common | Airfield Operations
+    common | Alcoholic
+    common | Alcoholic
+    common | Animal Cart Driver
+    common | Apiarist (Beekeeper)
+    common | Appliance Repair
+    common | Appliance Repair Technician
+    common | Appliance Repair Technician
+    common | Arborist
+    common | Arcade Technician
+    common | Armored Car Driver
+    common | Aromatherapist
+    common | Aromatherapist
+    common | Art Appraiser
+    common | Astrologer
+    common | Astrologer
+    common | Auctioneer
+    common | Auto Body Repair Technician
+    common | Auto Body Repair Technician
+    common | Auto Mechanic
+    common | Auto Mechanic
+    common | Avionics Technician
+    common | Baggage Handler
+    common | Baggage Inspector
+    common | Bailiff
+    common | Baker
+    common | Baker
+    common | Bakery Assistant
+    common | Bakery Clerk
+    common | Bank Teller
+    common | Bank Teller
+    common | Barista
+    common | Barista
+    common | Barista
+    common | Bartender
+    common | Bartender
+    common | Bartender
+    common | Basket Weaver
+    common | Beggar
+    common | Beggar
+    common | Bellhop
+    common | Bellhop
+    common | Bicycle Messenger
+    common | Bill Poster
+    common | Billboard Painter
+    common | Blacksmith
+    common | Book Appraiser
+    common | Bookie
+    common | Booking Agent
+    common | Border Guard
+    common | Bouncer
+    common | Braille Transcriber
+    common | Brand Ambassador
+    common | Bricklayer
+    common | Bricklayer
+    common | Building Superintendent
+    common | Building Superintendent
+    common | Bulldozer Operator
+    common | Bulldozer Operator
+    common | Burger Flipper
+    common | Bus Driver
+    common | Bus Driver
+    common | Bus Driver
+    common | Business Analyst
+    common | Busker
+    common | Butcher
+    common | Butcher
+    common | Butcher
+    common | Butcher Shop Worker
+    common | Buyer (Retail)
+    common | Cab Driver
+    common | Cable Installer
+    common | Call Center Agent
+    common | Call Center Agent
+    common | Call Center Agent
+    common | Calligrapher
+    common | Cam Model
+    common | Cam Model
+    common | Candle Maker
+    common | Candy Shop Worker
+    common | Cannabis Grower
+    common | Car Detailer
+    common | Car Detailer
+    common | Car Wash Attendant
+    common | Carnival Ride Operator
+    common | Carpenter
+    common | Carpenter
+    common | Carpet Cleaner
+    common | Carpet Cleaner
+    common | Carpet Fitter
+    common | Carpet Fitter
+    common | Cashier
+    common | Cashier
+    common | Casting Director
+    common | Cat Sitter
+    common | Category Manager
+    common | Caterer
+    common | Caterer
+    common | Cattle Farmer
+    common | Cheese Maker
+    common | Chimney Sweep
+    common | Chimney Sweep
+    common | Chiropractor
+    common | Chiropractor
+    common | Chocolatier
+    common | Choir Director
+    common | Chronic Gambler
+    common | Chronic Gambler
+    common | Cider Maker
+    common | City Planner
+    common | Cleaner
+    common | Cleaner/Janitor
+    common | Clown
+    common | Clown
+    common | Coast Guard Crew
+    common | Coat Check Attendant
+    common | Coat Check Attendant
+    common | Cobbler
+    common | Coffee Roaster
+    common | Composer
+    common | Computer Repair
+    common | Concession Stand Worker
+    common | Concrete Finisher
+    common | Concrete Finisher
+    common | Conservation Officer
+    common | Construction Laborer
+    common | Copier Technician
+    common | Copy Editor
+    common | Copy Shop Attendant
+    common | Corrections Officer
+    common | Cosmetologist
+    common | Cosmetologist
+    common | Costume Character Performer
+    common | Costume Supervisor
+    common | Courier (Armed)
+    common | Courier/Messenger
+    common | Court Interpreter
+    common | Court Reporter
+    common | Cowboy
+    common | Crafter
+    common | Crane Operator
+    common | Crane Operator
+    common | Crossing Guard
+    common | Crossing Guard
+    common | Customer Service Rep
+    common | Customer Service Representative
+    common | Customer Service Representative
+    common | Customs Inspector
+    common | Dabbler
+    common | Dairy Farmer
+    common | Data Entry Clerk
+    common | Daycare Worker
+    common | Deck Hand
+    common | Deli Counter Worker
+    common | Delivery Driver
+    common | Delivery Driver
+    common | Delivery Driver
+    common | Delivery Person
+    common | Demolition Worker
+    common | Demolition Worker
+    common | Dental Hygienist
+    common | Dishwasher
+    common | Dishwasher
+    common | Dishwasher
+    common | Dishwasher
+    common | Dispatcher
+    common | District Manager
+    common | Dock Worker
+    common | Dog Walker
+    common | Dog Walker
+    common | Dog Walker
+    common | Doorman / Bouncer
+    common | Doula
+    common | Driving Instructor
+    common | Drug Dealer
+    common | Drug Dealer
+    common | Dry Cleaner
+    common | Dry Cleaner
+    common | Dry Cleaner Attendant
+    common | Dump Truck Driver
+    common | Dump Truck Driver
+    common | EMT
+    common | Electrician
+    common | Electrician
+    common | Elevator Attendant
+    common | Embroidery Specialist
+    common | Emergency Dispatcher
+    common | Engine Room Mechanic
+    common | Environmental Scientist
+    common | Esthetician
+    common | Esthetician
+    common | Ex-Convict
+    common | Ex-Convict
+    common | Executive Assistant
+    common | Exterminator
+    common | Exterminator
+    common | Fact Checker
+    common | Factory Worker
+    common | Farm Hand
+    common | Farm Hand
+    common | Farm Worker
+    common | Fashion Buyer
+    common | Fast Food Worker
+    common | Fast Food Worker
+    common | Fast Food Worker
+    common | Ferry Operator
+    common | File Clerk
+    common | Fish Monger
+    common | Fisheries Officer
+    common | Fisherman
+    common | Fishmonger
+    common | Fishmonger
+    common | Fishmonger
+    common | Fitness Instructor
+    common | Fitness Instructor
+    common | Fixer
+    common | Flag Person
+    common | Fleet Manager
+    common | Flight Attendant
+    common | Flight Attendant
+    common | Flight Instructor
+    common | Flooring Installer
+    common | Flooring Installer
+    common | Florist
+    common | Florist
+    common | Food Critic
+    common | Food Delivery Rider
+    common | Food Delivery Rider
+    common | Food Stylist
+    common | Food Truck Operator
+    common | Forest Ranger
+    common | Forester
+    common | Forklift Operator
+    common | Forklift Operator
+    common | Fortune Teller
+    common | Fortune Teller
+    common | Freelancer
+    common | Front of House Manager
+    common | Fruit Picker
+    common | Fruit Picker
+    common | Fry Cook
+    common | Game Designer
+    common | Game Warden
+    common | Gardener
+    common | Gardener
+    common | Gardener/Landscaper
+    common | Gas Station Attendant
+    common | Gas Station Attendant
+    common | Gate Agent
+    common | Gemologist
+    common | Genealogist
+    common | General Manager
+    common | Glassblower
+    common | Glazier
+    common | Glazier
+    common | Goat Herder
+    common | Goldsmith
+    common | Golf Caddy
+    common | Golf Caddy
+    common | Grave Digger
+    common | Greengrocer
+    common | Greeting Card Writer
+    common | Grocery Store Employee
+    common | Grocery Store Employee
+    common | Gym Cleaner
+    common | HVAC Technician
+    common | HVAC Technician
+    common | Hair Department Head
+    common | Hair Stylist
+    common | Hair Stylist
+    common | Handyman
+    common | Handyman
+    common | Handyman
+    common | Hazmat Transporter
+    common | Help Desk
+    common | Hobbyist
+    common | Home Health Aide
+    common | Homeless Person
+    common | Homeless Person
+    common | Hospital Porter
+    common | Hotel Night Auditor
+    common | Hotel Receptionist
+    common | Hotel Receptionist
+    common | House Cleaner
+    common | House Cleaner
+    common | Housekeeper
+    common | Housekeeping Supervisor
+    common | IT Support
+    common | IT Support Technician
+    common | IT Support Technician
+    common | Ice Cream Maker
+    common | Ice Cutter
+    common | Ice Road Trucker
+    common | Illustrator
+    common | Illustrator
+    common | Independent Contractor
+    common | Inside Sales Rep
+    common | Insurance Agent
+    common | Insurance Agent
+    common | Interior Designer
+    common | Interior Designer
+    common | Interpreter
+    common | Janitor
+    common | Janitor / Cleaner
+    common | Janitor / Cleaner
+    common | Journalist
+    common | Journalist
+    common | Juice Bar Worker
+    common | Junior Programmer
+    common | Junior Programmer
+    common | Knife Sharpener
+    common | Knife Sharpener
+    common | Knitter
+    common | Lab Technician
+    common | Lab Technician
+    common | Lace Maker
+    common | Landscaper
+    common | Landscaper
+    common | Language Teacher
+    common | Language Tutor
+    common | Language Tutor
+    common | Laundry Attendant
+    common | Laundry Attendant
+    common | Laundry Attendant
+    common | Laundry Manager
+    common | Laundry Worker
+    common | Leather Worker
+    common | Level Designer
+    common | Librarian
+    common | Librarian
+    common | Library Page
+    common | Life Coach
+    common | Lifeguard
+    common | Lifeguard
+    common | Lifeguard
+    common | Lifeguard
+    common | Lighting Technician
+    common | Line Cook
+    common | Line Cook
+    common | Line Cook
+    common | Line Fisherman
+    common | Line Fisherman
+    common | Literary Agent
+    common | Lobster Fisherman
+    common | Location Scout
+    common | Locker Room Attendant
+    common | Locker Room Attendant
+    common | Locksmith
+    common | Locksmith
+    common | Logging Truck Driver
+    common | Logistics Coordinator
+    common | Loss Prevention Agent
+    common | Lumberjack
+    common | Mafia Lackey
+    common | Mafia Lackey
+    common | Magician's Assistant
+    common | Magician's Assistant
+    common | Mail Carrier
+    common | Mail Carrier
+    common | Mail Clerk
+    common | Mail Sorter
+    common | Makeup Artist
+    common | Makeup Artist
+    common | Makeup Department Head
+    common | Marine Surveyor
+    common | Market Gardener
+    common | Mason
+    common | Mason
+    common | Massage Therapist
+    common | Massage Therapist
+    common | Master Brewer
+    common | Master Distiller
+    common | Mastering Engineer
+    common | Meal Prep Specialist
+    common | Medical Records Clerk
+    common | Medical Translator
+    common | Mental Patient
+    common | Mental Patient
+    common | Mentor
+    common | Merchandise Seller
+    common | Merchandiser
+    common | Messenger (Foot)
+    common | Meter Reader
+    common | Milkman
+    common | Mime
+    common | Mime
+    common | Mine Worker
+    common | Mixing Engineer
+    common | Model Maker
+    common | Moving Crew Worker
+    common | Museum Guide
+    common | Museum Guide
+    common | Mushroom Forager
+    common | Music Arranger
+    common | Music Teacher
+    common | Mystery Shopper
+    common | Mystery Shopper
+    common | NEET
+    common | NEET
+    common | Nail Technician
+    common | Nail Technician
+    common | Nanny/Childcare
+    common | Newspaper Carrier
+    common | Newspaper Deliverer
+    common | Normal Police Officer
+    common | Normal Police Officer
+    common | Numismatist
+    common | Nutritionist
+    common | Nutritionist
+    common | Nutritionist
+    common | Odd Job Worker
+    common | Office Administrator
+    common | Office Worker
+    common | Online Tutor
+    common | Online Tutor
+    common | Operations Manager
+    common | Orchestra Conductor
+    common | Orderly
+    common | Outside Sales Rep
+    common | Painter & Decorator
+    common | Painter & Decorator
+    common | Painter (decorative)
+    common | Palm Reader
+    common | Palm Reader
+    common | Pantry Cook
+    common | Paralegal
+    common | Park Ranger (junior)
+    common | Park Warden
+    common | Parking Attendant
+    common | Parking Enforcement
+    common | Parking Lot Cashier
+    common | Pastry Chef
+    common | Paving Machine Operator
+    common | Paving Machine Operator
+    common | Pearl Diver
+    common | Pedicab Driver
+    common | Personal Assistant
+    common | Personal Chef
+    common | Personal Chef (Dietary)
+    common | Personal Trainer
+    common | Personal Trainer
+    common | Pest Control Technician
+    common | Pest Control Technician
+    common | Pet Groomer
+    common | Pet Sitter
+    common | Pet Sitter
+    common | Philatelist
+    common | Phlebotomist
+    common | Phone Repair
+    common | Photocopy Operator
+    common | Photographer
+    common | Photographer
+    common | Pickpocket
+    common | Pickpocket
+    common | Piercing Artist
+    common | Pig Farmer
+    common | Pilates Instructor
+    common | Pilates Instructor
+    common | Pizza Delivery Driver
+    common | Plant Waterer
+    common | Plasterer
+    common | Plasterer
+    common | Playground Designer
+    common | Plumber
+    common | Plumber
+    common | Poet
+    common | Poet
+    common | Pool Attendant
+    common | Pool Cleaner
+    common | Pool Cleaner
+    common | Porter
+    common | Porter
+    common | Post Office Clerk
+    common | Post Office Clerk
+    common | Postman/Mail Carrier
+    common | Potter
+    common | Poultry Farmer
+    common | Preschool Teacher
+    common | Printer Repair
+    common | Private Tutor
+    common | Probation Officer
+    common | Product Manager
+    common | Program Seller
+    common | Project Manager
+    common | Prop Master
+    common | Property Appraiser
+    common | Prostitute
+    common | Prostitute
+    common | Prototyper
+    common | Quality Assurance Tester
+    common | Quality Control Inspector
+    common | Quilter
+    common | Ramp Agent
+    common | Rancher
+    common | Real Estate Agent
+    common | Real Estate Agent
+    common | Receptionist
+    common | Recipe Developer
+    common | Refugee
+    common | Refugee
+    common | Regional Director
+    common | Researcher
+    common | Researcher
+    common | Restaurant Owner
+    common | Retail Sales Associate
+    common | Rickshaw Puller
+    common | Ride-Share Driver
+    common | Ride-Share Driver
+    common | Roadie
+    common | Roofer
+    common | Roofer
+    common | Runaway
+    common | Runaway
+    common | Safety Inspector
+    common | Salad Prep
+    common | Sandwich Maker
+    common | Satellite Installer
+    common | Scaffolder
+    common | Scaffolder
+    common | Scrum Master
+    common | Scuba Instructor
+    common | Seamstress
+    common | Seaweed Harvester
+    common | Security Guard
+    common | Security Guard
+    common | Security Guard
+    common | Security Guard
+    common | Security Screener
+    common | Septic Tank Cleaner
+    common | Septic Tank Cleaner
+    common | Server Administrator
+    common | Server Administrator
+    common | Session Musician
+    common | Set Decorator
+    common | Shelf Stocker
+    common | Shelf Stocker
+    common | Shepherd
+    common | Shoe Repair / Cobbler
+    common | Shoe Repair / Cobbler
+    common | Shoe Shiner
+    common | Sign Language Interpreter
+    common | Sign Painter
+    common | Sign Spinner
+    common | Silversmith
+    common | Ski Lift Operator
+    common | Skycap
+    common | Sleep Study Participant
+    common | Sleep Study Participant
+    common | Smoothie Maker
+    common | Soap Maker
+    common | Social Worker
+    common | Solo Practitioner
+    common | Sommelier
+    common | Sound Designer
+    common | Sound Engineer
+    common | Special Ed Teacher
+    common | Stage Hand
+    common | Stagehand
+    common | Stained Glass Artist
+    common | Stock Clerk
+    common | Store Manager
+    common | Store Manager
+    common | Streamer
+    common | Streamer
+    common | Street Sweeper
+    common | Strip Club Dancer
+    common | Strip Club Dancer
+    common | Studio Engineer
+    common | Substitute Teacher
+    common | Supply Chain Analyst
+    common | Surf Instructor
+    common | TSA Agent
+    common | Tailor
+    common | Tailor
+    common | Talent Agent
+    common | Talent Scout
+    common | Tanker Truck Driver
+    common | Tattoo Artist
+    common | Tattoo Artist
+    common | Tax Assessor
+    common | Taxi Driver
+    common | Taxi Driver
+    common | Taxidermist
+    common | Teaching Assistant
+    common | Technical Writer
+    common | Temp Worker
+    common | Test Prep Coach
+    common | Theme Park Designer
+    common | Thief / Burglar
+    common | Thief / Burglar
+    common | Ticket Agent
+    common | Ticket Booth Operator
+    common | Ticket Seller
+    common | Ticket Taker
+    common | Tiler
+    common | Tiler
+    common | Tinkerer
+    common | Tire Fitter / Mechanic
+    common | Tire Fitter / Mechanic
+    common | Toll Booth Operator
+    common | Tour Guide
+    common | Tour Guide
+    common | Tour Manager
+    common | Touring Musician
+    common | Tow Truck Driver
+    common | Tow Truck Driver
+    common | Toy Designer
+    common | Traffic Engineer
+    common | Trail Maintainer
+    common | Train Conductor
+    common | Train Conductor
+    common | Translator
+    common | Trash Collector
+    common | Truffle Hunter
+    common | Tuna Fisherman
+    common | Tutor
+    common | UI/UX Designer
+    common | Upholsterer
+    common | Upholsterer
+    common | Urban Designer
+    common | Usher
+    common | Usher
+    common | Usher/Theater Attendant
+    common | Valet Parker
+    common | Valet Parking Attendant
+    common | Valet Parking Attendant
+    common | Valet Parking Attendant
+    common | Veterinary Technician
+    common | Video Editor
+    common | Videographer
+    common | Videographer
+    common | Vineyard Worker
+    common | Vintner
+    common | Virtual Assistant
+    common | Virtual Assistant
+    common | Virtual Assistant
+    common | Waiter / Waitress
+    common | Waiter / Waitress
+    common | Waiter/Waitress
+    common | Warehouse Manager
+    common | Warehouse Worker
+    common | Warehouse Worker
+    common | Warehouse Worker
+    common | Weaver
+    common | Web Developer
+    common | Web Developer
+    common | Welder
+    common | Welder
+    common | Whaler (Historical)
+    common | White Water Rafting Guide
+    common | White Water Rafting Guide
+    common | Window Cleaner
+    common | Window Cleaner
+    common | Yoga Instructor
+    common | Yoga Instructor
+    common | YouTube Creator
+    common | YouTube Creator
+ legendary | Ambassador
+ legendary | Assassin
+ legendary | Astronaut
+ legendary | Astronaut
+ legendary | Billionaire
+ legendary | Billionaire
+ legendary | Brainwashed Asset
+ legendary | CEO - Huge Corporation
+ legendary | CEO - Huge Corporation
+ legendary | CIA Officer
+ legendary | Cartel Leader
+ legendary | Cartel Supreme Leader
+ legendary | Country President/Prime Minister
+ legendary | Crime Lord
+ legendary | Death Row Inmate
+ legendary | Dictator
+ legendary | Double Agent
+ legendary | ER Doctor
+ legendary | Ghost Assassin
+ legendary | International Crime Syndicate Leader
+ legendary | International Smuggler King
+ legendary | Legendary Hitman
+ legendary | Legendary Master Assassin
+ legendary | Legendary Neurosurgeon
+ legendary | Legendary Strategist
+ legendary | MI6 Operative
+ legendary | Mafia Don
+ legendary | Mafia Don
+ legendary | Mafia Don
+ legendary | Mafia Underboss
+ legendary | Mass Serial Killer
+ legendary | Mercenary Warlord
+ legendary | Money Laundering King
+ legendary | Nobel Prize-Winning Medical Researcher
+ legendary | Olympic Athlete
+ legendary | Olympic Athlete
+ legendary | Oracle / Seer
+ legendary | Oracle / Seer
+ legendary | Organ Builder
+ legendary | Pioneering Transplant Surgeon
+ legendary | Russian Mafia Boss
+ legendary | Secret Service Agent
+ legendary | Secret Society Grandmaster
+ legendary | Senator
+ legendary | Senator
+ legendary | Severely Mentally Ill (Untreated)
+ legendary | Shadow Advisor
+ legendary | Shadow Commander
+ legendary | Spec Ops Legend
+ legendary | Spy / Undercover Operative
+ legendary | Submarine Officer
+ legendary | Super Soldier (Experimental)
+ legendary | Terrorist Organization Leader
+ legendary | Test Pilot
+ legendary | Test Pilot
+ legendary | The Fixer of Last Resort
+ legendary | The Power Behind the Throne
+ legendary | The Untouchable
+ legendary | Triad Leader
+ legendary | Underground Banking Head
+ legendary | Untouchable Crime Boss
+ legendary | Untraceable Killer
+ legendary | Untraceable Operator
+ legendary | Vampire Hunter
+ legendary | Vampire Hunter
+ legendary | Violin Maker / Luthier
+ legendary | Warlord
+ legendary | World-Renowned Genius (Nobel/Fields)
+ legendary | Yakuza Boss
+      rare | 9th Grader Syndrome Adult
+      rare | 9th Grader Syndrome Adult
+      rare | AI Developer
+      rare | AI Developer
+      rare | Air Traffic Controller
+      rare | Alchemist
+      rare | Alchemist
+      rare | Anesthesiologist
+      rare | Angel Investor
+      rare | Angel Investor
+      rare | Anthropologist
+      rare | Archaeologist
+      rare | Archaeologist
+      rare | Architect
+      rare | Architectural Designer
+      rare | Arms Dealer
+      rare | Arms Dealer
+      rare | Arms Trafficker
+      rare | Art Director
+      rare | Art Restorer
+      rare | Art Thief
+      rare | Astronomer
+      rare | Athletic Director
+      rare | Audio Engineer
+      rare | Automation Engineer
+      rare | Award-Winning Journalist
+      rare | Bailiff
+      rare | Ballistics Expert
+      rare | Biomedical Engineer
+      rare | Biotechnologist
+      rare | Biotechnologist
+      rare | Boat Builder
+      rare | Bomb Squad Technician
+      rare | Bookbinder
+      rare | Bookmaker (Illegal)
+      rare | Border Patrol Agent
+      rare | Botanist
+      rare | Bounty Hunter
+      rare | Bounty Hunter
+      rare | Business Coach
+      rare | CEO - Medium Company
+      rare | CEO - Medium Company
+      rare | Card Counter
+      rare | Cardiologist
+      rare | Cat Burglar
+      rare | Champion Fighter
+      rare | Chemical Engineer
+      rare | Chemist
+      rare | Choreographer (Professional)
+      rare | Civil Engineer
+      rare | Clinical Psychologist
+      rare | Cloud Architect
+      rare | Combat Medic
+      rare | Commercial Airline Pilot
+      rare | Confidence Trickster
+      rare | Confidence Trickster
+      rare | Conservator
+      rare | Corrupt Police Officer
+      rare | Corrupt Police Officer
+      rare | Cosmetic Surgeon
+      rare | Cosmetic Surgeon
+      rare | Counter-Terrorism Operator
+      rare | Court Clerk
+      rare | Creative Director
+      rare | Crime Scene Investigator
+      rare | Criminal Bodyguard
+      rare | Criminal Profiler
+      rare | Customs Officer
+      rare | DNA Analyst
+      rare | Data Scientist
+      rare | Database Admin
+      rare | Debt Collector (Illegal)
+      rare | Debt Prisoner
+      rare | Debt Prisoner
+      rare | Deep Sea Diver
+      rare | Deep Sea Diver
+      rare | Dentist
+      rare | Dermatologist
+      rare | Detective
+      rare | DevOps Engineer
+      rare | DevOps Engineer
+      rare | DevOps Engineer
+      rare | Diplomat
+      rare | Drug Cartel Soldier
+      rare | Drug Mule
+      rare | ENT Specialist
+      rare | ER Physician
+      rare | Economist
+      rare | Electrical Engineer
+      rare | Embalmer
+      rare | Embedded Systems Engineer
+      rare | Embezzler
+      rare | Endocrinologist
+      rare | Enforcer
+      rare | Enforcer
+      rare | Engineer (Civil/Mechanical/Electrical)
+      rare | Entomologist
+      rare | Epidemiologist
+      rare | Escape Artist
+      rare | Escape Artist
+      rare | Ethicist
+      rare | Executioner
+      rare | Executive Coach
+      rare | Exorcist
+      rare | Exorcist
+      rare | Expedition Leader
+      rare | Fashion Designer
+      rare | Fence Master
+      rare | Film Director
+      rare | Film Director
+      rare | Fingerprint Analyst
+      rare | Firefighter
+      rare | Food Critic
+      rare | Food Scientist
+      rare | Force Recon
+      rare | Forensic Pathologist
+      rare | Forensic Scientist
+      rare | Forger
+      rare | Funeral Director
+      rare | Gallery Curator
+      rare | Geisha
+      rare | Geisha
+      rare | General Contractor
+      rare | General Practitioner
+      rare | General Practitioner
+      rare | Geologist
+      rare | Getaway Driver
+      rare | Getaway Driver (Combat)
+      rare | Government Research Subject
+      rare | Government Research Subject
+      rare | Gynecologist
+      rare | Hacker
+      rare | Hacker
+      rare | Hacker
+      rare | Harbor Master
+      rare | Hardware Engineer
+      rare | Head Coach
+      rare | Helicopter Pilot
+      rare | Helicopter Pilot
+      rare | Hikikomori
+      rare | Hikikomori
+      rare | Historian
+      rare | Hitman
+      rare | Homicide Detective
+      rare | Hospital Administrator
+      rare | Identity Thief
+      rare | Immigration Officer
+      rare | Independent Researcher
+      rare | Inspector General
+      rare | Insurance Fraudster
+      rare | Intelligence Analyst
+      rare | Interior Designer
+      rare | Internal Affairs Investigator
+      rare | Inventor
+      rare | Inventor
+      rare | Investigative Journalist
+      rare | Investment Banker
+      rare | Investment Banker
+      rare | Jewel Thief
+      rare | Judge
+      rare | Killer Clown
+      rare | Killer Clown
+      rare | Landscape Designer
+      rare | Lawyer
+      rare | Lawyer
+      rare | Lead Actor
+      rare | Lead Singer
+      rare | Lighthouse Keeper
+      rare | Linguist
+      rare | Luthier
+      rare | MMA Fighter
+      rare | Machine Learning Engineer
+      rare | Management Consultant
+      rare | Martial Arts Instructor
+      rare | Master Electrician
+      rare | Master Plumber
+      rare | Master Printer
+      rare | Mechanical Engineer
+      rare | Medical Examiner
+      rare | Mentalist
+      rare | Mentalist
+      rare | Mercenary
+      rare | Mercenary
+      rare | Meteorologist
+      rare | Military Intelligence
+      rare | Mixed Martial Artist
+      rare | Mixed Martial Artist
+      rare | Money Launderer
+      rare | Money Launderer
+      rare | Mortician
+      rare | Mountain Guide
+      rare | Muscle for Hire
+      rare | Music Producer
+      rare | Mycologist
+      rare | Mystic
+      rare | Mystic
+      rare | Network Engineer
+      rare | Neurologist
+      rare | Novelist
+      rare | Oceanographer
+      rare | Oil Rig Worker
+      rare | Oil Rig Worker
+      rare | Olympic Athlete
+      rare | Ombudsman
+      rare | Oncologist
+      rare | Ophthalmologist
+      rare | Ophthalmologist
+      rare | Optometrist
+      rare | Oral Surgeon
+      rare | Orchestra Member
+      rare | Ornithologist
+      rare | Orthodontist
+      rare | Orthopedic Surgeon
+      rare | Paleontologist
+      rare | Paralegal
+      rare | Paramedic
+      rare | Paranormal Investigator
+      rare | Paranormal Investigator
+      rare | Park Ranger
+      rare | Pathologist
+      rare | Pediatrician
+      rare | Pediatrician
+      rare | Periodontist
+      rare | Pharmacist
+      rare | Pharmacist
+      rare | Pharmacologist
+      rare | Pharmacologist
+      rare | Pharmacologist
+      rare | Philosopher
+      rare | Pirate (Historical)
+      rare | Pirate (Historical)
+      rare | Plastic Surgeon
+      rare | Political Scientist
+      rare | Politician
+      rare | Politician
+      rare | Polygraph Examiner
+      rare | Ponzi Schemer
+      rare | Postdoctoral Fellow
+      rare | Postmaster
+      rare | Principal
+      rare | Principal Dancer
+      rare | Private Jet Pilot
+      rare | Private Jet Pilot
+      rare | Process Engineer
+      rare | Process Server
+      rare | Professional Athlete
+      rare | Professional Athlete
+      rare | Professional Basketball Player
+      rare | Professional Basketball Player
+      rare | Professional Boxer
+      rare | Professional Boxer
+      rare | Professional Boxer
+      rare | Professional Musician
+      rare | Professional Soccer Player
+      rare | Professional Soccer Player
+      rare | Professional Tennis Player
+      rare | Professional Tennis Player
+      rare | Professor
+      rare | Protection Racket Operator
+      rare | Psychiatrist
+      rare | Public Defender
+      rare | Published Author
+      rare | Pulmonologist
+      rare | Radiologist
+      rare | Ranger
+      rare | Real Life Vigilante
+      rare | Real Life Vigilante
+      rare | Record Label Owner
+      rare | Recording Engineer
+      rare | Research Scientist
+      rare | Research Scientist
+      rare | Robotics Engineer
+      rare | Robotics Engineer
+      rare | Robotics Engineer
+      rare | SWAT Officer
+      rare | Safe Cracker
+      rare | School Superintendent
+      rare | Security Engineer
+      rare | Seismologist
+      rare | Semiotician
+      rare | Shaman
+      rare | Shaman
+      rare | Sharpshooter
+      rare | Ship Captain
+      rare | Social Worker
+      rare | Sociologist
+      rare | Software Architect
+      rare | Software Engineer
+      rare | Sommelier
+      rare | Songwriter
+      rare | Sound Technician
+      rare | Special Forces
+      rare | Special Forces Operator
+      rare | Sports Agent
+      rare | Sports Psychologist
+      rare | Sports Team Captain
+      rare | Strategy Consultant
+      rare | Structural Engineer
+      rare | Subject Matter Expert
+      rare | Surgeon
+      rare | Sword Swallower
+      rare | Sword Swallower
+      rare | Systems Admin
+      rare | Tactical Operator
+      rare | Tax Evader
+      rare | Theologian
+      rare | Thought Leader
+      rare | Tower Operator
+      rare | Toxicologist
+      rare | Toxicologist
+      rare | Trapeze Artist
+      rare | Trapeze Artist
+      rare | Treasure Hunter
+      rare | Treasure Hunter
+      rare | Trust Fund Child
+      rare | Trust Fund Child
+      rare | University Professor
+      rare | Urologist
+      rare | Vault Cracker
+      rare | Venture Capitalist
+      rare | Venture Capitalist
+      rare | Veterinarian
+      rare | Veterinarian
+      rare | Veterinarian
+      rare | Wilderness Survival Instructor
+      rare | Witch / Warlock
+      rare | Witch / Warlock
+      rare | Zoologist
+  uncommon | Academic Advisor
+  uncommon | Accountant
+  uncommon | Acting Coach
+  uncommon | Actor
+  uncommon | Acupuncturist
+  uncommon | Acupuncturist
+  uncommon | Agent
+  uncommon | Alterations Specialist
+  uncommon | Ambulance Driver
+  uncommon | Analyst
+  uncommon | Animator
+  uncommon | Animator
+  uncommon | Animator
+  uncommon | Appliance Installer
+  uncommon | Arbitrator
+  uncommon | Art Curator
+  uncommon | Art Curator
+  uncommon | Art Gallery Owner
+  uncommon | Art Gallery Owner
+  uncommon | Art Teacher
+  uncommon | Assembly Worker
+  uncommon | Auto Mechanic
+  uncommon | Auto Mechanic
+  uncommon | Background Checker
+  uncommon | Barber
+  uncommon | Basketball Coach
+  uncommon | Beautician/Cosmetologist
+  uncommon | Bicycle Mechanic
+  uncommon | Blogger
+  uncommon | Boat Mechanic
+  uncommon | Bodyguard
+  uncommon | Bookkeeper
+  uncommon | Bootlegger
+  uncommon | Bouncer (Illegal)
+  uncommon | Boxing Coach
+  uncommon | Brawler
+  uncommon | Brewer
+  uncommon | Broker
+  uncommon | Burglar
+  uncommon | Burglar / Pickpocket
+  uncommon | Butler
+  uncommon | CEO - Bankrupt Company
+  uncommon | CEO - Bankrupt Company
+  uncommon | CEO - Small Company
+  uncommon | CEO - Small Company
+  uncommon | CNC Operator
+  uncommon | Cabinet Maker
+  uncommon | Car Thief
+  uncommon | Carpenter
+  uncommon | Carpenter
+  uncommon | Carpet Layer
+  uncommon | Cartographer
+  uncommon | Chauffeur
+  uncommon | Cheesemonger
+  uncommon | Cheesemonger
+  uncommon | Chef (Executive)
+  uncommon | Chemist
+  uncommon | Chemist
+  uncommon | Choreographer
+  uncommon | Circus Freak / Sideshow Performer
+  uncommon | Circus Freak / Sideshow Performer
+  uncommon | Circus Ringmaster
+  uncommon | Circus Ringmaster
+  uncommon | Claims Investigator
+  uncommon | Clinical Psychologist
+  uncommon | Club Bouncer / Security
+  uncommon | Cobbler
+  uncommon | Columnist
+  uncommon | Combat Engineer
+  uncommon | Comic Book Artist
+  uncommon | Comic Book Artist
+  uncommon | Compliance Officer
+  uncommon | Composer
+  uncommon | Con Artist
+  uncommon | Concierge
+  uncommon | Concrete Finisher
+  uncommon | Conductor
+  uncommon | Connector
+  uncommon | Conspiracy Theorist
+  uncommon | Conspiracy Theorist
+  uncommon | Construction Framer
+  uncommon | Consultant
+  uncommon | Contractor
+  uncommon | Coordinator
+  uncommon | Copywriter
+  uncommon | Corrections Officer
+  uncommon | Costume Designer
+  uncommon | Cowboy
+  uncommon | Cowboy
+  uncommon | CrossFit Coach
+  uncommon | CrossFit Coach
+  uncommon | Crowd Control Specialist
+  uncommon | Cult Member
+  uncommon | Cult Member
+  uncommon | Customs Officer
+  uncommon | Cyber Criminal
+  uncommon | Cyber Criminal
+  uncommon | Cybersecurity Analyst
+  uncommon | Cybersecurity Analyst
+  uncommon | Cycling Instructor
+  uncommon | Daddy's Son / Nepo Baby
+  uncommon | Daddy's Son / Nepo Baby
+  uncommon | Dance Teacher
+  uncommon | Dancer
+  uncommon | Database Administrator
+  uncommon | Database Administrator
+  uncommon | Debt Collector
+  uncommon | Dental Assistant
+  uncommon | Dental Assistant
+  uncommon | Detective / Investigator
+  uncommon | Detective / Investigator
+  uncommon | Die Maker
+  uncommon | Diesel Mechanic
+  uncommon | Dietitian
+  uncommon | Distributor
+  uncommon | Dive Instructor
+  uncommon | Dive Instructor
+  uncommon | Dive Instructor
+  uncommon | Dog Trainer
+  uncommon | Dominatrix
+  uncommon | Dominatrix
+  uncommon | Doomsday Prepper
+  uncommon | Doomsday Prepper
+  uncommon | Doorman
+  uncommon | Dry Cleaner
+  uncommon | EMT
+  uncommon | ESL Instructor
+  uncommon | Editor
+  uncommon | Electrician
+  uncommon | Electrician
+  uncommon | Elevator Mechanic
+  uncommon | Elevator Repair Technician
+  uncommon | Elevator Repair Technician
+  uncommon | Enforcer
+  uncommon | Escalator Mechanic
+  uncommon | Escort
+  uncommon | Escort
+  uncommon | Esthetician
+  uncommon | Event Coordinator
+  uncommon | Facilitator
+  uncommon | Farmer (Landowner)
+  uncommon | Fashion Designer
+  uncommon | Fashion Designer
+  uncommon | Fence
+  uncommon | Fence
+  uncommon | Fence
+  uncommon | Ferry Captain
+  uncommon | Field Researcher
+  uncommon | Fire Breather
+  uncommon | Fire Breather
+  uncommon | Fire Inspector
+  uncommon | Firefighter
+  uncommon | Fishing Boat Captain
+  uncommon | Fishing Guide
+  uncommon | Fitness Trainer
+  uncommon | Flight Attendant
+  uncommon | Flight Attendant
+  uncommon | Flooring Installer
+  uncommon | Florist
+  uncommon | Forensic Accountant
+  uncommon | Forensic Technician
+  uncommon | Forklift Operator
+  uncommon | Franchise Owner
+  uncommon | Fraud Analyst
+  uncommon | Funeral Director
+  uncommon | Furniture Maker
+  uncommon | Furniture Restorer
+  uncommon | Ghost Hunter
+  uncommon | Ghost Hunter
+  uncommon | Ghostwriter
+  uncommon | Gigolo
+  uncommon | Gigolo
+  uncommon | Glazier
+  uncommon | Golf Caddy
+  uncommon | Graffiti Artist
+  uncommon | Graffiti Artist
+  uncommon | Graphic Designer
+  uncommon | Graphic Designer
+  uncommon | Group Fitness Instructor
+  uncommon | Gymnast
+  uncommon | Gymnast
+  uncommon | HVAC Tech
+  uncommon | Hairdresser
+  uncommon | Hairdresser/Stylist
+  uncommon | Harbor Master
+  uncommon | Heavy Equipment Operator
+  uncommon | Homeopath
+  uncommon | Homeopath
+  uncommon | Horse Trainer
+  uncommon | Hospice Worker
+  uncommon | Hotel Manager
+  uncommon | House Sitter
+  uncommon | Hunter / Outdoorsman
+  uncommon | Hunting Guide
+  uncommon | IT Technician
+  uncommon | Identity Thief
+  uncommon | Identity Thief
+  uncommon | Illustrator
+  uncommon | Infantryman
+  uncommon | Insurance Adjuster
+  uncommon | Insurance Agent
+  uncommon | Interior Designer
+  uncommon | Intermediary
+  uncommon | Jeweler
+  uncommon | Jewelry Appraiser
+  uncommon | Jewelry Repair
+  uncommon | Journalist
+  uncommon | Juggler
+  uncommon | K9 Handler
+  uncommon | Kennel Worker
+  uncommon | Lab Assistant
+  uncommon | Lab Technician
+  uncommon | Liaison
+  uncommon | Lighting Designer
+  uncommon | Limo Driver
+  uncommon | Line Installer
+  uncommon | Linesperson
+  uncommon | Loan Shark
+  uncommon | Loan Shark
+  uncommon | Locksmith
+  uncommon | Locksmith
+  uncommon | Machinist
+  uncommon | Maid
+  uncommon | Makeup Artist
+  uncommon | Makeup Artist
+  uncommon | Management Consultant
+  uncommon | Management Consultant
+  uncommon | Marine
+  uncommon | Marine Biologist
+  uncommon | Marketing Director
+  uncommon | Marketing Director
+  uncommon | Martial Arts Instructor
+  uncommon | Martial Arts Instructor
+  uncommon | Mason
+  uncommon | Massage Therapist
+  uncommon | Master Baker
+  uncommon | Mediator
+  uncommon | Medical Coder
+  uncommon | Medical Office Manager
+  uncommon | Middleman
+  uncommon | Midwife
+  uncommon | Midwife
+  uncommon | Mime
+  uncommon | Mortician
+  uncommon | Mountain Guide
+  uncommon | Mountain Guide
+  uncommon | Mover
+  uncommon | Music Teacher
+  uncommon | Musician
+  uncommon | Nail Technician
+  uncommon | Naturopath
+  uncommon | Naturopath
+  uncommon | Novelist
+  uncommon | Novelist
+  uncommon | Novelist
+  uncommon | Numbers Runner
+  uncommon | Nurse
+  uncommon | Nursing Student
+  uncommon | Occupational Therapist
+  uncommon | Occupational Therapy Asst
+  uncommon | Office Manager
+  uncommon | Optician
+  uncommon | Optometrist
+  uncommon | Outdoor Guide
+  uncommon | Packer
+  uncommon | Painter
+  uncommon | Paramedic
+  uncommon | Paramedic
+  uncommon | Parkour Practitioner
+  uncommon | Parkour Practitioner
+  uncommon | Parkour Practitioner
+  uncommon | Pastry Chef
+  uncommon | Pastry Chef
+  uncommon | Personal Trainer
+  uncommon | Pharmacy Tech
+  uncommon | Pharmacy Technician
+  uncommon | Photographer
+  uncommon | Photographer
+  uncommon | Photojournalist
+  uncommon | Photojournalist
+  uncommon | Physical Therapist
+  uncommon | Physical Therapist
+  uncommon | Piano Tuner
+  uncommon | Pickpocket
+  uncommon | Pilates Instructor
+  uncommon | Pit Fighter
+  uncommon | Playwright
+  uncommon | Playwright
+  uncommon | Playwright
+  uncommon | Plumber
+  uncommon | Plumber
+  uncommon | Poet
+  uncommon | Poker Player (Professional)
+  uncommon | Poker Player (Professional)
+  uncommon | Police Officer
+  uncommon | Police Officer
+  uncommon | Pornstar / Adult Actor
+  uncommon | Pornstar / Adult Actor
+  uncommon | Postal Worker
+  uncommon | Priest / Clergy
+  uncommon | Private Investigator
+  uncommon | Private Investigator
+  uncommon | Private Investigator
+  uncommon | Private Investigator
+  uncommon | Private Security
+  uncommon | Private Security Contractor
+  uncommon | Professional Cuddler
+  uncommon | Professional Cuddler
+  uncommon | Professional Cyclist
+  uncommon | Professional Cyclist
+  uncommon | Professional Diver
+  uncommon | Professional Gambler
+  uncommon | Professional Gambler
+  uncommon | Professional Golfer
+  uncommon | Professional Golfer
+  uncommon | Professional Swimmer
+  uncommon | Professional Swimmer
+  uncommon | Professional Wrestler
+  uncommon | Professional Wrestler
+  uncommon | Programmer
+  uncommon | Programmer
+  uncommon | Proofreader
+  uncommon | Property Manager
+  uncommon | Psychologist
+  uncommon | Puppeteer
+  uncommon | Quality Inspector
+  uncommon | Radiology Tech
+  uncommon | Real Estate Agent
+  uncommon | Real Estate Developer
+  uncommon | Real Estate Developer
+  uncommon | Receiving Clerk
+  uncommon | Registered Nurse
+  uncommon | Representative
+  uncommon | Restaurant Manager
+  uncommon | Restaurant Manager
+  uncommon | Riot Control Officer
+  uncommon | Rock Climbing Instructor
+  uncommon | Roofer
+  uncommon | SFX Artist
+  uncommon | Safari Guide
+  uncommon | Safari Guide
+  uncommon | Sailor
+  uncommon | Scam Artist
+  uncommon | Scam Artist
+  uncommon | School Counselor
+  uncommon | Scientist
+  uncommon | Scientist
+  uncommon | Scorekeeper
+  uncommon | Screenwriter
+  uncommon | Screenwriter
+  uncommon | Screenwriter
+  uncommon | Scuba Diving Instructor
+  uncommon | Set Designer
+  uncommon | Sheet Metal Worker
+  uncommon | Shipping Clerk
+  uncommon | Shoplifter
+  uncommon | Shuttle Driver
+  uncommon | Siding Installer
+  uncommon | Singer
+  uncommon | Ski Instructor
+  uncommon | Ski Instructor
+  uncommon | Skip Tracer
+  uncommon | Small Engine Repair
+  uncommon | Smuggler
+  uncommon | Smuggler
+  uncommon | Smuggler
+  uncommon | Snowboard Instructor
+  uncommon | Soccer Coach
+  uncommon | Social Media Influencer
+  uncommon | Social Media Influencer
+  uncommon | Social Media Manager
+  uncommon | Soldier
+  uncommon | Soldier (Enlisted)
+  uncommon | Sous Chef
+  uncommon | Sous Chef
+  uncommon | Sous Chef
+  uncommon | Specialist
+  uncommon | Speech Therapy Asst
+  uncommon | Sports Referee
+  uncommon | Stable Hand
+  uncommon | Stock Trader
+  uncommon | Stock Trader
+  uncommon | Stolen Goods Dealer
+  uncommon | Store Manager
+  uncommon | Storyboard Artist
+  uncommon | Street Fighter
+  uncommon | Street Hustler
+  uncommon | Stunt Double
+  uncommon | Stunt Performer
+  uncommon | Stunt Performer
+  uncommon | Stunt Performer
+  uncommon | Subcontractor
+  uncommon | Sugar Baby
+  uncommon | Sugar Baby
+  uncommon | Surf Instructor
+  uncommon | Surgical Tech
+  uncommon | Surveyor
+  uncommon | Surveyor
+  uncommon | Survivalist
+  uncommon | Survivalist
+  uncommon | Swim Instructor
+  uncommon | Tailor
+  uncommon | Tailor/Seamstress
+  uncommon | Tattoo Removal Technician
+  uncommon | Taxi Driver
+  uncommon | Teacher
+  uncommon | Technical Writer
+  uncommon | Tennis Coach
+  uncommon | Test Prep Coach
+  uncommon | Tile Setter
+  uncommon | Timekeeper
+  uncommon | Toolmaker
+  uncommon | Tow Truck Driver
+  uncommon | Track and Field Athlete
+  uncommon | Track and Field Athlete
+  uncommon | Train Conductor
+  uncommon | Train Conductor
+  uncommon | Transit Operator
+  uncommon | Travel Agent
+  uncommon | Truck Driver (Long Haul)
+  uncommon | UI Designer
+  uncommon | Umpire
+  uncommon | Underground Boxer
+  uncommon | Upholsterer
+  uncommon | Vending Machine Tech
+  uncommon | Veterinary Tech
+  uncommon | Veterinary Technician
+  uncommon | Video Game Developer
+  uncommon | Video Game Developer
+  uncommon | Videographer
+  uncommon | Voice Actor
+  uncommon | Voice Actor
+  uncommon | Voice Actor
+  uncommon | Wallpaper Hanger
+  uncommon | Wastewater Operator
+  uncommon | Watch Repair
+  uncommon | Watch Repair Technician
+  uncommon | Watchmaker
+  uncommon | Web Designer
+  uncommon | Web Developer
+  uncommon | Welder
+  uncommon | Wholesaler
+  uncommon | Wilderness Guide
+  uncommon | Winemaker
+  uncommon | Wizard (Stage Magician)
+  uncommon | Wizard (Stage Magician)
+  uncommon | Woodworker
+  uncommon | Yakuza Enforcer
+  uncommon | Yakuza Enforcer
+  uncommon | Yoga Instructor
+  uncommon | Yoga Instructor
+  uncommon | Zookeeper
+ very_rare | Airline Pilot
+ very_rare | Airline Pilot
+ very_rare | Arms Dealer
+ very_rare | Art Thief
+ very_rare | Artistic Director
+ very_rare | Astronaut
+ very_rare | Bankrupt/Destitute
+ very_rare | Black Market Organ Harvester Surgeon
+ very_rare | Black Market Organ Harvester Surgeon
+ very_rare | Black Operations Veteran
+ very_rare | Black Ops Operator
+ very_rare | CEO - Large Company
+ very_rare | CEO - Large Company
+ very_rare | Campaign Manager
+ very_rare | Cartel Lieutenant
+ very_rare | Cartel Sicario
+ very_rare | Cat Burglar
+ very_rare | Chief Engineer
+ very_rare | Chief Epidemiologist
+ very_rare | Chief Information Officer
+ very_rare | Chief Inspector
+ very_rare | Chief Logistics Officer
+ very_rare | Chief Medical Officer
+ very_rare | Chief Technology Officer
+ very_rare | Chief of Staff
+ very_rare | Chief of Surgery
+ very_rare | Child Soldier (Former)
+ very_rare | Child Soldier (Former)
+ very_rare | Chronic Alcoholic
+ very_rare | Chronic Gambler (Degenerate)
+ very_rare | Cocaine Trafficker
+ very_rare | Cold Case Specialist
+ very_rare | Combat Instructor
+ very_rare | Corporate CEO
+ very_rare | Counter-Terrorism Commander
+ very_rare | Counterfeiter
+ very_rare | Counterfeiter
+ very_rare | Counterintelligence Officer
+ very_rare | Creative Director (Agency)
+ very_rare | Crime Boss (City)
+ very_rare | Crisis Manager
+ very_rare | Cult Leader
+ very_rare | Cult Leader
+ very_rare | Cult Leader
+ very_rare | Cyber Criminal Mastermind
+ very_rare | Cyber Forensics Expert
+ very_rare | Data Center Director
+ very_rare | Dean of Faculty
+ very_rare | Deep Cover Operative
+ very_rare | Department Chair
+ very_rare | Diplomat
+ very_rare | Drug Addict
+ very_rare | Drug Dealer Kingpin
+ very_rare | Drug Dealer Kingpin
+ very_rare | Drug Lord (Regional)
+ very_rare | Editor-in-Chief
+ very_rare | Elite Cyber Criminal
+ very_rare | Elite Sniper
+ very_rare | Elite Sports Agent
+ very_rare | Estate Manager
+ very_rare | Executive House Manager
+ very_rare | Executive Producer
+ very_rare | Executive Protection Agent
+ very_rare | Extermination Squad Leader
+ very_rare | FBI Agent
+ very_rare | Fence Kingpin
+ very_rare | Field Intelligence Operative
+ very_rare | Fighter Jet Pilot
+ very_rare | Film Director
+ very_rare | Film Director
+ very_rare | Film Producer
+ very_rare | Forensic Engineer
+ very_rare | Forger
+ very_rare | Former Convict (Released)
+ very_rare | Gladiator (Historical)
+ very_rare | Gladiator (Historical)
+ very_rare | Head Chef
+ very_rare | Head of Neurology
+ very_rare | Head of Operations
+ very_rare | Hedge Fund Manager
+ very_rare | Hedge Fund Manager
+ very_rare | Heist Planner
+ very_rare | Heroin Trafficker
+ very_rare | High-Stakes Jewel Thief
+ very_rare | High-Stakes Jewel Thief
+ very_rare | High-Value Consultant
+ very_rare | Hikikomori/Shut-In
+ very_rare | Hitman
+ very_rare | Homeless/Vagrant
+ very_rare | Hostage Rescue Specialist
+ very_rare | Human Trafficker
+ very_rare | Human Trafficker
+ very_rare | Human Trafficker
+ very_rare | Human Trafficker
+ very_rare | Illegal Arms Manufacturer
+ very_rare | Industry Insider
+ very_rare | Intelligence Analyst
+ very_rare | Judge
+ very_rare | Kingmaker
+ very_rare | Lead Investigator
+ very_rare | Lead Scientist
+ very_rare | Lead Transplant Surgeon
+ very_rare | Leading Authority in Field
+ very_rare | Mad Scientist
+ very_rare | Mad Scientist
+ very_rare | Mafia Boss
+ very_rare | Mafia Boss
+ very_rare | Mafia Enforcer
+ very_rare | Master Artisan
+ very_rare | Master Baker
+ very_rare | Master Butcher
+ very_rare | Mayor
+ very_rare | Mayor
+ very_rare | Mercenary Commander
+ very_rare | Mole
+ very_rare | Money Launderer
+ very_rare | NEET (Not in Education/Employment/Training)
+ very_rare | National Threat Level Hacker
+ very_rare | National Threat Level Hacker
+ very_rare | Ninja (Historical)
+ very_rare | Ninja (Historical)
+ very_rare | Nobel Laureate Candidate
+ very_rare | Nuclear Reactor Operator
+ very_rare | Nuclear Reactor Operator
+ very_rare | Obsessive Stalker
+ very_rare | Olympic Medalist
+ very_rare | Olympic Medalist
+ very_rare | PMC Director
+ very_rare | Patent Engineer
+ very_rare | Power Broker
+ very_rare | Press Secretary
+ very_rare | Principal Engineer
+ very_rare | Prison Inmate (Current)
+ very_rare | Prison Warden
+ very_rare | Professional Assassin
+ very_rare | Professional Hitman
+ very_rare | Professional Team Captain
+ very_rare | Prosecutor
+ very_rare | Psychiatric Director
+ very_rare | Psychiatrist
+ very_rare | Public Relations Director
+ very_rare | Publisher
+ very_rare | R&D Director
+ very_rare | Rags to Riches Startup Founder
+ very_rare | Rags to Riches Startup Founder
+ very_rare | Research Director
+ very_rare | Research Engineer
+ very_rare | Safe Cracker
+ very_rare | Samurai (Historical)
+ very_rare | Samurai (Historical)
+ very_rare | Secret Government AI Researcher
+ very_rare | Secret Government AI Researcher
+ very_rare | Secret Government Researcher
+ very_rare | Secret Government Researcher
+ very_rare | Ship Captain
+ very_rare | Showrunner
+ very_rare | Spy
+ very_rare | Supply Chain Director
+ very_rare | Systems Architect
+ very_rare | Technology Director
+ very_rare | Think Tank Fellow
+ very_rare | Tomb Raider
+ very_rare | Tomb Raider
+ very_rare | Torturer
+ very_rare | Turnaround Specialist
+ very_rare | University President
+ very_rare | Viking (Historical)
+ very_rare | Viking (Historical)
+ very_rare | War Correspondent
+ very_rare | War Correspondent
+ very_rare | War Criminal
+ very_rare | War Criminal
+ very_rare | Weapons Trafficker
+ very_rare | World Champion
+ very_rare | World Champion Fighter
+ very_rare | World-Renowned Specialist
+ very_rare | Yacht Captain
+ very_rare | Yakuza Boss
+ very_rare | Yakuza Boss

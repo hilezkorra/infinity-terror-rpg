@@ -2,15 +2,29 @@
 data/game.json
 data/chat.json
 data/event-log.txt
+data/event-log.json
+data/chat.json.bak
 saves/
 
 # Sim data with character info
 watcher/_sim/data/
 
+# Watcher runtime state — contains game/player data
+watcher/gm-state.json
+watcher/_gm_prompt.tmp
+
 # Context files with game state info
 CLAUDE.md
+
+# Igor Pundzin — real person, do not push
+assets/portraits/igor-pundzin-*.png
+tools/setup_new_game.py
 
 # OS junk
 Thumbs.db
 .DS_Store
 *.log
+
+# Python bytecode
+__pycache__/
+*.pyc

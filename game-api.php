@@ -10,16 +10,329 @@ $base   = __DIR__;
 // ── Helper functions ───────────────────────────────────────
 function readJson($path) {
     if (!file_exists($path)) return null;
-    return json_decode(file_get_contents($path), true);
+    $raw = file_get_contents($path);
+    if ($raw === false || trim($raw) === '') return null;
+    return json_decode($raw, true);
 }
 function writeJson($path, $data) {
     $dir = dirname($path);
     if (!is_dir($dir)) mkdir($dir, 0777, true);
-    file_put_contents($path, json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+    $json = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    if ($json === false) return; // don't wipe file on encode failure
+    $tmp = $path . '.phptmp';
+    file_put_contents($tmp, $json, LOCK_EX);
+    rename($tmp, $path);
+}
+// Write to chat.json with auto-backup of previous state
+function writeChatJson($path, $data) {
+    // Keep a rolling backup of the last good chat state before overwriting
+    if (file_exists($path)) {
+        $bak = $path . '.bak';
+        @copy($path, $bak);
+    }
+    writeJson($path, $data);
 }
 function nextMsgId($chat) {
     if (empty($chat['messages'])) return 1;
     return max(array_column($chat['messages'], 'id')) + 1;
+}
+
+// Highest [ID:n] in the event log — used to park the watcher cursor after a
+// restore so it does not re-process (and re-apply) old events.
+function maxEventIdFromLog($base) {
+    $path = $base . '/data/event-log.txt';
+    if (!file_exists($path)) return 0;
+    $txt = file_get_contents($path);
+    if ($txt === false) return 0;
+    if (preg_match_all('/\[ID:(\d+)\]/', $txt, $m)) {
+        return max(array_map('intval', $m[1]));
+    }
+    return 0;
+}
+
+// Park the watcher cursor at the current end of the log on a restored game.
+function parkWatcherCursor(&$game, $base) {
+    $max = maxEventIdFromLog($base);
+    $game['watcher'] = $game['watcher'] ?? [];
+    $game['watcher']['last_processed_event_id'] = $max;
+}
+
+// ── Team / Guide generators ────────────────────────────────
+function loadGenData($base) {
+    static $cached = null;
+    if ($cached === null) $cached = readJson($base . '/system/team-gen.json');
+    return $cached;
+}
+function loadTraits($base) {
+    static $cached = null;
+    if ($cached === null) $cached = readJson($base . '/system/personality-traits.json');
+    return $cached;
+}
+function pickTraits($base, $count = 5) {
+    $data   = loadTraits($base);
+    $all    = $data['traits'] ?? [];
+    if (empty($all)) return [];
+    $pool   = $all;
+    $picked = [];
+    for ($i = 0; $i < $count && !empty($pool); $i++) {
+        $idx      = array_rand($pool);
+        $picked[] = ['name' => $pool[$idx]['name'], 'type' => $pool[$idx]['type']];
+        array_splice($pool, $idx, 1);
+    }
+    return $picked;
+}
+function genRandInt($min, $max) { return random_int((int)$min, (int)$max); }
+function weightedPick($items, $weightKey = 'weight') {
+    $total = array_sum(array_column($items, $weightKey));
+    $r = random_int(1, $total);
+    foreach ($items as $item) { $r -= $item[$weightKey]; if ($r <= 0) return $item; }
+    return $items[0];
+}
+function pickWeightedColor($pool, $colorKey, $weightKey) {
+    $total = array_sum(array_column($pool, $weightKey));
+    $r = random_int(1, $total);
+    foreach ($pool as $item) { $r -= $item[$weightKey]; if ($r <= 0) return $item[$colorKey]; }
+    return $pool[0][$colorKey];
+}
+function generatePhysical($nat, $gend, $age, $gen) {
+    $male = ($gend === 'Male');
+    $hairColor  = pickWeightedColor($nat['hair_colors'], 'c', 'w');
+    $eyeColor   = pickWeightedColor($nat['eye_colors'],  'c', 'w');
+    $skinTone   = pickWeightedColor($nat['skin_tones'],  't', 'w');
+    $hRange     = $male ? $nat['height_male'] : $nat['height_female'];
+    $heightCm   = genRandInt($hRange[0], $hRange[1]);
+    $build      = weightedPick($gen['builds'])['label'];
+    $orientation= weightedPick($gen['sexual_orientations'])['label'];
+    return [
+        'height_cm'          => $heightCm,
+        'hair_color'         => $hairColor,
+        'eye_color'          => $eyeColor,
+        'skin_tone'          => $skinTone,
+        'build'              => $build,
+        'sexual_orientation' => $orientation,
+    ];
+}
+function generateMember($base, $forcedNat = null) {
+    $gen = loadGenData($base);
+    $nat  = $forcedNat ?? weightedPick($gen['nationalities']);
+    $gend = weightedPick($gen['genders']);
+    $male = ($gend['label'] === 'Male');
+    $first = $nat[$male ? 'male' : 'female'][array_rand($nat[$male ? 'male' : 'female'])];
+    $last  = $nat['surnames'][array_rand($nat['surnames'])];
+    $occ  = $gen['occupations'][array_rand($gen['occupations'])];
+    $aln  = weightedPick($gen['alignments']);
+    $ageRange = $gen['age_range'];
+    $age  = genRandInt($ageRange['min'], $ageRange['max']);
+    $attitudes  = $aln['attitudes'];
+    $teamStance = $attitudes[array_rand($attitudes)];
+    $cities     = $nat['cities'] ?? [];
+    $city       = $cities ? $cities[array_rand($cities)] : $nat['country'];
+    $str = genRandInt($occ['str'][0], $occ['str'][1]);
+    $agi = genRandInt($occ['agi'][0], $occ['agi'][1]);
+    $end = genRandInt($occ['end'][0], $occ['end'][1]);
+    $int = genRandInt($occ['int'][0], $occ['int'][1]);
+    $lck = genRandInt($occ['lck'][0], $occ['lck'][1]);
+    $psy = genRandInt($occ['psy'][0], $occ['psy'][1]);
+    $hp  = $end * 10;
+    $sta = $end * 10;
+    $skills = [];
+    foreach ($occ['skills'] as $sk) $skills[$sk] = ['level' => 'trained'];
+    $physical    = generatePhysical($nat, $gend['label'], $age, $gen);
+    $personality = pickTraits($base, 5);
+    return [
+        'name'                 => $first . ' ' . $last,
+        'gender'               => $gend['label'],
+        'nationality'          => $nat['country'],
+        'city_of_origin'       => $city,
+        'age'                  => $age,
+        'occupation'           => $occ['label'],
+        'physical'             => $physical,
+        'personality'          => $personality,
+        'alignment'            => $aln['code'],
+        'status'               => 'Active',
+        'alive'                => true,
+        'team_stance'          => $teamStance,
+        'location'             => 'hive-train',
+        'hp'                   => $hp,
+        'hp_max'               => $hp,
+        'stamina'              => $sta,
+        'stamina_max'          => $sta,
+        'level'                => 1,
+        'xp'                   => 0,
+        'rank'                 => 'Unranked',
+        'genetic_locks_opened' => 0,
+        'strength'             => $str,
+        'agility'              => $agi,
+        'endurance'            => $end,
+        'intelligence'         => $int,
+        'luck'                 => $lck,
+        'psyche_force'         => $psy,
+        'skills'               => $skills,
+        'weapons'              => [],
+        'items'                => [],
+        'equipped'             => [],
+        'status_effects'       => [],
+        'relationships'        => (object)[],
+    ];
+}
+function generateRandomTeam($base, $count = 6) {
+    $gen   = loadGenData($base);
+    $nats  = $gen['nationalities'];
+    // Shuffle nationality pool and pick $count distinct ones for variety
+    $pool  = $nats;
+    $picked = [];
+    for ($i = 0; $i < min($count, count($pool)); $i++) {
+        $idx = array_rand($pool);
+        $picked[] = $pool[$idx];
+        array_splice($pool, $idx, 1);
+    }
+    $members = [];
+    for ($i = 0; $i < $count; $i++) {
+        $nat = isset($picked[$i]) ? $picked[$i] : null;
+        $members[] = generateMember($base, $nat);
+    }
+    return $members;
+}
+function generateGuideProfile($base) {
+    $gen  = loadGenData($base);
+    $nat  = weightedPick($gen['nationalities']);
+    $gend = weightedPick($gen['genders']);
+    $male = ($gend['label'] === 'Male');
+    $first = $nat[$male ? 'male' : 'female'][array_rand($nat[$male ? 'male' : 'female'])];
+    $last  = $nat['surnames'][array_rand($nat['surnames'])];
+    $occ  = $gen['guide_occupations'][array_rand($gen['guide_occupations'])];
+    $ageR = $gen['guide_ages'];
+    $age  = genRandInt($ageR['min'], $ageR['max']);
+    $str = genRandInt($occ['str'][0], $occ['str'][1]);
+    $agi = genRandInt($occ['agi'][0], $occ['agi'][1]);
+    $end = genRandInt($occ['end'][0], $occ['end'][1]);
+    $int = genRandInt($occ['int'][0], $occ['int'][1]);
+    $lck = genRandInt($occ['lck'][0], $occ['lck'][1]);
+    $psy = genRandInt($occ['psy'][0], $occ['psy'][1]);
+    $hp  = $end * 10;
+    $sta = $end * 10;
+    $survived = genRandInt($gen['guide_survived_movies']['min'], $gen['guide_survived_movies']['max']);
+    $skills = [];
+    foreach ($occ['skills'] as $sk) $skills[$sk] = ['level' => 'expert'];
+    return [
+        'name'                 => $first . ' ' . $last,
+        'gender'               => $gend['label'],
+        'nationality'          => $nat['country'],
+        'age'                  => $age,
+        'occupation'           => $occ['label'],
+        'alive'                => true,
+        'movies_survived'      => $survived,
+        'death_movie'          => null,
+        'death_description'    => null,
+        'introduced'           => false,
+        'knowledge'            => ['exchange terminal basics', 'God\'s Space rules', 'survival fundamentals'],
+        'personality'          => ['humor' => 'Dry', 'composure' => 'Steady', 'disposition' => 'Direct'],
+        'quirk'                => '',
+        'backstory'            => '',
+        'strength'             => $str,
+        'agility'              => $agi,
+        'endurance'            => $end,
+        'intelligence'         => $int,
+        'luck'                 => $lck,
+        'psyche_force'         => $psy,
+        'level'                => $survived + 1,
+        'xp'                   => $survived * 500,
+        'hp'                   => $hp,
+        'hp_max'               => $hp,
+        'mp'                   => 0,
+        'mp_max'               => 0,
+        'stamina'              => $sta,
+        'stamina_max'          => $sta,
+        'rank'                 => 'F',
+        'genetic_locks_opened' => min($survived, 3),
+        'skills'               => $skills,
+        'enhancements'         => [],
+    ];
+}
+
+// Reset a game state to a fresh Movie-1 start. Progress is wiped; identity is
+// kept unless $newCharacter is true (then it's blanked for GM-driven creation).
+function freshGameState($game, $newCharacter) {
+    // ── World / run ──
+    $game['phase']                    = 'movie';
+    $game['setup_step']               = null;
+    $game['current_movie']            = 'resident-evil';
+    $game['movie_number']             = 1;
+    $game['movie_start_message_id']   = 1;
+    $game['points']                   = 100;
+    $game['deaths']                   = 0;
+    $game['total_survived']           = 0;
+    $game['world_day']                = 1;
+    $game['lobby_save_index']         = 0;
+    $game['last_lobby_save']          = null;
+    $game['system_attention']         = 0;
+    $game['movie_difficulty_modifier']= 0;
+    $game['creation_used']            = false;
+    $game['enemy_team']               = null;
+    $game['partners']                 = [];
+    $game['combat']                   = ['active' => false, 'enemies' => []];
+    $game['movie_performance']        = ['deaths' => 0, 'objectives_completed' => 0, 'meta_exploits_detected' => 0, 'time_used_pct' => 0];
+    unset($game['timers']);
+    $game['watcher'] = ['last_processed_event_id' => 0, 'checkpoint_event_id' => 0, 'turn' => 0, 'running' => false];
+
+    // ── Character: keep identity + base, wipe progress ──
+    $c = $game['character'] ?? [];
+    $c['level']                 = 1;
+    $c['xp']                    = 0;
+    $c['genetic_locks_opened']  = 0;
+    $c['rank']                  = 'Unranked';
+    $c['kills']                 = 0;
+    $c['movies_survived']       = 0;
+    if (isset($c['hp_max']))      $c['hp'] = $c['hp_max'];
+    if (isset($c['mp_max']))      $c['mp'] = $c['mp_max'];
+    if (isset($c['stamina_max'])) $c['stamina'] = $c['stamina_max'];
+    $c['fear_meter']            = 0;
+    $c['fear_level']            = 'Calm';
+    $c['status_effects']        = [];
+    $c['relationships']         = (object)[];
+    $c['equipped']              = [];
+    $c['location']              = 'hive-train';
+    unset($c['sublocation']);
+    unset($c['storage']);
+
+    if ($newCharacter) {
+        // Blank the identity so the UI shows "creation pending" and the GM
+        // runs a character-creation conversation before the movie opens.
+        $c['name']        = '';
+        $c['age']         = null;
+        $c['nationality'] = '';
+        $c['background']  = '';
+        $c['occupation']  = '';
+        $c['backstory']   = '';
+    }
+    $game['character'] = $c;
+
+    // Reset team member locations to movie starting point
+    if (isset($game['team']['members'])) {
+        foreach ($game['team']['members'] as &$member) {
+            $member['location'] = 'hive-train';
+            unset($member['sublocation']);
+        }
+        unset($member);
+    }
+
+    return $game;
+}
+
+// A fresh intro chat for a new game.
+function canonicalIntroChat($newCharacter) {
+    $content = $newCharacter
+        ? "GOD'S SPACE — NEW ARRIVAL DETECTED. Before the door opens, tell me who you were in the world you left: your name, where you're from, and what you did. (Describe your character to begin.)"
+        : "GOD'S SPACE — MOVIE ENTRY LOGGED";
+    return [
+        'status'   => 'waiting_for_player',
+        'messages' => [[
+            'id'        => 1,
+            'sender'    => 'system',
+            'content'   => $content,
+            'timestamp' => date('c'),
+        ]],
+    ];
 }
 
 // ── Get game state ─────────────────────────────────────────
@@ -74,8 +387,209 @@ if ($action === 'send-command' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     ];
     $chat['messages'][] = $msg;
     $chat['status']     = 'waiting_for_gm';
-    writeJson($chatFile, $chat);
+    writeChatJson($chatFile, $chat);
     echo json_encode(['ok' => true, 'message' => $msg]);
+    exit;
+}
+
+// ── Mark a room as explored (fog-of-war) ─────────────────
+if ($action === 'explore-room' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+    $gameFile = $base . '/data/game.json';
+    $input    = json_decode(file_get_contents('php://input'), true);
+    $floorId  = $input['floorId'] ?? '';
+    $roomId   = $input['roomId']  ?? '';
+    if (!$floorId || !$roomId) { http_response_code(400); echo json_encode(['error'=>'Missing params']); exit; }
+
+    $game = readJson($gameFile);
+    if (!$game) { http_response_code(500); echo json_encode(['error'=>'No game state']); exit; }
+
+    if (!isset($game['world_map']['canvas_map']['floors'][$floorId])) {
+        echo json_encode(['ok'=>false,'error'=>'Floor not found']); exit;
+    }
+    $floor = &$game['world_map']['canvas_map']['floors'][$floorId];
+
+    if (!isset($floor['explored'])) $floor['explored'] = [];
+    if (!in_array($roomId, $floor['explored'])) {
+        $floor['explored'][] = $roomId;
+        writeJson($gameFile, $game);
+    }
+    echo json_encode(['ok' => true]);
+    exit;
+}
+
+// ── Interact with a map object ────────────────────────────
+if ($action === 'interact-object' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+    $gameFile = $base . '/data/game.json';
+    $chatFile = $base . '/data/chat.json';
+    $input    = json_decode(file_get_contents('php://input'), true);
+    $floorId  = $input['floorId']   ?? '';
+    $roomId   = $input['roomId']    ?? '';
+    $objId    = $input['objId']     ?? '';
+    $verb     = strtolower(trim($input['verb'] ?? 'examine'));
+    $label    = $input['label']     ?? $objId;
+    $roomLabel= $input['roomLabel'] ?? $roomId;
+
+    if (!$roomId || !$objId) {
+        http_response_code(400); echo json_encode(['error' => 'Missing roomId or objId']); exit;
+    }
+
+    // Map verb → new state (null = examine, no state change)
+    $stateMap = [
+        'search'            => 'searched',
+        'search body'       => 'searched',
+        'loot'              => 'searched',
+        'take'              => 'searched',
+        'take weapon'       => 'partial',
+        'read'              => 'searched',
+        'use terminal'      => null,
+        'use'               => null,
+        'hack'              => null,
+        'bypass'            => null,
+        'activate'          => 'active',
+        'open'              => 'open',
+        'force open'        => 'open',
+        'break open'        => 'broken',
+        'pick lock'         => 'unlocked',
+        'unlock'            => 'unlocked',
+        'listen'            => null,
+        'speak'             => null,
+        'check vitals'      => null,
+        'initiate revival'  => null,
+        'interact'          => null,
+        'cut power'         => 'inactive',
+        'examine'           => null,
+    ];
+    $newState = array_key_exists($verb, $stateMap) ? $stateMap[$verb] : null;
+
+    // Update object state in game.json
+    $game = readJson($gameFile);
+    if (!$game) { http_response_code(500); echo json_encode(['error' => 'No game state']); exit; }
+
+    $found = false;
+    $floors = &$game['world_map']['canvas_map']['floors'];
+    foreach ($floors as $fid => &$floor) {
+        foreach ($floor['rooms'] as &$room) {
+            if ($room['id'] !== $roomId) continue;
+            foreach (($room['objects'] ?? []) as &$obj) {
+                if ($obj['id'] !== $objId) continue;
+                $found = true;
+                // Don't overwrite terminal states with null, don't "un-search" already searched
+                if ($newState !== null) {
+                    $locked   = in_array($obj['state'], ['searched','used','broken','breached']);
+                    if (!$locked) $obj['state'] = $newState;
+                }
+                break 3;
+            }
+            break 2;
+        }
+    }
+    if (!$found) { echo json_encode(['ok'=>false,'error'=>'Object not found']); exit; }
+    writeJson($gameFile, $game);
+
+    // Build natural-language command for the GM
+    $verbPhrases = [
+        'examine'          => 'examine',          'search'      => 'search through',
+        'search body'      => 'search the body of','loot'        => 'loot',
+        'take'             => 'take',              'take weapon' => 'take a weapon from',
+        'read'             => 'read',              'use terminal'=> 'use',
+        'use'              => 'use',               'hack'        => 'attempt to hack',
+        'bypass'           => 'attempt to bypass', 'activate'    => 'try to activate',
+        'open'             => 'open',              'force open'  => 'force open',
+        'break open'       => 'break open',        'pick lock'   => 'pick the lock on',
+        'unlock'           => 'unlock',            'listen'      => 'listen to',
+        'speak'            => 'speak into',        'check vitals'=> 'check the vitals on',
+        'initiate revival' => 'initiate the revival sequence on','interact'=>'interact with',
+        'cut power'        => 'cut power at',
+    ];
+    $phrase  = $verbPhrases[$verb] ?? $verb;
+    $command = "I {$phrase} the {$label} in the {$roomLabel}.";
+
+    // Append to chat so the GM watcher picks it up
+    if (!file_exists($chatFile)) { echo json_encode(['ok'=>false,'error'=>'No chat file']); exit; }
+    $chat = readJson($chatFile);
+    $msg  = [
+        'id'        => nextMsgId($chat),
+        'sender'    => 'player',
+        'content'   => $command,
+        'timestamp' => date('c'),
+    ];
+    $chat['messages'][] = $msg;
+    $chat['status']     = 'waiting_for_gm';
+    writeChatJson($chatFile, $chat);
+
+    echo json_encode(['ok' => true, 'command' => $command, 'newState' => $newState]);
+    exit;
+}
+
+// ── Next turn ─────────────────────────────────────────────
+if ($action === 'next-turn' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+    $gameFile = $base . '/data/game.json';
+    $game = readJson($gameFile);
+    if (!$game) { http_response_code(500); echo json_encode(['error'=>'No game state']); exit; }
+
+    $combat = &$game['combat'];
+    $n = count($combat['combatants'] ?? []);
+    if ($n > 0) {
+        $next = (($combat['turn_index'] ?? 0) + 1) % $n;
+        if ($next === 0) $combat['round'] = ($combat['round'] ?? 1) + 1;
+        $combat['turn_index'] = $next;
+    }
+    writeJson($gameFile, $game);
+    echo json_encode(['ok'=>true, 'turn_index'=>$combat['turn_index'], 'round'=>$combat['round']]);
+    exit;
+}
+
+// ── Prev turn ─────────────────────────────────────────────
+if ($action === 'prev-turn' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+    $gameFile = $base . '/data/game.json';
+    $game = readJson($gameFile);
+    if (!$game) { http_response_code(500); echo json_encode(['error'=>'No game state']); exit; }
+
+    $combat = &$game['combat'];
+    $n = count($combat['combatants'] ?? []);
+    if ($n > 0) {
+        $prev = (($combat['turn_index'] ?? 0) - 1 + $n) % $n;
+        if ($prev === $n - 1 && ($combat['round'] ?? 1) > 1) $combat['round']--;
+        $combat['turn_index'] = $prev;
+    }
+    writeJson($gameFile, $game);
+    echo json_encode(['ok'=>true, 'turn_index'=>$combat['turn_index'], 'round'=>$combat['round']]);
+    exit;
+}
+
+// ── Set combat state (GM) ─────────────────────────────────
+if ($action === 'set-combat' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+    $gameFile = $base . '/data/game.json';
+    $game  = readJson($gameFile);
+    $input = json_decode(file_get_contents('php://input'), true) ?? [];
+    if (!$game) { http_response_code(500); echo json_encode(['error'=>'No game state']); exit; }
+
+    $combat = &$game['combat'];
+    if (isset($input['active']))      $combat['active']      = (bool)$input['active'];
+    if (isset($input['round']))       $combat['round']       = (int)$input['round'];
+    if (isset($input['turn_index']))  $combat['turn_index']  = (int)$input['turn_index'];
+    if (isset($input['location']))    $combat['location']    = $input['location'];
+    if (isset($input['combatants']))  $combat['combatants']  = $input['combatants'];
+    if (isset($input['combat_log']))  $combat['combat_log']  = $input['combat_log'];
+
+    writeJson($gameFile, $game);
+    echo json_encode(['ok'=>true, 'combat'=>$combat]);
+    exit;
+}
+
+// ── GM narrate — appends a line to combat.combat_log ─────
+if ($action === 'gm-narrate' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+    $gameFile = $base . '/data/game.json';
+    $game  = readJson($gameFile);
+    $input = json_decode(file_get_contents('php://input'), true) ?? [];
+    if (!$game) { http_response_code(500); echo json_encode(['error'=>'No game state']); exit; }
+    $text = trim($input['text'] ?? '');
+    if ($text === '') { echo json_encode(['ok'=>true]); exit; }
+    if (!isset($game['combat']['combat_log']) || !is_array($game['combat']['combat_log']))
+        $game['combat']['combat_log'] = [];
+    $game['combat']['combat_log'][] = '[GM] ' . $text;
+    writeJson($gameFile, $game);
+    echo json_encode(['ok'=>true]);
     exit;
 }
 
@@ -88,8 +602,11 @@ if ($action === 'save-lobby' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     $idx = ($game['lobby_save_index'] ?? 0) + 1;
     $savePath = $base . '/saves/lobby-' . $idx . '.json';
 
-    // Save current state
+    // Save current game state + a chat snapshot sidecar so the conversation
+    // can be restored on load.
     writeJson($savePath, $game);
+    $chat = readJson($base . '/data/chat.json');
+    if ($chat) writeJson($base . '/saves/lobby-' . $idx . '.chat.json', $chat);
 
     // Update game with new save index
     $game['lobby_save_index']  = $idx;
@@ -100,57 +617,145 @@ if ($action === 'save-lobby' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 
+// ── Start a NEW game (reset progress) ─────────────────────
+// mode=keep  → replay with the existing character (identity kept, progress wiped)
+// mode=new   → blank the character for GM-driven creation
+if ($action === 'new-game' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+    $gameFile = $base . '/data/game.json';
+    $chatFile = $base . '/data/chat.json';
+    $input = json_decode(file_get_contents('php://input'), true);
+    $mode       = $input['mode']       ?? ($_GET['mode']       ?? 'keep');   // keep | new
+    $teamMode   = $input['team_mode']  ?? ($_GET['team_mode']  ?? 'keep');   // keep | generate
+    $guideMode  = $input['guide_mode'] ?? ($_GET['guide_mode'] ?? 'keep');   // keep | generate | blank
+    $newCharacter = ($mode === 'new');
+
+    $game = readJson($gameFile);
+    if (!$game) { http_response_code(500); echo json_encode(['error' => 'No game state to reset']); exit; }
+
+    $game = freshGameState($game, $newCharacter);
+
+    // Team regeneration
+    if ($teamMode === 'generate') {
+        $game['team']['members'] = generateRandomTeam($base);
+    } elseif (empty($game['team']['members'])) {
+        // Auto-generate if team is empty (e.g. very first run)
+        $game['team']['members'] = generateRandomTeam($base);
+    }
+
+    // Guide regeneration / blank
+    if ($guideMode === 'generate') {
+        $game['guide'] = generateGuideProfile($base);
+    } elseif ($guideMode === 'blank') {
+        $game['guide']['name']        = '';
+        $game['guide']['nationality'] = '';
+        $game['guide']['occupation']  = '';
+        $game['guide']['backstory']   = '';
+        $game['guide']['introduced']  = false;
+        $game['guide']['knowledge']   = [];
+        $game['guide']['personality'] = (object)[];
+    }
+
+    writeJson($gameFile, $game);
+
+    // Fresh chat + empty event log so the watcher starts clean.
+    writeChatJson($chatFile, canonicalIntroChat($newCharacter));
+    file_put_contents($base . '/data/event-log.txt', '');
+
+    // Drop any old auto-checkpoint so a death right after a new game can't
+    // restore the previous run. (Manual lobby-N saves are kept on purpose.)
+    @unlink($base . '/saves/checkpoint.json');
+    @unlink($base . '/saves/checkpoint-chat.json');
+
+    echo json_encode(['ok' => true, 'mode' => $mode, 'team_mode' => $teamMode, 'guide_mode' => $guideMode]);
+    exit;
+}
+
 // ── Restore on player death ───────────────────────────────
+// Full restore to the last safe Lobby state: game + chat + position all revert.
+// Priority: watcher auto-checkpoint → newest manual lobby save → clean reset.
 if ($action === 'player-died' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     $gameFile  = $base . '/data/game.json';
     $chatFile  = $base . '/data/chat.json';
     $game = readJson($gameFile);
     if (!$game) { http_response_code(500); echo json_encode(['error' => 'No game state']); exit; }
+    $deaths = ($game['deaths'] ?? 0) + 1;
 
-    $lastSavePath = $game['last_lobby_save'] ?? null;
-    if (!$lastSavePath || !file_exists($base . '/' . $lastSavePath)) {
-        // No lobby save yet — soft restore to starting state
-        $game['phase']            = 'lobby';
-        $game['current_movie']    = null;
-        $game['deaths']           = ($game['deaths'] ?? 0) + 1;
-        $game['character']['hp']  = $game['character']['hp_max'] ?? 100;
-        $game['character']['status_effects'] = [];
-        writeJson($gameFile, $game);
-        echo json_encode(['ok' => true, 'restored_from' => 'initial']);
-        exit;
+    // Resolve a snapshot pair {game, chat} to restore from.
+    $snapGame = null; $snapChat = null; $restoredFrom = null;
+
+    $chkGame = $base . '/saves/checkpoint.json';
+    $chkChat = $base . '/saves/checkpoint-chat.json';
+    if (file_exists($chkGame)) {
+        $snapGame = readJson($chkGame);
+        $snapChat = file_exists($chkChat) ? readJson($chkChat) : null;
+        $restoredFrom = 'checkpoint';
+    } else {
+        // The current run's manual lobby save, if one exists. (We deliberately
+        // do NOT scan the saves folder — that could restore a previous run's
+        // save after a New Game. New Game nulls last_lobby_save.)
+        $lp = $game['last_lobby_save'] ?? null;
+        if ($lp && file_exists($base . '/' . $lp)) {
+            $lobbyPath = $base . '/' . $lp;
+            $snapGame = readJson($lobbyPath);
+            $chatSidecar = preg_replace('/\.json$/', '.chat.json', $lobbyPath);
+            $snapChat = file_exists($chatSidecar) ? readJson($chatSidecar) : null;
+            $restoredFrom = basename($lobbyPath);
+        }
     }
 
-    // Restore game from lobby save
-    $savedGame = readJson($base . '/' . $lastSavePath);
-    if (!$savedGame) { http_response_code(500); echo json_encode(['error' => 'Cannot read save']); exit; }
+    if ($snapGame) {
+        // Full state revert
+        $snapGame['deaths']                 = $deaths;
+        $snapGame['phase']                  = 'lobby';
+        $snapGame['current_movie']          = null;
+        $snapGame['movie_start_message_id'] = null;
+        $snapGame['combat']                 = ['enemies' => [], 'active' => false];
+        unset($snapGame['timers']);
+        parkWatcherCursor($snapGame, $base); // don't re-apply post-checkpoint events
+        writeJson($gameFile, $snapGame);
 
-    $deaths = ($game['deaths'] ?? 0) + 1;
-    $savedGame['deaths'] = $deaths;
-    $savedGame['phase']  = 'lobby';
-    $savedGame['current_movie'] = null;
-    $savedGame['movie_start_message_id'] = null;
-    writeJson($gameFile, $savedGame);
-
-    // Trim chat back to pre-movie state
-    $chat = readJson($chatFile);
-    $movieStartId = $game['movie_start_message_id'] ?? null;
-    if ($movieStartId && $chat) {
-        $chat['messages'] = array_values(array_filter(
-            $chat['messages'],
-            fn($m) => ($m['id'] ?? 0) < $movieStartId
-        ));
-        // Add restoration message
+        // Chat reverts to the snapshot (this is what "removes the chat")
+        $chat = $snapChat ?: readJson($chatFile) ?: ['messages' => []];
         $chat['messages'][] = [
             'id'        => nextMsgId($chat),
             'sender'    => 'system',
-            'content'   => 'CONSCIOUSNESS RESTORED — Death registered. Body reconstituted from last Lobby checkpoint. State reverted to last Lobby departure. Deaths total: ' . $deaths,
+            'content'   => 'CONSCIOUSNESS RESTORED — Death registered. Body reconstituted from the last Lobby checkpoint; everything after it is undone. Deaths total: ' . $deaths,
             'timestamp' => date('c'),
         ];
         $chat['status'] = 'waiting_for_gm';
-        writeJson($chatFile, $chat);
+        writeChatJson($chatFile, $chat);
+
+        echo json_encode(['ok' => true, 'restored_from' => $restoredFrom, 'deaths' => $deaths]);
+        exit;
     }
 
-    echo json_encode(['ok' => true, 'restored_from' => $lastSavePath, 'deaths' => $deaths]);
+    // No snapshot at all → clean reset (heal, clear, drop position/threats) + fresh chat
+    $c = $game['character'] ?? [];
+    if (isset($c['hp_max']))      $c['hp'] = $c['hp_max'];
+    if (isset($c['mp_max']))      $c['mp'] = $c['mp_max'];
+    if (isset($c['stamina_max'])) $c['stamina'] = $c['stamina_max'];
+    $c['fear_meter'] = 0; $c['fear_level'] = 'Calm';
+    $c['status_effects'] = [];
+    $c['location'] = 'entrance-hall';
+    unset($c['sublocation']);
+    $game['character'] = $c;
+    $game['deaths'] = $deaths;
+    $game['phase'] = 'lobby';
+    $game['current_movie'] = null;
+    $game['movie_start_message_id'] = null;
+    $game['combat'] = ['enemies' => [], 'active' => false];
+    unset($game['timers']);
+    parkWatcherCursor($game, $base);
+    writeJson($gameFile, $game);
+
+    $chat = ['status' => 'waiting_for_gm', 'messages' => [[
+        'id' => 1, 'sender' => 'system',
+        'content' => 'CONSCIOUSNESS RESTORED — Death registered, but no Lobby checkpoint existed. You wake disoriented at the threshold, your wounds gone. Deaths total: ' . $deaths,
+        'timestamp' => date('c'),
+    ]]];
+    writeChatJson($chatFile, $chat);
+
+    echo json_encode(['ok' => true, 'restored_from' => 'clean-reset', 'deaths' => $deaths]);
     exit;
 }
 
@@ -171,31 +776,32 @@ if ($action === 'load-save' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!$savedGame) {
         http_response_code(500); echo json_encode(['error' => 'Cannot read save file']); exit;
     }
-    // Restore — same logic as player-died but from a chosen save
+    // Restore game state from the chosen save.
     $game = readJson($gameFile);
     $deaths = ($game['deaths'] ?? 0);
     $savedGame['deaths'] = $deaths;
     $savedGame['phase']  = 'lobby';
     $savedGame['current_movie'] = null;
     $savedGame['movie_start_message_id'] = null;
+    $savedGame['combat'] = ['enemies' => [], 'active' => false];
+    unset($savedGame['timers']);
+    parkWatcherCursor($savedGame, $base);
     writeJson($gameFile, $savedGame);
-    // Trim chat to pre-movie state
-    $chat = readJson($chatFile);
-    $movieStartId = $game['movie_start_message_id'] ?? null;
-    if ($movieStartId && $chat) {
-        $chat['messages'] = array_values(array_filter(
-            $chat['messages'],
-            fn($m) => ($m['id'] ?? 0) < $movieStartId
-        ));
-        $chat['messages'][] = [
-            'id'        => nextMsgId($chat),
-            'sender'    => 'system',
-            'content'   => 'Save restored from ' . $file . '. Welcome back to God\'s Space.',
-            'timestamp' => date('c'),
-        ];
-        $chat['status'] = 'waiting_for_player';
-        writeJson($chatFile, $chat);
-    }
+
+    // Restore the chat snapshot saved alongside this slot (if present);
+    // otherwise keep the current chat.
+    $sidecar = preg_replace('/\.json$/', '.chat.json', $savePath);
+    $chat = file_exists($sidecar) ? readJson($sidecar) : readJson($chatFile);
+    if (!$chat) $chat = ['messages' => []];
+    $chat['messages'][] = [
+        'id'        => nextMsgId($chat),
+        'sender'    => 'system',
+        'content'   => 'Save restored from ' . $file . '. Welcome back to God\'s Space.',
+        'timestamp' => date('c'),
+    ];
+    $chat['status'] = 'waiting_for_player';
+    writeChatJson($chatFile, $chat);
+
     echo json_encode(['ok' => true, 'restored_from' => $file]);
     exit;
 }
@@ -206,6 +812,7 @@ if ($action === 'list-saves') {
     $savesDir = $base . '/saves/';
     if (is_dir($savesDir)) {
         foreach (glob($savesDir . 'lobby-*.json') as $f) {
+            if (str_ends_with($f, '.chat.json')) continue; // skip chat sidecars
             $data = readJson($f);
             $saves[] = [
                 'file'        => basename($f),
@@ -319,7 +926,7 @@ if ($action === 'replace-music-search' && $_SERVER['REQUEST_METHOD'] === 'POST')
             $changed = true;
         }
     }
-    if ($changed) writeJson($chatFile, $chat);
+    if ($changed) writeChatJson($chatFile, $chat);
     echo json_encode(['ok' => true, 'changed' => $changed]);
     exit;
 }
@@ -453,15 +1060,10 @@ if ($action === 'start-watcher') {
         echo json_encode(['ok' => true, 'already_running' => true]);
         exit;
     }
-    $bat = $base . '\\watcher\\run-watcher.bat';
-    if (!file_exists($bat)) {
-        http_response_code(500);
-        echo json_encode(['error' => 'run-watcher.bat not found at ' . $bat]);
-        exit;
-    }
-    // Fire-and-forget detached launch (Windows). The bat opens its own window.
-    $cmd = 'start /MIN "TI-Watcher" "' . $bat . '"';
-    pclose(popen($cmd, 'r'));
+    // Launch via PowerShell Start-Process (silent, works from web server context)
+    $watcherDir = $base . '\\watcher';
+    $ps = 'powershell -NonInteractive -WindowStyle Hidden -Command "Start-Process -FilePath \\"C:\\Program Files\\nodejs\\node.exe\\" -ArgumentList \\"watcher.js\\" -WorkingDirectory \\"' . $watcherDir . '\\" -WindowStyle Hidden"';
+    pclose(popen($ps, 'r'));
     echo json_encode(['ok' => true, 'started' => true]);
     exit;
 }
@@ -497,8 +1099,36 @@ if ($action === 'save-watcher-config' && $_SERVER['REQUEST_METHOD'] === 'POST') 
 
 // ── Stop the watcher engine ────────────────────────────────
 if ($action === 'stop-watcher') {
+    // Kill cmd window by title (covers the bat's window)
     exec('taskkill /f /fi "WINDOWTITLE eq TI-Watcher" 2>nul', $output, $rc);
-    echo json_encode(['ok' => true, 'killed' => ($rc === 0)]);
+    // Also kill node process by PID (in case windowsHide hid the title)
+    $pidFile = $base . '/watcher/watcher.pid';
+    if (file_exists($pidFile)) {
+        $pid = intval(trim(file_get_contents($pidFile)));
+        if ($pid > 0) exec("taskkill /PID {$pid} /F 2>nul");
+        @unlink($pidFile);
+    }
+    echo json_encode(['ok' => true, 'killed' => true]);
+    exit;
+}
+
+// ── Restart the watcher engine ─────────────────────────────
+if ($action === 'restart-watcher') {
+    // Kill existing instance — by window title and by PID file
+    exec('taskkill /f /fi "WINDOWTITLE eq TI-Watcher" 2>nul');
+    $pidFile = $base . '/watcher/watcher.pid';
+    if (file_exists($pidFile)) {
+        $pid = intval(trim(file_get_contents($pidFile)));
+        if ($pid > 0) exec("taskkill /PID {$pid} /F 2>nul");
+        @unlink($pidFile);
+    }
+    usleep(700000); // 0.7s — let node exit and release locks
+    // Launch via PowerShell Start-Process (works from web server context without a visible window)
+    $watcherJs  = $base . '\\watcher\\watcher.js';
+    $watcherDir = $base . '\\watcher';
+    $ps = 'powershell -NonInteractive -WindowStyle Hidden -Command "Start-Process -FilePath \\"C:\\Program Files\\nodejs\\node.exe\\" -ArgumentList \\"watcher.js\\" -WorkingDirectory \\"' . $watcherDir . '\\" -WindowStyle Hidden"';
+    pclose(popen($ps, 'r'));
+    echo json_encode(['ok' => true, 'restarted' => true]);
     exit;
 }
 

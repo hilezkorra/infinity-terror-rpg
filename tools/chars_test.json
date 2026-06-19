@@ -1,0 +1,24 @@
+﻿python : Traceback (most recent call last):
+In Zeile:1 Zeichen:71
++ ... NG="utf-8"; python tools\character_generator.py --count 50 --json 2>& ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last)::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  File "C:\laragon\www\terror-infinity-rpg\tools\character_generator.py", line 578, in <module>
+    main()
+    ~~~~^^
+  File "C:\laragon\www\terror-infinity-rpg\tools\character_generator.py", line 559, in main
+    char = generate_npc(
+        gender_override=args.gender,
+        nationality_override=args.nationality,
+        is_guide=args.guide,
+    )
+  File "C:\laragon\www\terror-infinity-rpg\tools\character_generator.py", line 439, in generate_npc
+    skills = generate_skills(occupation, hobbies)
+  File "C:\laragon\www\terror-infinity-rpg\tools\character_generator.py", line 322, in generate_skills
+    level = occupation_skill_level(s, occ_skills)
+  File "C:\laragon\www\terror-infinity-rpg\tools\character_generator.py", line 121, in occupation_skill_level
+    idx = occ_skills.index(skill)
+          ^^^^^^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'index'

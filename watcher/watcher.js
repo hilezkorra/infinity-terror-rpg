@@ -29,6 +29,8 @@ const P = {
   chkChat:     path.join(ROOT, 'saves', 'checkpoint-chat.json'),
   watcherLog:  path.join(ROOT, CFG.settings.log_file || 'watcher/watcher.log'),
   gmLog:       path.join(ROOT, CFG.settings.gm_log_file || 'watcher/gm.log'),
+  gmState:     path.join(ROOT, 'watcher', 'gm-state.json'),
+  pidFile:     path.join(ROOT, 'watcher', 'watcher.pid'),
 };
 
 const LEVEL_UP_HP_BONUS = CFG.level_up_hp_bonus ?? 5;
@@ -48,6 +50,13 @@ function readJsonSafe(file) {
 function writeJson(file, data) {
   const tmp = file + '.tmp';
   fs.writeFileSync(tmp, JSON.stringify(data, null, 2));
+  // Retry rename up to 5x — Windows Defender/Search can briefly hold the lock
+  for (let i = 0; i < 5; i++) {
+    try { fs.renameSync(tmp, file); return; } catch (e) {
+      if (i === 4) throw e;
+      const until = Date.now() + 60; while (Date.now() < until) {} // ~60ms spin
+    }
+  }
   fs.renameSync(tmp, file); // atomic-ish swap so readers never see half a file
 }
 
@@ -88,6 +97,8 @@ function resolveChar(game, name) {
   if (m) return { ref: m, type: 'member' };
   const npc = (game.npcs || []).find(x => (x.name || '').toLowerCase() === n);
   if (npc) return { ref: npc, type: 'npc' };
+  const p = (game.partners || []).find(x => (x.name || '').toLowerCase() === n);
+  if (p) return { ref: p, type: 'partner' };
   return null;
 }
 
@@ -97,13 +108,29 @@ function allChars(game, includeDead) {
   if (game.guide?.name && (includeDead || game.guide.alive !== false)) out.push({ ref: game.guide, type: 'guide' });
   (game.team?.members || []).forEach(m => { if (includeDead || (m.hp ?? 1) > 0) out.push({ ref: m, type: 'member' }); });
   (game.npcs || []).forEach(n => { if (includeDead || n.alive !== false) out.push({ ref: n, type: 'npc' }); });
+  (game.partners || []).forEach(p => { if (includeDead || p.alive !== false) out.push({ ref: p, type: 'partner' }); });
   return out;
+}
+
+// Resolve a location id to its human name (and sublocation) for the digest.
+function locationLabel(game, id, sub) {
+  if (!id) return 'unknown';
+  const loc = (game.world_map?.locations || []).find(l => l.id === id);
+  const base = loc ? loc.name : id;
+  if (!sub) return base;
+  const subObj = (loc?.sublocations || []).find(s => (typeof s === 'object' ? s.id : s) === sub);
+  const subName = subObj ? (typeof subObj === 'object' ? subObj.name : subObj) : sub;
+  return `${base} / ${subName}`;
+}
+function statusNames(c) {
+  return (c.status_effects || []).map(s => (typeof s === 'string' ? s : s.name)).filter(Boolean);
 }
 
 // ── Stat / skill helpers ──────────────────────────────────────
 function statValue(ch, statName) {
   const map = { str: 'strength', agi: 'agility', end: 'endurance', int: 'intelligence',
-                luck: 'luck', psy: 'psyche_force', psyche: 'psyche_force' };
+                luck: 'luck', psy: 'psyche_force', psyche: 'psyche_force',
+                cha: 'charisma', charisma: 'charisma', app: 'appearance', appearance: 'appearance' };
   const key = map[statName.toLowerCase()] || statName.toLowerCase();
   return ch[key] ?? 0;
 }
@@ -175,6 +202,23 @@ function fearLevelFor(v) {
 // ── DICE ENGINE ───────────────────────────────────────────────
 function rollDie(size) { return Math.floor(Math.random() * size) + 1; }
 
+// Luck die bonus — non-linear scaling so high luck feels like protagonist-level fate.
+// Average human sits 5-15 (no bonus). At 50 the world bends toward them. At 100 barely anything kills them.
+function luckDieBonus(luck) {
+  const l = luck ?? 0;
+  if (l <= 9)  return 0;
+  if (l <= 19) return 1;
+  if (l <= 29) return 2;
+  if (l <= 39) return 4;
+  if (l <= 49) return 6;
+  if (l <= 59) return 8;
+  if (l <= 69) return 11;
+  if (l <= 79) return 14;
+  if (l <= 89) return 17;
+  if (l <= 99) return 19;
+  return 20; // 100+ — minimum effective die 21, beats most realistic DCs
+}
+
 function processRoll(game, name, line, nextId, cron) {
   const ch = resolveChar(game, name);
   if (!ch) { cron.push(`Roll ignored — unknown character "${name}".`); return; }
@@ -243,7 +287,9 @@ function processRoll(game, name, line, nextId, cron) {
 
   const nat1 = die === 1;
   const nat20 = die === size;
-  const final = (die + modifier) * power;
+  // Luck scaling: non-linear bonus silently added to die before power (hidden from player)
+  const luckBonus = luckDieBonus(c.luck);
+  const final = (die + luckBonus + modifier) * power;
 
   // Tier evaluation. Luck bands scale with power granularity so they stay meaningful
   // at every tier (at Power=1 this is the classic ±1 around the DC).
@@ -283,10 +329,23 @@ function processRoll(game, name, line, nextId, cron) {
   cron.push(`Character "${name}" rolls ${die}${tag}. Modifier ${sign}${modifier}${powStr}. Final result ${final} vs Difficulty ${DC} — ${tier}.`);
   if (floorTag && attempts > 3) cron.push(`GM DIRECTIVE: it took ${attempts} attempts for "${name}" to clear the floor — narrate the cost of that delay (noise, time, exposure, rising danger).`);
 
-  // Luck adjustment
+  // ── System Curse: luck 0 cascades near-misses to catastrophe ─
+  if ((c.luck ?? 1) === 0 && tier === 'near miss') {
+    tier = 'OVERWHELMING FAILURE';
+    extra = 'negative';
+    cron.push(`GM DIRECTIVE: System Curse active on "${name}" — near-miss cascades to OVERWHELMING FAILURE. Fate is not just absent, it is hostile.`);
+  }
+
+  // ── Luck delta ────────────────────────────────────────────────
+  // nat20/nat1 SET the delta to exactly ±1 — they don't stack with borderline/near-miss.
+  // Otherwise borderline (+1) and near miss (-1) set above stand as-is.
+  if (nat20)     luckDelta = 1;
+  else if (nat1) luckDelta = -1;
+
+  // Apply luck change. Floor = 1 — luck 0 is System-only (see System Curse).
   if (luckDelta !== 0 && c.luck != null) {
-    c.luck = Math.max(0, c.luck + luckDelta);
-    cron.push(`Character "${name}" luck ${luckDelta > 0 ? 'increased' : 'decreased'} by ${Math.abs(luckDelta)} (now ${c.luck}).`);
+    c.luck = Math.max(1, c.luck + luckDelta);
+    cron.push(`Character "${name}" luck ${luckDelta > 0 ? '+' : ''}${luckDelta} (now ${c.luck}).`);
   }
   // Extra-consequence flag for the GM
   if (extra === 'positive') cron.push(`GM DIRECTIVE: Narrate an EXTRA POSITIVE outcome for "${name}" (overwhelming success on "${action}").`);
@@ -318,6 +377,76 @@ function resolveCombatant(game, ref) {
   const e = findEnemy(game, ref);
   if (e) return { ref: e, type: 'enemy', isEnemy: true };
   return null;
+}
+
+// ── SOCIAL / RELATIONSHIPS ────────────────────────────────────
+// Affection is directional: c.relationships[OtherName] = { affection, status }.
+function affectionBand(n) {
+  const bands = (CFG.social && CFG.social.affection_bands) || [];
+  for (const b of bands) if (n <= b.max) return b.label;
+  return 'Neutral';
+}
+function getRel(c, otherName) {
+  c.relationships = c.relationships || {};
+  if (!c.relationships[otherName]) c.relationships[otherName] = { affection: 0, status: affectionBand(0) };
+  return c.relationships[otherName];
+}
+function setAffection(c, otherName, value) {
+  const rel = getRel(c, otherName);
+  const lo = CFG.social?.affection_min ?? -100, hi = CFG.social?.affection_max ?? 100;
+  rel.affection = Math.max(lo, Math.min(hi, Math.round(value)));
+  rel.status = affectionBand(rel.affection);
+  return rel;
+}
+function goodEvilAxis(alignment) {
+  const a = (alignment || '').toLowerCase();
+  if (a.includes('good')) return 'good';
+  if (a.includes('evil')) return 'evil';
+  return 'neutral';
+}
+function stripId(s) { return (s || '').replace(/\s*\[ID:\d+\]/, '').trim(); }
+
+// ── ENCUMBRANCE / WEIGHT ──────────────────────────────────────
+function itemWeight(it) { return (it && typeof it.weight === 'number') ? it.weight : 0; }
+function onHandWeight(c) {
+  let w = 0;
+  for (const it of (c.items || []))   w += itemWeight(it);
+  for (const it of (c.weapons || [])) w += itemWeight(it);
+  return Math.round(w * 100) / 100;
+}
+function carryCapacity(c) { return (c.strength || 0) * (CFG.encumbrance?.carry_capacity_per_str_kg ?? 5); }
+function maxLift(c)       { return (c.strength || 0) * (CFG.encumbrance?.max_lift_per_str_kg ?? 10); }
+function updateEncumbrance(c, name, cron) {
+  const cap = carryCapacity(c);
+  const load = onHandWeight(c);
+  const status = CFG.encumbrance?.encumbered_status || 'Encumbered';
+  if (load > cap && cap > 0) {
+    if (!hasStatus(c, status)) {
+      addStatus(c, status, { permanent: false, negative: true });
+      cron.push(`WATCHER NOTICE: "${name}" is over carry capacity (${load}kg / ${cap}kg) — now Encumbered. Movement and agility-based actions are slowed until they drop or store weight (a storage ring is weightless).`);
+    }
+  } else if (hasStatus(c, status)) {
+    removeStatus(c, status);
+    cron.push(`Character "${name}" is no longer encumbered (${load}kg / ${cap}kg).`);
+  }
+}
+
+// ── COMMUNICATION MEANS ───────────────────────────────────────
+function hasItemLike(c, re) {
+  for (const pool of [c.items, c.weapons, c.equipped, c.storage])
+    for (const it of (pool || [])) if (re.test((it.name || '').toLowerCase())) return true;
+  return false;
+}
+function hasSkillLike(c, re) {
+  return Object.keys(c.skills || {}).some(k => re.test(k.toLowerCase()));
+}
+function hasCommMeans(c, type) {
+  const t = (type || '').toLowerCase();
+  // Telepathic / psychic channels rely on a stat, skill, or soul-link item.
+  if (/tele|psych|mind|soul|link/.test(t))
+    return (c.psyche_force || 0) >= 5 || hasSkillLike(c, /psych|tele|mind/) || hasItemLike(c, /soul.?link|psyche|telepath|mind/);
+  // Device channels rely on a matching item.
+  return hasItemLike(c, /radio|comm|walkie|earpiece|transceiver|phone|intercom|headset|signal|transmitter|receiver/);
 }
 
 function registerEnemy(game, txt, cron) {
@@ -353,13 +482,28 @@ function processAttack(game, txt, nextId, cron) {
   const def = resolveCombatant(game, m[2]);
   if (!atk || !def) { cron.push(`Attack ignored — combatant not found ("${m[1]}" → "${m[2]}").`); return true; }
 
+  const aName = stripId(m[1]);
+  const dName = stripId(m[2]);
+
+  // ── Watcher correction: character-vs-character sanity checks ──
+  if (!atk.isEnemy && !def.isEnemy) {
+    const Ac = atk.ref, Dc = def.ref;
+    const ranged = /\[(?:ranged|long-?range|sniper|scoped|artillery)\]/i.test(txt);
+    if ((Ac.location || null) !== (Dc.location || null) && !ranged) {
+      cron.push(`WATCHER WARNING: "${aName}" cannot attack "${dName}" — they are in different locations (${Ac.location || '?'} vs ${Dc.location || '?'}). Only a declared long-range attack (tag the event [ranged]) reaches across locations. Attack NOT resolved — correct the scene.`);
+      return true;
+    }
+    const rel = (Ac.relationships || {})[dName];
+    const thr = CFG.social?.attack_despite_affection_threshold ?? 40;
+    if (rel && rel.affection >= thr) {
+      cron.push(`WATCHER NOTICE: "${aName}" is attacking "${dName}" despite a positive bond (affection ${rel.affection}, ${rel.status}). Allowed — but motivate it (mind control, betrayal, possession, a forced choice). Make turning on them land emotionally.`);
+    }
+  }
+
   const dmgTag = parseInt((txt.match(/\b(\d+)\s*(?:dmg|damage)\b/i) || [])[1] || String(CFG.combat.default_attack_damage), 10);
   const size = CFG.dice.die_size || 20;
   const A = rollSide(atk.ref, size);
   const D = rollSide(def.ref, size);
-
-  const aName = m[1].replace(/\s*\[ID:\d+\]/,'').trim();
-  const dName = m[2].replace(/\s*\[ID:\d+\]/,'').trim();
 
   if (A.total <= D.total) {
     cron.push(`"${aName}" attacks "${dName}" — rolls ${A.die}×${A.power} (${A.total}) vs ${D.die}×${D.power} (${D.total}) — BLOCKED / evaded.`);
@@ -384,6 +528,87 @@ function processAttack(game, txt, nextId, cron) {
     checkHpThresholds(game, dName, def.ref, def.type, nextId, cron);
   }
   return true;
+}
+
+// ── SOCIAL EVENT HANDLERS ─────────────────────────────────────
+// Face-to-face interaction between two characters. Validates co-location and
+// reports the current relationship so the GM can play it accurately.
+function processInteraction(game, txt, cron) {
+  const m = txt.match(/"([^"]+?)"\s+(?:interacts?\s+with|talks?\s+(?:to|with)|speaks?\s+(?:to|with)|meets?\s+(?:with\s+)?|approaches?|confronts?)\s+"([^"]+?)"/i);
+  if (!m) return;
+  const aName = stripId(m[1]), bName = stripId(m[2]);
+  const aRef = resolveChar(game, aName), bRef = resolveChar(game, bName);
+  if (!aRef || !bRef) { cron.push(`Interaction note — unknown character ("${aName}" / "${bName}").`); return; }
+  const A = aRef.ref, B = bRef.ref;
+
+  if ((A.location || null) !== (B.location || null)) {
+    cron.push(`WATCHER WARNING: "${aName}" cannot directly interact with "${bName}" — they are in different locations (${aName}: ${A.location || 'unknown'}, ${bName}: ${B.location || 'unknown'}). Move one of them first, or have them use a communication device ("… via radio").`);
+    return;
+  }
+  if ((A.sublocation || null) !== (B.sublocation || null)) {
+    cron.push(`WATCHER NOTICE: "${aName}" and "${bName}" share a location (${A.location}) but are in different rooms (${A.sublocation || 'main area'} vs ${B.sublocation || 'main area'}). Confirm they're actually close enough to interact face-to-face.`);
+  }
+  const rAB = getRel(A, bName), rBA = getRel(B, aName);
+  cron.push(`Relationship — "${aName}" → "${bName}": affection ${rAB.affection} (${rAB.status}); "${bName}" → "${aName}": affection ${rBA.affection} (${rBA.status}). Voice this in how they treat each other.`);
+}
+
+// Remote communication via a device or psychic channel. Bypasses co-location,
+// but each side must actually possess the means.
+function processComm(game, txt, cron) {
+  const m = txt.match(/"([^"]+?)"\s+(?:contacts?|communicates?\s+with|radios?|calls?|signals?|messages?|reaches?(?:\s+out\s+to)?)\s+"([^"]+?)"\s+via\s+"?([^".;]+?)"?\s*[;.]?\s*$/i);
+  if (!m) return;
+  const aName = stripId(m[1]), bName = stripId(m[2]), type = m[3].trim();
+  const aRef = resolveChar(game, aName), bRef = resolveChar(game, bName);
+  if (!aRef || !bRef) { cron.push(`Comm note — unknown character ("${aName}" / "${bName}").`); return; }
+  const A = aRef.ref, B = bRef.ref;
+
+  const missing = [];
+  if (!hasCommMeans(A, type)) missing.push(aName);
+  if (!hasCommMeans(B, type)) missing.push(bName);
+  if (missing.length) {
+    cron.push(`WATCHER WARNING: ${missing.map(n => `"${n}"`).join(' and ')} ${missing.length > 1 ? 'have' : 'has'} no working ${type} (no matching device or skill) to communicate this way. Give them the item/ability first, or correct the scene — the contact can't happen via ${type}.`);
+    return;
+  }
+  cron.push(`"${aName}" reaches "${bName}" via ${type} — both are equipped for it.`);
+  const rAB = getRel(A, bName), rBA = getRel(B, aName);
+  cron.push(`Relationship — "${aName}" → "${bName}": ${rAB.affection} (${rAB.status}); "${bName}" → "${aName}": ${rBA.affection} (${rBA.status}).`);
+}
+
+// Affection change — mutual ("affection between A and B …") or directional
+// ("A affection toward B …"). Supports +N / -N / = N.
+function processAffection(game, txt, cron) {
+  let m;
+  if ((m = txt.match(/affection\s+between\s+"([^"]+?)"\s+and\s+"([^"]+?)"\s*(=)?\s*([+-]?\d+)/i))) {
+    const aName = stripId(m[1]), bName = stripId(m[2]);
+    const isSet = !!m[3], val = parseInt(m[4], 10);
+    const aRef = resolveChar(game, aName), bRef = resolveChar(game, bName);
+    if (!aRef || !bRef) { cron.push(`Affection note — unknown character ("${aName}" / "${bName}").`); return true; }
+    applyAffection(aRef.ref, aName, bRef.ref, bName, isSet, val, cron);
+    applyAffection(bRef.ref, bName, aRef.ref, aName, isSet, val, cron);
+    return true;
+  }
+  if ((m = txt.match(/"([^"]+?)"\s+affection\s+(?:toward|towards|for)\s+"([^"]+?)"\s*(=)?\s*([+-]?\d+)/i))) {
+    const aName = stripId(m[1]), bName = stripId(m[2]);
+    const isSet = !!m[3], val = parseInt(m[4], 10);
+    const aRef = resolveChar(game, aName), bRef = resolveChar(game, bName);
+    if (!aRef) { cron.push(`Affection note — unknown character "${aName}".`); return true; }
+    applyAffection(aRef.ref, aName, bRef?.ref || null, bName, isSet, val, cron);
+    return true;
+  }
+  return false;
+}
+
+function applyAffection(A, aName, B, bName, isSet, val, cron) {
+  const rel = getRel(A, bName);
+  const before = rel.affection;
+  setAffection(A, bName, isSet ? val : before + val);
+  cron.push(`Affection — "${aName}" → "${bName}": ${before} → ${rel.affection} (${rel.status}).`);
+  if (rel.affection > before && B) {
+    const axA = goodEvilAxis(A.alignment), axB = goodEvilAxis(B.alignment);
+    if ((axA === 'good' && axB === 'evil') || (axA === 'evil' && axB === 'good')) {
+      cron.push(`WATCHER NOTICE: affection is rising between "${aName}" (${A.alignment || 'unaligned'}) and "${bName}" (${B.alignment || 'unaligned'}) — opposing good/evil alignments. Keep it realistic: a bond across that gap should be hard-won, tense, and genuinely motivated, not casual.`);
+    }
+  }
 }
 
 // Optional scoping: parse "[A, B] vs [C, D]" from a Clash line.
@@ -466,6 +691,7 @@ function applyDeath(game, name, c, type, nextId, cron) {
     c.hp = 0;
     c.status = 'Dead';
     if (type === 'guide') game.guide.alive = false;
+    if (type === 'npc' || type === 'partner') c.alive = false;
     cron.push(`Character "${name}" has died.`);
   }
 }
@@ -480,6 +706,15 @@ function doCheckpoint(game, name, eventId, cron) {
     if (ref.alive != null) ref.alive = true;
     if (ref.status === 'Dead') ref.status = 'Active';
     ref.status_effects = (ref.status_effects || []).filter(s => typeof s === 'object' && s.permanent);
+
+    // First-movie mercy rule: heal physical disabilities on first movie completion
+    if ((game.movie_number || 1) <= 1 && ref.weaknesses && ref.weaknesses.length) {
+      const healed = ref.weaknesses.filter(w => w.heals_on_movie_end);
+      if (healed.length) {
+        ref.weaknesses = ref.weaknesses.filter(w => !w.heals_on_movie_end);
+        healed.forEach(w => cron.push(`Mercy heal: "${ref.name}" — physical disability "${w.name}" cleared by God's Space (first-movie reward).`));
+      }
+    }
   });
   game.character.fear_meter = 0;
   game.character.fear_level = 'Calm';
@@ -557,6 +792,37 @@ function processEvent(game, line, nextId) {
   // ---- COMBAT: opposed attack ----  (X attacks Y — X/Y can be character or Enemy)
   if (/"[^"]+"\s+attacks\s+"[^"]+"/i.test(txt)) { processAttack(game, txt, nextId, cron); return cron; }
 
+  // ---- SOCIAL: remote communication ("A contacts B via radio") — check before interaction/affection ----
+  if (/"[^"]+"\s+(?:contacts?|communicates?\s+with|radios?|calls?|signals?|messages?|reaches?(?:\s+out\s+to)?)\s+"[^"]+"\s+via\s+/i.test(txt)) {
+    processComm(game, txt, cron); return cron;
+  }
+  // ---- SOCIAL: affection change ----
+  if (/affection/i.test(txt)) {
+    if (processAffection(game, txt, cron)) return cron;
+  }
+  // ---- SOCIAL: face-to-face interaction ----
+  if (/"[^"]+"\s+(?:interacts?\s+with|talks?\s+(?:to|with)|speaks?\s+(?:to|with)|meets?\s+(?:with\s+)?|approaches?|confronts?)\s+"[^"]+"/i.test(txt) && !/\bvia\b/i.test(txt)) {
+    processInteraction(game, txt, cron); return cron;
+  }
+
+  // ---- TIMERS / COUNTDOWNS (turn-based; decremented once per GM turn) ----
+  let tmrM;
+  if ((tmrM = txt.match(/(?:start|set|begin)\s+(?:a\s+)?(?:countdown\s+)?timer\s+"([^"]+)"\s+(?:(?:at|for|to)\s+)?(\d+)\s*turns?/i))) {
+    const tName = tmrM[1].trim(), turns = parseInt(tmrM[2], 10);
+    game.timers = game.timers || [];
+    const existing = game.timers.find(t => (t.name || '').toLowerCase() === tName.toLowerCase());
+    if (existing) { existing.turns_left = turns; cron.push(`Countdown "${tName}" reset to ${turns} turn(s).`); }
+    else { game.timers.push({ name: tName, turns_left: turns, started_turn: game.watcher?.turn ?? 0 }); cron.push(`Countdown "${tName}" started — ${turns} turn(s).`); }
+    return cron;
+  }
+  if ((tmrM = txt.match(/(?:cancel|stop|clear|remove)\s+timer\s+"([^"]+)"/i))) {
+    const tName = tmrM[1].trim();
+    const before = (game.timers || []).length;
+    game.timers = (game.timers || []).filter(t => (t.name || '').toLowerCase() !== tName.toLowerCase());
+    cron.push(before > (game.timers || []).length ? `Countdown "${tName}" cancelled.` : `Cancel ignored — no countdown "${tName}".`);
+    return cron;
+  }
+
   // ---- Death ----
   // ONLY the protagonist's death rewinds the game. Any other character
   // (guide, teammate, NPC) just dies — the story continues shorthanded.
@@ -568,7 +834,7 @@ function processEvent(game, line, nextId) {
       c.hp = 0;
       c.status = 'Dead';
       if (chref.type === 'guide') game.guide.alive = false;
-      if (chref.type === 'npc') c.alive = false;
+      if (chref.type === 'npc' || chref.type === 'partner') c.alive = false;
       cron.push(`Character "${name}" has died. The team continues without them.`);
     }
     return cron;
@@ -619,16 +885,105 @@ function processEvent(game, line, nextId) {
     game.points = Math.max(0, (game.points ?? 0) - parseInt(m[1], 10));
     cron.push(`Team points: ${game.points}.`);
   }
+  // ---- Location / movement ----
+  else if ((m = txt.match(/moves?\s+to\s+"([^"\/]+?)(?:\s*\/\s*([^"]+?))?"/i))) {
+    const loc = m[1].trim();
+    const sub = m[2] ? m[2].trim() : null;
+    const prev = c.location;
+    c.location = loc;
+    if (sub) c.sublocation = sub; else delete c.sublocation;
+    // Mark sublocation discovered in world_map
+    if (sub && game.world_map && Array.isArray(game.world_map.locations)) {
+      const parentLoc = game.world_map.locations.find(l => l.id === loc);
+      if (parentLoc && Array.isArray(parentLoc.sublocations)) {
+        const subObj = parentLoc.sublocations.find(s => typeof s === 'object' && s.id === sub);
+        if (subObj) subObj.discovered = true;
+      }
+    }
+    const where = sub ? `${loc} / ${sub}` : loc;
+    cron.push(`Character "${name}" moved${prev && prev !== loc ? ` from ${prev}` : ''} to ${where}.`);
+  }
   // ---- Stats ----
-  else if ((m = txt.match(/(gains?|loses?)\s+(\d+)\s+(STR|AGI|END|INT|LUCK|PSY|strength|agility|endurance|intelligence|luck|psyche)/i))) {
+  else if ((m = txt.match(/(gains?|loses?)\s+(\d+)\s+(STR|AGI|END|INT|LUCK|PSY|CHA|APP|strength|agility|endurance|intelligence|luck|psyche|charisma|appearance)/i))) {
     const dir = /gain/i.test(m[1]) ? 1 : -1;
     const amt = parseInt(m[2], 10) * dir;
     const map = { str:'strength', agi:'agility', end:'endurance', int:'intelligence', luck:'luck', psy:'psyche_force', psyche:'psyche_force',
-                  strength:'strength', agility:'agility', endurance:'endurance', intelligence:'intelligence' };
+                  cha:'charisma', app:'appearance',
+                  strength:'strength', agility:'agility', endurance:'endurance', intelligence:'intelligence',
+                  charisma:'charisma', appearance:'appearance' };
     const key = map[m[3].toLowerCase()] || m[3].toLowerCase();
     c[key] = Math.max(0, (c[key] ?? 0) + amt);
     const perm = /permanent/i.test(txt) ? ' (permanent)' : '';
     cron.push(`Character "${name}" ${key} is now ${c[key]}${perm}.`);
+  }
+  // ---- Alignment ----
+  else if ((m = txt.match(/alignment\s+(?:shifts?\s+to|becomes?|is\s+now|changes?\s+to)\s+"?(Lawful Good|Neutral Good|Chaotic Good|Lawful Neutral|True Neutral|Neutral|Chaotic Neutral|Lawful Evil|Neutral Evil|Chaotic Evil)"?/i))
+            || (m = txt.match(/becomes?\s+"(Lawful Good|Neutral Good|Chaotic Good|Lawful Neutral|True Neutral|Chaotic Neutral|Lawful Evil|Neutral Evil|Chaotic Evil)"/i))) {
+    let al = m[1].replace(/\b\w/g, ch => ch.toUpperCase());
+    if (al.toLowerCase() === 'neutral') al = 'True Neutral';
+    const prev = c.alignment || 'unset';
+    c.alignment = al;
+    cron.push(`Character "${name}" alignment: ${prev} → ${al}.`);
+  }
+  // ---- Loyalty (team trust / betrayal meter, 0-100) ----
+  else if ((m = txt.match(/loyalty\s*(?:([+\-])\s*(\d+)|=\s*(\d+))/i))) {
+    const cur = c.loyalty ?? 50;
+    let next;
+    if (m[3] != null) next = parseInt(m[3], 10);
+    else next = cur + (m[1] === '-' ? -1 : 1) * parseInt(m[2], 10);
+    c.loyalty = Math.max(0, Math.min(100, next));
+    cron.push(`Character "${name}" loyalty is now ${c.loyalty}/100.`);
+    if (c.loyalty <= 15 && (chref.type === 'npc'))
+      cron.push(`GM DIRECTIVE: "${name}" loyalty is critically low (${c.loyalty}) — they are on the verge of breaking from the team or betraying it. Let it show.`);
+  }
+  // ---- Partner: granted freedom (created being becomes a free participant) ----
+  else if (/(?:is\s+)?granted\s+freedom|becomes?\s+free|buys?\s+(?:their|his|her)\s+freedom/i.test(txt) && chref.type === 'partner') {
+    c.free = true;
+    cron.push(`Partner "${name}" has been granted freedom — they are now a free participant with their own standing, no longer bound to their creator.`);
+    cron.push(`GM DIRECTIVE: "${name}" is now free. They keep their bond to ${name === (game.character?.name) ? 'themselves' : 'their creator'} but choose it now rather than being compelled. They gain their own goals and may earn points/rewards as a true team member.`);
+  }
+  // ---- Genetic lock (shop or combat evolution) ----
+  else if ((m = txt.match(/opens?\s+genetic\s+lock\s+(\d+)|undergoes?\s+combat\s+evolution/i))) {
+    const lockN = m[1] ? parseInt(m[1], 10) : (c.genetic_locks_opened ?? 0) + 1;
+    const current = c.genetic_locks_opened ?? 0;
+    if (lockN !== current + 1) {
+      cron.push(`WATCHER WARNING: Cannot open lock ${lockN} — character currently has ${current} locks open.`);
+    } else {
+      c.genetic_locks_opened = lockN;
+      const LOCK_BONUSES = {
+        1: { all:5, hp:50, rank:'F' },
+        2: { strength:10, endurance:10, hp:100, rank:'E' },
+        3: { intelligence:15, agility:10, psyche_force:30, rank:'D' },
+        4: { all:25, hp:300, rank:'C' },
+        5: { all:40, hp:500, rank:'B' },
+      };
+      const bonus = LOCK_BONUSES[lockN];
+      if (bonus) {
+        const ALL_STATS = ['strength','agility','endurance','intelligence','psyche_force'];
+        const apply = bonus.all ? ALL_STATS.reduce((o,s)=>{o[s]=bonus.all;return o},{}) : {};
+        Object.assign(apply, Object.fromEntries(Object.entries(bonus).filter(([k]) => ALL_STATS.includes(k))));
+        for (const [stat, amt] of Object.entries(apply)) {
+          c[stat] = (c[stat] ?? 0) + amt;
+        }
+        if (bonus.hp) { c.hp_max = (c.hp_max ?? 100) + bonus.hp; c.hp = (c.hp ?? 0) + bonus.hp; }
+        c.rank = bonus.rank;
+        const via = /combat evolution/i.test(txt) ? 'combat evolution (no cost)' : 'shop purchase';
+        cron.push(`Character "${name}" opens genetic lock ${lockN} via ${via}. New rank: ${bonus.rank}.`);
+        cron.push(`Stat gains: ${Object.entries(apply).map(([k,v])=>`${k} +${v}`).join(', ')}${bonus.hp?`, HP_max +${bonus.hp}`:''}. Current HP: ${c.hp}/${c.hp_max}.`);
+        cron.push(`GM DIRECTIVE: Narrate the genetic lock opening for "${name}" — describe the physical sensation: something tearing free, a wave of heat, a moment of clarity. The world looks slightly different after. Make it visceral.`);
+      }
+    }
+  }
+  // ---- System Curse (luck = 0, System-only) ----
+  else if ((m = txt.match(/receives?\s+System\s+Curse\s*[—–-]\s*(test|elimination)/i))) {
+    const variant = m[1].toLowerCase();
+    c.luck = 0;
+    const note = variant === 'test'
+      ? 'System Test — fate suspended until your limit. Will lift if you survive.'
+      : 'System Elimination — fate inverted until dead or out of the movie.';
+    addStatus(c, `System Curse (${variant})`, { permanent: false, negative: true, note });
+    cron.push(`Character "${name}" luck set to 0. System Curse (${variant}) active.`);
+    cron.push(`GM DIRECTIVE: The System has personally suspended "${name}"'s luck. Announce this with weight — not as flavour but as a declaration. The ${variant === 'test' ? 'test ends when they hit their genuine limit; the System will observe without mercy until then' : 'elimination curse does not lift — every near-miss cascades, every close call fails, until they die or leave the movie world'}. Near-misses at luck 0 become OVERWHELMING FAILURES. Play this as fate itself turning its full attention on them.`);
   }
   // ---- MP ----
   else if ((m = txt.match(/(?:loses?|looses?)\s+(\d+)\s*MP\b(?!.*max)/i))) {
@@ -687,16 +1042,118 @@ function processEvent(game, line, nextId) {
     cron.push(`Character "${name}" loses status "${m[1]}".`);
   }
   // ---- Items ----
-  else if ((m = txt.match(/gains?\s+item\s+"([^"]+?)(?:\[ID:(\d+)\])?"/i))) {
-    c.items = c.items || [];
-    c.items.push({ name: m[1].trim(), id: m[2] ? parseInt(m[2],10) : null, status: [] });
-    cron.push(`Character "${name}" obtained "${m[1].trim()}".`);
+  else if ((m = txt.match(/gains?\s+item\s+"([^"]+?)(?:\[ID:(\d+)\])?"(?:[^\n]*?\bweigh(?:s|ing|t)?\s*(\d+(?:\.\d+)?)\s*(?:kg)?)?/i))) {
+    const itemName = m[1].trim();
+    const weight = m[3] != null ? parseFloat(m[3]) : 0;
+    const lift = maxLift(c);
+    if (weight > 0 && lift > 0 && weight > lift) {
+      cron.push(`WATCHER WARNING: "${name}" cannot pick up "${itemName}" alone — it weighs ${weight}kg, beyond their lift limit (${lift}kg at STR ${c.strength}). Narrate them failing to carry it (drag it, get help, or leave it). Item NOT added.`);
+    } else {
+      c.items = c.items || [];
+      c.items.push({ name: itemName, id: m[2] ? parseInt(m[2],10) : null, status: [], ...(weight > 0 ? { weight } : {}) });
+      cron.push(`Character "${name}" obtained "${itemName}"${weight > 0 ? ` (${weight}kg)` : ''}.`);
+      updateEncumbrance(c, name, cron);
+    }
   }
   else if ((m = txt.match(/(?:loses?|drops?|uses?)\s+item\s+"([^"]+?)(?:\[ID:(\d+)\])?"/i))) {
     const id = m[2] ? parseInt(m[2],10) : null;
     c.items = (c.items || []).filter(it =>
       id != null ? it.id !== id : (it.name || '').toLowerCase() !== m[1].trim().toLowerCase());
     cron.push(`Character "${name}" no longer has "${m[1].trim()}".`);
+    updateEncumbrance(c, name, cron);
+  }
+  // ---- Storage Ring: store / retrieve ----
+  else if ((m = txt.match(/stores?\s+item\s+"([^"]+?)(?:\[ID:(\d+)\])?"/i))) {
+    const itemName = m[1].trim();
+    const id = m[2] ? parseInt(m[2],10) : null;
+    const match = it => id != null ? it.id === id : (it.name||'').toLowerCase() === itemName.toLowerCase();
+    let pool = (c.items || []).find(match) ? 'items' : ((c.weapons || []).find(match) ? 'weapons' : null);
+    if (!pool) { cron.push(`Store ignored — "${itemName}" not on hand for ${name}.`); }
+    else {
+      const idx = c[pool].findIndex(match);
+      const [item] = c[pool].splice(idx, 1);
+      c.storage = c.storage || [];
+      item._from = pool;
+      c.storage.push(item);
+      cron.push(`Character "${name}" stored "${itemName}" in the ring.`);
+      updateEncumbrance(c, name, cron);
+    }
+  }
+  else if ((m = txt.match(/retrieves?\s+item\s+"([^"]+?)(?:\[ID:(\d+)\])?"/i))) {
+    const itemName = m[1].trim();
+    const id = m[2] ? parseInt(m[2],10) : null;
+    const match = it => id != null ? it.id === id : (it.name||'').toLowerCase() === itemName.toLowerCase();
+    c.storage = c.storage || [];
+    const idx = c.storage.findIndex(match);
+    if (idx === -1) { cron.push(`Retrieve ignored — "${itemName}" not in ${name}'s ring.`); }
+    else {
+      const [item] = c.storage.splice(idx, 1);
+      const pool = item._from === 'weapons' ? 'weapons' : 'items';
+      delete item._from;
+      c[pool] = c[pool] || [];
+      c[pool].push(item);
+      cron.push(`Character "${name}" retrieved "${itemName}" from the ring.`);
+      updateEncumbrance(c, name, cron);
+    }
+  }
+  // ---- Equip / unequip ----
+  else if ((m = txt.match(/equips?\s+"([^"]+?)(?:\[ID:(\d+)\])?"/i))) {
+    const itemName = m[1].trim();
+    const itemId   = m[2] ? parseInt(m[2],10) : null;
+    c.items    = c.items    || [];
+    c.equipped = c.equipped || [];
+    const item = c.items.find(it => itemId != null ? it.id === itemId : (it.name||'').toLowerCase() === itemName.toLowerCase())
+              || c.weapons?.find(it => itemId != null ? it.id === itemId : (it.name||'').toLowerCase() === itemName.toLowerCase());
+    if (!item) {
+      cron.push(`Equip ignored — "${itemName}" not found in ${name}'s inventory.`);
+    } else {
+      const slot = item.slot || 'misc';
+      const isRing = /ring/i.test(itemName) || /ring/i.test(slot);
+      const alreadyEquipped = c.equipped.find(e => (e.id != null && e.id === item.id) || e.name === item.name);
+      const slotOccupied = !isRing && c.equipped.find(e => e.slot === slot && slot !== 'misc');
+      if (alreadyEquipped) {
+        cron.push(`Equip ignored — "${itemName}" is already equipped.`);
+      } else if (slotOccupied) {
+        cron.push(`Equip ignored — slot "${slot}" already occupied by "${slotOccupied.name}". Unequip it first.`);
+      } else {
+        c.equipped.push({ name: item.name, id: item.id ?? null, slot });
+        // Apply stat bonuses
+        if (item.stat_bonuses) {
+          for (const [stat, val] of Object.entries(item.stat_bonuses)) {
+            if (typeof c[stat] === 'number') c[stat] += val;
+            else c[stat] = val;
+          }
+          const bonusList = Object.entries(item.stat_bonuses).map(([s,v])=>`${s} ${v>0?'+':''}${v}`).join(', ');
+          cron.push(`Character "${name}" equipped "${itemName}" (${bonusList}).`);
+        } else {
+          cron.push(`Character "${name}" equipped "${itemName}".`);
+        }
+      }
+    }
+  }
+  else if ((m = txt.match(/unequips?\s+"([^"]+?)(?:\[ID:(\d+)\])?"/i))) {
+    const itemName = m[1].trim();
+    const itemId   = m[2] ? parseInt(m[2],10) : null;
+    c.equipped = c.equipped || [];
+    const idx = c.equipped.findIndex(e => itemId != null ? e.id === itemId : e.name.toLowerCase() === itemName.toLowerCase());
+    if (idx === -1) {
+      cron.push(`Unequip ignored — "${itemName}" is not equipped by ${name}.`);
+    } else {
+      const entry = c.equipped[idx];
+      c.equipped.splice(idx, 1);
+      // Remove stat bonuses: look up item to get bonuses
+      const item = (c.items || []).find(it => entry.id != null ? it.id === entry.id : it.name === entry.name)
+                || (c.weapons || []).find(it => entry.id != null ? it.id === entry.id : it.name === entry.name);
+      if (item?.stat_bonuses) {
+        for (const [stat, val] of Object.entries(item.stat_bonuses)) {
+          if (typeof c[stat] === 'number') c[stat] -= val;
+        }
+        const bonusList = Object.entries(item.stat_bonuses).map(([s,v])=>`${s} ${v>0?'+':''}${v}`).join(', ');
+        cron.push(`Character "${name}" unequipped "${itemName}" (${bonusList} removed).`);
+      } else {
+        cron.push(`Character "${name}" unequipped "${itemName}".`);
+      }
+    }
   }
   return cron;
 }
@@ -745,10 +1202,152 @@ function checkLevelUp(game, name, c, cron) {
   }
 }
 
+// ── GROUND-TRUTH DIGEST ───────────────────────────────────────
+// A compact, authoritative snapshot injected into every GM turn so the GM
+// narrates from current state instead of decayed context. This is the primary
+// defense against confabulation: numbers it would otherwise "remember" wrong.
+function buildDigest(game) {
+  const turn = game.watcher?.turn ?? 0;
+  const lines = [];
+  const pct = (c) => c.hp_max ? Math.round((c.hp / c.hp_max) * 100) : 100;
+  const flagBits = (c) => {
+    const f = [];
+    if (c.hp != null && c.hp_max && pct(c) <= 15) f.push('CRITICAL/near-death');
+    else if (c.hp != null && c.hp_max && pct(c) < 40) f.push('badly hurt');
+    const st = statusNames(c);
+    if (st.length) f.push('status: ' + st.join(', '));
+    return f.length ? '  ⚠ ' + f.join('; ') : '';
+  };
+
+  const C = game.character;
+  if (C?.name) {
+    lines.push(`PROTAGONIST — ${C.name}: HP ${C.hp ?? '?'}/${C.hp_max ?? '?'} (${pct(C)}%), MP ${C.mp ?? 0}/${C.mp_max ?? 0}, STA ${C.stamina ?? 0}/${C.stamina_max ?? 0}, Fear ${C.fear_meter ?? 0} (${C.fear_level || 'Calm'}), Rank ${C.rank || 'Unranked'}, ${C.alignment || 'unaligned'}.`);
+    lines.push(`  Location: ${locationLabel(game, C.location, C.sublocation)}.`);
+    const cf = flagBits(C); if (cf) lines.push(cf);
+    if ((C.equipped || []).length) lines.push(`  Equipped: ${C.equipped.map(e => e.name).join(', ')}.`);
+    const rels = C.relationships || {};
+    const relList = Object.keys(rels).map(n => `${n} ${rels[n].affection >= 0 ? '+' : ''}${rels[n].affection} (${rels[n].status})`);
+    if (relList.length) lines.push(`  Feelings toward others: ${relList.join('; ')}.`);
+  }
+
+  // Allies (everyone living except the protagonist)
+  const allies = allChars(game).filter(x => x.type !== 'player');
+  if (allies.length) {
+    lines.push('ALLIES (living):');
+    allies.forEach(({ ref: a, type }) => {
+      const bits = [`HP ${a.hp ?? '?'}/${a.hp_max ?? '?'} (${pct(a)}%)`, locationLabel(game, a.location, a.sublocation)];
+      if (a.loyalty != null) bits.push(`loyalty ${a.loyalty}`);
+      if (a.alignment) bits.push(a.alignment);
+      const towardPlayer = C?.name && a.relationships ? a.relationships[C.name] : null;
+      if (towardPlayer) bits.push(`feels ${towardPlayer.status} (${towardPlayer.affection >= 0 ? '+' : ''}${towardPlayer.affection}) toward you`);
+      lines.push(`  • ${a.name}${type === 'partner' ? ' [created]' : ''}: ${bits.join(', ')}.${flagBits(a)}`);
+    });
+  }
+
+  // Active threats
+  const enemies = (game.combat?.enemies || []).filter(e => e.alive !== false);
+  if (enemies.length) {
+    lines.push('ACTIVE THREATS:');
+    enemies.forEach(e => lines.push(`  • ${e.name}${e.count > 1 ? ` ×${e.count}` : ''}: HP ${e.hp ?? '?'}/${e.hp_max ?? '?'}, Rank ${(e.rank || 'unranked').toUpperCase()}.`));
+  }
+
+  // Running timers / countdowns (turn-based)
+  const timers = (game.timers || []).filter(t => t && t.turns_left != null);
+  if (timers.length) {
+    lines.push('COUNTDOWNS:');
+    timers.forEach(t => lines.push(`  • ${t.name}: ${t.turns_left} turn(s) left.${t.turns_left <= 1 ? ' ⚠ ABOUT TO FIRE' : ''}`));
+  }
+
+  // Standing reminders the GM most often drops
+  const reminders = [];
+  allChars(game).forEach(({ ref: c }) => {
+    if (hasStatus(c, 'Mortally Wounded')) reminders.push(`${c.name} is Mortally Wounded — this must be addressed, not narrated past.`);
+    if (hasStatus(c, 'Encumbered')) reminders.push(`${c.name} is Encumbered — movement/agility is slowed until they drop or store weight.`);
+    if (c.loyalty != null && c.loyalty <= 15) reminders.push(`${c.name}'s loyalty is ${c.loyalty} — on the verge of breaking from the team.`);
+  });
+  if (reminders.length) { lines.push('REMINDERS:'); reminders.forEach(r => lines.push(`  ⚠ ${r}`)); }
+
+  return `[GROUND TRUTH — turn ${turn} — authoritative. This reflects data/game.json RIGHT NOW and overrides anything you think you remember. Narrate consistently with it.]\n${lines.join('\n')}`;
+}
+
+// Decrement all turn-based countdowns by one. Returns the timers that expired
+// (removed from the list) so the caller can emit "consequence fires now" events.
+function tickTimers(g) {
+  const expired = [];
+  g.timers = (g.timers || []).filter(t => {
+    if (t == null || t.turns_left == null) return false;
+    t.turns_left -= 1;
+    if (t.turns_left <= 0) { expired.push(t); return false; }
+    return true;
+  });
+  return expired;
+}
+
+// ── INVARIANT AUDIT ───────────────────────────────────────────
+// Runs every tick. Self-heals impossible states and warns ONCE per issue
+// (de-duped via game.watcher.audit_seen) so it never spams.
+function auditInvariants(game, cron) {
+  game.watcher = game.watcher || {};
+  const prevSeen = new Set(game.watcher.audit_seen || []);
+  const nowSeen = new Set();
+  const warnOnce = (key, msg) => { nowSeen.add(key); if (!prevSeen.has(key)) cron.push(msg); };
+
+  const validLocIds = new Set((game.world_map?.locations || []).map(l => l.id));
+
+  allChars(game, true /* include dead */).forEach(({ ref: c }) => {
+    const who = c.name || 'unknown';
+    // Resource overflow / underflow → clamp (self-healing fires once, then clears)
+    for (const [v, mx, lbl] of [['hp','hp_max','HP'], ['mp','mp_max','MP'], ['stamina','stamina_max','stamina']]) {
+      if (typeof c[v] === 'number' && typeof c[mx] === 'number') {
+        if (c[v] > c[mx]) { cron.push(`WATCHER AUDIT: "${who}" ${lbl} ${c[v]} exceeded max ${c[mx]} — clamped.`); c[v] = c[mx]; }
+        if (c[v] < 0)     { cron.push(`WATCHER AUDIT: "${who}" ${lbl} was negative (${c[v]}) — clamped to 0.`); c[v] = 0; }
+      }
+    }
+    // Alive/HP contradiction
+    if (c.alive === false && (c.hp ?? 0) > 0) { c.hp = 0; warnOnce(`deadhp:${who}`, `WATCHER AUDIT: "${who}" is marked dead but had HP > 0 — HP set to 0.`); }
+    // Ghost equipment — equipped item not in inventory
+    (c.equipped || []).forEach(eq => {
+      const inInv = (c.items || []).concat(c.weapons || []).some(it =>
+        (eq.id != null && it.id === eq.id) || (it.name || '').toLowerCase() === (eq.name || '').toLowerCase());
+      if (!inInv) warnOnce(`ghost:${who}:${eq.name}`, `WATCHER AUDIT: "${who}" has "${eq.name}" equipped but it is not in their inventory. Add the item or unequip it.`);
+    });
+    // Invalid location
+    if (c.location && validLocIds.size && !validLocIds.has(c.location))
+      warnOnce(`loc:${who}:${c.location}`, `WATCHER AUDIT: "${who}" is at location "${c.location}", which is not on the world map. Move them to a valid location id.`);
+    // Affection out of range → clamp
+    const rels = c.relationships || {};
+    for (const k of Object.keys(rels)) {
+      const a = rels[k].affection;
+      if (typeof a === 'number' && (a < -100 || a > 100)) {
+        rels[k].affection = Math.max(-100, Math.min(100, a));
+        rels[k].status = affectionBand(rels[k].affection);
+        cron.push(`WATCHER AUDIT: "${who}" affection toward "${k}" was out of range — clamped to ${rels[k].affection}.`);
+      }
+    }
+  });
+
+  game.watcher.audit_seen = [...nowSeen];
+}
+
 // ── MAIN TICK ─────────────────────────────────────────────────
 let dispatching = false;
 let lastDispatchedMsgId = -1;
 let gmSessionStarted = false;
+let lastGameWrite = 0; // ms timestamp of last successful game.json write
+
+function saveGmState() {
+  try {
+    fs.writeFileSync(P.gmState, JSON.stringify({ gmSessionStarted, lastDispatchedMsgId }, null, 2));
+  } catch (e) {}
+}
+
+function loadGmState() {
+  const s = readJsonSafe(P.gmState);
+  if (!s) return;
+  gmSessionStarted = !!s.gmSessionStarted;
+  if (typeof s.lastDispatchedMsgId === 'number') lastDispatchedMsgId = s.lastDispatchedMsgId;
+  if (gmSessionStarted) log(`AUTO-GM: Restored GM session state (last handled msg #${lastDispatchedMsgId}).`);
+}
 
 function tick() {
   const game = readJsonSafe(P.game);
@@ -757,6 +1356,7 @@ function tick() {
   game.watcher = game.watcher || { last_processed_event_id: 0, checkpoint_event_id: 0 };
   game.watcher.running = true;
   game.watcher.last_tick = new Date().toISOString();
+  game.watcher.dispatching = dispatching; // kept in sync every tick for the UI
 
   const lines = readEventLines();
   let nextId = maxEventId(lines) + 1;
@@ -783,6 +1383,13 @@ function tick() {
     game.character.fear_level = fl.name;
   }
 
+  // Invariant audit — self-heal impossible states, warn once per issue
+  if (game.character) {
+    const auditCron = [];
+    try { auditInvariants(game, auditCron); } catch (e) { log('AUDIT ERROR: ' + e.message); }
+    if (auditCron.length) { cronBuffer.push(...auditCron); mutated = true; }
+  }
+
   // Append cron outputs with fresh IDs
   if (cronBuffer.length) {
     const liveMax = maxEventId(readEventLines());
@@ -793,9 +1400,14 @@ function tick() {
 
   // Advance cursor to the new max id in the file
   game.watcher.last_processed_event_id = maxEventId(readEventLines());
-  if (mutated || cronBuffer.length || true) writeJson(P.game, game);
+  // Always write at least every 5s so last_tick stays fresh for the engine status badge
+  const needsHeartbeat = (Date.now() - lastGameWrite) > 5000;
+  if (mutated || cronBuffer.length || needsHeartbeat) {
+    try { writeJson(P.game, game); lastGameWrite = Date.now(); }
+    catch (e) { log('WARN: could not write game.json: ' + e.message); }
+  }
 
-  // Chat dispatch (auto-GM)
+  // Chat dispatch (auto-GM) — always runs even if game.json write failed
   if (CFG.settings.auto_gm) maybeDispatchGM(game);
 }
 
@@ -814,77 +1426,217 @@ function maybeDispatchGM(game) {
   dispatchGM(last);
 }
 
+function chatBackup() {
+  try { if (fs.existsSync(P.chat)) fs.copyFileSync(P.chat, P.chat + '.bak'); } catch(e) {}
+}
+
+// Returns true if chat.json is valid; false if it was corrupted (and restored from backup).
+function chatValidateAndRestore(msgId) {
+  try {
+    const raw = fs.readFileSync(P.chat, 'utf8');
+    if (!raw || raw.trim() === '') throw new Error('empty file');
+    JSON.parse(raw); // throws if malformed
+    return true; // all good
+  } catch(e) {
+    log(`AUTO-GM: chat.json corrupted after msg #${msgId} turn (${e.message}) — restoring backup.`);
+    try {
+      if (fs.existsSync(P.chat + '.bak')) {
+        fs.copyFileSync(P.chat + '.bak', P.chat);
+        log('AUTO-GM: chat.json restored from pre-dispatch backup.');
+      } else {
+        log('AUTO-GM: no backup found — cannot restore.');
+      }
+    } catch(e2) { log('AUTO-GM: restore failed: ' + e2.message); }
+    return false; // was corrupted
+  }
+}
+
+// ── Immediately stamp dispatching state into game.json ───────
+// Called outside the normal tick so the UI sees it within one poll cycle.
+function setWatcherPhase(isDispatching) {
+  try {
+    const g = readJsonSafe(P.game) || {};
+    g.watcher = g.watcher || {};
+    g.watcher.dispatching = isDispatching;
+    writeJson(P.game, g);
+    lastGameWrite = Date.now();
+  } catch(e) { log('WARN: setWatcherPhase failed: ' + e.message); }
+}
+
 function dispatchGM(playerMsg) {
   dispatching = true;
+  setWatcherPhase(true);   // immediate — UI sees "GM writing" on next poll
   const useContinue = gmSessionStarted;
   const tool = CFG.settings.ai_tool || 'claude';
+
+  // Snapshot chat.json before the AI touches it — used to restore on corruption
+  chatBackup();
+
+  // Advance the turn counter and build the ground-truth digest from the LIVE
+  // state. The digest is injected into the prompt so the GM narrates from
+  // current facts instead of decayed context (anti-confabulation).
+  let digest = '';
+  try {
+    const g = readJsonSafe(P.game);
+    if (g) {
+      g.watcher = g.watcher || {};
+      g.watcher.turn = (g.watcher.turn || 0) + 1;
+      const expired = tickTimers(g);
+      writeJson(P.game, g);
+      lastGameWrite = Date.now();
+      // Emit a directive for each countdown that just hit zero so the GM narrates it.
+      if (expired.length) {
+        let id = maxEventId(readEventLines()) + 1;
+        for (const t of expired) appendCron(`GM DIRECTIVE: Countdown "${t.name}" has reached ZERO — its consequence happens NOW. Narrate it this turn.`, id++);
+      }
+      digest = buildDigest(g);
+    }
+  } catch (e) { log('WARN: digest build failed: ' + e.message); }
 
   log(`AUTO-GM: dispatching player message #${playerMsg.id} to ${tool}${useContinue ? ' (--continue)' : ' (new session)'}`);
 
   const prompt =
 `[WATCHER EVENT] The player sent a new message. Act as the Terror Infinity Game Master.
 
-Steps:
-1. Read data/INDEX.md, system/gm-prompt.md, data/game.json, data/chat.json (latest messages), and the tail of data/event-log.txt.
+${digest ? digest + '\n\n' : ''}Steps:
+1. Read data/INDEX.md, system/gm-prompt.md, data/game.json, data/chat.json (latest messages), and the tail of data/event-log.txt. The GROUND TRUTH block above is authoritative for current state — trust it over memory.
 2. Respond IN CHARACTER. Append your narration as a {"sender":"gm"} message to data/chat.json and set "status":"waiting_for_player".
 3. Write EVERY mechanical consequence to data/event-log.txt as "System Message[ID:n]: ..." lines (continue numbering from the highest existing ID). Do NOT compute HP totals, XP, levels, or dice yourself — write the intent events; the watcher computes results.
 4. For any uncertain action, write a roll-request event: System Message[ID:n]: Character "NAME" tries to ACTION. Difficulty N. (add [lethal] if failure means death).
+5. Read the new Cron Message lines (including any WATCHER WARNING / NOTICE / AUDIT) the watcher left since your last turn, and correct course where they flag a contradiction.
 
 Player message: ${JSON.stringify(playerMsg.content)}`;
 
-  const promptFlag = tool === 'opencode' ? '--prompt' : '-p';
-  const args = [promptFlag, prompt];
+  let args;
   let command;
   let extraArgs;
+  let useShell = true;
 
   if (tool === 'opencode') {
+    // opencode CLI: `opencode run "message" [--continue] [--model x]`
     command = CFG.settings.opencode_command || 'opencode';
+    args = ['run', prompt];
     if (useContinue) args.push('--continue');
     extraArgs = CFG.settings.opencode_extra_args || [];
     if (CFG.settings.ai_model) { args.push('--model'); args.push(CFG.settings.ai_model); }
   } else {
-    // claude (default)
+    // claude CLI: pass the prompt via a temp file + stdin redirect.
+    // Passing long prompts as -p "arg" through cmd.exe causes truncation/corruption
+    // (special chars like quotes, braces, newlines break CMD argument parsing).
+    // With shell:true, including '<' in args lets cmd.exe do the redirect natively.
+    const tmpFile = path.join(ROOT, 'watcher', '_gm_prompt.tmp');
+    fs.writeFileSync(tmpFile, prompt, 'utf8');
+
     command = CFG.settings.claude_command || 'claude';
+    extraArgs = CFG.settings.claude_extra_args || ['--dangerously-skip-permissions'];
+    args = ['--print'];
     if (useContinue) args.push('--continue');
-    extraArgs = CFG.settings.claude_extra_args || [];
     if (CFG.settings.ai_model) { args.push('--model'); args.push(CFG.settings.ai_model); }
+    extraArgs.forEach(a => args.push(a));
+    extraArgs = []; // already incorporated above
+    // Append stdin redirect — cmd.exe (via shell:true) interprets < as a redirect operator
+    args.push('<', tmpFile);
+    // useShell stays true (cmd.exe processes the < redirect for us)
   }
   extraArgs.forEach(a => args.push(a));
 
   const child = spawn(command, args, {
-    cwd: ROOT, shell: true, detached: true,
+    cwd: ROOT, shell: useShell, windowsHide: true,
   });
 
   let out = '';
   child.stdout.on('data', d => { out += d; });
   child.stderr.on('data', d => { out += d; });
 
-  child.on('close', code => {
-    try { fs.appendFileSync(P.gmLog, `\n===== GM turn (msg #${playerMsg.id}, exit ${code}) ${new Date().toISOString()} =====\n${out}\n`); } catch (e) {}
-    if (code === 0) { gmSessionStarted = true; log(`AUTO-GM: turn complete (msg #${playerMsg.id}).`); }
-    else if (useContinue && !gmSessionStarted) {
+  // ── Hard timeout: kill child if it doesn't exit in time ──
+  const GM_TIMEOUT_MS = (CFG.settings.gm_timeout_min || 10) * 60 * 1000;
+  let turnDone = false;
+
+  function finishTurn(code, reason) {
+    if (turnDone) return;
+    turnDone = true;
+    clearTimeout(killTimer);
+    try { fs.appendFileSync(P.gmLog, `\n===== GM turn (msg #${playerMsg.id}, ${reason}, exit ${code}) ${new Date().toISOString()} =====\n${out}\n`); } catch(e) {}
+    if (code === 0 || reason === 'timeout-reply') {
+      const chatOk = chatValidateAndRestore(playerMsg.id);
+      if (!chatOk) {
+        // GM wrote invalid JSON — backup was restored, response is lost.
+        // Reset so the watcher re-dispatches as a fresh session.
+        log(`AUTO-GM: response for msg #${playerMsg.id} had invalid JSON — resetting for retry.`);
+        gmSessionStarted = false;
+        lastDispatchedMsgId = playerMsg.id - 1;
+        saveGmState();
+        dispatching = false;
+        setWatcherPhase(false);
+        return;
+      }
+      gmSessionStarted = true;
+      log(`AUTO-GM: turn complete (msg #${playerMsg.id})${reason === 'timeout-reply' ? ' [reply detected]' : ''}.`);
+      saveGmState();
+    } else if (useContinue && !gmSessionStarted) {
       log(`AUTO-GM: --continue failed, retrying as new session.`);
-      dispatching = false; gmSessionStarted = false; lastDispatchedMsgId = -1;
+      gmSessionStarted = false; lastDispatchedMsgId = -1; saveGmState();
+      dispatching = false;
+      setWatcherPhase(false);
       return;
     } else {
-      log(`AUTO-GM: ${command} exited ${code}. See gm.log.`);
+      log(`AUTO-GM: ${command} exited ${code} (${reason}). See gm.log.`);
     }
     dispatching = false;
-  });
+    setWatcherPhase(false); // immediate — UI stops showing "GM writing"
+  }
+
+  const killTimer = setTimeout(() => {
+    // Before killing, check if the GM actually wrote a reply already
+    const chat = readJsonSafe(P.chat);
+    const replied = chat && chat.status === 'waiting_for_player';
+    if (replied) {
+      log(`AUTO-GM: child still running but reply detected — killing child and continuing.`);
+      try { child.kill(); } catch(e) {}
+      finishTurn(0, 'timeout-reply');
+    } else {
+      log(`AUTO-GM: timeout after ${GM_TIMEOUT_MS / 60000} min — killing child.`);
+      try { child.kill(); } catch(e) {}
+      finishTurn(1, 'timeout');
+    }
+  }, GM_TIMEOUT_MS);
+
+  child.on('close', (code) => finishTurn(code, 'exit'));
 
   child.on('error', err => {
-    log(`AUTO-GM ERROR: ${err.message}. Is '${command}' installed and on PATH? Set settings.auto_gm=false to disable, or change ai_tool in config.`);
-    dispatching = false;
+    log(`AUTO-GM ERROR: ${err.message}. Is '${command}' installed and on PATH?`);
+    finishTurn(1, 'error');
   });
 }
 
 // ── BOOT ──────────────────────────────────────────────────────
+function acquireLock() {
+  if (fs.existsSync(P.pidFile)) {
+    const oldPid = parseInt(fs.readFileSync(P.pidFile, 'utf8').trim(), 10);
+    if (oldPid && oldPid !== process.pid) {
+      try {
+        process.kill(oldPid, 0); // throws if not running
+        console.error(`[TI-Watcher] Another instance is already running (PID ${oldPid}). Exiting.`);
+        process.exit(1);
+      } catch(e) { /* stale PID — process is gone, safe to take over */ }
+    }
+  }
+  fs.writeFileSync(P.pidFile, String(process.pid));
+}
+
+function releaseLock() {
+  try { if (fs.existsSync(P.pidFile)) fs.unlinkSync(P.pidFile); } catch(e) {}
+}
+
 function boot() {
+  acquireLock();
   log('───────────────────────────────────────────────');
   log('Terror Infinity Watcher starting.');
   log(`Project: ${ROOT}`);
   const toolName = CFG.settings.ai_tool || 'claude';
   log(`Auto-GM: ${CFG.settings.auto_gm ? 'ON (' + toolName + ' CLI' + (CFG.settings.ai_model ? ' — ' + CFG.settings.ai_model : '') + ')' : 'OFF (run play terror-infinity manually)'}`);
+
+  loadGmState();
 
   // Ensure files exist
   if (!fs.existsSync(P.eventLog)) fs.writeFileSync(P.eventLog, '');
@@ -896,12 +1648,9 @@ function boot() {
   log(`Watching every ${interval}ms. Press Ctrl+C to stop.`);
 }
 
-process.on('SIGINT', () => {
-  const game = readJsonSafe(P.game);
-  if (game && game.watcher) { game.watcher.running = false; writeJson(P.game, game); }
-  log('Watcher stopped.');
-  process.exit(0);
-});
+process.on('SIGINT',           () => { releaseLock(); const g = readJsonSafe(P.game); if (g?.watcher) { g.watcher.running = false; writeJson(P.game, g); } log('Watcher stopped.'); process.exit(0); });
+process.on('exit',             ()  => { releaseLock(); });
+process.on('uncaughtException', e  => { log('UNCAUGHT: ' + e.message); releaseLock(); process.exit(1); });
 
 // --once : process a single tick and exit (for testing / harnesses).
 if (process.argv.includes('--once')) {

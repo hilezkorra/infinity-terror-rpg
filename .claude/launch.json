@@ -1,11 +1,1 @@
-{
-  "version": "0.0.1",
-  "configurations": [
-    {
-      "name": "terror-infinity-rpg",
-      "runtimeExecutable": "npx",
-      "runtimeArgs": ["serve", "-l", "7824", "C:\\laragon\\www\\terror-infinity-rpg"],
-      "port": 7824
-    }
-  ]
-}
+﻿{"version":"0.0.1","configurations":[{"name":"terror-infinity-rpg","runtimeExecutable":"cmd","runtimeArgs":["/c","echo Laragon"],"port":80,"url":"http://localhost/terror-infinity-rpg/"}]}

@@ -60,13 +60,24 @@ Teams do not interact directly in movie worlds — each team has its own copy of
 
 When a participant dies in a movie world, their consciousness is returned to the Lobby. Their physical body is reconstituted from the point of last Lobby departure.
 
-This means:
+Death restoration:
 - Equipment lost in the movie world must be repurchased
-- Damage done to the body during the movie does not persist (full healing on return)
-- However: enhancements purchased and the genetic lock progression ARE maintained
+- The body is rebuilt as it was at last departure — prior injuries from earlier movies do not carry over
+- Enhancements purchased and genetic lock progression ARE maintained
 - Memory of the movie continues — the trauma is real even if the body recovers
 
+Healing (non-death):
+- Injuries sustained during a movie are NOT automatically healed upon return
+- Survivors must explicitly command "God, heal me" (or similar) and pay points for body repair
+- Limb regrowth is cheap; full body repair is expensive (hundreds to thousands of points)
+- Broken items cannot be repaired by God — only energy refills are provided
+- God can repair damaged genetic code but cannot rewrite pre-existing genetic modification
+
 The entity appears to have no limit on how many times a participant can die and be restored. Whether this is unlimited is unknown.
+
+### First-Movie Mercy Rule
+
+Survivors who enter their first movie with a physical disability (blindness, missing limb, paralysis, etc.) receive a **one-time free full body repair** upon completing that movie alive. This is widely understood as the entity's incentive: it gives the disabled a reason to fight for survival rather than resign to death. The heal corrects the disability completely. This grace does not extend to psychological trauma, genetic modification, or any subsequent movie — from the second movie onward, all healing must be paid for.
 
 ## Ranking
 
